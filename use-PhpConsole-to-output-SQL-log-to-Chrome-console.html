@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="./stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="./stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="./stylesheets/print.css" media="print" />
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Blog of zacksleo</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Home</h1>
+        <h2>奉天体道，清净无为</h2>
+        <a href="https://github.com/zacksleo" class="button"><small>Follow me on</small>GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h3>
+            <a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages">
+              <span class="octicon octicon-link"></span>
+            </a>ThinkPHP结合使用PHP Console向Chrome 控制台输出SQL</h3>
+          <p>
+
+          <ol>
+            <li>在Chrome中安装<a href="https://chrome.google.com/webstore/detail/php-console/nfhmhhlpfleoednkpnnnkolmclajemef?utm_source=chrome-ntp-icon" target="_blank">PHP Console</a> 插件</li>
+            <li>
+              下载<a href="https://github.com/Seldaek/php-console/archive/master.zip" target="_blank">PHP Console</a> 服务器端程序包到ThinkPHP的Vendor目录下
+              <p>例如<code>/ThinkPHP/Extend/Vendor/PhpConsole</code></p>
+            </li>
+            <li>
+              <p>编写Behaviour行为类<code>PhpConsoleBehavior.class</code></p>
+              <pre>
+<code>
+&lt;?php
+/*
+ * 程序初始化时，在DEBUG模式下自动导入PHP Console类并进行实例化
+ * PHP console for chrome degug tools
+ * @author zacksleo
+ */
+class PhpConsoleBehavior extends Behavior{
+
+  protected $options = array(
+      'PHP_CONSOLE' => false,
+  );
+
+  public function run(&$params){
+    if(C('PHP_CONSOLE')){
+      if(APP_DEBUG){
+        vendor('PhpConsole.__autoload');  //导入文件
+        PhpConsole\Helper::register();  //注册，自动实例化
+        $connector = PhpConsole\Connector::getInstance();
+        $connector->setPassword('password');
+        $handler = PhpConsole\Handler::getInstance();
+        // 输出PHP错误和异常            
+        $handler->start(); 
+        // 配置 eval provider（在Chrome中远程执行PHP），如果不使用，则不配置
+        $evalProvider = $connector->getEvalDispatcher()->getEvalProvider();
+        $evalProvider->setOpenBaseDirs(array(__DIR__)); 
+        // 必须最后调用
+        $connector->startEvalRequestsListener(); 
+      }
+    }
+  }
+}
+?>         
+</code>
+              </pre>
+            </li>              
+            <li>
+              <p>
+                在/App/Conf/tags.php 中配置标签位:<code>'app_init' => array('PhpConsole'),</code>
+              </p>
+            </li>
+            <li>在config.php文件中定义标签<code>'PHP_CONSOLE' => true,</code></li>
+            <li>
+              <p>修改ThinkPHP的Log.class文件（位于/ThinkPHP/Lib/Core/Log.class.php）中的recode方法如下</p>
+              <pre>
+                <code>
+  static function record($message, $level = self::ERR, $record = false){
+    //zacksleo   
+    if($level == self::SQL){
+      PC::debug($message, 'SQL');
+    }
+    //zacksleo
+    if($record || false !== strpos(C('LOG_LEVEL'), $level)){
+      self::$log[] = "{$level}: {$message}\r\n";
+    }
+  }                  
+</code>
+              </pre>
+            </li>
+            <li>
+              <p>预览如下</p>
+              
+            </li>
+          </ol>
+          </p>
+        </section>
+        <aside id="sidebar">
+        </aside>
+      </div>
+    </div>
+  </body>
+</html>
