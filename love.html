@@ -1,0 +1,32 @@
+<html>
+  <canvas id="circle" width="600" height="600"></canvas>
+  <canvas id="heart" width="600" height="600"></canvas>
+  <script>
+    (function(){
+      var target = document.getElementById('circle');
+      var context = target.getContext('2d');
+      context.strokeStyle = '#ddd';
+      for(var i=0; i<10; i++){
+        context.arc(200,200,25*(i+1),0,360);
+        context.stroke();
+      }
+    })();
+    
+(function(){
+	var context=document.getElementById("circle").getContext('2d');
+	context.beginPath();
+	context.fillStyle='#F3363D'
+	context.translate(320,150);
+	var r=0 , a=100 , start = 0 , end= 0;
+	context.rotate(Math.PI);
+	for(var q=0; q<500; q++){
+		start +=  Math.PI * 2 /500;
+		end = start + Math.PI * 2 /500;
+		r=a * (1-Math.sin(start));  //心形极坐标表示法
+		context.arc(0,0,r,start,end,false);
+	}
+	context.fill();
+})();
+
+  </script>
+</html>
