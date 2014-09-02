@@ -11,7 +11,7 @@
         <canvas id="circle" width="600" height="600"></canvas>
       </div>
       <div class="well" style="margin-top:400px;">
-        <blockquote>「好像突然有了软肋,也突然有了铠甲」</blockquote>
+        <blockquote>「好像突然有了软肋，也突然有了铠甲」</blockquote>
         献给·青青
         <hr/>
         <blockquote>七夕快乐！</blockquote>
@@ -63,7 +63,7 @@
     var minuteMs = 60 * 1000;
 
     function refreshTime(){
-      var now = Date.parse(new Date());
+      var now = (new Date()).valueOf();
       var diff = now - start;
       var year = parseInt(diff / yearMs);
       var month = parseInt((diff - year * yearMs) / monthMs);
