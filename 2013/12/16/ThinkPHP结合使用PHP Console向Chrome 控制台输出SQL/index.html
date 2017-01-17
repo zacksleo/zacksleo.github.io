@@ -10,7 +10,7 @@
     
     <title>
         
-            如何自动部署GitLab项目 | 
+            ThinkPHP结合使用PHP Console向Chrome 控制台输出SQL | 
         
         zacks&#39;s blog
     </title>
@@ -48,7 +48,7 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="https://zacksleo.github.io">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="如何自动部署GitLab项目 | zacks&#39;s blog">
+    <meta property="og:title" content="ThinkPHP结合使用PHP Console向Chrome 控制台输出SQL | zacks&#39;s blog">
     <meta property="og:description" content="zacks&#39;s blog, Web Develop, PHP, Yii2, Docker, AI, JavaScript">
 
     <!--[if lte IE 9]>
@@ -226,7 +226,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#如何自动部署"><span class="post-toc-number">1.</span> <span class="post-toc-text">如何自动部署</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#原理"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">原理</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#配置环境"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">配置环境</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参考"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">参考</span></a></li></ol></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#在Chrome中安装PHP-Console-插件"><span class="post-toc-number">1.</span> <span class="post-toc-text">在Chrome中安装PHP Console 插件</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#下载PHP-Console-服务器端程序包到ThinkPHP的Vendor目录下"><span class="post-toc-number">2.</span> <span class="post-toc-text">下载PHP Console 服务器端程序包到ThinkPHP的Vendor目录下</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#编写Behaviour行为类PhpConsoleBehavior-class"><span class="post-toc-number">3.</span> <span class="post-toc-text">编写Behaviour行为类PhpConsoleBehavior.class</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#在-App-Conf-tags-php-中配置标签位-’app-init’-gt-array-‘PhpConsole’"><span class="post-toc-number">4.</span> <span class="post-toc-text">在/App/Conf/tags.php 中配置标签位:’app_init’ => array(‘PhpConsole’),</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#在config-php文件中定义标签’PHP-CONSOLE’-gt-true"><span class="post-toc-number">5.</span> <span class="post-toc-text">在config.php文件中定义标签’PHP_CONSOLE’ => true,</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#修改ThinkPHP的Log-class文件（位于-ThinkPHP-Lib-Core-Log-class-php）中的recode方法如下"><span class="post-toc-number">6.</span> <span class="post-toc-text">修改ThinkPHP的Log.class文件（位于/ThinkPHP/Lib/Core/Log.class.php）中的recode方法如下</span></a></li></ol>
 
         <!--
         <li class="mdl-menu__item">
@@ -262,7 +262,7 @@
         
     
             <p class="article-headline-p">
-                如何自动部署GitLab项目
+                ThinkPHP结合使用PHP Console向Chrome 控制台输出SQL
             </p>
         </div>
 
@@ -281,7 +281,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>zacksleo</strong>
-        <span>11月 04, 2016</span>
+        <span>12月 16, 2013</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -305,7 +305,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        
+        <a class="post_tag-link" href="/tags/ThinkPHP-Chrome-Console-SQL/">ThinkPHP, Chrome, Console, SQL</a>
     </ul>
     
 
@@ -321,7 +321,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=如何自动部署GitLab项目&url=https://zacksleo.github.io//2016/11/04/如何自动部署GitLab项目/index.html&pic=&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=ThinkPHP结合使用PHP Console向Chrome 控制台输出SQL&url=https://zacksleo.github.io//2013/12/16/ThinkPHP结合使用PHP Console向Chrome 控制台输出SQL/index.html&pic=&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -330,7 +330,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=如何自动部署GitLab项目&url=https://zacksleo.github.io//2016/11/04/如何自动部署GitLab项目/index.html&via=zacksleo" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=ThinkPHP结合使用PHP Console向Chrome 控制台输出SQL&url=https://zacksleo.github.io//2013/12/16/ThinkPHP结合使用PHP Console向Chrome 控制台输出SQL/index.html&via=zacksleo" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Twitter
             </li>
@@ -339,7 +339,7 @@
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=https://zacksleo.github.io//2016/11/04/如何自动部署GitLab项目/index.html" target="_blank">
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=https://zacksleo.github.io//2013/12/16/ThinkPHP结合使用PHP Console向Chrome 控制台输出SQL/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Facebook
             </li>
@@ -348,7 +348,7 @@
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=https://zacksleo.github.io//2016/11/04/如何自动部署GitLab项目/index.html" target="_blank">
+        <a class="post_share-link" href="https://plus.google.com/share?url=https://zacksleo.github.io//2013/12/16/ThinkPHP结合使用PHP Console向Chrome 控制台输出SQL/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Google+
             </li>
@@ -372,43 +372,9 @@
                 <!-- Post Content -->
                 <div id="post-content" class="markdown-Github mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h1 id="如何自动部署"><a href="#如何自动部署" class="headerlink" title="如何自动部署"></a>如何自动部署</h1><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><ul>
-<li>GitLab有预制的钩子, 在代码提交/合并等事件中,会自动调用WebHoos, 即向该URL发送POST请求</li>
-<li>在布署服务器上监听该POST, 验证通过后执行相关的布置Shell脚本, 即可完成自动布署</li>
-</ul>
-<h2 id="配置环境"><a href="#配置环境" class="headerlink" title="配置环境"></a>配置环境</h2><ul>
-<li><ol>
-<li>安装Python和Pip</li>
-</ol>
-</li>
-<li><p>2.如果需要, 安装python的requests模块和argparse模块</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">pip install requests</div><div class="line">easy_install argparse</div></pre></td></tr></table></figure>
-</li>
-<li><ol>
-<li>下载监听脚本<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl https://raw.githubusercontent.com/zacksleo/docker-hook/master/docker-hook &gt; /usr/local/bin/docker-hook; chmod +x /usr/local/bin/docker-hook</div></pre></td></tr></table></figure>
-</li>
-</ol>
-</li>
-<li><p>4.脚本安装完成后即可使用docker-hook 命令, 默认监听8555端口</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nohup docker-hook  -t  &lt;auth-token&gt;  -c  &lt;command&gt; &amp;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>其中, auth-token 替换为授权token, command替换为要执行的命令, 例如<br>auth-token为<code>auto-deploy-pushserver</code>,command为<code>sh /mnt/pushserver/deploy.sh</code><br>则执行命令: <code>docker-hook -t auto-deploy-pushserver -c sh /mnt/pushserver/deploy.sh</code></p>
-<p>deploy.sh的内容为:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push origin dev</div></pre></td></tr></table></figure></p>
-<p>nohup+&amp;命令为该进程设置为守护进程, 防止进程退出</p>
-<ul>
-<li><p>5.在GitLab的项目设置里面,设置Webhooks, 本例子中则为<code>139.198.9.141:8555/audo-deploy-pushserver</code></p>
-</li>
-<li><ol>
-<li>注意, 如果需要部署多个hooks, 则需要通过–port配置不同的端口, 例如</li>
-</ol>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nohup docker-hook  -t  &lt;auth-token2&gt;  -c  &lt;command2&gt;  --port 8556 &amp;</div></pre></td></tr></table></figure>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li><a href="https://github.com/zacksleo/docker-hook" target="_blank" rel="external">docker-hook</a></li>
-</ul>
-
+        <h2 id="在Chrome中安装PHP-Console-插件"><a href="#在Chrome中安装PHP-Console-插件" class="headerlink" title="在Chrome中安装PHP Console 插件"></a>在Chrome中安装PHP Console 插件</h2><h2 id="下载PHP-Console-服务器端程序包到ThinkPHP的Vendor目录下"><a href="#下载PHP-Console-服务器端程序包到ThinkPHP的Vendor目录下" class="headerlink" title="下载PHP Console 服务器端程序包到ThinkPHP的Vendor目录下"></a>下载PHP Console 服务器端程序包到ThinkPHP的Vendor目录下</h2><p>例如 <code>/ThinkPHP/Extend/Vendor/PhpConsole</code></p>
+<h2 id="编写Behaviour行为类PhpConsoleBehavior-class"><a href="#编写Behaviour行为类PhpConsoleBehavior-class" class="headerlink" title="编写Behaviour行为类PhpConsoleBehavior.class"></a>编写Behaviour行为类PhpConsoleBehavior.class</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">&lt;?php</div><div class="line">/*</div><div class="line"> * 程序初始化时，在DEBUG模式下自动导入PHP Console类并进行实例化</div><div class="line"> * PHP console for chrome degug tools</div><div class="line"> * @author zacksleo</div><div class="line"> */</div><div class="line">class PhpConsoleBehavior extends Behavior&#123;</div><div class="line"></div><div class="line">  protected $options = array(</div><div class="line">      &apos;PHP_CONSOLE&apos; =&gt; false,</div><div class="line">  );</div><div class="line"></div><div class="line">  public function run(&amp;$params)&#123;</div><div class="line">    if(C(&apos;PHP_CONSOLE&apos;))&#123;</div><div class="line">      if(APP_DEBUG)&#123;</div><div class="line">        vendor(&apos;PhpConsole.__autoload&apos;);  //导入文件</div><div class="line">        PhpConsole\Helper::register();  //注册，自动实例化</div><div class="line">        $connector = PhpConsole\Connector::getInstance();</div><div class="line">        $connector-&gt;setPassword(&apos;password&apos;);</div><div class="line">        $handler = PhpConsole\Handler::getInstance();</div><div class="line">        // 输出PHP错误和异常            </div><div class="line">        $handler-&gt;start(); </div><div class="line">        // 配置 eval provider（在Chrome中远程执行PHP），如果不使用，则不配置</div><div class="line">        $evalProvider = $connector-&gt;getEvalDispatcher()-&gt;getEvalProvider();</div><div class="line">        $evalProvider-&gt;setOpenBaseDirs(array(__DIR__)); </div><div class="line">        // 必须最后调用</div><div class="line">        $connector-&gt;startEvalRequestsListener(); </div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">?&gt;</div></pre></td></tr></table></figure>
+<h2 id="在-App-Conf-tags-php-中配置标签位-’app-init’-gt-array-‘PhpConsole’"><a href="#在-App-Conf-tags-php-中配置标签位-’app-init’-gt-array-‘PhpConsole’" class="headerlink" title="在/App/Conf/tags.php 中配置标签位:’app_init’ =&gt; array(‘PhpConsole’),"></a>在/App/Conf/tags.php 中配置标签位:’app_init’ =&gt; array(‘PhpConsole’),</h2><h2 id="在config-php文件中定义标签’PHP-CONSOLE’-gt-true"><a href="#在config-php文件中定义标签’PHP-CONSOLE’-gt-true" class="headerlink" title="在config.php文件中定义标签’PHP_CONSOLE’ =&gt; true,"></a>在config.php文件中定义标签’PHP_CONSOLE’ =&gt; true,</h2><h2 id="修改ThinkPHP的Log-class文件（位于-ThinkPHP-Lib-Core-Log-class-php）中的recode方法如下"><a href="#修改ThinkPHP的Log-class文件（位于-ThinkPHP-Lib-Core-Log-class-php）中的recode方法如下" class="headerlink" title="修改ThinkPHP的Log.class文件（位于/ThinkPHP/Lib/Core/Log.class.php）中的recode方法如下"></a>修改ThinkPHP的Log.class文件（位于/ThinkPHP/Lib/Core/Log.class.php）中的recode方法如下</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">static function record($message, $level = self::ERR, $record = false)&#123;</div><div class="line">  //zacksleo   </div><div class="line">  if($level == self::SQL)&#123;</div><div class="line">    PC::debug($message, &apos;SQL&apos;);</div><div class="line">  &#125;</div><div class="line">  //zacksleo</div><div class="line">  if($record || false !== strpos(C(&apos;LOG_LEVEL&apos;), $level))&#123;</div><div class="line">    self::$log[] = &quot;&#123;$level&#125;: &#123;$message&#125;\r\n&quot;;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
     
 
     
@@ -430,7 +396,7 @@
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2016/12/26/基于OAuth2的通用授权认证规则/" id="post_nav-newer" class="prev-content">
+        <a href="/2016/05/29/PHP常见面试材料/" id="post_nav-newer" class="prev-content">
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
                 <i class="material-icons">arrow_back</i>
             </button>
@@ -443,14 +409,6 @@
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
-    
-        <a href="/2016/10/12/CodeIgniter项目自动向GitLab上报Bug/" id="post_nav-older" class="next-content">
-            旧篇
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_forward</i>
-            </button>
-        </a>
     
 </nav>
 
