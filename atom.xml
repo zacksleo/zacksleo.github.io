@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://zacksleo.github.io/"/>
-  <updated>2017-01-17T01:34:34.000Z</updated>
+  <updated>2017-01-17T01:45:33.000Z</updated>
   <id>https://zacksleo.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://zacksleo.github.io/2017/10/12/CI%E9%A1%B9%E7%9B%AE%E8%87%AA%E5%8A%A8%E5%90%91GitLab%E4%B8%8A%E6%8A%A5Bug/"/>
     <id>https://zacksleo.github.io/2017/10/12/CI项目自动向GitLab上报Bug/</id>
     <published>2017-10-12T09:48:25.000Z</published>
-    <updated>2017-01-17T01:34:34.000Z</updated>
+    <updated>2017-01-17T01:45:33.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="CI项目自动上报Bug"><a href="#CI项目自动上报Bug" class="headerlink" title="CI项目自动上报Bug"></a>CI项目自动上报Bug</h2><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>通过重写CI_Exceptions, 当程序出错时, 通过调用GitLab中提交issue的API, 将相关信息自动提交</p>
 <p>如果是Yii2项目,见 <a href="http://139.198.9.208:10080/mops/pushserver/wikis/autobug" target="_blank" rel="external">Yii自动上报Bug</a></p>
@@ -28,7 +28,7 @@
 <li>获取项目id和自己的id<br>可以通过GitLab的project接口, 从中拿到project_id和assignee_id</li>
 </ul>
 <p>在此提供一个方法, 给自己提交一个issue, 提交时审查HTML, 可以找到 issue_assignee_id和 data-project-id </p>
-<p><img src="/uploads/b515ad6d41b0e70fd87211b73371be70/76A144F8-DD19-4F93-901C-3CF7BEBF5010.png" alt="76A144F8-DD19-4F93-901C-3CF7BEBF5010"></p>
+<p><img src="http://ww3.sinaimg.cn/large/675eb504gw1fbtdv1gcjcj20oq0d543f.jpg" alt=""></p>
 <ul>
 <li>创建配置文件 config/gitlab.php</li>
 </ul>
@@ -52,8 +52,8 @@
   
   <entry>
     <title>基于OAuth2的通用授权认证规则</title>
-    <link href="https://zacksleo.github.io/2016/12/26/General-Authentication-Rules-Based-on-OAuth2/"/>
-    <id>https://zacksleo.github.io/2016/12/26/General-Authentication-Rules-Based-on-OAuth2/</id>
+    <link href="https://zacksleo.github.io/2016/12/26/%E5%9F%BA%E4%BA%8EOAuth2%E7%9A%84%E9%80%9A%E7%94%A8%E6%8E%88%E6%9D%83%E8%AE%A4%E8%AF%81%E8%A7%84%E5%88%99/"/>
+    <id>https://zacksleo.github.io/2016/12/26/基于OAuth2的通用授权认证规则/</id>
     <published>2016-12-26T05:55:57.000Z</published>
     <updated>2017-01-16T09:57:59.000Z</updated>
     
@@ -95,8 +95,8 @@
   
   <entry>
     <title>如何自动部署GitLab项目</title>
-    <link href="https://zacksleo.github.io/2016/11/04/auto-deploy-from-GitLab/"/>
-    <id>https://zacksleo.github.io/2016/11/04/auto-deploy-from-GitLab/</id>
+    <link href="https://zacksleo.github.io/2016/11/04/%E5%A6%82%E4%BD%95%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2GitLab%E9%A1%B9%E7%9B%AE/"/>
+    <id>https://zacksleo.github.io/2016/11/04/如何自动部署GitLab项目/</id>
     <published>2016-11-04T06:01:48.000Z</published>
     <updated>2017-01-16T09:59:08.000Z</updated>
     
@@ -149,8 +149,8 @@
   
   <entry>
     <title>PHP解析提取Markdown中的标题来生成TOC</title>
-    <link href="https://zacksleo.github.io/2016/10/12/generate-TOC-from-Markdown/"/>
-    <id>https://zacksleo.github.io/2016/10/12/generate-TOC-from-Markdown/</id>
+    <link href="https://zacksleo.github.io/2016/10/12/PHP%E8%A7%A3%E6%9E%90%E6%8F%90%E5%8F%96Markdown%E4%B8%AD%E7%9A%84%E6%A0%87%E9%A2%98%E6%9D%A5%E7%94%9F%E6%88%90TOC/"/>
+    <id>https://zacksleo.github.io/2016/10/12/PHP解析提取Markdown中的标题来生成TOC/</id>
     <published>2016-10-12T08:46:48.000Z</published>
     <updated>2017-01-16T09:59:43.000Z</updated>
     
@@ -188,8 +188,8 @@
   
   <entry>
     <title>使用Docker安装Redmine</title>
-    <link href="https://zacksleo.github.io/2016/08/23/install-Redmine-by-Docker/"/>
-    <id>https://zacksleo.github.io/2016/08/23/install-Redmine-by-Docker/</id>
+    <link href="https://zacksleo.github.io/2016/08/23/%E4%BD%BF%E7%94%A8Docker%E5%AE%89%E8%A3%85Redmine/"/>
+    <id>https://zacksleo.github.io/2016/08/23/使用Docker安装Redmine/</id>
     <published>2016-08-23T10:43:38.000Z</published>
     <updated>2017-01-16T10:00:57.000Z</updated>
     
@@ -247,8 +247,8 @@
   
   <entry>
     <title>PHP常见面试材料</title>
-    <link href="https://zacksleo.github.io/2016/05/29/php-interview-material/"/>
-    <id>https://zacksleo.github.io/2016/05/29/php-interview-material/</id>
+    <link href="https://zacksleo.github.io/2016/05/29/PHP%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E6%9D%90%E6%96%99/"/>
+    <id>https://zacksleo.github.io/2016/05/29/PHP常见面试材料/</id>
     <published>2016-05-29T09:34:37.000Z</published>
     <updated>2017-01-16T10:02:44.000Z</updated>
     
