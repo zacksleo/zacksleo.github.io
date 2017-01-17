@@ -10,7 +10,7 @@
     
     <title>
         
-            归档: 2016/8 | 
+            CodeIgniter项目自动向GitLab上报Bug | 
         
         zacks&#39;s blog
     </title>
@@ -48,7 +48,7 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="https://zacksleo.github.io">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="归档: 2016/8 | zacks&#39;s blog">
+    <meta property="og:title" content="CodeIgniter项目自动向GitLab上报Bug | zacks&#39;s blog">
     <meta property="og:description" content="zacks&#39;s blog, Web Develop, PHP, Yii2, Docker, AI, JavaScript">
 
     <!--[if lte IE 9]>
@@ -200,87 +200,242 @@
                         </button>
                     
 
-                    <!-- Index Module -->
-<div class="material-index mdl-grid">
-    
-    <div class="locate-thumbnail-symbol"></div>
+                    <!-- Post TOC -->
 
     
-        
-            <!-- Paradox Thumbnail -->
-            <div class="post_entry-module mdl-card mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#CI项目自动上报Bug"><span class="post-toc-number">1.</span> <span class="post-toc-text">CI项目自动上报Bug</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#原理"><span class="post-toc-number">2.</span> <span class="post-toc-text">原理</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#步骤"><span class="post-toc-number">3.</span> <span class="post-toc-text">步骤</span></a></li></ol>
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
     
         
             <!-- Random Thumbnail -->
             <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
+            <script>
+    var randomNum = Math.floor(Math.random() * 19 + 1);
 
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2016/08/23/使用Docker安装Redmine/">使用Docker安装Redmine</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            安装步骤
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2016/08/23/使用Docker安装Redmine/" target="_self">继续阅读</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="zacksleo's avatar">
-            </div>
-            <div>
-                <strong>zacksleo</strong>
-                <span>8月 23, 2016</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                
-            </span>
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-        
-        
-    
-
-    
-
-    
-        <script>
-    var randomNum;
-
-    var locatePost = $('.locate-thumbnail-symbol').next();
-    for(var i = 0; i < 10; i++) {
-        randomNum = Math.floor(Math.random() * 19 + 1);
-
-        locatePost.children('.post_thumbnail-random').attr('id', 'random_thumbnail-'+randomNum);
-        locatePost.children('.post_thumbnail-random').css('background-image', 'url(' + '/img/random/material-' + randomNum + '.png' + ')')
-
-        locatePost = locatePost.next();
-    }
+    $('.post_thumbnail-random').css('background-image', 'url(' + '/img/random/material-' + randomNum + '.png' + ')');
 </script>
 
+        
+    
+            <p class="article-headline-p">
+                CodeIgniter项目自动向GitLab上报Bug
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>zacksleo</strong>
+        <span>10月 12, 2016</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/CodeIgniter-GitLab-Bug-自动化/">CodeIgniter, GitLab, Bug, 自动化</a>
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=CodeIgniter项目自动向GitLab上报Bug&url=https://zacksleo.github.io//2016/10/12/CI项目自动向GitLab上报Bug/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=CodeIgniter项目自动向GitLab上报Bug&url=https://zacksleo.github.io//2016/10/12/CI项目自动向GitLab上报Bug/index.html&via=zacksleo" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=https://zacksleo.github.io//2016/10/12/CI项目自动向GitLab上报Bug/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=https://zacksleo.github.io//2016/10/12/CI项目自动向GitLab上报Bug/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="markdown-Github mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h2 id="CI项目自动上报Bug"><a href="#CI项目自动上报Bug" class="headerlink" title="CI项目自动上报Bug"></a>CI项目自动上报Bug</h2><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>通过重写CI_Exceptions, 当程序出错时, 通过调用GitLab中提交issue的API, 将相关信息自动提交</p>
+<p>如果是Yii2项目,见 <a href="http://139.198.9.208:10080/mops/pushserver/wikis/autobug" target="_blank" rel="external">Yii自动上报Bug</a></p>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ul>
+<li>获取项目id和自己的id<br>可以通过GitLab的project接口, 从中拿到project_id和assignee_id</li>
+</ul>
+<p>在此提供一个方法, 给自己提交一个issue, 提交时审查HTML, 可以找到 issue_assignee_id和 data-project-id </p>
+<p><img src="http://ww3.sinaimg.cn/large/675eb504gw1fbtdv1gcjcj20oq0d543f.jpg" alt=""></p>
+<ul>
+<li>创建配置文件 config/gitlab.php</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">// to enable, set this to true</div><div class="line">$config[&apos;gitlab&apos;] = true;</div><div class="line">$config[&apos;gitlab_project_id&apos;] =xx; //找到项目的id</div><div class="line">$config[&apos;gitlab_assignee_id&apos;] = xx; //找到自己的id</div><div class="line">$config[&apos;gitlab_api&apos;] = &apos;http://demo.com/api/v3/projects/&apos;.$config[&apos;gitlab_project_id&apos;].&apos;/issues&apos;;</div><div class="line">$config[&apos;gitlab_private_token&apos;] = &apos;xxx&apos;;</div></pre></td></tr></table></figure>
+<ul>
+<li>在项目中添加core/MY_Exceptions</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div></pre></td><td class="code"><pre><div class="line">&lt;?php if (!defined(&apos;BASEPATH&apos;)) &#123;</div><div class="line">    exit(&apos;No direct script access allowed&apos;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">/**</div><div class="line"> * Extend exceptions to email me on exception</div><div class="line"> *</div><div class="line"> * @author Mike Funk</div><div class="line"> * @email mfunk@christianpublishing.com</div><div class="line"> *</div><div class="line"> * @file MY_Exceptions.php</div><div class="line"> */</div><div class="line"></div><div class="line">/**</div><div class="line"> * MY_Exceptions class.</div><div class="line"> *</div><div class="line"> * @extends CI_Exceptions</div><div class="line"> */</div><div class="line">class MY_Exceptions extends CI_Exceptions</div><div class="line">&#123;</div><div class="line"></div><div class="line">    // --------------------------------------------------------------------------</div><div class="line"></div><div class="line">    /**</div><div class="line">     * extend log_exception to add emailing of php errors.</div><div class="line">     *</div><div class="line">     * @access public</div><div class="line">     * @param string $severity</div><div class="line">     * @param string $message</div><div class="line">     * @param string $filepath</div><div class="line">     * @param int $line</div><div class="line">     * @return void</div><div class="line">     */</div><div class="line">    function log_exception($severity, $message, $filepath, $line)</div><div class="line">    &#123;</div><div class="line">        $ci =&amp; get_instance();</div><div class="line">        $ci-&gt;config-&gt;load(&apos;gitlab&apos;);</div><div class="line">        if (config_item(&apos;gitlab&apos;)) &#123;</div><div class="line">            $ch = curl_init();</div><div class="line">            curl_setopt($ch, CURLOPT_URL, config_item(&apos;gitlab_api&apos;));</div><div class="line">            curl_setopt($ch, CURLOPT_HTTPHEADER, array(</div><div class="line">                &apos;PRIVATE-TOKEN: &apos; . config_item(&apos;gitlab_private_token&apos;),</div><div class="line">            ));</div><div class="line">            curl_setopt($ch, CURLOPT_POSTFIELDS, [</div><div class="line">                &apos;title&apos; =&gt; $message,</div><div class="line">                &apos;description&apos; =&gt; &apos;&lt;pre&gt;&apos; . $message . &apos;&lt;/pre&gt;&apos;,</div><div class="line">                &apos;assignee_id&apos; =&gt; config_item(&apos;gitlab_assignee_id&apos;),</div><div class="line">                &apos;labels&apos; =&gt; &apos;捕虫器,错误&apos;,</div><div class="line">            ]);</div><div class="line">            curl_setopt($ch, CURLOPT_HEADER, false);</div><div class="line">            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);</div><div class="line">            curl_setopt($ch, CURLOPT_VERBOSE, false);</div><div class="line">            $response = curl_exec($ch);</div><div class="line">            curl_close($ch);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        // do the rest of the codeigniter stuff</div><div class="line">        parent::log_exception($severity, $message, $filepath, $line);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    // --------------------------------------------------------------------------</div><div class="line"></div><div class="line">    /**</div><div class="line">     * replace short tags with values.</div><div class="line">     *</div><div class="line">     * @access private</div><div class="line">     * @param string $content</div><div class="line">     * @param string $severity</div><div class="line">     * @param string $message</div><div class="line">     * @param string $filepath</div><div class="line">     * @param int $line</div><div class="line">     * @return string</div><div class="line">     */</div><div class="line">    private function _replace_short_tags($content, $severity, $message, $filepath, $line)</div><div class="line">    &#123;</div><div class="line">        $content = str_replace(&apos;&#123;&#123;severity&#125;&#125;&apos;, $severity, $content);</div><div class="line">        $content = str_replace(&apos;&#123;&#123;message&#125;&#125;&apos;, $message, $content);</div><div class="line">        $content = str_replace(&apos;&#123;&#123;filepath&#125;&#125;&apos;, $filepath, $content);</div><div class="line">        $content = str_replace(&apos;&#123;&#123;line&#125;&#125;&apos;, $line, $content);</div><div class="line"></div><div class="line">        return $content;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    // --------------------------------------------------------------------------</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+    
+
     
 </div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+
+
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2016/11/04/如何自动部署GitLab项目/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2016/10/12/Yii2项目自动向GitLab上报Bug/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
 
 
                     
