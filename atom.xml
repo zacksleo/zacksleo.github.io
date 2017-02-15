@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://zacksleo.github.io/"/>
-  <updated>2017-01-16T09:57:59.000Z</updated>
+  <updated>2017-02-15T05:46:58.000Z</updated>
   <id>https://zacksleo.github.io/</id>
   
   <author>
@@ -14,6 +14,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>CentOS上安装docker-compose</title>
+    <link href="https://zacksleo.github.io/2017/02/15/CentOS%E4%B8%8A%E5%AE%89%E8%A3%85docker-compose/"/>
+    <id>https://zacksleo.github.io/2017/02/15/CentOS上安装docker-compose/</id>
+    <published>2017-02-15T05:42:06.000Z</published>
+    <updated>2017-02-15T05:46:58.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>在安装完 docker 后, 我们常常安装 docker-compose 来简化 docker 的日常维护,<br>但是由于 GitHub 在国内较慢, 经常安装不了,所以使用 DaoCloud 提供的镜像来快速安装</p>
+<h2 id="官方的安装方法"><a href="#官方的安装方法" class="headerlink" title="官方的安装方法"></a>官方的安装方法</h2><ol>
+<li>安装 docker <code>yum install docker</code></li>
+<li>安装 docker-compose</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ curl -L &quot;https://github.com/docker/compose/releases/download/1.10.0/docker-compose-$(uname -s)-$(uname -m)&quot; -o /usr/local/bin/docker-compose</div><div class="line"></div><div class="line">$ chmod +x /usr/local/bin/docker-compose</div></pre></td></tr></table></figure>
+<h2 id="使用DaoCloud镜像安装-docker-compose"><a href="#使用DaoCloud镜像安装-docker-compose" class="headerlink" title="使用DaoCloud镜像安装 docker-compose"></a>使用DaoCloud镜像安装 docker-compose</h2><ol>
+<li>安装 docker <code>yum install docker</code></li>
+<li>安装 docker-compose<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ curl -L https://get.daocloud.io/docker/compose/releases/download/1.11.1/docker-compose-`uname -s`-`uname -m` &gt; /usr/local/bin/docker-compose</div><div class="line">chmod +x /usr/local/bin/docker-compose</div><div class="line"></div><div class="line">$ chmod +x /usr/local/bin/docker-compose</div></pre></td></tr></table></figure></li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h2&gt;&lt;p&gt;在安装完 docker 后, 我们常常安装 docker-compose 来简化 docker 的日常维护,&lt;br&gt;但是由于 GitHub 
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>基于OAuth2的通用授权认证规则</title>
