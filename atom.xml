@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://zacksleo.github.io/"/>
-  <updated>2017-03-07T15:12:21.000Z</updated>
+  <updated>2017-03-07T15:14:47.000Z</updated>
   <id>https://zacksleo.github.io/</id>
   
   <author>
@@ -16,14 +16,15 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>RESTful编码规范</title>
-    <link href="https://zacksleo.github.io/2017/03/07/RESTful%E7%BC%96%E7%A0%81%E8%A7%84%E8%8C%83/"/>
-    <id>https://zacksleo.github.io/2017/03/07/RESTful编码规范/</id>
-    <published>2017-03-07T15:10:53.000Z</published>
-    <updated>2017-03-07T15:12:21.000Z</updated>
+    <title>RESTful接口规范</title>
+    <link href="https://zacksleo.github.io/2017/03/07/RESTful%E6%8E%A5%E5%8F%A3%E8%A7%84%E8%8C%83/"/>
+    <id>https://zacksleo.github.io/2017/03/07/RESTful接口规范/</id>
+    <published>2017-03-07T15:14:35.000Z</published>
+    <updated>2017-03-07T15:14:47.000Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="RESTful接口规范-1-0"><a href="#RESTful接口规范-1-0" class="headerlink" title="RESTful接口规范 [1.0]"></a>RESTful接口规范 [1.0]</h1><h2 id="协议"><a href="#协议" class="headerlink" title="协议"></a>协议</h2><p>   使用https协议</p>
-<h2 id="版本"><a href="#版本" class="headerlink" title="版本"></a>版本</h2><p>   将API的版本号放入URL，如<a href="https://api.demo.com/v1/" target="_blank" rel="external">https://api.demo.com/v1/</a></p>
+    <content type="html"><![CDATA[<h1 id="RESTful接口规范-1-0"><a href="#RESTful接口规范-1-0" class="headerlink" title="RESTful接口规范 [1.0]"></a>RESTful接口规范 [1.0]</h1><p><a href="./history">更新日志</a></p>
+<h2 id="协议"><a href="#协议" class="headerlink" title="协议"></a>协议</h2><p>   使用https协议</p>
+<h2 id="版本"><a href="#版本" class="headerlink" title="版本"></a>版本</h2><p>   将API的版本号放入URL，如<a href="https://mqtt.lianluo.com/v1/" target="_blank" rel="external">https://mqtt.lianluo.com/v1/</a></p>
 <h2 id="HTTP动词"><a href="#HTTP动词" class="headerlink" title="HTTP动词"></a>HTTP动词</h2><ul>
 <li>GET（SELECT）：从服务器取出资源（一项或多项）。</li>
 <li>POST（CREATE）：在服务器新建一个资源。</li>
@@ -121,7 +122,7 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;RESTful接口规范-1-0&quot;&gt;&lt;a href=&quot;#RESTful接口规范-1-0&quot; class=&quot;headerlink&quot; title=&quot;RESTful接口规范 [1.0]&quot;&gt;&lt;/a&gt;RESTful接口规范 [1.0]&lt;/h1&gt;&lt;h2 id=&quot;协议&quot;&gt;&lt;a hr
+      &lt;h1 id=&quot;RESTful接口规范-1-0&quot;&gt;&lt;a href=&quot;#RESTful接口规范-1-0&quot; class=&quot;headerlink&quot; title=&quot;RESTful接口规范 [1.0]&quot;&gt;&lt;/a&gt;RESTful接口规范 [1.0]&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;./his
     
     </summary>
     
