@@ -34,9 +34,38 @@
     <link href="https://zacksleo.github.io/2017/03/07/Git%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%A7%84%E8%8C%83/"/>
     <id>https://zacksleo.github.io/2017/03/07/Git工作流程及使用规范/</id>
     <published>2017-03-07T15:17:17.000Z</published>
-    <updated>2017-03-07T15:17:17.000Z</updated>
+    <updated>2017-03-08T02:24:04.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Git工作流程"><a href="#Git工作流程" class="headerlink" title="Git工作流程"></a>Git工作流程</h2><h3 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h3><ul>
+<li>master: 用于生产环境部署, 只接受合并请求, 不直接提交</li>
+<li>testing: 用于测试环境测试</li>
+<li>develop: 用于日常开发主线, 其他分支只能合并到 develop 分支</li>
+<li>feature-xxx: 用于增加一个新功能</li>
+<li>hotfix-xxx: 用于修复一个紧急bug</li>
+<li>每次开发新功能，都应该新建一个单独的分支</li>
+</ul>
+<h3 id="工作流"><a href="#工作流" class="headerlink" title="工作流"></a>工作流</h3><ul>
+<li>如果要贡献代码, 首先应阅读<strong>贡献指南</strong>, 确认如果贡献代码</li>
+<li>Fork对应的项目, 然后基于develop分支, 新建一个分支, 在这个分支上进行开发</li>
+<li>开发时应遵守相应的编码规范和Git日志规范, 提交日志应当给出完整扼要的提交信息</li>
+<li>开发完毕后, 先在本项目库上合并到develop分支, 合并完成之后再PR到原项目库</li>
+</ul>
+<h3 id="Commit-message-和-Change-log-编写指南"><a href="#Commit-message-和-Change-log-编写指南" class="headerlink" title="Commit message 和 Change log 编写指南"></a>Commit message 和 Change log 编写指南</h3><ul>
+<li>Git 每次提交代码，都要写 Commit message（提交说明），否则就不允许提交<br>+Commit message 遵从 <a href="http://blog.cheenwe.cn/2016-04-18/git-commit-message/" target="_blank" rel="external">Angular 规范</a></li>
+</ul>
+<h4 id="安装-Commitizen-来格式化-commit-使其遵循以上规范"><a href="#安装-Commitizen-来格式化-commit-使其遵循以上规范" class="headerlink" title="安装 Commitizen 来格式化 commit , 使其遵循以上规范"></a>安装 Commitizen 来格式化 commit , 使其遵循以上规范</h4><ul>
+<li>首先注意将<code>package.json</code>和<code>node_modules</code>加入<code>.gitignore</code>文件</li>
+<li>全局安装commitizen:  <code>npm install -g commitizen</code></li>
+<li>在项目根目录初始化package.json:  <code>npm init --yes</code></li>
+<li>项目根目录运行 <code>commitizen init cz-conventional-changelog --save --save-exact</code></li>
+<li>每次提交代码时, 用 <code>git cz</code> 代替 <code>git commit</code></li>
+</ul>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="http://www.ruanyifeng.com/blog/2015/08/git-use-process.html" target="_blank" rel="external">Git 使用规范流程</a><br><a href="http://www.ruanyifeng.com/blog/2016/01/commit_message_change_log.html" target="_blank" rel="external">Commit message 和 Change log 编写指南</a></p>
+]]></content>
     
     <summary type="html">
+    
+      &lt;h2 id=&quot;Git工作流程&quot;&gt;&lt;a href=&quot;#Git工作流程&quot; class=&quot;headerlink&quot; title=&quot;Git工作流程&quot;&gt;&lt;/a&gt;Git工作流程&lt;/h2&gt;&lt;h3 id=&quot;分支&quot;&gt;&lt;a href=&quot;#分支&quot; class=&quot;headerlink&quot; title=&quot;分
     
     </summary>
     
