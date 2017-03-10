@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://zacksleo.github.io/"/>
-  <updated>2017-03-07T15:17:29.000Z</updated>
+  <updated>2017-03-09T07:33:10.000Z</updated>
   <id>https://zacksleo.github.io/</id>
   
   <author>
@@ -14,6 +14,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>OAuth2中的Token</title>
+    <link href="https://zacksleo.github.io/2017/03/09/OAuth2%E4%B8%AD%E7%9A%84Token/"/>
+    <id>https://zacksleo.github.io/2017/03/09/OAuth2中的Token/</id>
+    <published>2017-03-09T07:32:21.000Z</published>
+    <updated>2017-03-09T07:33:10.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>## </p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;## &lt;/p&gt;
+
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>API文档编码规范</title>
@@ -34,7 +54,7 @@
     <link href="https://zacksleo.github.io/2017/03/07/Git%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%A7%84%E8%8C%83/"/>
     <id>https://zacksleo.github.io/2017/03/07/Git工作流程及使用规范/</id>
     <published>2017-03-07T15:17:17.000Z</published>
-    <updated>2017-03-08T02:24:04.000Z</updated>
+    <updated>2017-03-08T02:25:37.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="Git工作流程"><a href="#Git工作流程" class="headerlink" title="Git工作流程"></a>Git工作流程</h2><h3 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h3><ul>
 <li>master: 用于生产环境部署, 只接受合并请求, 不直接提交</li>
@@ -60,7 +80,11 @@
 <li>项目根目录运行 <code>commitizen init cz-conventional-changelog --save --save-exact</code></li>
 <li>每次提交代码时, 用 <code>git cz</code> 代替 <code>git commit</code></li>
 </ul>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="http://www.ruanyifeng.com/blog/2015/08/git-use-process.html" target="_blank" rel="external">Git 使用规范流程</a><br><a href="http://www.ruanyifeng.com/blog/2016/01/commit_message_change_log.html" target="_blank" rel="external">Commit message 和 Change log 编写指南</a></p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="http://www.ruanyifeng.com/blog/2015/08/git-use-process.html" target="_blank" rel="external">Git 使用规范流程</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2016/01/commit_message_change_log.html" target="_blank" rel="external">Commit message 和 Change log 编写指南</a></li>
+<li><a href="http://blog.cheenwe.cn/2016-04-18/git-commit-message/" target="_blank" rel="external">Git commit message 规范</a></li>
+</ul>
 ]]></content>
     
     <summary type="html">
