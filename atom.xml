@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://zacksleo.github.io/"/>
-  <updated>2017-03-11T06:36:17.000Z</updated>
+  <updated>2017-03-11T07:16:34.000Z</updated>
   <id>https://zacksleo.github.io/</id>
   
   <author>
@@ -14,6 +14,37 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>gollum</title>
+    <link href="https://zacksleo.github.io/2017/03/11/gollum/"/>
+    <id>https://zacksleo.github.io/2017/03/11/gollum/</id>
+    <published>2017-03-11T07:12:15.000Z</published>
+    <updated>2017-03-11T07:16:34.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>incompatible character encodings: UTF-8 and ASCII-8BIT</p>
+</blockquote>
+<p>When use gollum , you may be got this error, below can helps you solves the problem.</p>
+<ul>
+<li>install <code>gollum-rugged_adapter</code></li>
+<li>start gullom with <code>--adapter rugged</code></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install cmake</div><div class="line">sudo gem install gollum-rugged_adapter</div><div class="line">gollum --adapter rugged</div></pre></td></tr></table></figure>
+<p>Here is a detailed demo for Dockerfile</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">FROM ruby</div><div class="line">RUN apt-get -y update &amp;&amp; apt-get -y install libicu-dev</div><div class="line">RUN gem install gollum</div><div class="line">RUN gem install github-markdown org-ruby </div><div class="line"># RUN gem install --pre gollum-rugged_adapter</div><div class="line">RUN apt-get -y install cmake</div><div class="line">RUN gem install gollum-rugged_adapter</div><div class="line">VOLUME /docs</div><div class="line">WORKDIR /docs</div><div class="line">CMD [&quot;gollum&quot;, &quot;--port&quot;, &quot;80&quot;, &quot;--adapter&quot;, &quot;rugged&quot;]</div><div class="line">#CMD [&quot;gollum&quot;, &quot;--port&quot;, &quot;80&quot;]</div><div class="line"></div><div class="line">EXPOSE 80</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;incompatible character encodings: UTF-8 and ASCII-8BIT&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;When use gollum , you may be got this error, bel
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>OAuth2中的Token</title>
