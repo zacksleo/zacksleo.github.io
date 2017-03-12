@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://zacksleo.github.io/"/>
-  <updated>2017-03-11T07:16:34.000Z</updated>
+  <updated>2017-03-12T17:26:18.000Z</updated>
   <id>https://zacksleo.github.io/</id>
   
   <author>
@@ -14,6 +14,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>使用Git和Gollum搭建Wiki系统</title>
+    <link href="https://zacksleo.github.io/2017/03/13/%E4%BD%BF%E7%94%A8Git%E5%92%8CGollum%E6%90%AD%E5%BB%BAWiki%E7%B3%BB%E7%BB%9F/"/>
+    <id>https://zacksleo.github.io/2017/03/13/使用Git和Gollum搭建Wiki系统/</id>
+    <published>2017-03-12T17:22:09.000Z</published>
+    <updated>2017-03-12T17:26:18.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://github.com/gollum/gollum" target="_blank" rel="external">Gollum</a>是一个开源的Wiki系统, 该系统基于Git, 支持 Markdown, RDoc 等多种排版格式.</p>
+<p>下面是在搭建的过程中经常会遇到一些问题</p>
+<h2 id="UTF-8-问题"><a href="#UTF-8-问题" class="headerlink" title="UTF-8 问题"></a>UTF-8 问题</h2><ul>
+<li>安装 <code>gollum-rugged_adapter</code></li>
+<li>通过参数 <code>--adapter rugged</code> 启动gollum</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install cmake</div><div class="line">sudo gem install gollum-rugged_adapter</div><div class="line">gollum --adapter rugged</div></pre></td></tr></table></figure>
+<h2 id="如何设置只读"><a href="#如何设置只读" class="headerlink" title="如何设置只读"></a>如何设置只读</h2><p>启动Gollum时, 设置 <code>--no-edit</code> 来禁止编辑</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;a href=&quot;https://github.com/gollum/gollum&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Gollum&lt;/a&gt;是一个开源的Wiki系统, 该系统基于Git, 支持 Markdown, RDoc 等多种排版格式.&lt;/p
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>gollum</title>
