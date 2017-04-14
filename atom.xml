@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://zacksleo.github.io/"/>
-  <updated>2017-04-14T06:55:22.000Z</updated>
+  <updated>2017-04-14T06:58:56.000Z</updated>
   <id>https://zacksleo.github.io/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>CI通过ssh进行自动部署</title>
-    <link href="https://zacksleo.github.io/2017/04/14/CI%E9%80%9A%E8%BF%87ssh%E8%BF%9B%E8%A1%8C%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/"/>
-    <id>https://zacksleo.github.io/2017/04/14/CI通过ssh进行自动部署/</id>
+    <title>GitLabCI通过ssh进行自动部署</title>
+    <link href="https://zacksleo.github.io/2017/04/14/GitLabCI%E9%80%9A%E8%BF%87ssh%E8%BF%9B%E8%A1%8C%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/"/>
+    <id>https://zacksleo.github.io/2017/04/14/GitLabCI通过ssh进行自动部署/</id>
     <published>2017-04-14T06:39:50.000Z</published>
-    <updated>2017-04-14T06:55:22.000Z</updated>
+    <updated>2017-04-14T06:58:56.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p>通过gitlab-ci实现文件的自动部署</p>
 <h2 id="实现过程"><a href="#实现过程" class="headerlink" title="实现过程"></a>实现过程</h2><p>文档托管在gitlab上, 每次代码更新, 会自动出发gitlab-ci构建<br>在构建脚本中, 通过ssh 登录远程服务器执行git拉取文档的命令</p>
