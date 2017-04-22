@@ -226,7 +226,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn">
-        
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#artifacts-的依赖使用"><span class="post-toc-number">1.</span> <span class="post-toc-text">artifacts 的依赖使用</span></a></li></ol>
 
         <!--
         <li class="mdl-menu__item">
@@ -372,7 +372,19 @@
                 <!-- Post Content -->
                 <div id="post-content" class="markdown-Github mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        
+        <p>在GitLab-CI中, <code>cache</code>与<code>artifacts</code>比较容易混淆.</p>
+<p>其中 <code>cache</code> 指的是缓存, 常用于依赖安装中, 如几个<code>jobs</code>都需要安装相同的依赖, 可以使用<code>依赖</code>, 此时可以加快依赖的安装进度;<br>对于<code>artifacts</code>则是将某个<code>工件</code>上传到GitLab提供下载或后续操作使用, 由于每个<code>job</code>启动时, 都会自动删除<code>.gitignore</code>中指定的文件, 因此对于依赖安装目录, 即可以使用<code>cache</code>, 也可以使用<code>artifacts</code>.</p>
+<p>两个主要有以下几个区别:</p>
+<ol>
+<li>虽然定义了<code>cache</code>, 但是如果<code>cache</code>和<code>.gitignore</code>中重复的这部分, 仍然需要重新安装</li>
+<li>重新安装时因为使用的是缓存, 所以很有可能不是最新的</li>
+<li>特别是开发环境, 如果每次都希望使用最新的更新, 应当删除<code>cache</code>, 使用<code>artifacts</code>, 这样可以保证确定的更新<br>4.<code>artifacts</code>中定义的部分, 会自动生成, 并可以传到下面的<code>job</code>中解压使用, 避免了重复依赖安装等工作</li>
+<li>如果使用Docker运行Gitlab-Runner, <code>cache</code>会生成一些临时容器, 不容易清理</li>
+<li><code>artifacts</code>可以设置自动过期时间, 过期自动删除</li>
+<li><code>artifacts</code>会先传到GitLab服务器, 然后需要时再重新下载, 所以这部分也可以在GitLab下载和浏览</li>
+</ol>
+<h2 id="artifacts-的依赖使用"><a href="#artifacts-的依赖使用" class="headerlink" title="artifacts 的依赖使用"></a><code>artifacts</code> 的依赖使用</h2><p>下面是一个使用<code>artifacts</code>的例子, 首先有一个安装依赖的工作, 然后工作完成后, 会将安装文件转移到后续的工作时</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">installing-dependencies:</div><div class="line">    stage: prepare</div><div class="line">    script:</div><div class="line">        - composer install --prefer-dist --optimize-autoloader -n --no-interaction -v --no-suggest</div><div class="line">        - composer dump-autoload --optimize</div><div class="line">    artifacts:</div><div class="line">        name: &quot;vendor&quot;</div><div class="line">        untracked: true</div><div class="line">        expire_in: 60 mins</div><div class="line">        paths:</div><div class="line">            - $CI_PROJECT_DIR/vendor    </div><div class="line">code-review:</div><div class="line">    stage: testing</div><div class="line">    dependencies:</div><div class="line">        - installing-dependencies</div><div class="line">    script:</div><div class="line">        - php vendor/bin/phpcs --config-set ignore_warnings_on_exit 1</div><div class="line">        - php vendor/bin/phpcs --standard=PSR2 -w --colors ./</div></pre></td></tr></table></figure>
     
 
     
