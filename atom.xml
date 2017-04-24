@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://zacksleo.github.io/"/>
-  <updated>2017-04-22T14:29:10.000Z</updated>
+  <updated>2017-04-22T14:38:43.000Z</updated>
   <id>https://zacksleo.github.io/</id>
   
   <author>
@@ -14,6 +14,24 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>GitLab-CI使用Docker进行持续部署</title>
+    <link href="https://zacksleo.github.io/2017/04/22/GitLab-CI%E4%BD%BF%E7%94%A8Docker%E8%BF%9B%E8%A1%8C%E6%8C%81%E7%BB%AD%E9%83%A8%E7%BD%B2/"/>
+    <id>https://zacksleo.github.io/2017/04/22/GitLab-CI使用Docker进行持续部署/</id>
+    <published>2017-04-22T14:33:31.000Z</published>
+    <updated>2017-04-22T14:38:43.000Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line">image: zacksleo/docker-composer:1.1</div><div class="line"></div><div class="line">before_script:</div><div class="line">    - &apos;which ssh-agent || ( apk update &amp;&amp; apk add openssh-client)&apos;</div><div class="line">    - apk add rsync</div><div class="line">    - eval $(ssh-agent -s)</div><div class="line">    - echo &quot;$SSH_PRIVATE_KEY&quot; &gt; ~/deploy.key</div><div class="line">    - chmod 0600 ~/deploy.key</div><div class="line">    - ssh-add ~/deploy.key</div><div class="line">    - mkdir -p ~/.ssh</div><div class="line">    - &apos;[[ -f /.dockerenv ]] &amp;&amp; echo -e &quot;Host *\n\tStrictHostKeyChecking no\n\n&quot; &gt; ~/.ssh/config&apos;</div><div class="line">    - export APP_ENV=testing</div><div class="line"></div><div class="line">stages:</div><div class="line">    - prepare    </div><div class="line">    - build</div><div class="line">    - deploy</div><div class="line"></div><div class="line">variables:</div><div class="line">    COMPOSER_CACHE_DIR: &quot;/cache/composer&quot;</div><div class="line">    DOCKER_DRIVER: overlay</div><div class="line"></div><div class="line">installing-dependencies:</div><div class="line">    stage: prepare</div><div class="line">    script:</div><div class="line">        - composer install --prefer-dist -n --no-interaction -v --no-suggest</div><div class="line">    artifacts:</div><div class="line">        name: &quot;vendor&quot;</div><div class="line">        untracked: true</div><div class="line">        expire_in: 60 mins</div><div class="line">        paths:</div><div class="line">            - $CI_PROJECT_DIR/vendor    </div><div class="line">test-image:</div><div class="line">    stage: build</div><div class="line">    image: docker:latest</div><div class="line">    services:</div><div class="line">        - docker:dind</div><div class="line">    dependencies:</div><div class="line">        - installing-dependencies</div><div class="line">    script:</div><div class="line">        - docker login -u username -p password registry.demo.com</div><div class="line">        - docker build -t registry.demo.com/repos/$CI_PROJECT_NAME:latest .</div><div class="line">        - docker push registry.demo.com/repos/$CI_PROJECT_NAME:latest</div><div class="line">testing-server:</div><div class="line">    stage: deploy</div><div class="line">    image: alpine</div><div class="line">    variables:</div><div class="line">        DEPLOY_SERVER: &quot;server-host&quot;</div><div class="line">    script:</div><div class="line">        - cd deploy</div><div class="line">        - rsync -rtvhze ssh . root@$DEPLOY_SERVER:/data/$CI_PROJECT_NAME --stats        </div><div class="line">        - ssh root@$DEPLOY_SERVER &quot;docker login -u username -p password registry.demo.com&quot;</div><div class="line">        - ssh root@$DEPLOY_SERVER &quot;cd /data/$CI_PROJECT_NAME &amp;&amp; docker-compose stop &amp;&amp; docker-compose rm -f &amp;&amp; docker-compose pull &amp;&amp; docker-compose up -d&quot;</div><div class="line">        - ssh root@$DEPLOY_SERVER &quot;docker exec -i $CI_PROJECT_NAME chown www-data:www-data web/assets&quot;</div><div class="line">        - ssh root@$DEPLOY_SERVER &quot;docker exec -i $CI_PROJECT_NAME ./yii migrate/up --interactive=0&quot;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/di
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>GitLab-CI中的artifacts使用研究</title>
@@ -844,41 +862,6 @@
     
     
       <category term="php 面试材料" scheme="https://zacksleo.github.io/tags/php-%E9%9D%A2%E8%AF%95%E6%9D%90%E6%96%99/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ThinkPHP结合使用PHP Console向Chrome 控制台输出SQL</title>
-    <link href="https://zacksleo.github.io/2013/12/16/ThinkPHP%E7%BB%93%E5%90%88%E4%BD%BF%E7%94%A8PHPConsole%E5%90%91Chrome%20%E6%8E%A7%E5%88%B6%E5%8F%B0%E8%BE%93%E5%87%BASQL/"/>
-    <id>https://zacksleo.github.io/2013/12/16/ThinkPHP结合使用PHPConsole向Chrome 控制台输出SQL/</id>
-    <published>2013-12-16T07:16:39.000Z</published>
-    <updated>2017-01-17T02:18:28.000Z</updated>
-    
-    <content type="html"><![CDATA[<ul>
-<li>在Chrome中安装PHP Console 插件</li>
-<li><p>下载PHP Console 服务器端程序包到ThinkPHP的Vendor目录下<br>例如 <code>/ThinkPHP/Extend/Vendor/PhpConsole</code></p>
-</li>
-<li><p>编写Behaviour行为类PhpConsoleBehavior.class</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">&lt;?php</div><div class="line">/*</div><div class="line"> * 程序初始化时，在DEBUG模式下自动导入PHP Console类并进行实例化</div><div class="line"> * PHP console for chrome degug tools</div><div class="line"> * @author zacksleo</div><div class="line"> */</div><div class="line">class PhpConsoleBehavior extends Behavior&#123;</div><div class="line"></div><div class="line">  protected $options = array(</div><div class="line">      &apos;PHP_CONSOLE&apos; =&gt; false,</div><div class="line">  );</div><div class="line"></div><div class="line">  public function run(&amp;$params)&#123;</div><div class="line">    if(C(&apos;PHP_CONSOLE&apos;))&#123;</div><div class="line">      if(APP_DEBUG)&#123;</div><div class="line">        vendor(&apos;PhpConsole.__autoload&apos;);  //导入文件</div><div class="line">        PhpConsole\Helper::register();  //注册，自动实例化</div><div class="line">        $connector = PhpConsole\Connector::getInstance();</div><div class="line">        $connector-&gt;setPassword(&apos;password&apos;);</div><div class="line">        $handler = PhpConsole\Handler::getInstance();</div><div class="line">        // 输出PHP错误和异常            </div><div class="line">        $handler-&gt;start(); </div><div class="line">        // 配置 eval provider（在Chrome中远程执行PHP），如果不使用，则不配置</div><div class="line">        $evalProvider = $connector-&gt;getEvalDispatcher()-&gt;getEvalProvider();</div><div class="line">        $evalProvider-&gt;setOpenBaseDirs(array(__DIR__)); </div><div class="line">        // 必须最后调用</div><div class="line">        $connector-&gt;startEvalRequestsListener(); </div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">?&gt;</div></pre></td></tr></table></figure>
-<ul>
-<li>在/App/Conf/tags.php 中配置标签位:’app_init’ =&gt; array(‘PhpConsole’),</li>
-<li>在config.php文件中定义标签’PHP_CONSOLE’ =&gt; true,</li>
-<li>修改ThinkPHP的Log.class文件（位于/ThinkPHP/Lib/Core/Log.class.php）中的recode方法如下</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">static function record($message, $level = self::ERR, $record = false)&#123;</div><div class="line">  //zacksleo   </div><div class="line">  if($level == self::SQL)&#123;</div><div class="line">    PC::debug($message, &apos;SQL&apos;);</div><div class="line">  &#125;</div><div class="line">  //zacksleo</div><div class="line">  if($record || false !== strpos(C(&apos;LOG_LEVEL&apos;), $level))&#123;</div><div class="line">    self::$log[] = &quot;&#123;$level&#125;: &#123;$message&#125;\r\n&quot;;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;ul&gt;
-&lt;li&gt;在Chrome中安装PHP Console 插件&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;下载PHP Console 服务器端程序包到ThinkPHP的Vendor目录下&lt;br&gt;例如 &lt;code&gt;/ThinkPHP/Extend/Vendor/PhpConsole&lt;/code&gt;
-    
-    </summary>
-    
-    
-      <category term="ThinkPHP, Chrome, Console, SQL" scheme="https://zacksleo.github.io/tags/ThinkPHP-Chrome-Console-SQL/"/>
     
   </entry>
   
