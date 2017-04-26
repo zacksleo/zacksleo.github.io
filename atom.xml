@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://zacksleo.github.io/"/>
-  <updated>2017-04-22T14:38:43.000Z</updated>
+  <updated>2017-04-26T02:28:58.000Z</updated>
   <id>https://zacksleo.github.io/</id>
   
   <author>
@@ -14,6 +14,71 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>GitLab-CI快速开始</title>
+    <link href="https://zacksleo.github.io/2017/04/26/GitLab-CI%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B/"/>
+    <id>https://zacksleo.github.io/2017/04/26/GitLab-CI快速开始/</id>
+    <published>2017-04-26T01:58:09.000Z</published>
+    <updated>2017-04-26T02:28:58.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>假定已经安装好了<code>GitLab-Runners</code></p>
+</blockquote>
+<h2 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World !"></a>Hello World !</h2><h3 id="在仓库根目录创建-gitlab-ci-yml-文件-内容如下"><a href="#在仓库根目录创建-gitlab-ci-yml-文件-内容如下" class="headerlink" title="在仓库根目录创建 .gitlab-ci.yml 文件, 内容如下"></a>在仓库根目录创建 <code>.gitlab-ci.yml</code> 文件, 内容如下</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">job-1:</div><div class="line">  script:</div><div class="line">    - echo &quot;Hello World&quot;</div><div class="line">``</div><div class="line"></div><div class="line">### 这样, 在每次提交代码后, 都会自动执行以上脚本. 其中`job-1`是任务名称, 可以定义多个任务,</div><div class="line">`script`下面是 shell 命令, 只要命令执行成功, 就代表本次构建通过(出现passed标记)</div><div class="line"></div><div class="line">如图</div><div class="line"></div><div class="line">![](http://ww1.sinaimg.cn/large/675eb504gy1fezux5o1v6j21200dejur.jpg)</div><div class="line"></div><div class="line"></div><div class="line">### 这样, 一次简单的持续集成已经搞定了.</div><div class="line"></div><div class="line"></div><div class="line">## 远程拉取代码</div><div class="line"></div><div class="line">### 使用ssh远程登录服务器, 然后执行`git pull` 拉取代码, 实现代码热更新</div><div class="line"></div><div class="line">由于ssh无密码登录需要用到密钥, 所以首先需要注入私钥</div><div class="line"> </div><div class="line">如</div></pre></td></tr></table></figure>
+<p>release-doc:<br>    stage: deploy<br>    script:</p>
+<pre><code>- ssh root@$DEPLOY_SERVER &quot;cd /mnt/data/docker-gollum/wiki &amp;&amp; git pull origin master&quot;
+</code></pre><p>````</p>
+<p>一个更详细的例子 [[通过gitlab-ci实现文件的自动部署]]</p>
+<h2 id="通过Docker镜像实现自动部署"><a href="#通过Docker镜像实现自动部署" class="headerlink" title="通过Docker镜像实现自动部署"></a>通过Docker镜像实现自动部署</h2><p>见文章 [[GitLab-CI使用Docker进行持续部署]]</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="https://docs.gitlab.com/ce/ci/README.html" target="_blank" rel="external">GitLab-CI官方文档</a></li>
+<li><a href="https://docs.gitlab.com.cn/ce/ci/README.html" target="_blank" rel="external">GitLab-CI中文文档</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;假定已经安装好了&lt;code&gt;GitLab-Runners&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;Hello-World&quot;&gt;&lt;a href=&quot;#Hello-World&quot; class=&quot;headerlink&quot; title=&quot;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>GitLab-CI简介</title>
+    <link href="https://zacksleo.github.io/2017/04/26/GitLab-CI%E7%AE%80%E4%BB%8B/"/>
+    <id>https://zacksleo.github.io/2017/04/26/GitLab-CI简介/</id>
+    <published>2017-04-26T01:27:52.000Z</published>
+    <updated>2017-04-26T01:58:15.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>持续集成（CI）和 持续交付(CD) 是一种流行的软件开发实践，每次提交都通过自动化的构建（测试、编译、发布）来验证，从而尽早的发现错误。</p>
+<p>持续集成实现了DevOps, 使开发人员和运维人员从繁琐的工作中解放出来。另外，这种形式极大地提高了开发者的开发效率和开发质量。<br>持续集成有多种工具，如Jenkins. GitLab内置了GitLab-CI，通过配置一段<code>YAML</code>脚本来实现持续集成.</p>
+<h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><p>持续集成可以实现的功能:</p>
+<ul>
+<li>代码审核: 自动化代码规范审查, 甚至代码质量检查</li>
+<li>自动化测试: 单元测试, 功能测试和验收测试</li>
+<li>编译发布: 将源代码编译成可执行程序, 并将程序上传到托管发布平台实现自动发布</li>
+<li>构建部署: 通过构建Docker镜像, 或登录远程服务器执行相关部署命令和脚本, 实现自动化部署</li>
+</ul>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>GitLab-CI 检测每次代码变动, 通过<code>.gitlab-ci.yml</code>脚本执行构建命令, 将命令发布到<code>GitLab-Runners(运行机)</code>上, 进而执行命令.</p>
+<p><code>GitLab-Runners</code> 基于Docker执行持续集成的每项任务, 这样就解决了环境依赖问题.</p>
+<p><code>GitLab-Runners</code>把实时将执行结果输出到GitLab网页上, 任务执行完后, 通过徽章标记和邮箱告知执行结果.</p>
+<p>下一章: [[GitLab 快速开始]]</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;p&gt;持续集成（CI）和 持续交付(CD) 是一种流行的软件开发实践，每次提交都通过自动化的构建（测试、编译、发布）来验证，从而尽早的发现错误。&lt;
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>GitLab-CI使用Docker进行持续部署</title>
@@ -665,203 +730,6 @@
     
     </summary>
     
-    
-  </entry>
-  
-  <entry>
-    <title>使用Docker安装Redmine</title>
-    <link href="https://zacksleo.github.io/2016/08/23/%E4%BD%BF%E7%94%A8Docker%E5%AE%89%E8%A3%85Redmine/"/>
-    <id>https://zacksleo.github.io/2016/08/23/使用Docker安装Redmine/</id>
-    <published>2016-08-23T10:43:38.000Z</published>
-    <updated>2017-01-16T10:00:57.000Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h3><ul>
-<li><ol>
-<li>安装部署Docker<br>&gt;<br>因为docker对内核版本有要求，所有要先升级系统（linux内核3.0+），这里用的CentOS 7</li>
-</ol>
-</li>
-<li><p>2.拉取镜像  <code>docker pull sameersbn/redmine:latest</code></p>
-</li>
-</ul>
-<p><a href="https://www.daocloud.io/mirror.html#accelerator-doc" target="_blank" rel="external">docker镜像加速</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://0835afe2.m.daocloud.io</div></pre></td></tr></table></figure>
-<ul>
-<li><ol>
-<li>安装docker-compose, <strong>“由于网络原因，该步骤可能会下载失败，请尝试多下载几次，或者外挂代理”</strong></li>
-</ol>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -L https://github.com/docker/compose/releases/download/1.8.0/docker-compose-`uname -s`-`uname -m` &gt; /usr/local/bin/docker-compose</div></pre></td></tr></table></figure>
-<p>修改权限<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chmod +x /usr/local/bin/docker-compose</div></pre></td></tr></table></figure></p>
-<ul>
-<li><ol>
-<li>使用compose快速启动 <strong>可以需要外挂</strong><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">wget https://raw.githubusercontent.com/sameersbn/docker-redmine/master/docker-compose.yml</div><div class="line">docker-compose up</div></pre></td></tr></table></figure>
-</li>
-</ol>
-</li>
-<li><ol>
-<li>映射数据目录</li>
-</ol>
-</li>
-</ul>
-<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ul>
-<li>linux内核要最新 3.0+</li>
-<li>redmine默认使用的端口是10083，如果启动成功后，无法打开，使用telnet 远程检测端口访问性，如果不能访问，检查两个方面：1.本机防火墙是否禁用端口（用telnet 检测）；2.运营商/云端是否禁用</li>
-<li>注意使用volumn命令映射数据存储命令</li>
-</ul>
-<h3 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h3><ul>
-<li><a href="https://docs.docker.com/compose/install/" target="_blank" rel="external">Docker Compose安装</a></li>
-<li><a href="https://github.com/sameersbn/docker-redmine" target="_blank" rel="external">Docker安装redmine</a></li>
-<li><a href="http://dockone.io/article/133" target="_blank" rel="external">Docker终极指南</a></li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;安装步骤&quot;&gt;&lt;a href=&quot;#安装步骤&quot; class=&quot;headerlink&quot; title=&quot;安装步骤&quot;&gt;&lt;/a&gt;安装步骤&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&lt;ol&gt;
-&lt;li&gt;安装部署Docker&lt;br&gt;&amp;gt;&lt;br&gt;因为docker对内核版本有要求，所有要先升级系统
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>PHP常见面试材料</title>
-    <link href="https://zacksleo.github.io/2016/05/29/PHP%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E6%9D%90%E6%96%99/"/>
-    <id>https://zacksleo.github.io/2016/05/29/PHP常见面试材料/</id>
-    <published>2016-05-29T09:34:37.000Z</published>
-    <updated>2017-01-16T10:02:44.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="常见面试内容"><a href="#常见面试内容" class="headerlink" title="常见面试内容"></a>常见面试内容</h2><h3 id="技术线（偏深度）："><a href="#技术线（偏深度）：" class="headerlink" title="技术线（偏深度）："></a>技术线（偏深度）：</h3><ul>
-<li><ol>
-<li>基础知识，比如数据结构，多线程，I/O，Http协议等</li>
-</ol>
-</li>
-<li><ol>
-<li>语言深度，比如PHP的运行机制，性能优化，APC（以及其原理等）</li>
-</ol>
-</li>
-<li><ol>
-<li>源码阅读，比如看过哪些框</li>
-</ol>
-</li>
-</ul>
-<hr>
-<h3 id="写出一下各段代码的输出结果："><a href="#写出一下各段代码的输出结果：" class="headerlink" title="写出一下各段代码的输出结果："></a>写出一下各段代码的输出结果：</h3><ul>
-<li><p>1.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$a = (1 &lt; &lt; 0);</div><div class="line">$b = (1 &lt; &lt; $a);</div><div class="line">$c = (1 &lt; &lt; $b);</div><div class="line">echo ($c</div><div class="line"></div><div class="line">$b) &lt; &lt; 2 * $a</div><div class="line">$a;</div></pre></td></tr></table></figure>
-</li>
-<li><ol>
-<li><code>echo &#39;1&#39;.print(2)+3;</code></li>
-</ol>
-</li>
-<li><p>3</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$a = 0x01;</div><div class="line">$b = 0x02;</div><div class="line">echo $a===$b &gt; &gt; $a;</div><div class="line"></div><div class="line">$foo = 5 + &apos;10 things&apos;;</div></pre></td></tr></table></figure>
-</li>
-<li><ol>
-<li><code>print (196*100) !== (double)1960;</code></li>
-</ol>
-</li>
-<li><ol>
-<li><code>echo 0500</code></li>
-</ol>
-</li>
-<li><ol>
-<li><code>$a = 0; echo ~$a;</code></li>
-</ol>
-</li>
-</ul>
-<hr>
-<h3 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h3><ul>
-<li><ol>
-<li>解释一下SQL注入的原理及危害，假设这里有一个不严谨的登陆程序，如何利用SQL注入进入。</li>
-</ol>
-</li>
-<li><ol>
-<li>解释一下跨站脚本的原理及危害，假设这里有一个不严谨的留言板，请构造跨站脚本范例。</li>
-</ol>
-</li>
-<li><ol>
-<li>解释一下数据索引为什么能提高效率。<br>场景 <code>SQL select * from user where area=&#39;广州‘ and sex=&#39;女‘ order by lastlogin desc limit 30;</code></li>
-</ol>
-</li>
-<li>4.如何设计索引？</li>
-<li>5.现在有10万条 IP地址对应区间表，格式为 <code>startip, endip, area</code><br>要求每个用户访问时都能快速分析出对方地区，请设计实现。数据库或不用数据库，要求每秒钟实现超过千次的查询。<br>基本上到这些对我而言就已经足够了，如果上面题目特别满意的，再附加</li>
-<li><ol>
-<li>现在有一个屏蔽词列表，大约几千个词；假设有一个繁忙的论坛社区，发帖量巨大，要求用户每发一篇文章就要快速分析是否包含屏蔽词，请给出程序设计。</li>
-</ol>
-</li>
-<li><ol>
-<li>一个游戏网站，有数千个小游戏，每个游戏要做积分排行，数据结构如下<br><code>gameid,userid,gamescore</code></li>
-</ol>
-</li>
-<li>8.每天数百万积分提交，数据量巨大，目前要求分库处理。<br>要求，可以基于每个游戏id可以查询积分排行榜。 可以基于用户id查询，比如自己或好友的历史游戏积分记录。请问如何处理分库。</li>
-</ul>
-<hr>
-<p>专业程度体现在对PHP的基本功的掌握和一些进阶知识的了解，比如对常见性能点、不同版本特性等，session的实现机制、include/require的差异，进一步的主流框架掌握程度、常见的性能优化策略、其作为脚本语言所具备的一些特性、如何规避PHP的性能劣势打造高并发的系统、如何保证高并发下的可用性和数据完整性等等。</p>
-<p>周边知识主要会包括MySQL性能优化、Memcache使用、Nginx/Apache的配合、对于PV/Click等数据收集和观察的方法等。 同样的，利用curl/socket操作http/tcp/udp，进一步的RPC调用（Web Service/JSONP/Thrift等）的前后端实现，进一步的包括更多的Cache策略（远近、一致性哈希、数据一致性）、对Sharding即分库分表之类操作的了解、更多NoSQL产品知识、各类常见协议细节、安全性（注入和旁注、跨站和CC）等。</p>
-<hr>
-<ul>
-<li>0.简单做一下自我介绍,? 然后谈一下近三年来你的得意之作?</li>
-<li>1.看看简历，会问一些过去做的项目的用户量、pv、吞吐量、相关难点和解决方法等</li>
-<li>2.数据库设计经验,为什么进行分表? 分库?<br>一般多少数据量开始分表? 分库? 分库分表的目的? 什么是数据库垂直拆分? 水平拆分? 分区等等？可以举例说明</li>
-<li>3.数据库优化有哪些? 分别需要注意什么?</li>
-<li>4.web开发方面会遇到哪些缓存? 分别如何优化?</li>
-<li>5.给你256M的内存,对10G的文件进行排序(文件每行1个数字),如何实现？<br>对10G的文件进行查找如何实现？<br>统计10G文件每个关键字出现的次数如何实现？</li>
-<li>6.假如你现在是12306火车订票的设计师,你该如何设计满足全国人民订票?</li>
-<li>7.假如有1亿用户的访问量,你的服务器架构是怎样的? 用户信息的存储方案如何设计?</li>
-<li>8.如果你是技术组长,所带团队任务进度无法完成你该如何解决?<br>如果在进度排满的前提下插入任务,你该如何保证总进度不延期?<br>如果有的工程师今天预定任务没有完成,你该如何解决?</li>
-<li>9.从你的经验方面谈一下如何构建高性能web站点? 需要哪些环节? 步骤? 每个步骤需要注意什么如何优化等?</li>
-<li>10.为什么要对数据库进行主从分离?</li>
-<li>11.如何处理多服务器共享session?</li>
-<li>12.一个10G的表,你用php程序统计某个字段出现的次数,思路是?</li>
-<li>13.会告诉你一个nginx日志例子,用你认为最佳的编程语言统计一下http响应时间超过1秒的前10个url?</li>
-<li>14.给你一个mysql配置文件,用你认为最佳的编程语言解析该文件?</li>
-<li>15.给你两个路径a和b,写一个算法或思路计算a和b差距几层并显示a和b的交集?</li>
-<li>16.给你一个url,在nginx配置一下rewrite指定到某个具体路径?</li>
-<li>17.一个php文件的解释过程是? 一般加速php有哪些? 提高php整体性能会用到哪些技术?</li>
-<li>18.session和cookie生存周期区别? 存储位置区别?</li>
-<li>19.require、include、require_once、include_once区别? 加载区别? 如果程序按需加载某个php文件你如何实现?</li>
-<li>20.chrome号称为多线程的,所以多线程和多进程的区别为?</li>
-<li>21.php在2011年底出现hash碰撞,hash碰撞原理为? 如何进行修复?</li>
-<li>22.web不安全因素有哪些? 分别如何防范?</li>
-<li>23.假如两个单链表相交,写一个最优算法计算交点位置,说思路也可以?</li>
-<li>24.假如你是技术组长? 如何提高团队效率?</li>
-<li>25.nginx负载均衡有哪些? 如果其中一台服务器挂掉,报警机制如何实现?</li>
-<li>26.不优化前提下,apache一般最大连接数为? nginx一般最大连接数为? mysql 每秒insert ? select ? update ? delete?</li>
-<li>27.mysql 数据类型有哪些 ? 分别占用多少存储空间 ?</li>
-<li>28.nginx设置缓存js、css、图片等信息,缓存的实现原理是?</li>
-<li>29.如何提高缓存命中率? 如何对缓存进行颗粒化?</li>
-<li>30.php的内存回收机制是?</li>
-<li><p>31.我的所有问题都问完了,你有什么问题问我没有？</p>
-</li>
-<li><p>32.请使用shell命令获取a文件的前10行与后10行的数据，将其放进b文件中。</p>
-</li>
-<li>33.如何设计安全的php程序，可以防止SQL攻击。</li>
-<li>34.这里有一个sql语句，select id from table where a=? order by b，请你就句子判断，建立索引，使其能够在innodb和myisam引擎下，查询效果都可以加快。</li>
-<li>35.有一天，突然有一个用户投诉，说网页打不开，你该如何进行排查？</li>
-<li>36.何对一个亿级数据的表按照一个没有索引的字段进行统计</li>
-</ul>
-<hr>
-<p>php实现扩展的机制</p>
-<p>全站消息系统</p>
-<p>消息队列</p>
-<p>PHP的数组为什么不按照索引遍历</p>
-<p><a href="http://blog.sina.com.cn/s/blog_60d07c3101010m2h.html" target="_blank" rel="external">http://blog.sina.com.cn/s/blog_60d07c3101010m2h.html</a></p>
-<p><a href="http://www.php-note.com/article/detail/546" target="_blank" rel="external">http://www.php-note.com/article/detail/546</a></p>
-<p><a href="http://my.oschina.net/u/574366/blog/64814" target="_blank" rel="external">http://my.oschina.net/u/574366/blog/64814</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;常见面试内容&quot;&gt;&lt;a href=&quot;#常见面试内容&quot; class=&quot;headerlink&quot; title=&quot;常见面试内容&quot;&gt;&lt;/a&gt;常见面试内容&lt;/h2&gt;&lt;h3 id=&quot;技术线（偏深度）：&quot;&gt;&lt;a href=&quot;#技术线（偏深度）：&quot; class=&quot;headerlink
-    
-    </summary>
-    
-    
-      <category term="php 面试材料" scheme="https://zacksleo.github.io/tags/php-%E9%9D%A2%E8%AF%95%E6%9D%90%E6%96%99/"/>
     
   </entry>
   
