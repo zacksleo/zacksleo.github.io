@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://zacksleo.github.io/"/>
-  <updated>2017-04-26T02:28:58.000Z</updated>
+  <updated>2017-04-26T02:32:46.000Z</updated>
   <id>https://zacksleo.github.io/</id>
   
   <author>
@@ -20,15 +20,18 @@
     <link href="https://zacksleo.github.io/2017/04/26/GitLab-CI%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B/"/>
     <id>https://zacksleo.github.io/2017/04/26/GitLab-CI快速开始/</id>
     <published>2017-04-26T01:58:09.000Z</published>
-    <updated>2017-04-26T02:28:58.000Z</updated>
+    <updated>2017-04-26T02:32:46.000Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>假定已经安装好了<code>GitLab-Runners</code></p>
 </blockquote>
-<h2 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World !"></a>Hello World !</h2><h3 id="在仓库根目录创建-gitlab-ci-yml-文件-内容如下"><a href="#在仓库根目录创建-gitlab-ci-yml-文件-内容如下" class="headerlink" title="在仓库根目录创建 .gitlab-ci.yml 文件, 内容如下"></a>在仓库根目录创建 <code>.gitlab-ci.yml</code> 文件, 内容如下</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">job-1:</div><div class="line">  script:</div><div class="line">    - echo &quot;Hello World&quot;</div><div class="line">``</div><div class="line"></div><div class="line">### 这样, 在每次提交代码后, 都会自动执行以上脚本. 其中`job-1`是任务名称, 可以定义多个任务,</div><div class="line">`script`下面是 shell 命令, 只要命令执行成功, 就代表本次构建通过(出现passed标记)</div><div class="line"></div><div class="line">如图</div><div class="line"></div><div class="line">![](http://ww1.sinaimg.cn/large/675eb504gy1fezux5o1v6j21200dejur.jpg)</div><div class="line"></div><div class="line"></div><div class="line">### 这样, 一次简单的持续集成已经搞定了.</div><div class="line"></div><div class="line"></div><div class="line">## 远程拉取代码</div><div class="line"></div><div class="line">### 使用ssh远程登录服务器, 然后执行`git pull` 拉取代码, 实现代码热更新</div><div class="line"></div><div class="line">由于ssh无密码登录需要用到密钥, 所以首先需要注入私钥</div><div class="line"> </div><div class="line">如</div></pre></td></tr></table></figure>
-<p>release-doc:<br>    stage: deploy<br>    script:</p>
-<pre><code>- ssh root@$DEPLOY_SERVER &quot;cd /mnt/data/docker-gollum/wiki &amp;&amp; git pull origin master&quot;
-</code></pre><p>````</p>
+<h2 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World !"></a>Hello World !</h2><h3 id="在仓库根目录创建-gitlab-ci-yml-文件-内容如下"><a href="#在仓库根目录创建-gitlab-ci-yml-文件-内容如下" class="headerlink" title="在仓库根目录创建 .gitlab-ci.yml 文件, 内容如下"></a>在仓库根目录创建 <code>.gitlab-ci.yml</code> 文件, 内容如下</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">job-1:</div><div class="line">  script:</div><div class="line">    - echo &quot;Hello World&quot;</div></pre></td></tr></table></figure>
+<h3 id="这样-在每次提交代码后-都会自动执行以上脚本-其中job-1是任务名称-可以定义多个任务"><a href="#这样-在每次提交代码后-都会自动执行以上脚本-其中job-1是任务名称-可以定义多个任务" class="headerlink" title="这样, 在每次提交代码后, 都会自动执行以上脚本. 其中job-1是任务名称, 可以定义多个任务,"></a>这样, 在每次提交代码后, 都会自动执行以上脚本. 其中<code>job-1</code>是任务名称, 可以定义多个任务,</h3><p><code>script</code>下面是 shell 命令, 只要命令执行成功, 就代表本次构建通过(出现passed标记)</p>
+<p>如图</p>
+<p><img src="http://ww1.sinaimg.cn/large/675eb504gy1fezux5o1v6j21200dejur.jpg" alt=""></p>
+<h3 id="这样-一次简单的持续集成已经搞定了"><a href="#这样-一次简单的持续集成已经搞定了" class="headerlink" title="这样, 一次简单的持续集成已经搞定了."></a>这样, 一次简单的持续集成已经搞定了.</h3><h2 id="远程拉取代码"><a href="#远程拉取代码" class="headerlink" title="远程拉取代码"></a>远程拉取代码</h2><h3 id="使用ssh远程登录服务器-然后执行git-pull-拉取代码-实现代码热更新"><a href="#使用ssh远程登录服务器-然后执行git-pull-拉取代码-实现代码热更新" class="headerlink" title="使用ssh远程登录服务器, 然后执行git pull 拉取代码, 实现代码热更新"></a>使用ssh远程登录服务器, 然后执行<code>git pull</code> 拉取代码, 实现代码热更新</h3><p>由于ssh无密码登录需要用到密钥, 所以首先需要注入私钥</p>
+<p>如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">release-doc:</div><div class="line">    stage: deploy</div><div class="line">    script:</div><div class="line">        - ssh root@$DEPLOY_SERVER &quot;cd /mnt/data/docker-gollum/wiki &amp;&amp; git pull origin master&quot;</div><div class="line"></div><div class="line">`</div></pre></td></tr></table></figure>
 <p>一个更详细的例子 [[通过gitlab-ci实现文件的自动部署]]</p>
 <h2 id="通过Docker镜像实现自动部署"><a href="#通过Docker镜像实现自动部署" class="headerlink" title="通过Docker镜像实现自动部署"></a>通过Docker镜像实现自动部署</h2><p>见文章 [[GitLab-CI使用Docker进行持续部署]]</p>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
