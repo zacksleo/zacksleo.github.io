@@ -10,7 +10,7 @@
     
     <title>
         
-            PHP解析提取Markdown中的标题来生成TOC | 
+            如何编写GitLab-CI配置文件 | 
         
         zacks&#39;s blog
     </title>
@@ -48,7 +48,7 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="https://zacksleo.github.io">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="PHP解析提取Markdown中的标题来生成TOC | zacks&#39;s blog">
+    <meta property="og:title" content="如何编写GitLab-CI配置文件 | zacks&#39;s blog">
     <meta property="og:description" content="zacks&#39;s blog, Web Develop, PHP, Yii2, Docker, AI, JavaScript">
 
     <!--[if lte IE 9]>
@@ -226,7 +226,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#原理"><span class="post-toc-number">1.</span> <span class="post-toc-text">原理</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#上手"><span class="post-toc-number">2.</span> <span class="post-toc-text">上手</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#创建文件"><span class="post-toc-number">1.</span> <span class="post-toc-text">创建文件</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#YAML语法"><span class="post-toc-number">2.</span> <span class="post-toc-text">YAML语法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#关键词"><span class="post-toc-number">3.</span> <span class="post-toc-text">关键词</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#根主要关键词一览"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">根主要关键词一览</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Jobs中的关键词"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">Jobs中的关键词</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#验证配置文件合法性"><span class="post-toc-number">4.</span> <span class="post-toc-text">验证配置文件合法性</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#参考"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">参考</span></a></li></ol></li></ol>
 
         <!--
         <li class="mdl-menu__item">
@@ -262,7 +262,7 @@
         
     
             <p class="article-headline-p">
-                PHP解析提取Markdown中的标题来生成TOC
+                如何编写GitLab-CI配置文件
             </p>
         </div>
 
@@ -281,7 +281,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>zacksleo</strong>
-        <span>10月 12, 2016</span>
+        <span>4月 27, 2017</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -321,7 +321,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=PHP解析提取Markdown中的标题来生成TOC&url=https://zacksleo.github.io//2016/10/12/PHP解析提取Markdown中的标题来生成TOC/index.html&pic=&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=如何编写GitLab-CI配置文件&url=https://zacksleo.github.io//2017/04/27/如何编写GitLab-CI配置文件/index.html&pic=&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -330,7 +330,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=PHP解析提取Markdown中的标题来生成TOC&url=https://zacksleo.github.io//2016/10/12/PHP解析提取Markdown中的标题来生成TOC/index.html&via=zacksleo" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=如何编写GitLab-CI配置文件&url=https://zacksleo.github.io//2017/04/27/如何编写GitLab-CI配置文件/index.html&via=zacksleo" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Twitter
             </li>
@@ -339,7 +339,7 @@
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=https://zacksleo.github.io//2016/10/12/PHP解析提取Markdown中的标题来生成TOC/index.html" target="_blank">
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=https://zacksleo.github.io//2017/04/27/如何编写GitLab-CI配置文件/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Facebook
             </li>
@@ -348,7 +348,7 @@
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=https://zacksleo.github.io//2016/10/12/PHP解析提取Markdown中的标题来生成TOC/index.html" target="_blank">
+        <a class="post_share-link" href="https://plus.google.com/share?url=https://zacksleo.github.io//2017/04/27/如何编写GitLab-CI配置文件/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Google+
             </li>
@@ -372,25 +372,190 @@
                 <!-- Post Content -->
                 <div id="post-content" class="markdown-Github mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>先解析markdown为HTML, 然后解析出h1-h10标签, 根据h标签的前后大小, 决定ul的层级, 以此生成ul序列的嵌套</p>
-<ul>
-<li>如果当前H标签和前面H标签相同, 则生成<code>&lt;li&gt;&lt;/li&gt;</code>,</li>
-<li>如果比前面的大, 则生成<code>&lt;ul&gt;</code><ul>
-<li>如果比前面的小, 生成<code>&lt;/ul&gt;&lt;ul&gt;&lt;li&gt;&lt;/li&gt;</code></li>
-</ul>
-</li>
-</ul>
-<h2 id="上手"><a href="#上手" class="headerlink" title="上手"></a>上手</h2><ul>
-<li>选择一个markdown Parser库, 将markdown解析</li>
-</ul>
-<p>$file为文件路径, $docs为解析后的html字串</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$content = file_get_contents($file);</div><div class="line"> require_once(&apos;/var/www/html/vendor/erusev/parsedown/Parsedown.php&apos;);</div><div class="line"> $parsedown = new \Parsedown();</div><div class="line"> $docs = $parsedown-&gt;text($content);</div></pre></td></tr></table></figure>
-<ul>
-<li>解析DOM, 根据H标签的前后顺序, 生成TOC</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line">$dom = new \DOMDocument();</div><div class="line"> $docs = mb_convert_encoding($docs, &apos;HTML-ENTITIES&apos;, &quot;UTF-8&quot;);</div><div class="line"> $dom-&gt;loadHTML($docs);</div><div class="line"></div><div class="line"> // The toc being generated.</div><div class="line"> $toc = &apos;&apos;;</div><div class="line"> $curr = $last = 0;</div><div class="line"> $type = &quot;ul&quot;;</div><div class="line"> $xpath = new \DomXPath($dom);</div><div class="line"> $t = $xpath-&gt;query(&apos;//h1|//h2|//h3|//h4|//h5|//h6&apos;);</div><div class="line"> foreach ($t as $key =&gt; $item) &#123;</div><div class="line">     $level = ltrim($item-&gt;nodeName, &apos;h&apos;);</div><div class="line">     sscanf($item-&gt;nodeName, &apos;h%u&apos;, $curr);</div><div class="line">     // If the current level is greater than the last level indent one level</div><div class="line">     if ($curr &gt; $last) &#123;</div><div class="line">         if ($last == 0) &#123;</div><div class="line">             $toc .= &apos;&lt;&apos; . $type . &quot; class=&apos;nav doc-menu affix-top&apos; id=&apos;doc-menu&apos; data-spy=&apos;affix&apos;&gt;\n&quot;;</div><div class="line">         &#125; else &#123;</div><div class="line">             $toc .= &apos;&lt;&apos; . $type . &quot; class=&apos;nav doc-sub-menu&apos;&gt;\n&quot;;</div><div class="line">         &#125;</div><div class="line">     &#125; // If the current level is less than the last level go up appropriate amount.</div><div class="line">     elseif ($curr &lt; $last) &#123;</div><div class="line">         $toc .= str_repeat(&apos;&lt;/li&gt;&lt;/&apos; . $type . &quot;&gt;\n&quot;, $last - $curr) . &quot;&lt;/li&gt;\n&quot;;</div><div class="line">     &#125; // If the current level is equal to the last.</div><div class="line">     else &#123;</div><div class="line">         $toc .= &quot;&lt;/li&gt;\n&quot;;</div><div class="line">     &#125;</div><div class="line">     // Get and/or set an id</div><div class="line">     if ($item-&gt;hasAttribute(&apos;id&apos;)) &#123;</div><div class="line">         $id = $item-&gt;getAttribute(&apos;id&apos;);</div><div class="line">     &#125; else &#123;</div><div class="line">        //auto generate id for the tag</div><div class="line">         $id = uniqid();</div><div class="line">         $t[$key]-&gt;setAttribute(&apos;id&apos;, $id);</div><div class="line">     &#125;</div><div class="line">     if ($last == 0) &#123;</div><div class="line">         $toc .= &apos;&lt;li class=&quot;active&quot;&gt;&lt;a class=&quot;scrollto&quot; href=&quot;#&apos; . $id . &apos;&quot;&gt;&apos; . $item-&gt;nodeValue . &quot;&lt;/a&gt;\n&quot;;</div><div class="line">     &#125; else &#123;</div><div class="line">         $toc .= &apos;&lt;li&gt;&lt;a class=&quot;scrollto&quot; href=&quot;#&apos; . $id . &apos;&quot;&gt;&apos; . $item-&gt;nodeValue . &quot;&lt;/a&gt;\n&quot;;</div><div class="line">     &#125;</div><div class="line">     $last = $curr;</div><div class="line"> &#125;</div><div class="line">// 将修改后的DOM 赋值为docs</div><div class="line"> $docs = $dom-&gt;saveHTML();</div></pre></td></tr></table></figure>
-<ul>
-<li>渲染页面<br>$docs为html主体内容<br>$toc为生成的目录, 形如<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;ul&gt;</div><div class="line">  &lt;li&gt;&lt;/li&gt;</div><div class="line">    &lt;ul&gt;</div><div class="line">      &lt;li&gt;&lt;/li&gt;</div><div class="line">      &lt;li&gt;&lt;/li&gt;</div><div class="line">    &lt;/ul&gt;</div><div class="line">  &lt;li&gt;&lt;/li&gt;</div><div class="line">  &lt;li&gt;&lt;/li&gt;</div><div class="line"> &lt;/ul&gt;</div></pre></td></tr></table></figure></li>
+        <h2 id="创建文件"><a href="#创建文件" class="headerlink" title="创建文件"></a>创建文件</h2><p>在根目录新建<code>.gitlab-ci.yml</code>文件.</p>
+<p>该文件与项目其他文件一样, 同样受到版本控制, 所以可以在不同的分支下, 配置不同的持续集成脚本</p>
+<h2 id="YAML语法"><a href="#YAML语法" class="headerlink" title="YAML语法"></a>YAML语法</h2><p>配置文件遵循YAML语法, 关于该语法的内容, 自行搜索</p>
+<p>参考 <a href="http://www.ruanyifeng.com/blog/2016/07/yaml.html" target="_blank" rel="external">YAML 语言教程</a></p>
+<h2 id="关键词"><a href="#关键词" class="headerlink" title="关键词"></a>关键词</h2><h3 id="根主要关键词一览"><a href="#根主要关键词一览" class="headerlink" title="根主要关键词一览"></a>根主要关键词一览</h3><table>
+<thead>
+<tr>
+<th>关键词</th>
+<th>含义</th>
+<th>可选</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>image</td>
+<td>声明使用的Docker镜像</td>
+<td>为空时使用默认镜像</td>
+<td>该镜像应当满足脚本执行的环境依赖</td>
+</tr>
+<tr>
+<td>services</td>
+<td>Docker镜像使用的服务, 通过链接的方式来调用所需服务</td>
+<td>可空</td>
+<td>常用于链接数据库</td>
+</tr>
+<tr>
+<td>stages</td>
+<td>定义构建阶段</td>
+<td>为空时, 单纯定义jobs</td>
+<td>项目的构建分为多个阶段, 例如: 安装依赖/准备, 编译, 测试, 发布等, 同时每个阶段包含若干任务</td>
+</tr>
+<tr>
+<td>before_script</td>
+<td>定义每个job之前执行的脚本</td>
+<td>可空</td>
+<td>每个job启动时会先执行该脚本</td>
+</tr>
+<tr>
+<td>after_script</td>
+<td>定义每个job之后执行的脚本</td>
+<td>可空</td>
+<td>同上</td>
+</tr>
+<tr>
+<td>variables</td>
+<td>定义变量</td>
+<td>可空</td>
+<td>同上</td>
+</tr>
+<tr>
+<td>cache</td>
+<td>定义与后续job之间应缓存的文件</td>
+<td>可空</td>
+<td>同上</td>
+</tr>
+</tbody>
+</table>
+<p>Demo:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">image: aipline</div><div class="line">services:</div><div class="line">    - mysql</div><div class="line">    - redis</div><div class="line">stages:</div><div class="line">    - build</div><div class="line">    - test</div><div class="line">    - deploy</div><div class="line">before_script:</div><div class="line">    - bundle install  </div><div class="line">after_script:</div><div class="line">    - rm secrets</div><div class="line">cache:</div><div class="line">    paths:</div><div class="line">    - binaries/</div><div class="line">    - .config</div></pre></td></tr></table></figure>
+<h3 id="Jobs中的关键词"><a href="#Jobs中的关键词" class="headerlink" title="Jobs中的关键词"></a>Jobs中的关键词</h3><p>jobs中存在一些与根中相同的关键词, 这些一旦定义, 则会向前覆盖, 即根中定义的则不会在该job执行</p>
+<p>job 这里译为<strong>任务</strong></p>
+<table>
+<thead>
+<tr>
+<th>关键词</th>
+<th>含义</th>
+<th>可选</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>image</td>
+<td>声明任务使用的Docker镜像</td>
+<td>为空时使用根中的定义</td>
+<td>该镜像应当满足脚本执行的环境依赖</td>
+</tr>
+<tr>
+<td>services</td>
+<td>任务中Docker镜像使用的服务, 通过链接的方式来调用所需服务</td>
+<td>可空</td>
+<td>常用于链接数据库</td>
+</tr>
+<tr>
+<td>stage</td>
+<td>所属构建阶段</td>
+<td>为空时则不使用stages</td>
+<td>一个任务属于一个构建阶段</td>
+</tr>
+<tr>
+<td>before_script</td>
+<td>定义每个job之前执行的脚本</td>
+<td>可选</td>
+<td>如果在job中定义则会覆盖根中的内容</td>
+</tr>
+<tr>
+<td>script</td>
+<td>定义每个job执行的脚本</td>
+<td>必须</td>
+<td></td>
+</tr>
+<tr>
+<td>after_script</td>
+<td>定义每个job之后执行的脚本</td>
+<td>可选</td>
+<td>同上</td>
+</tr>
+<tr>
+<td>variables</td>
+<td>定义任务中使用的变量</td>
+<td>可选</td>
+<td>同上</td>
+</tr>
+<tr>
+<td>cache</td>
+<td>定义与后续job之间应缓存的文件</td>
+<td>可选</td>
+<td>同上</td>
+</tr>
+<tr>
+<td>only</td>
+<td>指定应用的Git分支</td>
+<td>可选</td>
+<td>可以是分支名称, 可用正则匹配分支, 也可是tags来指定打过标签的分支</td>
+</tr>
+<tr>
+<td>except</td>
+<td>排除应用的Git分支</td>
+<td>可选</td>
+<td>同上</td>
+</tr>
+<tr>
+<td>tags</td>
+<td>指定执行的GitLab-Runners</td>
+<td>可选</td>
+<td>通过匹配Runners的标签选定</td>
+</tr>
+<tr>
+<td>allow_failure</td>
+<td>允许失败</td>
+<td>默认为false</td>
+<td>如果允许失败, 本次任务不会影响整个构建的结果</td>
+</tr>
+<tr>
+<td>when</td>
+<td>定义合适执行任务</td>
+<td>默认为always</td>
+<td>有<code>on_success</code>, <code>on_failure</code>, <code>always</code> or <code>manual</code>可选</td>
+</tr>
+<tr>
+<td>dependencies</td>
+<td>定义合任务所需要的工件</td>
+<td>可空</td>
+<td>需要首先定义工件</td>
+</tr>
+<tr>
+<td>artifacts</td>
+<td>定义工件</td>
+<td>可空</td>
+<td>工件中指定的目录会在任务执行成功后压缩传到GitLab, 后面需要该工件的任务执行时, 再自行下载解压</td>
+</tr>
+<tr>
+<td>environment</td>
+<td>定义环境</td>
+<td>可空</td>
+<td>在部署任务中, 定义该任务所属的环境</td>
+</tr>
+</tbody>
+</table>
+<p>Demo:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">installing-dependencies:</div><div class="line">    script:</div><div class="line">        - composer install --prefer-dist --optimize-autoloader -n --no-interaction -v --no-suggest</div><div class="line">        - composer dump-autoload --optimize</div><div class="line">    artifacts:</div><div class="line">        name: &quot;vendor&quot;</div><div class="line">        untracked: true</div><div class="line">        expire_in: 60 mins</div><div class="line">        paths:</div><div class="line">            - vendor/    </div><div class="line">docker-build-image:    </div><div class="line">    stage: test</div><div class="line">    only:</div><div class="line">        - master</div><div class="line">    except:</div><div class="line">        - develop</div><div class="line">    tags:</div><div class="line">        - ruby</div><div class="line">        - postgres</div><div class="line">    allow_failure: true</div><div class="line">    dependencies:</div><div class="line">        - installing-dependencies</div><div class="line">    script:        </div><div class="line">        - docker build -t registry.com/mops/image:latest .</div><div class="line">        - docker push registry.com/mops/image:latest</div></pre></td></tr></table></figure>
+<p>注意:</p>
+<ol>
+<li>jobs的名称不能重名</li>
+<li>同一阶段中的任务, 是并行执行的</li>
+<li>上一阶段所有任务执行完后, 才会进入下一阶段</li>
+<li>定义工件时, 务必定义工件的过期时间, 否则工件会一直寸在GitLab上, 占用空间</li>
+<li>如果需要在任务中传递文件, 优先选择使用 <code>dependencies</code> (结合<code>artifacts</code>)</li>
+</ol>
+<h2 id="验证配置文件合法性"><a href="#验证配置文件合法性" class="headerlink" title="验证配置文件合法性"></a>验证配置文件合法性</h2><p>在GitLab中, 打开 <code>/ci/lint</code>网址, 将配置文件粘贴在些, 进行验证</p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
+<li><a href="https://docs.gitlab.com.cn/ce/ci/yaml/" target="_blank" rel="external">GitLa中文文档</a></li>
+<li><a href="https://docs.gitlab.comn/ce/ci/yaml/" target="_blank" rel="external">GitLab官方文档</a></li>
 </ul>
 
     
@@ -414,21 +579,13 @@
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2016/10/12/Yii2项目自动向GitLab上报Bug/" id="post_nav-newer" class="prev-content">
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_back</i>
-            </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            新篇
-        </a>
-    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
     
-        <a href="/2016/08/23/使用Docker安装Redmine/" id="post_nav-older" class="next-content">
+        <a href="/2017/04/26/GitLab-CI快速开始/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
