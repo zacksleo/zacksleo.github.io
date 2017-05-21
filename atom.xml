@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://zacksleo.github.io/"/>
-  <updated>2017-04-27T07:45:47.000Z</updated>
+  <updated>2017-05-21T14:17:09.000Z</updated>
   <id>https://zacksleo.github.io/</id>
   
   <author>
@@ -14,6 +14,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>从PHP到Python-两种编程语言的异同</title>
+    <link href="https://zacksleo.github.io/2017/05/21/%E4%BB%8EPHP%E5%88%B0Python-%E4%B8%A4%E7%A7%8D%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E7%9A%84%E5%BC%82%E5%90%8C/"/>
+    <id>https://zacksleo.github.io/2017/05/21/从PHP到Python-两种编程语言的异同/</id>
+    <published>2017-05-21T14:08:21.000Z</published>
+    <updated>2017-05-21T14:17:09.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="语言"><a href="#语言" class="headerlink" title="语言"></a>语言</h2><ol>
+<li>两者都是胶水语言, 不需要编译, 逐行运行, 因此报错时可以追中到行</li>
+<li>主流都是用C实现的, 因此底层仍然是C</li>
+</ol>
+<h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><ol>
+<li>PHP与Python在代码格式上有非常大的不同, 首先最明显的一个区别就是, 没有大括号包裹函数和类库.</li>
+<li>Python使用缩进来替代大括号的功能, 开始的时候可能会让你不太习惯, 不过时间长了, 也就慢慢接受了</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;语言&quot;&gt;&lt;a href=&quot;#语言&quot; class=&quot;headerlink&quot; title=&quot;语言&quot;&gt;&lt;/a&gt;语言&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;两者都是胶水语言, 不需要编译, 逐行运行, 因此报错时可以追中到行&lt;/li&gt;
+&lt;li&gt;主流都是用C实现的, 因此底层仍然是C&lt;
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>如何编写GitLab-CI配置文件</title>
@@ -884,33 +912,6 @@
     
     
       <category term="CodeIgniter, GitLab, Bug, 自动化" scheme="https://zacksleo.github.io/tags/CodeIgniter-GitLab-Bug-%E8%87%AA%E5%8A%A8%E5%8C%96/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Yii2项目自动向GitLab上报Bug</title>
-    <link href="https://zacksleo.github.io/2016/10/12/Yii2%E9%A1%B9%E7%9B%AE%E8%87%AA%E5%8A%A8%E5%90%91GitLab%E4%B8%8A%E6%8A%A5Bug/"/>
-    <id>https://zacksleo.github.io/2016/10/12/Yii2项目自动向GitLab上报Bug/</id>
-    <published>2016-10-12T09:47:20.000Z</published>
-    <updated>2017-01-17T02:04:53.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Yii2-项目自动上报Bug"><a href="#Yii2-项目自动上报Bug" class="headerlink" title="Yii2 项目自动上报Bug"></a>Yii2 项目自动上报Bug</h1><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>  yii2在程序报错时, 会执行指定action, 通过重写ErrorAction, 实现Bug自动提交至GitLab的issue</p>
-<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ul>
-<li>配置SiteController中的actions方法</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">public function actions()</div><div class="line">&#123;</div><div class="line">    return [</div><div class="line">        &apos;error&apos; =&gt; [</div><div class="line">            &apos;class&apos; =&gt; &apos;app\helpers\web\ErrorAction&apos;,</div><div class="line">        ],</div><div class="line">    ];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>重写ErrorAction, 位于app\helpers\web\ErrorAction, 并修改常量URL,PRIVATE_TOKEN和ASSIGNEE_ID</li>
-</ul>
-<p>如何获取project_id和assignee_id见 <a href="https://zacksleo.github.io/2017/10/12/CI%E9%A1%B9%E7%9B%AE%E8%87%AA%E5%8A%A8%E5%90%91GitLab%E4%B8%8A%E6%8A%A5Bug/">WIKI</a> </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div></pre></td><td class="code"><pre><div class="line">namespace app\helpers\web;</div><div class="line"></div><div class="line">use yii;</div><div class="line">use yii\base\Action;</div><div class="line">use yii\base\Exception;</div><div class="line">use yii\base\UserException;</div><div class="line">use yii\web\HttpException;</div><div class="line"></div><div class="line">class ErrorAction extends \yii\web\ErrorAction</div><div class="line">&#123;</div><div class="line">    const URL = &apos;&#123;host&#125;/api/v3/projects/&#123;project_id&#125;/issues&apos;; // host替换为主机地址, project_id为项目id</div><div class="line">    const PRIVATE_TOKEN = &apos;tD3Te-ctECeGwEHH7-ec&apos;;</div><div class="line">    const ASSIGNEE_ID = 21;</div><div class="line"></div><div class="line">    public function run()</div><div class="line">    &#123;</div><div class="line">        if (($exception = Yii::$app-&gt;getErrorHandler()-&gt;exception) === null) &#123;</div><div class="line">            $exception = new HttpException(404, Yii::t(&apos;yii&apos;, &apos;Page not found.&apos;));</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        if ($exception instanceof HttpException) &#123;</div><div class="line">            $code = $exception-&gt;statusCode;</div><div class="line">        &#125; else &#123;</div><div class="line">            $code = $exception-&gt;getCode();</div><div class="line">        &#125;</div><div class="line">        if ($exception instanceof Exception) &#123;</div><div class="line">            $name = $exception-&gt;getName();</div><div class="line">        &#125; else &#123;</div><div class="line">            $name = $this-&gt;defaultName ?: Yii::t(&apos;yii&apos;, &apos;Error&apos;);</div><div class="line">        &#125;</div><div class="line">        $preCode = $code;</div><div class="line">        if ($code) &#123;</div><div class="line">            $name .= &quot; (#$code)&quot;;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        if ($exception instanceof UserException) &#123;</div><div class="line">            $message = $exception-&gt;getMessage();</div><div class="line">        &#125; else &#123;</div><div class="line">            $message = $this-&gt;defaultMessage ?: Yii::t(&apos;yii&apos;, &apos;An internal server error occurred.&apos;);</div><div class="line">        &#125;</div><div class="line">        if ($code != &apos;404&apos;) &#123;</div><div class="line">            //自动向GitLab提交Bug</div><div class="line">            $url = self::URL;</div><div class="line">            $ch = curl_init();</div><div class="line">            curl_setopt($ch, CURLOPT_URL, $url);</div><div class="line">            curl_setopt($ch, CURLOPT_HTTPHEADER, array(</div><div class="line">                &apos;PRIVATE-TOKEN: &apos;.self::PRIVATE_TOKEN,</div><div class="line">            ));</div><div class="line"></div><div class="line">            curl_setopt($ch, CURLOPT_POSTFIELDS, [</div><div class="line">                &apos;title&apos; =&gt; $message,</div><div class="line">                &apos;description&apos; =&gt; &apos;&lt;blockquote&gt;&apos;.Yii::$app-&gt;request-&gt;getReferrer().&apos;&lt;/blockquote&gt;&apos;. &apos;&lt;blockquote&gt;&apos; . Yii::$app-&gt;request-&gt;absoluteUrl . &apos;&lt;/blockquote&gt;&lt;br/&gt;&lt;pre&gt;&apos; . $exception . &apos;&lt;/pre&gt;&apos;,</div><div class="line">                &apos;assignee_id&apos; =&gt; self::ASSIGNEE_ID,</div><div class="line">                &apos;labels&apos; =&gt; &apos;捕虫器,&apos; . $name,</div><div class="line">            ]);</div><div class="line">            curl_setopt($ch, CURLOPT_HEADER, false);</div><div class="line">            // Pass TRUE or 1 if you want to wait for and catch the response against the request made</div><div class="line">            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);</div><div class="line">            // For Debug mode; shows up any error encountered during the operation</div><div class="line">            curl_setopt($ch, CURLOPT_VERBOSE, false);</div><div class="line">            $response = curl_exec($ch);</div><div class="line">            curl_close($ch);</div><div class="line">        &#125;</div><div class="line">        if (Yii::$app-&gt;getRequest()-&gt;getIsAjax() || strpos($_SERVER[&apos;REQUEST_URI&apos;], &apos;/api/&apos;) &gt; -1) &#123;</div><div class="line">            \Yii::$app-&gt;response-&gt;format = \yii\web\Response::FORMAT_JSON;</div><div class="line">            return [</div><div class="line">                &apos;message&apos; =&gt; $message</div><div class="line">            ];</div><div class="line">        &#125; else &#123;</div><div class="line">            return $this-&gt;controller-&gt;render($this-&gt;view ?: $this-&gt;id, [</div><div class="line">                &apos;name&apos; =&gt; $name,</div><div class="line">                &apos;message&apos; =&gt; $message,</div><div class="line">                &apos;exception&apos; =&gt; $exception,</div><div class="line">            ]);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;Yii2-项目自动上报Bug&quot;&gt;&lt;a href=&quot;#Yii2-项目自动上报Bug&quot; class=&quot;headerlink&quot; title=&quot;Yii2 项目自动上报Bug&quot;&gt;&lt;/a&gt;Yii2 项目自动上报Bug&lt;/h1&gt;&lt;h2 id=&quot;原理&quot;&gt;&lt;a href=&quot;#原理&quot;
-    
-    </summary>
-    
     
   </entry>
   
