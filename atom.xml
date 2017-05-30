@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://zacksleo.github.io/"/>
-  <updated>2017-05-30T02:40:53.000Z</updated>
+  <updated>2017-05-30T02:54:40.000Z</updated>
   <id>https://zacksleo.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://zacksleo.github.io/2017/05/30/GitLab-CI%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/"/>
     <id>https://zacksleo.github.io/2017/05/30/GitLab-CI实现自动化测试/</id>
     <published>2017-05-30T02:37:33.000Z</published>
-    <updated>2017-05-30T02:40:53.000Z</updated>
+    <updated>2017-05-30T02:54:40.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="GitLab-Ci实现自动化测试"><a href="#GitLab-Ci实现自动化测试" class="headerlink" title="GitLab-Ci实现自动化测试"></a>GitLab-Ci实现自动化测试</h1><blockquote>
 <p>持续集成的目的，就是让产品可以快速迭代，同时还能保持高质量。它的核心措施是，代码集成到主干之前，必须通过自动化测试。只要有一个测试用例失败，就不能集成。</p>
@@ -69,6 +69,7 @@
         - develop
         - master
 </code></pre><p>关于持续集成完整的项目, 请查看 <a href="https://github.com/zacksleo/yii2-app-advanced" target="_blank" rel="external">zacksleo/yii2-app-advanced</a> 项目</p>
+<p>  <a href="https://docs.gitlab.com/ce/ci/docker/using_docker_images.html" target="_blank" rel="external">使用Docker镜像</a></p>
 ]]></content>
     
     <summary type="html">
@@ -114,7 +115,7 @@
     <link href="https://zacksleo.github.io/2017/04/27/%E5%A6%82%E4%BD%95%E7%BC%96%E5%86%99GitLab-CI%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/"/>
     <id>https://zacksleo.github.io/2017/04/27/如何编写GitLab-CI配置文件/</id>
     <published>2017-04-27T07:45:00.000Z</published>
-    <updated>2017-04-27T07:45:47.000Z</updated>
+    <updated>2017-05-30T02:57:18.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="创建文件"><a href="#创建文件" class="headerlink" title="创建文件"></a>创建文件</h2><p>在根目录新建<code>.gitlab-ci.yml</code>文件.</p>
 <p>该文件与项目其他文件一样, 同样受到版本控制, 所以可以在不同的分支下, 配置不同的持续集成脚本</p>
@@ -297,9 +298,9 @@
 <li>如果需要在任务中传递文件, 优先选择使用 <code>dependencies</code> (结合<code>artifacts</code>)</li>
 </ol>
 <h2 id="验证配置文件合法性"><a href="#验证配置文件合法性" class="headerlink" title="验证配置文件合法性"></a>验证配置文件合法性</h2><p>在GitLab中, 打开 <code>/ci/lint</code>网址, 将配置文件粘贴在些, 进行验证</p>
-<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
-<li><a href="https://docs.gitlab.com.cn/ce/ci/yaml/" target="_blank" rel="external">GitLa中文文档</a></li>
-<li><a href="https://docs.gitlab.comn/ce/ci/yaml/" target="_blank" rel="external">GitLab官方文档</a></li>
+<h3 id="相关文档"><a href="#相关文档" class="headerlink" title="相关文档"></a>相关文档</h3><ul>
+<li><a href="https://docs.gitlab.com.cn/ce/ci/yaml/README.html" target="_blank" rel="external">配置构建任务</a></li>
+<li><a href="https://docs.gitlab.com/ce/ci/yaml/README.html" target="_blank" rel="external">Configuration of your jobs with .gitlab-ci.yml</a></li>
 </ul>
 ]]></content>
     
@@ -318,7 +319,7 @@
     <link href="https://zacksleo.github.io/2017/04/26/GitLab-CI%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B/"/>
     <id>https://zacksleo.github.io/2017/04/26/GitLab-CI快速开始/</id>
     <published>2017-04-26T01:58:09.000Z</published>
-    <updated>2017-04-26T02:32:46.000Z</updated>
+    <updated>2017-05-30T02:46:26.000Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>假定已经安装好了<code>GitLab-Runners</code></p>
@@ -333,8 +334,8 @@
 <p>一个更详细的例子 [[通过gitlab-ci实现文件的自动部署]]</p>
 <h2 id="通过Docker镜像实现自动部署"><a href="#通过Docker镜像实现自动部署" class="headerlink" title="通过Docker镜像实现自动部署"></a>通过Docker镜像实现自动部署</h2><p>见文章 [[GitLab-CI使用Docker进行持续部署]]</p>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
-<li><a href="https://docs.gitlab.com/ce/ci/README.html" target="_blank" rel="external">GitLab-CI官方文档</a></li>
-<li><a href="https://docs.gitlab.com.cn/ce/ci/README.html" target="_blank" rel="external">GitLab-CI中文文档</a></li>
+<li><a href="https://docs.gitlab.com.cn/ce/ci/quick_start/README.html" target="_blank" rel="external">GitLab-CI快速开始-中文</a></li>
+<li><a href="https://docs.gitlab.com/ce/ci/quick_start/README.html" target="_blank" rel="external">GitLab-CI快速开始-官方</a></li>
 </ul>
 ]]></content>
     
@@ -355,7 +356,7 @@
     <link href="https://zacksleo.github.io/2017/04/26/GitLab-CI%E7%AE%80%E4%BB%8B/"/>
     <id>https://zacksleo.github.io/2017/04/26/GitLab-CI简介/</id>
     <published>2017-04-26T01:27:52.000Z</published>
-    <updated>2017-04-26T01:58:15.000Z</updated>
+    <updated>2017-05-30T02:49:25.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>持续集成（CI）和 持续交付(CD) 是一种流行的软件开发实践，每次提交都通过自动化的构建（测试、编译、发布）来验证，从而尽早的发现错误。</p>
 <p>持续集成实现了DevOps, 使开发人员和运维人员从繁琐的工作中解放出来。另外，这种形式极大地提高了开发者的开发效率和开发质量。<br>持续集成有多种工具，如Jenkins. GitLab内置了GitLab-CI，通过配置一段<code>YAML</code>脚本来实现持续集成.</p>
@@ -370,6 +371,11 @@
 <p><code>GitLab-Runners</code> 基于Docker执行持续集成的每项任务, 这样就解决了环境依赖问题.</p>
 <p><code>GitLab-Runners</code>把实时将执行结果输出到GitLab网页上, 任务执行完后, 通过徽章标记和邮箱告知执行结果.</p>
 <p>下一章: [[GitLab 快速开始]]</p>
+<ul>
+<li><a href="http://www.ruanyifeng.com/blog/2015/09/continuous-integration.html" target="_blank" rel="external">持续集成是什么</a></li>
+<li><a href="https://about.gitlab.com/2015/12/14/getting-started-with-gitlab-and-gitlab-ci/" target="_blank" rel="external">Getting started with GitLab and GitLab CI</a></li>
+<li><a href="https://about.gitlab.com/2016/08/05/continuous-integration-delivery-and-deployment-with-gitlab/" target="_blank" rel="external">Continuous Integration, Delivery, and Deployment with GitLab</a></li>
+</ul>
 ]]></content>
     
     <summary type="html">
@@ -386,7 +392,7 @@
     <link href="https://zacksleo.github.io/2017/04/22/GitLab-CI%E4%BD%BF%E7%94%A8Docker%E8%BF%9B%E8%A1%8C%E6%8C%81%E7%BB%AD%E9%83%A8%E7%BD%B2/"/>
     <id>https://zacksleo.github.io/2017/04/22/GitLab-CI使用Docker进行持续部署/</id>
     <published>2017-04-22T14:33:31.000Z</published>
-    <updated>2017-04-26T03:13:34.000Z</updated>
+    <updated>2017-05-30T02:54:17.000Z</updated>
     
     <content type="html"><![CDATA[<p>Docker镜像通过私有仓库进行发布(如阿里云), 发布命令为:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">docker login -u username -p password registry.demo.com</div><div class="line">docker build -t registry.demo.com/repos/$CI_PROJECT_NAME:latest .</div><div class="line">docker push registry.demo.com/repos/$CI_PROJECT_NAME:latest</div></pre></td></tr></table></figure>
@@ -400,6 +406,7 @@
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line">image: zacksleo/docker-composer:1.1</div><div class="line"></div><div class="line">before_script:</div><div class="line">    - &apos;which ssh-agent || ( apk update &amp;&amp; apk add openssh-client)&apos;</div><div class="line">    - apk add rsync</div><div class="line">    - eval $(ssh-agent -s)</div><div class="line">    - echo &quot;$SSH_PRIVATE_KEY&quot; &gt; ~/deploy.key</div><div class="line">    - chmod 0600 ~/deploy.key</div><div class="line">    - ssh-add ~/deploy.key</div><div class="line">    - mkdir -p ~/.ssh</div><div class="line">    - &apos;[[ -f /.dockerenv ]] &amp;&amp; echo -e &quot;Host *\n\tStrictHostKeyChecking no\n\n&quot; &gt; ~/.ssh/config&apos;</div><div class="line">    - export APP_ENV=testing</div><div class="line"></div><div class="line">stages:</div><div class="line">    - prepare    </div><div class="line">    - build</div><div class="line">    - deploy</div><div class="line"></div><div class="line">variables:</div><div class="line">    COMPOSER_CACHE_DIR: &quot;/cache/composer&quot;</div><div class="line">    DOCKER_DRIVER: overlay</div><div class="line"></div><div class="line">installing-dependencies:</div><div class="line">    stage: prepare</div><div class="line">    script:</div><div class="line">        - composer install --prefer-dist -n --no-interaction -v --no-suggest</div><div class="line">    artifacts:</div><div class="line">        name: &quot;vendor&quot;</div><div class="line">        untracked: true</div><div class="line">        expire_in: 60 mins</div><div class="line">        paths:</div><div class="line">            - $CI_PROJECT_DIR/vendor    </div><div class="line">test-image:</div><div class="line">    stage: build</div><div class="line">    image: docker:latest</div><div class="line">    services:</div><div class="line">        - docker:dind</div><div class="line">    dependencies:</div><div class="line">        - installing-dependencies</div><div class="line">    script:</div><div class="line">        - docker login -u username -p password registry.demo.com</div><div class="line">        - docker build -t registry.demo.com/repos/$CI_PROJECT_NAME:latest .</div><div class="line">        - docker push registry.demo.com/repos/$CI_PROJECT_NAME:latest</div><div class="line">testing-server:</div><div class="line">    stage: deploy</div><div class="line">    image: alpine</div><div class="line">    variables:</div><div class="line">        DEPLOY_SERVER: &quot;server-host&quot;</div><div class="line">    script:</div><div class="line">        - cd deploy</div><div class="line">        - rsync -rtvhze ssh . root@$DEPLOY_SERVER:/data/$CI_PROJECT_NAME --stats        </div><div class="line">        - ssh root@$DEPLOY_SERVER &quot;docker login -u username -p password registry.demo.com&quot;</div><div class="line">        - ssh root@$DEPLOY_SERVER &quot;cd /data/$CI_PROJECT_NAME &amp;&amp; docker-compose stop &amp;&amp; docker-compose rm -f &amp;&amp; docker-compose pull &amp;&amp; docker-compose up -d&quot;</div><div class="line">        - ssh root@$DEPLOY_SERVER &quot;docker exec -i $CI_PROJECT_NAME chown www-data:www-data web/assets&quot;</div><div class="line">        - ssh root@$DEPLOY_SERVER &quot;docker exec -i $CI_PROJECT_NAME ./yii migrate/up --interactive=0&quot;</div></pre></td></tr></table></figure>
 <p><img src="http://ww1.sinaimg.cn/large/675eb504ly1fezvjdberyj20w30axdh2.jpg" alt=""></p>
+<h2 id="相关文档"><a href="#相关文档" class="headerlink" title="相关文档"></a>相关文档</h2><p><a href="https://docs.gitlab.com/ce/ci/docker/using_docker_build.html" target="_blank" rel="external">Using Docker Build</a></p>
 ]]></content>
     
     <summary type="html">
@@ -417,7 +424,7 @@
     <link href="https://zacksleo.github.io/2017/04/18/GitLab-CI%E4%B8%AD%E7%9A%84artifacts%E4%BD%BF%E7%94%A8%E7%A0%94%E7%A9%B6/"/>
     <id>https://zacksleo.github.io/2017/04/18/GitLab-CI中的artifacts使用研究/</id>
     <published>2017-04-18T15:56:44.000Z</published>
-    <updated>2017-04-22T14:29:10.000Z</updated>
+    <updated>2017-05-30T02:53:49.000Z</updated>
     
     <content type="html"><![CDATA[<p>在GitLab-CI中, <code>cache</code>与<code>artifacts</code>比较容易混淆.</p>
 <p>其中 <code>cache</code> 指的是缓存, 常用于依赖安装中, 如几个<code>jobs</code>都需要安装相同的依赖, 可以使用<code>依赖</code>, 此时可以加快依赖的安装进度;<br>对于<code>artifacts</code>则是将某个<code>工件</code>上传到GitLab提供下载或后续操作使用, 由于每个<code>job</code>启动时, 都会自动删除<code>.gitignore</code>中指定的文件, 因此对于依赖安装目录, 即可以使用<code>cache</code>, 也可以使用<code>artifacts</code>.</p>
@@ -442,6 +449,7 @@
 <p>使用<code>cache</code>会出现一个问题, 就是缓存有可能使用上次执行该<code>job</code>时的缓存, 不能保证某些文件最新</p>
 </blockquote>
 </blockquote>
+<h2 id="相关文档"><a href="#相关文档" class="headerlink" title="相关文档"></a>相关文档</h2><p><a href="https://docs.gitlab.com/ce/user/project/pipelines/job_artifacts.html" target="_blank" rel="external">Introduction to job artifacts</a></p>
 ]]></content>
     
     <summary type="html">
@@ -459,7 +467,7 @@
     <link href="https://zacksleo.github.io/2017/04/14/GitLabCI%E9%80%9A%E8%BF%87ssh%E8%BF%9B%E8%A1%8C%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/"/>
     <id>https://zacksleo.github.io/2017/04/14/GitLabCI通过ssh进行自动部署/</id>
     <published>2017-04-14T06:39:50.000Z</published>
-    <updated>2017-04-14T06:58:56.000Z</updated>
+    <updated>2017-05-30T02:50:42.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p>通过gitlab-ci实现文件的自动部署</p>
 <h2 id="实现过程"><a href="#实现过程" class="headerlink" title="实现过程"></a>实现过程</h2><p>文档托管在gitlab上, 每次代码更新, 会自动出发gitlab-ci构建<br>在构建脚本中, 通过ssh 登录远程服务器执行git拉取文档的命令</p>
@@ -467,7 +475,9 @@
 <p>注意该证书的用户必须与ssh远程登录的用户一样, 例如我们的用户名是root</p>
 </blockquote>
 <h3 id="将公钥添加到gitlab上-以便于该用于可以拉取代码"><a href="#将公钥添加到gitlab上-以便于该用于可以拉取代码" class="headerlink" title="将公钥添加到gitlab上, 以便于该用于可以拉取代码"></a>将公钥添加到gitlab上, 以便于该用于可以拉取代码</h3><h3 id="在-CI-CD-Piplines中设置-Secret-Variables-包括-DEPLOY-SERVER-和-SSH-PRIVATE-KEY"><a href="#在-CI-CD-Piplines中设置-Secret-Variables-包括-DEPLOY-SERVER-和-SSH-PRIVATE-KEY" class="headerlink" title="在 CI/CD Piplines中设置 Secret Variables, 包括 DEPLOY_SERVER 和 SSH_PRIVATE_KEY"></a>在 <code>CI/CD Piplines</code>中设置 <code>Secret Variables</code>, 包括 <code>DEPLOY_SERVER</code> 和 <code>SSH_PRIVATE_KEY</code></h3><p>其中 <code>SSH_PRIVATE_KEY</code> 的内容是服务器上的私钥, <code>DEPLOY_SERVER</code> 是服务器地址</p>
-<h3 id="编写-gitlab-ci-yml-文件-注入密钥-通过ssh执行远程命令"><a href="#编写-gitlab-ci-yml-文件-注入密钥-通过ssh执行远程命令" class="headerlink" title="编写 .gitlab-ci.yml 文件, 注入密钥, 通过ssh执行远程命令"></a>编写 <code>.gitlab-ci.yml</code> 文件, 注入密钥, 通过<code>ssh</code>执行远程命令</h3><h2 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h2> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"># 使用alpine镜像, 该镜像很少,只有几兆</div><div class="line">image: alpine</div><div class="line">stages:</div><div class="line">    - deploy</div><div class="line">before_script:</div><div class="line">    # 预先装 ssh-agent</div><div class="line">    - &apos;which ssh-agent || ( apk update &amp;&amp; apk add openssh-client)&apos;</div><div class="line">    # 启动服务</div><div class="line">    - eval $(ssh-agent -s)</div><div class="line">    # 将私钥写入deploy.key 文件</div><div class="line">    - echo &quot;$SSH_PRIVATE_KEY&quot; &gt; deploy.key</div><div class="line">    # 配置较低权限</div><div class="line">    - chmod 0600 deploy.key</div><div class="line">    # 注入密钥</div><div class="line">    - ssh-add deploy.key</div><div class="line">    - mkdir -p ~/.ssh    </div><div class="line">    - &apos;[[ -f /.dockerenv ]] &amp;&amp; echo -e &quot;Host *\n\tStrictHostKeyChecking no\n\n&quot; &gt; ~/.ssh/config&apos;</div><div class="line"> </div><div class="line">release-doc:</div><div class="line">    stage: deploy</div><div class="line">    script:</div><div class="line">        # 连接远程服务器并执行拉取代码的命令</div><div class="line">        - ssh root@$DEPLOY_SERVER &quot;cd /path/to/wiki &amp;&amp; git pull origin master&quot;</div><div class="line">    only:</div><div class="line">        - master</div><div class="line">    environment:</div><div class="line">        name: production</div><div class="line">        url: http://$DEPLOY_SERVER</div></pre></td></tr></table></figure>]]></content>
+<h3 id="编写-gitlab-ci-yml-文件-注入密钥-通过ssh执行远程命令"><a href="#编写-gitlab-ci-yml-文件-注入密钥-通过ssh执行远程命令" class="headerlink" title="编写 .gitlab-ci.yml 文件, 注入密钥, 通过ssh执行远程命令"></a>编写 <code>.gitlab-ci.yml</code> 文件, 注入密钥, 通过<code>ssh</code>执行远程命令</h3><h2 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h2> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"># 使用alpine镜像, 该镜像很少,只有几兆</div><div class="line">image: alpine</div><div class="line">stages:</div><div class="line">    - deploy</div><div class="line">before_script:</div><div class="line">    # 预先装 ssh-agent</div><div class="line">    - &apos;which ssh-agent || ( apk update &amp;&amp; apk add openssh-client)&apos;</div><div class="line">    # 启动服务</div><div class="line">    - eval $(ssh-agent -s)</div><div class="line">    # 将私钥写入deploy.key 文件</div><div class="line">    - echo &quot;$SSH_PRIVATE_KEY&quot; &gt; deploy.key</div><div class="line">    # 配置较低权限</div><div class="line">    - chmod 0600 deploy.key</div><div class="line">    # 注入密钥</div><div class="line">    - ssh-add deploy.key</div><div class="line">    - mkdir -p ~/.ssh    </div><div class="line">    - &apos;[[ -f /.dockerenv ]] &amp;&amp; echo -e &quot;Host *\n\tStrictHostKeyChecking no\n\n&quot; &gt; ~/.ssh/config&apos;</div><div class="line"> </div><div class="line">release-doc:</div><div class="line">    stage: deploy</div><div class="line">    script:</div><div class="line">        # 连接远程服务器并执行拉取代码的命令</div><div class="line">        - ssh root@$DEPLOY_SERVER &quot;cd /path/to/wiki &amp;&amp; git pull origin master&quot;</div><div class="line">    only:</div><div class="line">        - master</div><div class="line">    environment:</div><div class="line">        name: production</div><div class="line">        url: http://$DEPLOY_SERVER</div></pre></td></tr></table></figure>
+<h2 id="相关文档"><a href="#相关文档" class="headerlink" title="相关文档"></a>相关文档</h2><p><a href="https://docs.gitlab.com/ce/ci/ssh_keys/README.html" target="_blank" rel="external">Using SSH keys</a></p>
+]]></content>
     
     <summary type="html">
     
