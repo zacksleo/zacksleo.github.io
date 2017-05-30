@@ -10,7 +10,7 @@
     
     <title>
         
-            PHP编码规范 | 
+            GitLab-CI实现自动化测试 | 
         
         zacks&#39;s blog
     </title>
@@ -48,7 +48,7 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="https://zacksleo.github.io">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="PHP编码规范 | zacks&#39;s blog">
+    <meta property="og:title" content="GitLab-CI实现自动化测试 | zacks&#39;s blog">
     <meta property="og:description" content="zacks&#39;s blog, Web Develop, PHP, Yii2, Docker, AI, JavaScript">
 
     <!--[if lte IE 9]>
@@ -226,7 +226,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#PSR"><span class="post-toc-number">1.</span> <span class="post-toc-text">PSR</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#PSR-1-基础编码规范"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">PSR-1 基础编码规范</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#PSR-2-编码风格规范"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">PSR-2 编码风格规范</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#PSR-3-志接口规范"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">PSR-3 志接口规范</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#PSR-4-自动加载规范"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">PSR-4 自动加载规范</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#PSR-6-缓存接口规范"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">PSR-6 缓存接口规范</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#PSR-7-HTTP-消息接口规范"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">PSR-7 HTTP 消息接口规范</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#注意"><span class="post-toc-number">2.</span> <span class="post-toc-text">注意</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#GitLab-Ci实现自动化测试"><span class="post-toc-number">1.</span> <span class="post-toc-text">GitLab-Ci实现自动化测试</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#配置环境"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">配置环境</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#配置服务"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">配置服务</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#声明依赖工件"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">声明依赖工件</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#配置测试脚本"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">配置测试脚本</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#测试失败如何处理"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">测试失败如何处理</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#完整的例子"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">完整的例子</span></a></li></ol></li></ol>
 
         <!--
         <li class="mdl-menu__item">
@@ -262,7 +262,7 @@
         
     
             <p class="article-headline-p">
-                PHP编码规范
+                GitLab-CI实现自动化测试
             </p>
         </div>
 
@@ -281,7 +281,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>zacksleo</strong>
-        <span>3月 07, 2017</span>
+        <span>5月 30, 2017</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -321,7 +321,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=PHP编码规范&url=https://zacksleo.github.io//2017/03/07/PHP编码规范/index.html&pic=&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=GitLab-CI实现自动化测试&url=https://zacksleo.github.io//2017/05/30/GitLab-CI实现自动化测试/index.html&pic=&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -330,7 +330,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=PHP编码规范&url=https://zacksleo.github.io//2017/03/07/PHP编码规范/index.html&via=zacksleo" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=GitLab-CI实现自动化测试&url=https://zacksleo.github.io//2017/05/30/GitLab-CI实现自动化测试/index.html&via=zacksleo" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Twitter
             </li>
@@ -339,7 +339,7 @@
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=https://zacksleo.github.io//2017/03/07/PHP编码规范/index.html" target="_blank">
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=https://zacksleo.github.io//2017/05/30/GitLab-CI实现自动化测试/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Facebook
             </li>
@@ -348,7 +348,7 @@
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=https://zacksleo.github.io//2017/03/07/PHP编码规范/index.html" target="_blank">
+        <a class="post_share-link" href="https://plus.google.com/share?url=https://zacksleo.github.io//2017/05/30/GitLab-CI实现自动化测试/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Google+
             </li>
@@ -372,13 +372,53 @@
                 <!-- Post Content -->
                 <div id="post-content" class="markdown-Github mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h2 id="PSR"><a href="#PSR" class="headerlink" title="PSR"></a>PSR</h2><blockquote>
-<p>PSR 是 PHP Standard Recommendations 的简写，由 PHP FIG 组织制定的 PHP 规范，是 PHP 开发的实践标准。</p>
+        <h1 id="GitLab-Ci实现自动化测试"><a href="#GitLab-Ci实现自动化测试" class="headerlink" title="GitLab-Ci实现自动化测试"></a>GitLab-Ci实现自动化测试</h1><blockquote>
+<p>持续集成的目的，就是让产品可以快速迭代，同时还能保持高质量。它的核心措施是，代码集成到主干之前，必须通过自动化测试。只要有一个测试用例失败，就不能集成。</p>
 </blockquote>
-<p><strong>PHP编码遵循PSR的建议</strong></p>
-<p>主要包括以下几个方面:</p>
-<h3 id="PSR-1-基础编码规范"><a href="#PSR-1-基础编码规范" class="headerlink" title="PSR-1 基础编码规范"></a>PSR-1 基础编码规范</h3><h3 id="PSR-2-编码风格规范"><a href="#PSR-2-编码风格规范" class="headerlink" title="PSR-2 编码风格规范"></a>PSR-2 编码风格规范</h3><h3 id="PSR-3-志接口规范"><a href="#PSR-3-志接口规范" class="headerlink" title="PSR-3 志接口规范"></a>PSR-3 志接口规范</h3><h3 id="PSR-4-自动加载规范"><a href="#PSR-4-自动加载规范" class="headerlink" title="PSR-4 自动加载规范"></a>PSR-4 自动加载规范</h3><h3 id="PSR-6-缓存接口规范"><a href="#PSR-6-缓存接口规范" class="headerlink" title="PSR-6 缓存接口规范"></a>PSR-6 缓存接口规范</h3><h3 id="PSR-7-HTTP-消息接口规范"><a href="#PSR-7-HTTP-消息接口规范" class="headerlink" title="PSR-7 HTTP 消息接口规范"></a>PSR-7 HTTP 消息接口规范</h3><p>详细内容见: <a href="https://psr.phphub.org/" target="_blank" rel="external">https://psr.phphub.org/</a> 和 <a href="https://github.com/PizzaLiu/PHP-FIG" target="_blank" rel="external">https://github.com/PizzaLiu/PHP-FIG</a></p>
-<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>代码审核时将遵守以上规范</p>
+<p>使用自动化测试, 可以提高软件的质量和可靠性, 今早发现其中的缺陷和问题, 以便即时改正.</p>
+<h2 id="配置环境"><a href="#配置环境" class="headerlink" title="配置环境"></a>配置环境</h2><p>首先需要一个满足运行自动化测试的Docker镜像, 以便后面运行测试代码, 例如:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">image: zacksleo/docker-composer:develop</div></pre></td></tr></table></figure>
+<h2 id="配置服务"><a href="#配置服务" class="headerlink" title="配置服务"></a>配置服务</h2><p>某些测试需要使用额外的服务, 如数据库、缓存服务器等等, 并通过<code>variables</code>配置服务中的一些变量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">services:</div><div class="line">    - mysql:5.6</div><div class="line">    - redis:latest</div><div class="line">variables:</div><div class="line">    MYSQL_ROOT_PASSWORD: root</div><div class="line">    MYSQL_DATABASE: web</div><div class="line">    MYSQL_USER: web</div><div class="line">    MYSQL_PASSWORD: web</div></pre></td></tr></table></figure>
+<h2 id="声明依赖工件"><a href="#声明依赖工件" class="headerlink" title="声明依赖工件"></a>声明依赖工件</h2><p>一般在测试前要进行准备过程, 如安装依赖库或者编译等, 可将上述过程生成的的文件, 通过依赖声明, 传递过来, 这样可以比避免重复执行相关过程.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">installing-dependencies:</div><div class="line">    stage: prepare</div><div class="line">    script:</div><div class="line">        - composer install --prefer-dist --optimize-autoloader -n --no-interaction -v --no-suggest</div><div class="line">        - composer dump-autoload --optimize</div><div class="line">    artifacts:</div><div class="line">        name: &quot;vendor&quot;</div><div class="line">        untracked: true</div><div class="line">        expire_in: 60 mins</div><div class="line">        paths:</div><div class="line">            - $CI_PROJECT_DIR/vendor</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">dependencies:</div><div class="line">    - installing-dependencies</div></pre></td></tr></table></figure>
+<h2 id="配置测试脚本"><a href="#配置测试脚本" class="headerlink" title="配置测试脚本"></a>配置测试脚本</h2><p>  假定你已经在本地编写好了测试代码, 并且可以本地运行, 那么就可以通过调整和适配, 让测试可以在GitLab-CI中自动化执行, 在下面的例子中,</p>
+<p>  测试代码位于<code>tests</code>目录,并且<code>.env</code>中配置了一些环境变量, 该文件的作用是为了让不同环境使用不同的一组变量, 如数据库、接口地址、账号等等，<br>  这样做的目录可以尽量少的变更代码，保持核心代码的稳定性和适应能力， 通过<code>php -S</code> 启动了一个本地接口服务, 最后调用api测试, 对所有接口<br>  进行测试</p>
+<p>  在下面的例子中, 还声明了<code>coverage</code>, 这个用来说明代码测试覆盖率的取得方法, 因为在测试中会将覆盖率输出(<code>--coverage --no-colors</code>),<br>  GitLab-CI 通过正则匹配输出内容, 读取到覆盖率, 从而显示在项目徽标处  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">dependencies:</div><div class="line">    - installing-dependencies</div><div class="line">script:</div><div class="line">    - cp tests/.env .env</div><div class="line">    - ./yii migrate/up --interactive=0</div><div class="line">    - php -S localhost:80 --docroot api/tests &amp;&gt;/dev/null&amp;</div><div class="line">    - ./vendor/bin/codecept run api -c tests --coverage --no-colors</div><div class="line"></div><div class="line">    coverage: &apos;/^\s*Lines:\s*\d+.\d+\%/&apos;</div></pre></td></tr></table></figure>
+<h2 id="测试失败如何处理"><a href="#测试失败如何处理" class="headerlink" title="测试失败如何处理"></a>测试失败如何处理</h2><p>  当测试失败后, 除了查看<code>Pipline</code>中的任务输出, 我们还应当详细查看测试中的相关日志, 下面这里, 将需要查看的文件生成工件, 在GitLab中下载,<br>  然后可以在本地详细查看, <code>when</code>说明了仅在测试失败时, 才生成工件</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">artifacts:</div><div class="line">    name: &quot;debug&quot;</div><div class="line">    when: on_failure</div><div class="line">    untracked: true</div><div class="line">    expire_in: 60 mins</div><div class="line">    paths:</div><div class="line">        - $CI_PROJECT_DIR/api/runtime</div><div class="line">        - $CI_PROJECT_DIR/tests/_output</div></pre></td></tr></table></figure>
+<h2 id="完整的例子"><a href="#完整的例子" class="headerlink" title="完整的例子"></a>完整的例子</h2><p>下面是一个完整的API自动化测试的盒子</p>
+<pre><code>api-test:
+    stage: testing
+    services:
+        - mysql:5.6
+        - redis:latest
+    variables:
+        MYSQL_ROOT_PASSWORD: root
+        MYSQL_DATABASE: database
+        MYSQL_USER: user
+        MYSQL_PASSWORD: password
+    dependencies:
+        - installing-dependencies
+    script:
+        - cp tests/.env .env
+        - ./yii migrate/up --interactive=0
+        - php -S localhost:80 --docroot api/tests &amp;&gt;/dev/null&amp;
+        - ./vendor/bin/codecept run api -c tests
+    artifacts:
+        name: &quot;debug&quot;
+        when: on_failure
+        untracked: true
+        expire_in: 60 mins
+        paths:
+            - $CI_PROJECT_DIR/api/runtime
+            - $CI_PROJECT_DIR/tests/_output
+    only:
+        - develop
+        - master
+</code></pre><p>关于持续集成完整的项目, 请查看 <a href="https://github.com/zacksleo/yii2-app-advanced" target="_blank" rel="external">zacksleo/yii2-app-advanced</a> 项目</p>
 
     
 
@@ -401,21 +441,13 @@
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2017/03/07/JavaScript编码规范/" id="post_nav-newer" class="prev-content">
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_back</i>
-            </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            新篇
-        </a>
-    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
     
-        <a href="/2017/03/07/RESTful接口规范/" id="post_nav-older" class="next-content">
+        <a href="/2017/05/21/从PHP到Python-两种编程语言的异同/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
