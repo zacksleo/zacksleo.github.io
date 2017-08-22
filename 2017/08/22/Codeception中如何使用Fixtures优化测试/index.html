@@ -10,7 +10,7 @@
     
     <title>
         
-            Yii2项目自动向GitLab上报Bug | 
+            Codeception中如何使用Fixtures优化测试 | 
         
         zacks&#39;s blog
     </title>
@@ -48,7 +48,7 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="https://zacksleo.github.io">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Yii2项目自动向GitLab上报Bug | zacks&#39;s blog">
+    <meta property="og:title" content="Codeception中如何使用Fixtures优化测试 | zacks&#39;s blog">
     <meta property="og:description" content="zacks&#39;s blog, Web Develop, PHP, Yii2, Docker, AI, JavaScript">
 
     <!--[if lte IE 9]>
@@ -226,7 +226,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Yii2-项目自动上报Bug"><span class="post-toc-number">1.</span> <span class="post-toc-text">Yii2 项目自动上报Bug</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#原理"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">原理</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#步骤"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">步骤</span></a></li></ol></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#简介"><span class="post-toc-number">1.</span> <span class="post-toc-text">简介</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#配置"><span class="post-toc-number">2.</span> <span class="post-toc-text">配置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#定义一个Fixtures"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">定义一个Fixtures</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#设置填充数据"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">设置填充数据</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用"><span class="post-toc-number">3.</span> <span class="post-toc-text">使用</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参考资料"><span class="post-toc-number">4.</span> <span class="post-toc-text">参考资料</span></a></li></ol>
 
         <!--
         <li class="mdl-menu__item">
@@ -262,7 +262,7 @@
         
     
             <p class="article-headline-p">
-                Yii2项目自动向GitLab上报Bug
+                Codeception中如何使用Fixtures优化测试
             </p>
         </div>
 
@@ -281,7 +281,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>zacksleo</strong>
-        <span>10月 12, 2016</span>
+        <span>8月 22, 2017</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -321,7 +321,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Yii2项目自动向GitLab上报Bug&url=https://zacksleo.github.io//2016/10/12/Yii2项目自动向GitLab上报Bug/index.html&pic=&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Codeception中如何使用Fixtures优化测试&url=https://zacksleo.github.io//2017/08/22/Codeception中如何使用Fixtures优化测试/index.html&pic=&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -330,7 +330,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Yii2项目自动向GitLab上报Bug&url=https://zacksleo.github.io//2016/10/12/Yii2项目自动向GitLab上报Bug/index.html&via=zacksleo" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Codeception中如何使用Fixtures优化测试&url=https://zacksleo.github.io//2017/08/22/Codeception中如何使用Fixtures优化测试/index.html&via=zacksleo" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Twitter
             </li>
@@ -339,7 +339,7 @@
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=https://zacksleo.github.io//2016/10/12/Yii2项目自动向GitLab上报Bug/index.html" target="_blank">
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=https://zacksleo.github.io//2017/08/22/Codeception中如何使用Fixtures优化测试/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Facebook
             </li>
@@ -348,7 +348,7 @@
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=https://zacksleo.github.io//2016/10/12/Yii2项目自动向GitLab上报Bug/index.html" target="_blank">
+        <a class="post_share-link" href="https://plus.google.com/share?url=https://zacksleo.github.io//2017/08/22/Codeception中如何使用Fixtures优化测试/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Google+
             </li>
@@ -372,16 +372,22 @@
                 <!-- Post Content -->
                 <div id="post-content" class="markdown-Github mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h1 id="Yii2-项目自动上报Bug"><a href="#Yii2-项目自动上报Bug" class="headerlink" title="Yii2 项目自动上报Bug"></a>Yii2 项目自动上报Bug</h1><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>  yii2在程序报错时, 会执行指定action, 通过重写ErrorAction, 实现Bug自动提交至GitLab的issue</p>
-<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ul>
-<li>配置SiteController中的actions方法</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">public function actions()</div><div class="line">&#123;</div><div class="line">    return [</div><div class="line">        &apos;error&apos; =&gt; [</div><div class="line">            &apos;class&apos; =&gt; &apos;app\helpers\web\ErrorAction&apos;,</div><div class="line">        ],</div><div class="line">    ];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>重写ErrorAction, 位于app\helpers\web\ErrorAction, 并修改常量URL,PRIVATE_TOKEN和ASSIGNEE_ID</li>
-</ul>
-<p>如何获取project_id和assignee_id见 <a href="https://zacksleo.github.io/2017/10/12/CI%E9%A1%B9%E7%9B%AE%E8%87%AA%E5%8A%A8%E5%90%91GitLab%E4%B8%8A%E6%8A%A5Bug/">WIKI</a> </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div></pre></td><td class="code"><pre><div class="line">namespace app\helpers\web;</div><div class="line"></div><div class="line">use yii;</div><div class="line">use yii\base\Action;</div><div class="line">use yii\base\Exception;</div><div class="line">use yii\base\UserException;</div><div class="line">use yii\web\HttpException;</div><div class="line"></div><div class="line">class ErrorAction extends \yii\web\ErrorAction</div><div class="line">&#123;</div><div class="line">    const URL = &apos;&#123;host&#125;/api/v3/projects/&#123;project_id&#125;/issues&apos;; // host替换为主机地址, project_id为项目id</div><div class="line">    const PRIVATE_TOKEN = &apos;tD3Te-ctECeGwEHH7-ec&apos;;</div><div class="line">    const ASSIGNEE_ID = 21;</div><div class="line"></div><div class="line">    public function run()</div><div class="line">    &#123;</div><div class="line">        if (($exception = Yii::$app-&gt;getErrorHandler()-&gt;exception) === null) &#123;</div><div class="line">            $exception = new HttpException(404, Yii::t(&apos;yii&apos;, &apos;Page not found.&apos;));</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        if ($exception instanceof HttpException) &#123;</div><div class="line">            $code = $exception-&gt;statusCode;</div><div class="line">        &#125; else &#123;</div><div class="line">            $code = $exception-&gt;getCode();</div><div class="line">        &#125;</div><div class="line">        if ($exception instanceof Exception) &#123;</div><div class="line">            $name = $exception-&gt;getName();</div><div class="line">        &#125; else &#123;</div><div class="line">            $name = $this-&gt;defaultName ?: Yii::t(&apos;yii&apos;, &apos;Error&apos;);</div><div class="line">        &#125;</div><div class="line">        $preCode = $code;</div><div class="line">        if ($code) &#123;</div><div class="line">            $name .= &quot; (#$code)&quot;;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        if ($exception instanceof UserException) &#123;</div><div class="line">            $message = $exception-&gt;getMessage();</div><div class="line">        &#125; else &#123;</div><div class="line">            $message = $this-&gt;defaultMessage ?: Yii::t(&apos;yii&apos;, &apos;An internal server error occurred.&apos;);</div><div class="line">        &#125;</div><div class="line">        if ($code != &apos;404&apos;) &#123;</div><div class="line">            //自动向GitLab提交Bug</div><div class="line">            $url = self::URL;</div><div class="line">            $ch = curl_init();</div><div class="line">            curl_setopt($ch, CURLOPT_URL, $url);</div><div class="line">            curl_setopt($ch, CURLOPT_HTTPHEADER, array(</div><div class="line">                &apos;PRIVATE-TOKEN: &apos;.self::PRIVATE_TOKEN,</div><div class="line">            ));</div><div class="line"></div><div class="line">            curl_setopt($ch, CURLOPT_POSTFIELDS, [</div><div class="line">                &apos;title&apos; =&gt; $message,</div><div class="line">                &apos;description&apos; =&gt; &apos;&lt;blockquote&gt;&apos;.Yii::$app-&gt;request-&gt;getReferrer().&apos;&lt;/blockquote&gt;&apos;. &apos;&lt;blockquote&gt;&apos; . Yii::$app-&gt;request-&gt;absoluteUrl . &apos;&lt;/blockquote&gt;&lt;br/&gt;&lt;pre&gt;&apos; . $exception . &apos;&lt;/pre&gt;&apos;,</div><div class="line">                &apos;assignee_id&apos; =&gt; self::ASSIGNEE_ID,</div><div class="line">                &apos;labels&apos; =&gt; &apos;捕虫器,&apos; . $name,</div><div class="line">            ]);</div><div class="line">            curl_setopt($ch, CURLOPT_HEADER, false);</div><div class="line">            // Pass TRUE or 1 if you want to wait for and catch the response against the request made</div><div class="line">            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);</div><div class="line">            // For Debug mode; shows up any error encountered during the operation</div><div class="line">            curl_setopt($ch, CURLOPT_VERBOSE, false);</div><div class="line">            $response = curl_exec($ch);</div><div class="line">            curl_close($ch);</div><div class="line">        &#125;</div><div class="line">        if (Yii::$app-&gt;getRequest()-&gt;getIsAjax() || strpos($_SERVER[&apos;REQUEST_URI&apos;], &apos;/api/&apos;) &gt; -1) &#123;</div><div class="line">            \Yii::$app-&gt;response-&gt;format = \yii\web\Response::FORMAT_JSON;</div><div class="line">            return [</div><div class="line">                &apos;message&apos; =&gt; $message</div><div class="line">            ];</div><div class="line">        &#125; else &#123;</div><div class="line">            return $this-&gt;controller-&gt;render($this-&gt;view ?: $this-&gt;id, [</div><div class="line">                &apos;name&apos; =&gt; $name,</div><div class="line">                &apos;message&apos; =&gt; $message,</div><div class="line">                &apos;exception&apos; =&gt; $exception,</div><div class="line">            ]);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Fixtures 是测试中非常重要的一部分。主要目的是建立一个固定/已知的环境状态以确保 测试可重复并且按照预期方式运行。</p>
+<p>简答说就是Fixtures提供一种预填充数据的方式，即在测试前需要准备好哪些数据，以便测试可以正常展开，不受其他测试的影响。</p>
+<p>一个 Fixture 可能依赖于其他的 Fixtures ，所定义的依赖会自动加载。</p>
+<p>该方法相比于<code>dump.sql</code>的填充方法更加灵活, 且不会出去填充的冲突问题.</p>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><h3 id="定义一个Fixtures"><a href="#定义一个Fixtures" class="headerlink" title="定义一个Fixtures"></a>定义一个Fixtures</h3><p>通过继成<code>yii\test\ActiveFixture</code>, 并声明 <code>modelClass</code> 来定义一个Fixtures , <code>depends</code>为要依赖的Fixtures, 可选。</p>
+<p>Fixtures通常放置于<code>tests</code>目录中的<code>fixtures</code>目录下.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line">namespace tests\fixtures;</div><div class="line"></div><div class="line">use yii\test\ActiveFixture;</div><div class="line"></div><div class="line">class UserFixture extends ActiveFixture</div><div class="line">&#123;</div><div class="line">    public $modelClass = &apos;app\models\User&apos;;</div><div class="line">    public $depends = [&apos;app\tests\fixtures\UserFixture&apos;];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="设置填充数据"><a href="#设置填充数据" class="headerlink" title="设置填充数据"></a>设置填充数据</h3><p>在 <code>@tests/fixtures/data</code>目录中,每个Fixtures添加一个数据文档</p>
+<p>在位置 <code>@tests/fixtures/data/user.php</code> 中, 设置以下数据, 为要被插入用户表中的数据文件, <code>user1</code>和<code>user2</code>为别名, 方便调用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line">return [</div><div class="line">    &apos;user1&apos; =&gt; [</div><div class="line">        &apos;username&apos; =&gt; &apos;lmayert&apos;,</div><div class="line">        &apos;email&apos; =&gt; &apos;strosin.vernice@jerde.com&apos;,</div><div class="line">        &apos;auth_key&apos; =&gt; &apos;K3nF70it7tzNsHddEiq0BZ0i-OU8S3xV&apos;,</div><div class="line">        &apos;password&apos; =&gt; &apos;$2y$13$WSyE5hHsG1rWN2jV8LRHzubilrCLI5Ev/iK0r3jRuwQEs2ldRu.a2&apos;,</div><div class="line">    ],</div><div class="line">    &apos;user2&apos; =&gt; [</div><div class="line">        &apos;username&apos; =&gt; &apos;napoleon69&apos;,</div><div class="line">        &apos;email&apos; =&gt; &apos;aileen.barton@heaneyschumm.com&apos;,</div><div class="line">        &apos;auth_key&apos; =&gt; &apos;dZlXsVnIDgIzFgX4EduAqkEPuphhOh9q&apos;,</div><div class="line">        &apos;password&apos; =&gt; &apos;$2y$13$kkgpvJ8lnjKo8RuoR30ay.RjDf15bMcHIF7Vz1zz/6viYG5xJExU6&apos;,</div><div class="line">    ],</div><div class="line">];</div></pre></td></tr></table></figure>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>在测试用例中, 通过定义<code>_fixtures方法</code>, 声明需要使用的Fixtures及填充数据文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">/**</div><div class="line"> * @var \UnitTester</div><div class="line"> */</div><div class="line">protected $tester;</div><div class="line"></div><div class="line">public function _fixtures()</div><div class="line">&#123;</div><div class="line">    return [</div><div class="line">        &apos;users&apos; =&gt; [</div><div class="line">            &apos;class&apos; =&gt; UserFixture::className(),</div><div class="line">            &apos;dataFile&apos; =&gt; &apos;@tests/fixtures/data/user.php&apos;</div><div class="line">        ],</div><div class="line">        &apos;profiles&apos; =&gt; [</div><div class="line">            &apos;class&apos; =&gt; UserProfileFixture::className(),</div><div class="line">            &apos;dataFile&apos; =&gt; &apos;@tests/fixtures/data/user_profile.php&apos;</div><div class="line">        ],</div><div class="line">    ];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>通过如下方法, 可以获取插入的记录, 返回值为该Fixture类中对应的<code>modelClass</code>的一个实例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$user = $this-&gt;tester-&gt;grabFixture(&apos;users&apos;, &apos;default&apos;);</div></pre></td></tr></table></figure>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="http://www.yiichina.com/doc/guide/2.0/test-fixtures" target="_blank" rel="external">Fixtures</a><br><a href="http://www.yiiframework.com/doc-2.0/guide-test-fixtures.html" target="_blank" rel="external">Fixtures</a></p>
+
     
 
     
@@ -403,21 +409,13 @@
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2016/10/12/CodeIgniter项目自动向GitLab上报Bug/" id="post_nav-newer" class="prev-content">
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_back</i>
-            </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            新篇
-        </a>
-    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
     
-        <a href="/2016/10/12/PHP解析提取Markdown中的标题来生成TOC/" id="post_nav-older" class="next-content">
+        <a href="/2017/07/20/使用Composer创建公共类库/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
