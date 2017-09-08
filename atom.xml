@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://zacksleo.github.io/"/>
-  <updated>2017-08-23T01:59:25.000Z</updated>
+  <updated>2017-09-08T04:53:21.000Z</updated>
   <id>https://zacksleo.github.io/</id>
   
   <author>
@@ -14,6 +14,87 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>GitLab-CI使用Rsync进行持续部署</title>
+    <link href="https://zacksleo.github.io/2017/09/08/GitLab-CI%E4%BD%BF%E7%94%A8Rsync%E8%BF%9B%E8%A1%8C%E6%8C%81%E7%BB%AD%E9%83%A8%E7%BD%B2/"/>
+    <id>https://zacksleo.github.io/2017/09/08/GitLab-CI使用Rsync进行持续部署/</id>
+    <published>2017-09-08T04:52:37.000Z</published>
+    <updated>2017-09-08T04:53:21.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>rsync命令是一个远程数据同步工具</p>
+<h2 id="主要参数"><a href="#主要参数" class="headerlink" title="主要参数"></a>主要参数</h2><ul>
+<li><p>-r 递归目录</p>
+</li>
+<li><p>-t 保留修改时间</p>
+</li>
+<li><p>-v 详细日志</p>
+</li>
+<li><p>-h 输出数字以人类可读的格式</p>
+</li>
+<li><p>-z 在传输过程中压缩文件数据</p>
+</li>
+<li><p>-e 指定要使用的远程shell, 注意该过程需要注入SSH</p>
+</li>
+</ul>
+<h2 id="配置参考"><a href="#配置参考" class="headerlink" title="配置参考"></a>配置参考</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">before_script:</div><div class="line">    - &apos;which ssh-agent || ( apk update &amp;&amp; apk add openssh-client)&apos;</div><div class="line">    - apk add rsync</div><div class="line">    - eval $(ssh-agent -s)</div><div class="line">    - echo &quot;$SSH_PRIVATE_KEY&quot; &gt; ~/deploy.key</div><div class="line">    - chmod 0600 ~/deploy.key</div><div class="line">    - ssh-add ~/deploy.key</div><div class="line">    - mkdir -p ~/.ssh</div><div class="line">    - &apos;[[ -f /.dockerenv ]] &amp;&amp; echo -e &quot;Host *\n\tStrictHostKeyChecking no\n\n&quot; &gt; ~/.ssh/config&apos;</div><div class="line">    - export APP_ENV=testing</div><div class="line"></div><div class="line"></div><div class="line">testing-server:</div><div class="line">    stage: deploy</div><div class="line">    image: alpine</div><div class="line">    variables:</div><div class="line">        DEPLOY_SERVER: &quot;server-host&quot;</div><div class="line">    script:</div><div class="line">        - cd deploy</div><div class="line">        - rsync -rtvhze ssh . root@$DEPLOY_SERVER:/data/$CI_PROJECT_NAME --stats</div></pre></td></tr></table></figure>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="https://download.samba.org/pub/rsync/rsync.html" target="_blank" rel="external">官方文档</a></li>
+<li>[[GitLabCI通过ssh进行自动部署]]</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h2&gt;&lt;p&gt;rsync命令是一个远程数据同步工具&lt;/p&gt;
+&lt;h2 id=&quot;主要参数&quot;&gt;&lt;a href=&quot;#主要参数&quot; class=&quot;headerlink
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>GitLab-CI使用LFTP进行持续部署</title>
+    <link href="https://zacksleo.github.io/2017/09/08/GitLab-CI%E4%BD%BF%E7%94%A8LFTP%E8%BF%9B%E8%A1%8C%E6%8C%81%E7%BB%AD%E9%83%A8%E7%BD%B2/"/>
+    <id>https://zacksleo.github.io/2017/09/08/GitLab-CI使用LFTP进行持续部署/</id>
+    <published>2017-09-08T04:52:22.000Z</published>
+    <updated>2017-09-08T04:53:46.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>LFTP是一款FTP客户端软件, 支持 FTP 、 FTPS 、 HTTP 、 HTTPS 、 SFTP 、 FXP 等多种文件传输协议。</p>
+<p>本文介绍如何使用 LFTP 将文件同步到远程FTP服务器上, 从而实现自动部署</p>
+<h2 id="mirror-命令及主要参数"><a href="#mirror-命令及主要参数" class="headerlink" title="mirror 命令及主要参数"></a>mirror 命令及主要参数</h2><ul>
+<li><p>-R  反向传输, 因为是上传(put)到远程服务器, 所以使用该参数 (默认是从远程服务器下载)</p>
+</li>
+<li><p>-L  下载符号链接作为文件, 主要处理文件软链接的问题</p>
+</li>
+<li><p>-v  详细输出日志</p>
+</li>
+<li><p>-n  只传输新文件 (相同的旧文件不会传输, 大大提升了传输效率)</p>
+</li>
+<li><p>–transfer-all  传输所有文件, 不论新旧</p>
+</li>
+<li><p>–parallel  同时传输的文件数</p>
+</li>
+<li><p>–file  本地文件</p>
+</li>
+<li><p>–target-directory 目标目录</p>
+</li>
+</ul>
+<h2 id="配置参考"><a href="#配置参考" class="headerlink" title="配置参考"></a>配置参考</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">    stage: deploy</div><div class="line">    dependencies:</div><div class="line">        - installing-dependencies</div><div class="line">    script:</div><div class="line">        - apk add lftp</div><div class="line">        # 只上传新文件</div><div class="line">        - lftp -c &quot;set ftp:ssl-allow no; open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_HOST; cd /wwwroot; mirror -RLnv ./ /wwwroot --ignore-time --parallel=50 --exclude-glob .git* --exclude .git/&quot;</div><div class="line">        # 指定目录覆盖上传 (强制更新)</div><div class="line">        - lftp -c &quot;set ftp:ssl-allow no; open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_HOST;mirror -RLv ./vendor/composer /wwwroot/vendor/composer --ignore-time --transfer-all --parallel=50 --exclude-glob .git* --exclude .git/&quot;</div><div class="line">        # 单独上传autoload文件(强制更新)</div><div class="line">        - lftp -c &quot;set ftp:ssl-allow no; open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_HOST;mirror -Rv --file=vendor/autoload.php --target-directory=/wwwroot/vendor/ --transfer-all&quot;</div><div class="line">    only:</div><div class="line">        - master</div></pre></td></tr></table></figure>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="https://lftp.yar.ru/" target="_blank" rel="external">LFTP官网</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h2&gt;&lt;p&gt;LFTP是一款FTP客户端软件, 支持 FTP 、 FTPS 、 HTTP 、 HTTPS 、 SFTP 、 FXP 等多种文件传输协议。&lt;
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>使用phpmd对PHP项目进行静态代码分析</title>
@@ -822,146 +903,6 @@
     <summary type="html">
     
       &lt;h2 id=&quot;Google-JavaScript-编码规范指南&quot;&gt;&lt;a href=&quot;#Google-JavaScript-编码规范指南&quot; class=&quot;headerlink&quot; title=&quot;Google JavaScript 编码规范指南&quot;&gt;&lt;/a&gt;Google JavaScr
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>PHP编码规范</title>
-    <link href="https://zacksleo.github.io/2017/03/07/PHP%E7%BC%96%E7%A0%81%E8%A7%84%E8%8C%83/"/>
-    <id>https://zacksleo.github.io/2017/03/07/PHP编码规范/</id>
-    <published>2017-03-07T15:16:16.000Z</published>
-    <updated>2017-03-08T01:27:53.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="PSR"><a href="#PSR" class="headerlink" title="PSR"></a>PSR</h2><blockquote>
-<p>PSR 是 PHP Standard Recommendations 的简写，由 PHP FIG 组织制定的 PHP 规范，是 PHP 开发的实践标准。</p>
-</blockquote>
-<p><strong>PHP编码遵循PSR的建议</strong></p>
-<p>主要包括以下几个方面:</p>
-<h3 id="PSR-1-基础编码规范"><a href="#PSR-1-基础编码规范" class="headerlink" title="PSR-1 基础编码规范"></a>PSR-1 基础编码规范</h3><h3 id="PSR-2-编码风格规范"><a href="#PSR-2-编码风格规范" class="headerlink" title="PSR-2 编码风格规范"></a>PSR-2 编码风格规范</h3><h3 id="PSR-3-志接口规范"><a href="#PSR-3-志接口规范" class="headerlink" title="PSR-3 志接口规范"></a>PSR-3 志接口规范</h3><h3 id="PSR-4-自动加载规范"><a href="#PSR-4-自动加载规范" class="headerlink" title="PSR-4 自动加载规范"></a>PSR-4 自动加载规范</h3><h3 id="PSR-6-缓存接口规范"><a href="#PSR-6-缓存接口规范" class="headerlink" title="PSR-6 缓存接口规范"></a>PSR-6 缓存接口规范</h3><h3 id="PSR-7-HTTP-消息接口规范"><a href="#PSR-7-HTTP-消息接口规范" class="headerlink" title="PSR-7 HTTP 消息接口规范"></a>PSR-7 HTTP 消息接口规范</h3><p>详细内容见: <a href="https://psr.phphub.org/" target="_blank" rel="external">https://psr.phphub.org/</a> 和 <a href="https://github.com/PizzaLiu/PHP-FIG" target="_blank" rel="external">https://github.com/PizzaLiu/PHP-FIG</a></p>
-<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>代码审核时将遵守以上规范</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;PSR&quot;&gt;&lt;a href=&quot;#PSR&quot; class=&quot;headerlink&quot; title=&quot;PSR&quot;&gt;&lt;/a&gt;PSR&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;PSR 是 PHP Standard Recommendations 的简写，由 PHP FIG 组织制定
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>RESTful接口规范</title>
-    <link href="https://zacksleo.github.io/2017/03/07/RESTful%E6%8E%A5%E5%8F%A3%E8%A7%84%E8%8C%83/"/>
-    <id>https://zacksleo.github.io/2017/03/07/RESTful接口规范/</id>
-    <published>2017-03-07T15:14:35.000Z</published>
-    <updated>2017-03-07T15:14:47.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="RESTful接口规范-1-0"><a href="#RESTful接口规范-1-0" class="headerlink" title="RESTful接口规范 [1.0]"></a>RESTful接口规范 [1.0]</h1><p><a href="./history">更新日志</a></p>
-<h2 id="协议"><a href="#协议" class="headerlink" title="协议"></a>协议</h2><p>   使用https协议</p>
-<h2 id="版本"><a href="#版本" class="headerlink" title="版本"></a>版本</h2><p>   将API的版本号放入URL，如<a href="https://mqtt.lianluo.com/v1/" target="_blank" rel="external">https://mqtt.lianluo.com/v1/</a></p>
-<h2 id="HTTP动词"><a href="#HTTP动词" class="headerlink" title="HTTP动词"></a>HTTP动词</h2><ul>
-<li>GET（SELECT）：从服务器取出资源（一项或多项）。</li>
-<li>POST（CREATE）：在服务器新建一个资源。</li>
-<li>PUT（UPDATE）：在服务器更新资源（客户端提供改变后的完整资源）。</li>
-<li>PATCH（UPDATE）：在服务器更新资源（客户端提供改变的属性）。</li>
-<li>DELETE（DELETE）：从服务器删除资源。</li>
-</ul>
-<h2 id="路径"><a href="#路径" class="headerlink" title="路径"></a>路径</h2><ul>
-<li>每个网址代表一种资源（resource），所以网址中不能有动词，只能有名词</li>
-<li>URI中的名词表示资源集合，使用复数形式。</li>
-<li>不用大写；</li>
-<li>用中杠-不用下杠_；</li>
-<li>参数列表要encode；</li>
-</ul>
-<h2 id="状态码"><a href="#状态码" class="headerlink" title="状态码"></a>状态码</h2><ul>
-<li>200 OK - [GET]：服务器成功返回用户请求的数据，该操作是幂等的（Idempotent）。</li>
-<li>201 CREATED - [POST/PUT/PATCH]：用户新建或修改数据成功。</li>
-<li>202 Accepted - [*]：表示一个请求已经进入后台排队（异步任务）</li>
-<li>204 NO CONTENT - [DELETE]：用户删除数据成功。</li>
-<li>400 INVALID REQUEST - [POST/PUT/PATCH]：用户发出的请求有错误，服务器没有进行新建或修改数据的操作，该操作是幂等的。</li>
-<li>401 Unauthorized - [*]：表示用户没有权限（令牌、用户名、密码错误）。</li>
-<li>403 Forbidden - [*] 表示用户得到授权（与401错误相对），但是访问是被禁止的。</li>
-<li>404 NOT FOUND - [*]：用户发出的请求针对的是不存在的记录，服务器没有进行操作，该操作是幂等的。</li>
-<li>406 Not Acceptable - [GET]：用户请求的格式不可得（比如用户请求JSON格式，但是只有XML格式）。</li>
-<li>410 Gone -[GET]：用户请求的资源被永久删除，且不会再得到的。</li>
-<li>422 Unprocesable entity - [POST/PUT/PATCH] 当创建一个对象时，发生一个验证错误。</li>
-<li>500 INTERNAL SERVER ERROR - [*]：服务器发生错误，用户将无法判断发出的请求是否成功。</li>
-</ul>
-<p>&gt;<br>1xx范围的状态码是保留给底层HTTP功能使用的，并且估计在你的职业生涯里面也用不着手动发送这样一个状态码出来。<br>2xx范围的状态码是保留给成功消息使用的，你尽可能的确保服务器总发送这些状态码给用户。<br>3xx范围的状态码是保留给重定向用的。大多数的API不会太常使用这类状态码，但是在新的超媒体样式的API中会使用更多一些。<br>4xx范围的状态码是保留给客户端错误用的。例如，客户端提供了一些错误的数据或请求了不存在的内容。这些请求应该是幂等的，不会改变任何服务器的状态。<br>5xx范围的状态码是保留给服务器端错误用的。这些错误常常是从底层的函数抛出来的，并且开发人员也通常没法处理。发送这类状态码的目的是确保客户端能得到一些响应。收到5xx响应后，客户端没办法知道服务器端的状态，所以这类状态码是要尽可能的避免。</p>
-<h2 id="国际化"><a href="#国际化" class="headerlink" title="国际化"></a>国际化</h2><ol>
-<li>在HTTP请求Header中, 携带Accept-Language字段, 表明当前要使用的语言, 如</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Accept-Language: zh-CN</div></pre></td></tr></table></figure>
-<p>以下是常用语言:</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">字段</th>
-<th>值</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">Accept-Language</td>
-<td>zh-CN</td>
-<td>简体中文</td>
-</tr>
-<tr>
-<td style="text-align:center">Accept-Language</td>
-<td>zh-TW</td>
-<td>繁体中文</td>
-</tr>
-<tr>
-<td style="text-align:center">Accept-Language</td>
-<td>en-US</td>
-<td>英文</td>
-</tr>
-</tbody>
-</table>
-<h2 id="处理错误"><a href="#处理错误" class="headerlink" title="处理错误"></a>处理错误</h2><p>所有错误可以在HTTP请求处, 统一处理</p>
-<ol>
-<li>发生错误时, 状态码大于400; 只有当状态码位于200-300区间时, 请求才成功</li>
-<li>状态码为400,  404, 403, 406, 500 返回的JSON信息中, message为错误信息,如</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">   &quot;message&quot;:&quot;验证失败_内容不能为空&quot;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>3.状态码为 422(验证失败)时返回的信息为一个对象数组, 每个对象中包含field和message信息, 如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">[</div><div class="line">    &#123;</div><div class="line">        &quot;field&quot;: &quot;verify_code&quot;,</div><div class="line">        &quot;message&quot;: &quot;短信验证码不正确&quot;</div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">        &quot;field&quot;: &quot;phone&quot;,</div><div class="line">        &quot;message&quot;: &quot;手机号已被注册&quot;</div><div class="line">    &#125;</div><div class="line">]</div></pre></td></tr></table></figure></p>
-<h2 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h2><p>所有API请求结果的Header中携带X-Debug-Tag参数,该参数为请求的id<br>调试时, 打开/debug网址, 然后使用debug-tag过滤找到相应的请求</p>
-<h2 id="返回结果"><a href="#返回结果" class="headerlink" title="返回结果"></a>返回结果</h2><ul>
-<li>GET /collection：返回资源对象的列表（数组）</li>
-<li>GET /collection/resource：返回单个资源对象</li>
-<li>POST /collection：返回新生成的资源对象</li>
-<li>PUT /collection/resource：返回完整的资源对象</li>
-<li>PATCH /collection/resource：返回完整的资源对象</li>
-<li>DELETE /collection/resource：返回一个空文档</li>
-</ul>
-<h2 id="数据格式"><a href="#数据格式" class="headerlink" title="数据格式"></a>数据格式</h2><p>只用以下常见的3种body format：</p>
-<ul>
-<li>Content-Type: application/json (API使用的格式)</li>
-<li>Content-Type: application/x-www-form-urlencoded (浏览器POST表单用的格式)</li>
-</ul>
-<h2 id="API携带超链接"><a href="#API携带超链接" class="headerlink" title="API携带超链接"></a>API携带超链接</h2><p>返回结果中提供链接，连向其他API方法，使得用户不查文档，也知道下一步应该做什么</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&#123;&quot;link&quot;: &#123;</div><div class="line">  &quot;rel&quot;:   &quot;collection https://www.example.com/zoos&quot;,</div><div class="line">  &quot;href&quot;:  &quot;https://api.example.com/zoos&quot;,</div><div class="line">  &quot;title&quot;: &quot;List of zoos&quot;,</div><div class="line">  &quot;type&quot;:  &quot;application/vnd.yourformat+json&quot;</div><div class="line">&#125;&#125;</div></pre></td></tr></table></figure>
-<p>上面代码表示，文档中有一个link属性，用户读取这个属性就知道下一步该调用什么API了。rel表示这个API与当前网址的关系（collection关系，并给出该collection的网址），href表示API的路径，title表示API的标题，type表示返回类型。</p>
-<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ul>
-<li><a href="http://www.ruanyifeng.com/blog/2014/05/restful_api.html" target="_blank" rel="external">RESTful API设计指南-阮一峰</a></li>
-<li><a href="http://novoland.github.io/%E8%AE%BE%E8%AE%A1/2015/08/17/Restful%20API%20%E7%9A%84%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83.html" target="_blank" rel="external">Restful API的设计规范</a></li>
-<li><a href="http://www.cnblogs.com/moonz-wu/p/4211626.html" target="_blank" rel="external">好RESTful API的设计原则</a></li>
-<li><a href="https://github.com/cocoajin/http-api-design-ZH_CN" target="_blank" rel="external">HTTP API 设计指南</a></li>
-<li><a href="https://github.com/bolasblack/http-api-guide" target="_blank" rel="external">HTTP 接口设计指北</a></li>
-<li><a href="https://github.com/aisuhua/restful-api-design-references" target="_blank" rel="external">RESTful API 设计参考文献列表</a></li>
-<li><a href="http://blog.jobbole.com/41233/" target="_blank" rel="external">RESTful API 设计最佳实践</a></li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;RESTful接口规范-1-0&quot;&gt;&lt;a href=&quot;#RESTful接口规范-1-0&quot; class=&quot;headerlink&quot; title=&quot;RESTful接口规范 [1.0]&quot;&gt;&lt;/a&gt;RESTful接口规范 [1.0]&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;./his
     
     </summary>
     
