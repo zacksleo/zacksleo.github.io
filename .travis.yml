@@ -20,9 +20,9 @@ before_install:
   - git config --global push.default simple
 script:
   - git clone https://${GH_TOKEN}@github.com/zacksleo/zacksleo.github.io.git .deploy_git -v
-  - git remote add -f docs https://${GH_TOKEN}@github.com/zacksleo/zacksleo.github.io.git -b docs
+  - git remote add -f docs https://${GH_TOKEN}@github.com/zacksleo/zacksleo.github.io.git
   - git fetch docs
-  - git subtree add --prefix=source/docs docs --squash
+  - git subtree add --prefix=source/docs docs docs --squash
   - npm install --no-optional
 after_script:
   - hexo generate && gulp
