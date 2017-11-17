@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.2.6 -->
+
+    <!-- Title -->
+    
+    <title>
+        
+            PHP常见面试材料 | 
+        
+        zacks&#39;s blog
+    </title>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" sizes="192x192" href="/img/favicon.png">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!-- Meta & Info -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="zacksleo">
+    <meta name="description" content="zacks&#39;s blog, Web Develop, PHP, Yii2, Docker, AI, JavaScript">
+    <meta name="keywords" content="null">
+
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="zacks&#39;s blog">
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="https://zacksleo.github.io">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="PHP常见面试材料 | zacks&#39;s blog">
+    <meta property="og:description" content="zacks&#39;s blog, Web Develop, PHP, Yii2, Docker, AI, JavaScript">
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import CSS -->
+    <link rel="stylesheet" href="/css/material.min.css">
+    <link rel="stylesheet" href="/css/style.min.css">
+    <!-- Config CSS -->
+
+
+<!-- Other Styles -->
+<style>
+    body, html {
+        font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    }
+
+    a {
+        color: #00838F;
+    }
+
+    .mdl-card__media,
+    #search-label,
+    #search-form-label:after,
+    #scheme-Paradox .hot_tags-count,
+    #scheme-Paradox .sidebar_archives-count,
+    #scheme-Paradox .sidebar-colored .sidebar-header,
+    #scheme-Paradox .sidebar-colored .sidebar-badge{
+        background-color: #0097A7 !important;
+    }
+
+    /* Sidebar User Drop Down Menu Text Color */
+    #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+    #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+        color: #0097A7 !important;
+    }
+
+    #post_entry-right-info,
+    .sidebar-colored .sidebar-nav li:hover > a,
+    .sidebar-colored .sidebar-nav li:hover > a i,
+    .sidebar-colored .sidebar-nav li > a:hover,
+    .sidebar-colored .sidebar-nav li > a:hover i,
+    .sidebar-colored .sidebar-nav li > a:focus i,
+    .sidebar-colored .sidebar-nav > .open > a,
+    .sidebar-colored .sidebar-nav > .open > a:hover,
+    .sidebar-colored .sidebar-nav > .open > a:focus,
+    #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+        color: #0097A7 !important;
+    }
+
+    .toTop {
+        background: #757575 !important;
+    }
+
+    .material-layout .material-post>.material-nav,
+    .material-layout .material-index>.material-nav,
+    .material-nav a {
+        color: #757575;
+    }
+
+    #scheme-Paradox .MD-burger-layer {
+        background-color: #757575;
+    }
+
+    #scheme-Paradox #post-toc-trigger-btn {
+        color: #757575;
+    }
+
+    .post-toc a:hover {
+        color: #00838F;
+        text-decoration: underline;
+    }
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+        body{
+            background-color: #F5F5F5;
+        }
+
+        /* blog_info bottom background */
+        #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+            background-color: #fff;
+        }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+        .fade {
+            transition: all 800ms linear;
+            -webkit-transform: translate3d(0,0,0);
+            -moz-transform: translate3d(0,0,0);
+            -ms-transform: translate3d(0,0,0);
+            -o-transform: translate3d(0,0,0);
+            transform: translate3d(0,0,0);
+            opacity: 1;
+        }
+
+        .fade.out{
+            opacity: 0;
+        }
+    </style>
+
+
+    <script src="/js/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="/css/highlight/solarized-white.css">
+
+    <!-- UC Browser Compatible-->
+    <script>
+        var agent = navigator.userAgent.toLowerCase();
+        if(agent.indexOf('ucbrowser')>0) {
+            document.write('<link rel="stylesheet" href="/css/uc.css">');
+            alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+        }
+    </script>
+
+    <!-- Custom Head -->
+    
+</head>
+
+
+    
+        <body id="scheme-Paradox">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#常见面试内容"><span class="post-toc-number">1.</span> <span class="post-toc-text">常见面试内容</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#技术线（偏深度）："><span class="post-toc-number">1.1.</span> <span class="post-toc-text">技术线（偏深度）：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#写出一下各段代码的输出结果："><span class="post-toc-number">1.2.</span> <span class="post-toc-text">写出一下各段代码的输出结果：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#数据库"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">数据库</span></a></li></ol></li></ol>
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script>
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').css('background-image', 'url(' + '/img/random/material-' + randomNum + '.png' + ')');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                PHP常见面试材料
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.jpg" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>zacksleo</strong>
+        <span>5月 29, 2016</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/php-面试材料/">php 面试材料</a>
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=PHP常见面试材料&url=https://zacksleo.github.io//2016/05/29/PHP常见面试材料/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=PHP常见面试材料&url=https://zacksleo.github.io//2016/05/29/PHP常见面试材料/index.html&via=zacksleo" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=https://zacksleo.github.io//2016/05/29/PHP常见面试材料/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=https://zacksleo.github.io//2016/05/29/PHP常见面试材料/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="markdown-Github mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h2 id="常见面试内容"><a href="#常见面试内容" class="headerlink" title="常见面试内容"></a>常见面试内容</h2><h3 id="技术线（偏深度）："><a href="#技术线（偏深度）：" class="headerlink" title="技术线（偏深度）："></a>技术线（偏深度）：</h3><ul>
+<li><ol>
+<li>基础知识，比如数据结构，多线程，I/O，Http协议等</li>
+</ol>
+</li>
+<li><ol>
+<li>语言深度，比如PHP的运行机制，性能优化，APC（以及其原理等）</li>
+</ol>
+</li>
+<li><ol>
+<li>源码阅读，比如看过哪些框</li>
+</ol>
+</li>
+</ul>
+<hr>
+<h3 id="写出一下各段代码的输出结果："><a href="#写出一下各段代码的输出结果：" class="headerlink" title="写出一下各段代码的输出结果："></a>写出一下各段代码的输出结果：</h3><ul>
+<li><p>1.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$a = (1 &lt; &lt; 0);</span><br><span class="line">$b = (1 &lt; &lt; $a);</span><br><span class="line">$c = (1 &lt; &lt; $b);</span><br><span class="line">echo ($c</span><br><span class="line"></span><br><span class="line">$b) &lt; &lt; 2 * $a</span><br><span class="line">$a;</span><br></pre></td></tr></table></figure>
+</li>
+<li><ol>
+<li><code>echo &#39;1&#39;.print(2)+3;</code></li>
+</ol>
+</li>
+<li><p>3</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$a = 0x01;</span><br><span class="line">$b = 0x02;</span><br><span class="line">echo $a===$b &gt; &gt; $a;</span><br><span class="line"></span><br><span class="line">$foo = 5 + &apos;10 things&apos;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><ol>
+<li><code>print (196*100) !== (double)1960;</code></li>
+</ol>
+</li>
+<li><ol>
+<li><code>echo 0500</code></li>
+</ol>
+</li>
+<li><ol>
+<li><code>$a = 0; echo ~$a;</code></li>
+</ol>
+</li>
+</ul>
+<hr>
+<h3 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h3><ul>
+<li><ol>
+<li>解释一下SQL注入的原理及危害，假设这里有一个不严谨的登陆程序，如何利用SQL注入进入。</li>
+</ol>
+</li>
+<li><ol>
+<li>解释一下跨站脚本的原理及危害，假设这里有一个不严谨的留言板，请构造跨站脚本范例。</li>
+</ol>
+</li>
+<li><ol>
+<li>解释一下数据索引为什么能提高效率。<br>场景 <code>SQL select * from user where area=&#39;广州‘ and sex=&#39;女‘ order by lastlogin desc limit 30;</code></li>
+</ol>
+</li>
+<li>4.如何设计索引？</li>
+<li>5.现在有10万条 IP地址对应区间表，格式为 <code>startip, endip, area</code><br>要求每个用户访问时都能快速分析出对方地区，请设计实现。数据库或不用数据库，要求每秒钟实现超过千次的查询。<br>基本上到这些对我而言就已经足够了，如果上面题目特别满意的，再附加</li>
+<li><ol>
+<li>现在有一个屏蔽词列表，大约几千个词；假设有一个繁忙的论坛社区，发帖量巨大，要求用户每发一篇文章就要快速分析是否包含屏蔽词，请给出程序设计。</li>
+</ol>
+</li>
+<li><ol>
+<li>一个游戏网站，有数千个小游戏，每个游戏要做积分排行，数据结构如下<br><code>gameid,userid,gamescore</code></li>
+</ol>
+</li>
+<li>8.每天数百万积分提交，数据量巨大，目前要求分库处理。<br>要求，可以基于每个游戏id可以查询积分排行榜。 可以基于用户id查询，比如自己或好友的历史游戏积分记录。请问如何处理分库。</li>
+</ul>
+<hr>
+<p>专业程度体现在对PHP的基本功的掌握和一些进阶知识的了解，比如对常见性能点、不同版本特性等，session的实现机制、include/require的差异，进一步的主流框架掌握程度、常见的性能优化策略、其作为脚本语言所具备的一些特性、如何规避PHP的性能劣势打造高并发的系统、如何保证高并发下的可用性和数据完整性等等。</p>
+<p>周边知识主要会包括MySQL性能优化、Memcache使用、Nginx/Apache的配合、对于PV/Click等数据收集和观察的方法等。 同样的，利用curl/socket操作http/tcp/udp，进一步的RPC调用（Web Service/JSONP/Thrift等）的前后端实现，进一步的包括更多的Cache策略（远近、一致性哈希、数据一致性）、对Sharding即分库分表之类操作的了解、更多NoSQL产品知识、各类常见协议细节、安全性（注入和旁注、跨站和CC）等。</p>
+<hr>
+<ul>
+<li>0.简单做一下自我介绍,? 然后谈一下近三年来你的得意之作?</li>
+<li>1.看看简历，会问一些过去做的项目的用户量、pv、吞吐量、相关难点和解决方法等</li>
+<li>2.数据库设计经验,为什么进行分表? 分库?<br>一般多少数据量开始分表? 分库? 分库分表的目的? 什么是数据库垂直拆分? 水平拆分? 分区等等？可以举例说明</li>
+<li>3.数据库优化有哪些? 分别需要注意什么?</li>
+<li>4.web开发方面会遇到哪些缓存? 分别如何优化?</li>
+<li>5.给你256M的内存,对10G的文件进行排序(文件每行1个数字),如何实现？<br>对10G的文件进行查找如何实现？<br>统计10G文件每个关键字出现的次数如何实现？</li>
+<li>6.假如你现在是12306火车订票的设计师,你该如何设计满足全国人民订票?</li>
+<li>7.假如有1亿用户的访问量,你的服务器架构是怎样的? 用户信息的存储方案如何设计?</li>
+<li>8.如果你是技术组长,所带团队任务进度无法完成你该如何解决?<br>如果在进度排满的前提下插入任务,你该如何保证总进度不延期?<br>如果有的工程师今天预定任务没有完成,你该如何解决?</li>
+<li>9.从你的经验方面谈一下如何构建高性能web站点? 需要哪些环节? 步骤? 每个步骤需要注意什么如何优化等?</li>
+<li>10.为什么要对数据库进行主从分离?</li>
+<li>11.如何处理多服务器共享session?</li>
+<li>12.一个10G的表,你用php程序统计某个字段出现的次数,思路是?</li>
+<li>13.会告诉你一个nginx日志例子,用你认为最佳的编程语言统计一下http响应时间超过1秒的前10个url?</li>
+<li>14.给你一个mysql配置文件,用你认为最佳的编程语言解析该文件?</li>
+<li>15.给你两个路径a和b,写一个算法或思路计算a和b差距几层并显示a和b的交集?</li>
+<li>16.给你一个url,在nginx配置一下rewrite指定到某个具体路径?</li>
+<li>17.一个php文件的解释过程是? 一般加速php有哪些? 提高php整体性能会用到哪些技术?</li>
+<li>18.session和cookie生存周期区别? 存储位置区别?</li>
+<li>19.require、include、require_once、include_once区别? 加载区别? 如果程序按需加载某个php文件你如何实现?</li>
+<li>20.chrome号称为多线程的,所以多线程和多进程的区别为?</li>
+<li>21.php在2011年底出现hash碰撞,hash碰撞原理为? 如何进行修复?</li>
+<li>22.web不安全因素有哪些? 分别如何防范?</li>
+<li>23.假如两个单链表相交,写一个最优算法计算交点位置,说思路也可以?</li>
+<li>24.假如你是技术组长? 如何提高团队效率?</li>
+<li>25.nginx负载均衡有哪些? 如果其中一台服务器挂掉,报警机制如何实现?</li>
+<li>26.不优化前提下,apache一般最大连接数为? nginx一般最大连接数为? mysql 每秒insert ? select ? update ? delete?</li>
+<li>27.mysql 数据类型有哪些 ? 分别占用多少存储空间 ?</li>
+<li>28.nginx设置缓存js、css、图片等信息,缓存的实现原理是?</li>
+<li>29.如何提高缓存命中率? 如何对缓存进行颗粒化?</li>
+<li>30.php的内存回收机制是?</li>
+<li><p>31.我的所有问题都问完了,你有什么问题问我没有？</p>
+</li>
+<li><p>32.请使用shell命令获取a文件的前10行与后10行的数据，将其放进b文件中。</p>
+</li>
+<li>33.如何设计安全的php程序，可以防止SQL攻击。</li>
+<li>34.这里有一个sql语句，select id from table where a=? order by b，请你就句子判断，建立索引，使其能够在innodb和myisam引擎下，查询效果都可以加快。</li>
+<li>35.有一天，突然有一个用户投诉，说网页打不开，你该如何进行排查？</li>
+<li>36.何对一个亿级数据的表按照一个没有索引的字段进行统计</li>
+</ul>
+<hr>
+<p>php实现扩展的机制</p>
+<p>全站消息系统</p>
+<p>消息队列</p>
+<p>PHP的数组为什么不按照索引遍历</p>
+<p><a href="http://blog.sina.com.cn/s/blog_60d07c3101010m2h.html" target="_blank" rel="noopener">http://blog.sina.com.cn/s/blog_60d07c3101010m2h.html</a></p>
+<p><a href="http://www.php-note.com/article/detail/546" target="_blank" rel="noopener">http://www.php-note.com/article/detail/546</a></p>
+<p><a href="http://my.oschina.net/u/574366/blog/64814" target="_blank" rel="noopener">http://my.oschina.net/u/574366/blog/64814</a></p>
+
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+
+
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2016/08/23/使用Docker安装Redmine/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2013/12/16/ThinkPHP结合使用PHPConsole向Chrome 控制台输出SQL/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.jpg" alt="zacksleo's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        zacksleo@email.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="#" target="_blank" title="Email Me">
+                        <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    <li id="sidebar-first-li">
+        <a href="/" target="_self">
+            <i class="material-icons sidebar-material-icons">home</i>
+            主页
+        </a>
+    </li>
+
+    <!-- I'm Feeling Lucky -->
+    <!--
+    <li class="dropdown">
+        <a href="" target="_self">
+            <i class="material-icons sidebar-material-icons">explore</i>
+             sidebar.imlucky
+        </a>
+    </li>
+    -->
+
+    <!-- Archives  -->
+    <li class="dropdown">
+        <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+            <i class="material-icons sidebar-material-icons">inbox</i>
+             归档
+            <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+            <li>
+            <a class="sidebar_archives-link" href="/archives/2017/10/">十月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/09/">九月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/08/">八月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/07/">七月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/05/">五月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/02/">二月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/12/">十二月 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/11/">十一月 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/10/">十月 2016<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/08/">八月 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/05/">五月 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2013/12/">十二月 2013<span class="sidebar_archives-count">1</span></a>
+        </ul>
+    </li>
+
+    <!-- Categories  -->
+    
+
+    <!-- Divider -->
+    <li class="divider"></li>
+
+
+    <!-- Pages  -->
+  	
+
+    <!-- Article Numebr  -->
+    <li>
+        <a href="/archives">
+            文章总数
+            <span class="sidebar-badge">32</span>
+        </a>
+    </li>
+</ul>
+
+
+        <!-- Sidebar Divider -->
+        <div class="sidebar-divider"></div>
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Theme Material -->
+<a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+        主题 - Material
+        <span class="sidebar-badge badge-circle">i</span>
+    </div>
+</a>
+
+<!-- Help & Support -->
+<!--
+<a href="mailto:hiviosey@gmail.com" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+    sidebar.help
+    <span class="mdl-button__ripple-container">
+      <span class="mdl-ripple"></span>
+    </span>
+  </div>
+</a>
+-->
+
+<!-- Feedback -->
+<!--
+<a href="https://github.com/viosey/hexo-theme-material/issues" target="_blank" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+         sidebar.feedback
+                    <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+</a>
+-->
+
+<!-- Abount Theme -->
+<!--
+<a href="https://blog.viosey.com/index.php/Material.html" target="_blank" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+         sidebar.about_theme
+        <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+</a>-->
+
+    </div>
+
+    <!-- Sidebar Sponsor -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+        <a href="https://twitter.com/zacksleo" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-twitter.png);">
+                <span class="visuallyhidden">Twitter</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Facebook -->
+    
+        <a href="https://www.facebook.com/zacksleo" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-facebook.png);">
+                <span class="visuallyhidden">Facebook</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Google + -->
+    
+        <a href="https://plus.google.com/+%E6%9D%8E%E4%BF%8A%E4%BC%9F" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-gplus.png);">
+                <span class="visuallyhidden">Google Plus</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Weibo -->
+    
+        <a href="http://weibo.com/zacksleo" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-weibo.png);">
+                <span class="visuallyhidden">Weibo</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="http://zacksleo.github.io/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-github.png);">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+        <a href="https://www.zhihu.com/people/zacksleo/activities" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-zhihu.png);">
+                <span class="visuallyhidden">Zhihu</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;
+            <script type="text/javascript">
+                var fd = new Date();
+                document.write(fd.getFullYear());
+            </script>
+            &nbsp;zacks's blog
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import File -->
+<script src="/js/highlight.min.js"></script>
+<script src="/js/js.min.js"></script>
+<script src="/js/nprogress.js"></script>
+
+<script type="text/javascript">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+
+    $('#nprogress .bar').css({
+        'background': '#FF4081'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #FF4081, 0 0 15px #FF4081'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#FF4081',
+        'border-left-color': '#FF4081'
+    });
+
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Swiftye -->
+
+
+<!-- Local Search-->
+
+
+<!-- Window Load-->
+<script>
+    $(window).load(function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+</script>
+
+<!-- MathJax Load-->
+
+
+                </main>
+            </div>
+        </body>
+    
+</html>
