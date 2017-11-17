@@ -1,0 +1,36 @@
+language: node_js
+node_js:
+    - '4'
+cache:
+  apt: true
+  directories:
+  - node_modules
+addons:
+  apt:
+    sources:
+        - ubuntu-toolchain-r-test
+    packages:
+        - g++-4.8
+  ssh_known_hosts: github.com
+env:
+- CXX=g++-4.8
+before_install:
+  - git config --global user.name "zacksleo"
+  - git config --global user.email "zacksleo@gmail.com"
+  - git config --global push.default simple
+script:
+  - git clone https://${GH_TOKEN}@github.com/zacksleo/zacksleo.github.io.git .deploy_git -v
+  - git remote add -f docs https://${GH_TOKEN}@github.com/zacksleo/zacksleo.github.io.git -b docs
+  - git fetch docs
+  - git subtree add --prefix=source/docs docs --squash
+  - npm install --no-optional
+after_script:
+  - hexo generate && gulp
+  - cp -r public/* .deploy_git/
+  - cd .deploy_git
+  - git add -A
+  - git commit -am "Auto deploy from Travis-CI."
+  - git push --force
+branches:
+  only:
+    - master
