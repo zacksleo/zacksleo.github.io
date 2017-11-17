@@ -33,4 +33,4 @@ after_script:
   - git push --force
 branches:
   only:
-    - master
+    - hexo
