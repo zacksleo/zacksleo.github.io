@@ -382,19 +382,19 @@
 </ol>
 </li>
 <li><p>2.如果需要, 安装python的requests模块和argparse模块</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">pip install requests</div><div class="line">easy_install argparse</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install requests</span><br><span class="line">easy_install argparse</span><br></pre></td></tr></table></figure>
 </li>
 <li><ol>
-<li>下载监听脚本<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl https://raw.githubusercontent.com/zacksleo/docker-hook/master/docker-hook &gt; /usr/local/bin/docker-hook; chmod +x /usr/local/bin/docker-hook</div></pre></td></tr></table></figure>
+<li>下载监听脚本<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl https://raw.githubusercontent.com/zacksleo/docker-hook/master/docker-hook &gt; /usr/local/bin/docker-hook; chmod +x /usr/local/bin/docker-hook</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 </li>
 <li><p>4.脚本安装完成后即可使用docker-hook 命令, 默认监听8555端口</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nohup docker-hook  -t  &lt;auth-token&gt;  -c  &lt;command&gt; &amp;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup docker-hook  -t  &lt;auth-token&gt;  -c  &lt;command&gt; &amp;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>其中, auth-token 替换为授权token, command替换为要执行的命令, 例如<br>auth-token为<code>auto-deploy-pushserver</code>,command为<code>sh /mnt/pushserver/deploy.sh</code><br>则执行命令: <code>docker-hook -t auto-deploy-pushserver -c sh /mnt/pushserver/deploy.sh</code></p>
-<p>deploy.sh的内容为:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push origin dev</div></pre></td></tr></table></figure></p>
+<p>deploy.sh的内容为:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin dev</span><br></pre></td></tr></table></figure></p>
 <p>nohup+&amp;命令为该进程设置为守护进程, 防止进程退出</p>
 <ul>
 <li><p>5.在GitLab的项目设置里面,设置Webhooks, 本例子中则为<code>139.198.9.141:8555/audo-deploy-pushserver</code></p>
@@ -404,9 +404,9 @@
 </ol>
 </li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nohup docker-hook  -t  &lt;auth-token2&gt;  -c  &lt;command2&gt;  --port 8556 &amp;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup docker-hook  -t  &lt;auth-token2&gt;  -c  &lt;command2&gt;  --port 8556 &amp;</span><br></pre></td></tr></table></figure>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li><a href="https://github.com/zacksleo/docker-hook" target="_blank" rel="external">docker-hook</a></li>
+<li><a href="https://github.com/zacksleo/docker-hook" target="_blank" rel="noopener">docker-hook</a></li>
 </ul>
 
     
@@ -536,7 +536,7 @@
         </a>
         <ul class="dropdown-menu">
             <li>
-            <a class="sidebar_archives-link" href="/archives/2017/10/">十月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/09/">九月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/08/">八月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/07/">七月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/05/">五月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">9</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/02/">二月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/12/">十二月 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/11/">十一月 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/10/">十月 2016<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/08/">八月 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/05/">五月 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2013/12/">十二月 2013<span class="sidebar_archives-count">1</span></a>
+            <a class="sidebar_archives-link" href="/archives/2017/11/">十一月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/10/">十月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/09/">九月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/08/">八月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/07/">七月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/05/">五月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/02/">二月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/12/">十二月 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/11/">十一月 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/10/">十月 2016<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/08/">八月 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/05/">五月 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2013/12/">十二月 2013<span class="sidebar_archives-count">1</span></a>
         </ul>
     </li>
 

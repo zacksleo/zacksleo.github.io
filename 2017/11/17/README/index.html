@@ -10,8 +10,6 @@
     
     <title>
         
-            使用phpmd对PHP项目进行静态代码分析 | 
-        
         zacks&#39;s blog
     </title>
 
@@ -48,7 +46,7 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="https://zacksleo.github.io">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="使用phpmd对PHP项目进行静态代码分析 | zacks&#39;s blog">
+    <meta property="og:title" content="zacks&#39;s blog">
     <meta property="og:description" content="zacks&#39;s blog, Web Develop, PHP, Yii2, Docker, AI, JavaScript">
 
     <!--[if lte IE 9]>
@@ -226,7 +224,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#简介"><span class="post-toc-number">1.</span> <span class="post-toc-text">简介</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用"><span class="post-toc-number">2.</span> <span class="post-toc-text">使用</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#GitLab-CI-集成"><span class="post-toc-number">3.</span> <span class="post-toc-text">GitLab-CI 集成</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参考资料"><span class="post-toc-number">4.</span> <span class="post-toc-text">参考资料</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#zacks’-Blog"><span class="post-toc-number">1.</span> <span class="post-toc-text">zacks’ Blog</span></a></li></ol>
 
         <!--
         <li class="mdl-menu__item">
@@ -262,7 +260,7 @@
         
     
             <p class="article-headline-p">
-                使用phpmd对PHP项目进行静态代码分析
+                
             </p>
         </div>
 
@@ -281,7 +279,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>zacksleo</strong>
-        <span>8月 23, 2017</span>
+        <span>11月 17, 2017</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -321,7 +319,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=使用phpmd对PHP项目进行静态代码分析&url=https://zacksleo.github.io//2017/08/23/使用phpmd对PHP项目进行静态代码分析/index.html&pic=&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=&url=https://zacksleo.github.io//2017/11/17/README/index.html&pic=&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -330,7 +328,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=使用phpmd对PHP项目进行静态代码分析&url=https://zacksleo.github.io//2017/08/23/使用phpmd对PHP项目进行静态代码分析/index.html&via=zacksleo" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=&url=https://zacksleo.github.io//2017/11/17/README/index.html&via=zacksleo" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Twitter
             </li>
@@ -339,7 +337,7 @@
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=https://zacksleo.github.io//2017/08/23/使用phpmd对PHP项目进行静态代码分析/index.html" target="_blank">
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=https://zacksleo.github.io//2017/11/17/README/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Facebook
             </li>
@@ -348,7 +346,7 @@
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=https://zacksleo.github.io//2017/08/23/使用phpmd对PHP项目进行静态代码分析/index.html" target="_blank">
+        <a class="post_share-link" href="https://plus.google.com/share?url=https://zacksleo.github.io//2017/11/17/README/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Google+
             </li>
@@ -372,20 +370,7 @@
                 <!-- Post Content -->
                 <div id="post-content" class="markdown-Github mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>PHPMD是与PMD类似的静态代码分析工具, 通过分析可以找出潜在的Bug或设计问题, 从而进一步提高代码质量</p>
-<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><ul>
-<li>首先通过composer安装phpmd库</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer require phpmd/phpmd --dev --prefer-dist</span><br></pre></td></tr></table></figure>
-<ul>
-<li>运行phpmd命令</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vendor/bin/phpmd ./ text phpmd.xml --suffixes php</span><br></pre></td></tr></table></figure>
-<p>phpmd.xml配置如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot;?&gt;</span><br><span class="line">&lt;ruleset name=&quot;PHPMD rule set for Yii 2&quot; xmlns=&quot;http://pmd.sf.net/ruleset/1.0.0&quot;</span><br><span class="line">         xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><br><span class="line">         xsi:schemaLocation=&quot;http://pmd.sf.net/ruleset/1.0.0 http://pmd.sf.net/ruleset_xml_schema.xsd&quot;</span><br><span class="line">         xsi:noNamespaceSchemaLocation=&quot;http://pmd.sf.net/ruleset_xml_schema.xsd&quot;&gt;</span><br><span class="line">    &lt;description&gt;Custom PHPMD settings for naming, cleancode and controversial rulesets&lt;/description&gt;</span><br><span class="line"></span><br><span class="line">    &lt;rule ref=&quot;rulesets/naming.xml/ConstructorWithNameAsEnclosingClass&quot; /&gt;</span><br><span class="line">    &lt;rule ref=&quot;rulesets/naming.xml/ConstantNamingConventions&quot; /&gt;</span><br><span class="line">    &lt;!-- Long variable names can help with better understanding so we increase the limit a bit --&gt;</span><br><span class="line">    &lt;rule ref=&quot;rulesets/naming.xml/LongVariable&quot;&gt;</span><br><span class="line">        &lt;properties&gt;</span><br><span class="line">            &lt;property name=&quot;maximum&quot; value=&quot;25&quot; /&gt;</span><br><span class="line">        &lt;/properties&gt;</span><br><span class="line">    &lt;/rule&gt;</span><br><span class="line">    &lt;!-- method names like up(), gc(), ... are okay. --&gt;</span><br><span class="line">    &lt;rule ref=&quot;rulesets/naming.xml/ShortMethodName&quot;&gt;</span><br><span class="line">        &lt;properties&gt;</span><br><span class="line">            &lt;property name=&quot;minimum&quot; value=&quot;2&quot; /&gt;</span><br><span class="line">        &lt;/properties&gt;</span><br><span class="line">    &lt;/rule&gt;</span><br><span class="line"></span><br><span class="line">    &lt;rule ref=&quot;rulesets/cleancode.xml&quot;&gt;</span><br><span class="line">        &lt;!-- else is not always bad. Disabling this as there is no way to differentiate between early return and normal else cases. --&gt;</span><br><span class="line">        &lt;exclude name=&quot;ElseExpression&quot; /&gt;</span><br><span class="line">        &lt;!-- Static access on Yii::$app is normal in Yii --&gt;</span><br><span class="line">        &lt;exclude name=&quot;StaticAccess&quot; /&gt;</span><br><span class="line">    &lt;/rule&gt;</span><br><span class="line"></span><br><span class="line">    &lt;rule ref=&quot;rulesets/controversial.xml/Superglobals&quot; /&gt;</span><br><span class="line">    &lt;rule ref=&quot;rulesets/controversial.xml/CamelCaseClassName&quot; /&gt;</span><br><span class="line">    &lt;rule ref=&quot;rulesets/controversial.xml/CamelCaseMethodName&quot; /&gt;</span><br><span class="line">    &lt;rule ref=&quot;rulesets/controversial.xml/CamelCaseParameterName&quot; /&gt;</span><br><span class="line">    &lt;rule ref=&quot;rulesets/controversial.xml/CamelCaseVariableName&quot; /&gt;</span><br><span class="line">    &lt;!-- allow private properties to start with $_ --&gt;</span><br><span class="line">    &lt;rule ref=&quot;rulesets/controversial.xml/CamelCasePropertyName&quot;&gt;</span><br><span class="line">        &lt;properties&gt;</span><br><span class="line">            &lt;property name=&quot;allow-underscore&quot; value=&quot;true&quot; /&gt;</span><br><span class="line">        &lt;/properties&gt;</span><br><span class="line">    &lt;/rule&gt;</span><br><span class="line">&lt;/ruleset&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="GitLab-CI-集成"><a href="#GitLab-CI-集成" class="headerlink" title="GitLab-CI 集成"></a>GitLab-CI 集成</h2><p>在.gitlab-ci.yml中添加一个任务, 用于执行静态分析, 一个典型的例子:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">phpmd:</span><br><span class="line">    stage: testing</span><br><span class="line">    dependencies:</span><br><span class="line">        - installing-dependencies</span><br><span class="line">    script:</span><br><span class="line">        - vendor/bin/phpmd api,backend,common,frontend,console text phpmd.xml --exclude console/migrations/ --suffixes php</span><br></pre></td></tr></table></figure>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://github.com/phpmd/phpmd" target="_blank" rel="noopener">Github</a></p>
+        <h1 id="zacks’-Blog"><a href="#zacks’-Blog" class="headerlink" title="zacks’ Blog"></a>zacks’ Blog</h1><p>首页: <a href="https://zacksleo.github.io/">https://zacksleo.github.io/</a></p>
 
     
 
@@ -408,21 +393,13 @@
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2017/09/08/GitLab-CI使用LFTP进行持续部署/" id="post_nav-newer" class="prev-content">
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_back</i>
-            </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            新篇
-        </a>
-    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
     
-        <a href="/2017/08/22/Codeception中如何使用Fixtures优化测试/" id="post_nav-older" class="next-content">
+        <a href="/2017/10/25/GitLab-CI使用CodeClimate评估代码质量/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">

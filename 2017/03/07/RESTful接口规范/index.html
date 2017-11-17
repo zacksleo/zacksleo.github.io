@@ -374,7 +374,7 @@
     
         <h1 id="RESTful接口规范-1-0"><a href="#RESTful接口规范-1-0" class="headerlink" title="RESTful接口规范 [1.0]"></a>RESTful接口规范 [1.0]</h1><p><a href="./history">更新日志</a></p>
 <h2 id="协议"><a href="#协议" class="headerlink" title="协议"></a>协议</h2><p>   使用https协议</p>
-<h2 id="版本"><a href="#版本" class="headerlink" title="版本"></a>版本</h2><p>   将API的版本号放入URL，如<a href="https://mqtt.lianluo.com/v1/" target="_blank" rel="external">https://mqtt.lianluo.com/v1/</a></p>
+<h2 id="版本"><a href="#版本" class="headerlink" title="版本"></a>版本</h2><p>   将API的版本号放入URL，如<a href="https://mqtt.lianluo.com/v1/" target="_blank" rel="noopener">https://mqtt.lianluo.com/v1/</a></p>
 <h2 id="HTTP动词"><a href="#HTTP动词" class="headerlink" title="HTTP动词"></a>HTTP动词</h2><ul>
 <li>GET（SELECT）：从服务器取出资源（一项或多项）。</li>
 <li>POST（CREATE）：在服务器新建一个资源。</li>
@@ -407,7 +407,7 @@
 <h2 id="国际化"><a href="#国际化" class="headerlink" title="国际化"></a>国际化</h2><ol>
 <li>在HTTP请求Header中, 携带Accept-Language字段, 表明当前要使用的语言, 如</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Accept-Language: zh-CN</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Accept-Language: zh-CN</span><br></pre></td></tr></table></figure>
 <p>以下是常用语言:</p>
 <table>
 <thead>
@@ -440,8 +440,8 @@
 <li>发生错误时, 状态码大于400; 只有当状态码位于200-300区间时, 请求才成功</li>
 <li>状态码为400,  404, 403, 406, 500 返回的JSON信息中, message为错误信息,如</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">   &quot;message&quot;:&quot;验证失败_内容不能为空&quot;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>3.状态码为 422(验证失败)时返回的信息为一个对象数组, 每个对象中包含field和message信息, 如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">[</div><div class="line">    &#123;</div><div class="line">        &quot;field&quot;: &quot;verify_code&quot;,</div><div class="line">        &quot;message&quot;: &quot;短信验证码不正确&quot;</div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">        &quot;field&quot;: &quot;phone&quot;,</div><div class="line">        &quot;message&quot;: &quot;手机号已被注册&quot;</div><div class="line">    &#125;</div><div class="line">]</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   &quot;message&quot;:&quot;验证失败_内容不能为空&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3.状态码为 422(验证失败)时返回的信息为一个对象数组, 每个对象中包含field和message信息, 如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">    &#123;</span><br><span class="line">        &quot;field&quot;: &quot;verify_code&quot;,</span><br><span class="line">        &quot;message&quot;: &quot;短信验证码不正确&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        &quot;field&quot;: &quot;phone&quot;,</span><br><span class="line">        &quot;message&quot;: &quot;手机号已被注册&quot;</span><br><span class="line">    &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
 <h2 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h2><p>所有API请求结果的Header中携带X-Debug-Tag参数,该参数为请求的id<br>调试时, 打开/debug网址, 然后使用debug-tag过滤找到相应的请求</p>
 <h2 id="返回结果"><a href="#返回结果" class="headerlink" title="返回结果"></a>返回结果</h2><ul>
 <li>GET /collection：返回资源对象的列表（数组）</li>
@@ -457,16 +457,16 @@
 <li>Content-Type: application/x-www-form-urlencoded (浏览器POST表单用的格式)</li>
 </ul>
 <h2 id="API携带超链接"><a href="#API携带超链接" class="headerlink" title="API携带超链接"></a>API携带超链接</h2><p>返回结果中提供链接，连向其他API方法，使得用户不查文档，也知道下一步应该做什么</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&#123;&quot;link&quot;: &#123;</div><div class="line">  &quot;rel&quot;:   &quot;collection https://www.example.com/zoos&quot;,</div><div class="line">  &quot;href&quot;:  &quot;https://api.example.com/zoos&quot;,</div><div class="line">  &quot;title&quot;: &quot;List of zoos&quot;,</div><div class="line">  &quot;type&quot;:  &quot;application/vnd.yourformat+json&quot;</div><div class="line">&#125;&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;link&quot;: &#123;</span><br><span class="line">  &quot;rel&quot;:   &quot;collection https://www.example.com/zoos&quot;,</span><br><span class="line">  &quot;href&quot;:  &quot;https://api.example.com/zoos&quot;,</span><br><span class="line">  &quot;title&quot;: &quot;List of zoos&quot;,</span><br><span class="line">  &quot;type&quot;:  &quot;application/vnd.yourformat+json&quot;</span><br><span class="line">&#125;&#125;</span><br></pre></td></tr></table></figure>
 <p>上面代码表示，文档中有一个link属性，用户读取这个属性就知道下一步该调用什么API了。rel表示这个API与当前网址的关系（collection关系，并给出该collection的网址），href表示API的路径，title表示API的标题，type表示返回类型。</p>
 <h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ul>
-<li><a href="http://www.ruanyifeng.com/blog/2014/05/restful_api.html" target="_blank" rel="external">RESTful API设计指南-阮一峰</a></li>
-<li><a href="http://novoland.github.io/%E8%AE%BE%E8%AE%A1/2015/08/17/Restful%20API%20%E7%9A%84%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83.html" target="_blank" rel="external">Restful API的设计规范</a></li>
-<li><a href="http://www.cnblogs.com/moonz-wu/p/4211626.html" target="_blank" rel="external">好RESTful API的设计原则</a></li>
-<li><a href="https://github.com/cocoajin/http-api-design-ZH_CN" target="_blank" rel="external">HTTP API 设计指南</a></li>
-<li><a href="https://github.com/bolasblack/http-api-guide" target="_blank" rel="external">HTTP 接口设计指北</a></li>
-<li><a href="https://github.com/aisuhua/restful-api-design-references" target="_blank" rel="external">RESTful API 设计参考文献列表</a></li>
-<li><a href="http://blog.jobbole.com/41233/" target="_blank" rel="external">RESTful API 设计最佳实践</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2014/05/restful_api.html" target="_blank" rel="noopener">RESTful API设计指南-阮一峰</a></li>
+<li><a href="http://novoland.github.io/%E8%AE%BE%E8%AE%A1/2015/08/17/Restful%20API%20%E7%9A%84%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83.html" target="_blank" rel="noopener">Restful API的设计规范</a></li>
+<li><a href="http://www.cnblogs.com/moonz-wu/p/4211626.html" target="_blank" rel="noopener">好RESTful API的设计原则</a></li>
+<li><a href="https://github.com/cocoajin/http-api-design-ZH_CN" target="_blank" rel="noopener">HTTP API 设计指南</a></li>
+<li><a href="https://github.com/bolasblack/http-api-guide" target="_blank" rel="noopener">HTTP 接口设计指北</a></li>
+<li><a href="https://github.com/aisuhua/restful-api-design-references" target="_blank" rel="noopener">RESTful API 设计参考文献列表</a></li>
+<li><a href="http://blog.jobbole.com/41233/" target="_blank" rel="noopener">RESTful API 设计最佳实践</a></li>
 </ul>
 
     
@@ -596,7 +596,7 @@
         </a>
         <ul class="dropdown-menu">
             <li>
-            <a class="sidebar_archives-link" href="/archives/2017/10/">十月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/09/">九月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/08/">八月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/07/">七月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/05/">五月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">9</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/02/">二月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/12/">十二月 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/11/">十一月 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/10/">十月 2016<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/08/">八月 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/05/">五月 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2013/12/">十二月 2013<span class="sidebar_archives-count">1</span></a>
+            <a class="sidebar_archives-link" href="/archives/2017/11/">十一月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/10/">十月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/09/">九月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/08/">八月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/07/">七月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/05/">五月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/02/">二月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/12/">十二月 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/11/">十一月 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/10/">十月 2016<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/08/">八月 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/05/">五月 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2013/12/">十二月 2013<span class="sidebar_archives-count">1</span></a>
         </ul>
     </li>
 
