@@ -3,3 +3,6 @@ script:
   - chmod +x ./deploy.sh
   - echo ${ACCESS_TOKEN}
   - ./deploy.sh && echo 'Completed.'
+branches:
+  only:
+    - docs
