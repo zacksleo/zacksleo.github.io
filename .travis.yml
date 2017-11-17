@@ -25,7 +25,7 @@ script:
   - git subtree add --prefix=source/docs docs docs --squash
   - npm install --no-optional
 after_script:
-  - hexo generate && gulp
+  - hexo generate
   - cp -r public/* .deploy_git/
   - cd .deploy_git
   - git add -A
