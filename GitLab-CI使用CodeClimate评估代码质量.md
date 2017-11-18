@@ -1,7 +1,7 @@
 ---
 title: GitLab-CI使用CodeClimate评估代码质量
 date: 2017-10-25 09:33:41
-tags:
+tags: [GitLab-CI,CodeClimate]
 ---
 
 ## 简介
