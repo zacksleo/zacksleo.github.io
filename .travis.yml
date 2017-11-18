@@ -24,6 +24,8 @@ script:
   - git fetch docs
   - git subtree add --prefix=source/_posts docs docs --squash
   - npm install --no-optional
+  - curl https://codeload.github.com/viosey/hexo-theme-material/tar.gz/1.5.0 -o themes/material.tar.gz && tar zxvf themes/material.tar.gz -C themes/
+  - mv themes/hexo-theme-material-* themes/material &&  mv themes/_config.yml themes/material/_config.yml
 after_script:
   - hexo generate
   - cp -r public/* .deploy_git/
