@@ -1,7 +1,7 @@
 ---
 title: ThinkPHP结合使用PHP Console向Chrome 控制台输出SQL
 date: 2013-12-16 15:16:39
-tags: ThinkPHP, Chrome, Console, SQL
+tags: [ThinkPHP, Chrome, Console, SQL]
 ---
 
 + 在Chrome中安装PHP Console 插件

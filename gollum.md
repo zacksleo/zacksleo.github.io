@@ -1,7 +1,7 @@
 layout: utf8
 title: gollum
 date: 2017-03-11 15:12:15
-tags:
+tags: [gollum]
 ---
 
 > incompatible character encodings: UTF-8 and ASCII-8BIT

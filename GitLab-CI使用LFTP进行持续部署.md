@@ -1,7 +1,7 @@
 ---
 title: GitLab-CI使用LFTP进行持续部署
 date: 2017-09-08 12:52:22
-tags:
+tags: [GitLab-CI]
 ---
 
 ## 简介

@@ -1,7 +1,7 @@
 ---
 title: RESTful接口规范
 date: 2017-03-07 23:14:35
-tags:
+tags: [REST, RESTful]
 ---
 
 # RESTful接口规范 [1.0]

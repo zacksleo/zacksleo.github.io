@@ -1,7 +1,7 @@
 ---
 title: PHP解析提取Markdown中的标题来生成TOC
 date: 2016-10-12 16:46:48
-tags:
+tags: [php, markdown, TOC]
 ---
 
 ## 原理

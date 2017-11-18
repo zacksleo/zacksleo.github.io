@@ -1,7 +1,7 @@
 ---
 title: GitLab-CI实现自动化测试
 date: 2017-05-30 10:37:33
-tags:
+tags: [GitLab-CI, 自动化测试]
 ---
 
 # GitLab-Ci实现自动化测试

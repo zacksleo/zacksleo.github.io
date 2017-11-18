@@ -1,7 +1,7 @@
 ---
 title: CentOS上安装docker-compose
 date: 2017-02-15 13:42:06
-tags:
+tags: [docker-composer]
 ---
 
 ## 问题 

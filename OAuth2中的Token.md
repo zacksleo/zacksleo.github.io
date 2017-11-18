@@ -1,7 +1,7 @@
 ---
 title: OAuth2中的Token
 date: 2017-03-09 15:32:21
-tags:
+tags: [OAuth2]
 ---
 
 ## 两个不同的Token

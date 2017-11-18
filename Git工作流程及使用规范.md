@@ -1,7 +1,7 @@
 ---
 title: Git工作流程及使用规范
 date: 2017-03-07 23:17:17
-tags:
+tags: [git]
 ---
 
 ## Git工作流程

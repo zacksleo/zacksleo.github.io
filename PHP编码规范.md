@@ -1,7 +1,7 @@
 ---
 title: PHP编码规范
 date: 2017-03-07 23:16:16
-tags:
+tags: [php]
 ---
 
 ## PSR

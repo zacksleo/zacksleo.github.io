@@ -1,7 +1,7 @@
 ---
 title: GitLab-CI使用Docker进行持续部署
 date: 2017-04-22 22:33:31
-tags:
+tags: [GitLab-CI, docker]
 ---
 
 Docker镜像通过私有仓库进行发布(如阿里云), 发布命令为:

@@ -1,7 +1,7 @@
 ---
 title: 如何编写GitLab-CI配置文件
 date: 2017-04-27 15:45:00
-tags:
+tags: [GitLab-CI]
 ---
 
 ## 创建文件

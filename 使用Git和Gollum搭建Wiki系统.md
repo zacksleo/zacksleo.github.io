@@ -1,7 +1,7 @@
 ---
 title: 使用Git和Gollum搭建Wiki系统
 date: 2017-03-13 01:22:09
-tags:
+tags: [git, gollum, wiki]
 ---
 
 [Gollum](https://github.com/gollum/gollum)是一个开源的Wiki系统, 该系统基于Git, 支持 Markdown, RDoc 等多种排版格式.

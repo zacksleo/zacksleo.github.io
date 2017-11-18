@@ -1,7 +1,7 @@
 ---
 title: 基于OAuth2的通用授权认证规则
 date: 2016-12-26 13:55:57
-tags: OAuth2, API认证
+tags: [OAuth2, API认证]
 ---
 
 ##  普遍适用的接口授权及认证规则

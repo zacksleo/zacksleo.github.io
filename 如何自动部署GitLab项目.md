@@ -1,7 +1,7 @@
 ---
 title: 如何自动部署GitLab项目
 date: 2016-11-04 14:01:48
-tags:
+tags: [GitLab]
 ---
 
 # 如何自动部署

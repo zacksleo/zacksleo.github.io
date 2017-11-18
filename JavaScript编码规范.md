@@ -1,7 +1,7 @@
 ---
 title: JavaScript编码规范
 date: 2017-03-07 23:16:38
-tags:
+tags: [javascript]
 ---
 ## Google JavaScript 编码规范指南 
 

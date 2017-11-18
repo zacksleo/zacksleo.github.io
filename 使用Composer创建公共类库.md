@@ -1,7 +1,7 @@
 ---
 title: 使用Composer创建公共类库
 date: 2017-07-20 09:33:12
-tags:
+tags: [php, composer]
 ---
 
 ## 概述

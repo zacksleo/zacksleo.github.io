@@ -1,7 +1,7 @@
 ---
 title: 使用phpmd对PHP项目进行静态代码分析
 date: 2017-08-23 09:48:23
-tags:
+tags: [php, phpmd]
 ---
 ## 简介
 

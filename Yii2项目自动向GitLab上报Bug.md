@@ -1,7 +1,7 @@
 ---
 title: Yii2项目自动向GitLab上报Bug
 date: 2016-10-12 17:47:20
-tags:
+tags: [Yii2, GitLab]
 ---
 
 # Yii2 项目自动上报Bug

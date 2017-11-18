@@ -1,7 +1,7 @@
 ---
 title: 使用Docker安装Redmine
 date: 2016-08-23 18:43:38
-tags:
+tags: [docker, redmine]
 ---
 
 ### 安装步骤
