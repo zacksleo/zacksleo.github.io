@@ -37,7 +37,7 @@
     
     <title>
         
-            PHP编码规范 | 
+            高并发优化初试 | 
         
         zacks&#39;s blog
     </title>
@@ -49,7 +49,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="zacksleo">
     <meta name="description" itemprop="description" content="zacks&#39;s blog, Web Develop, PHP, Yii2, Docker, AI, JavaScript">
-    <meta name="keywords" content="null,php">
+    <meta name="keywords" content="null,docker,高并发,nginx">
 
     <!-- Import lsloader -->
     <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(key){try{localStorage.removeItem(key)}catch(e){}};lsloader.setLS=function(key,val){try{localStorage.setItem(key,val)}catch(e){}};lsloader.getLS=function(key){var val="";try{val=localStorage.getItem(key)}catch(e){val=""}return val};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var keys=[];for(var i=0;i<localStorage.length;i++){keys.push(localStorage.key(i))}keys.forEach(function(key){var data=lsloader.getLS(key);if(window.oldVersion){var remove=window.oldVersion.reduce(function(p,c){return p||data.indexOf("/*"+c+"*/")!==-1},false);if(remove){lsloader.removeLS(key)}}})}catch(e){}};lsloader.clean();lsloader.load=function(jsname,jspath,cssonload,isJs){if(typeof cssonload==="boolean"){isJs=cssonload;cssonload=undefined}isJs=isJs||false;cssonload=cssonload||function(){};var code;code=this.getLS(jsname);if(code&&code.indexOf(versionString)===-1){this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload,isJs);return}if(code){var versionNumber=code.split(versionString)[0];if(versionNumber!=jspath){console.log("reload:"+jspath);this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload,isJs);return}code=code.split(versionString)[1];if(isJs){this.jsRunSequence.push({name:jsname,code:code});this.runjs(jspath,jsname,code)}else{document.getElementById(jsname).appendChild(document.createTextNode(code));cssonload()}}else{this.requestResource(jsname,jspath,cssonload,isJs)}};lsloader.requestResource=function(name,path,cssonload,isJs){var that=this;if(isJs){this.iojs(path,name,function(path,name,code){that.setLS(name,path+versionString+code);that.runjs(path,name,code)})}else{this.iocss(path,name,function(code){document.getElementById(name).appendChild(document.createTextNode(code));that.setLS(name,path+versionString+code)},cssonload)}};lsloader.iojs=function(path,jsname,callback){var that=this;that.jsRunSequence.push({name:jsname,code:""});try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(path,jsname,xhr.response);return}}that.jsfallback(path,jsname)}};xhr.send(null)}catch(e){that.jsfallback(path,jsname)}};lsloader.iocss=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.iofonts=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.runjs=function(path,name,code){if(!!name&&!!code){for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code=code}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var script=document.createElement("script");script.appendChild(document.createTextNode(this.jsRunSequence[0].code));script.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(script);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var that=this;var script=document.createElement("script");script.src=this.jsRunSequence[0].path;script.type="text/javascript";this.jsRunSequence[0].status="loading";script.onload=function(){that.jsRunSequence.shift();if(that.jsRunSequence.length>0){that.runjs()}};document.body.appendChild(script)}};lsloader.tagLoad=function(path,name){this.jsRunSequence.push({name:name,code:"",path:path,status:"failed"});this.runjs()};lsloader.jsfallback=function(path,name){if(!!this.jsnamemap[name]){return}else{this.jsnamemap[name]=name}for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code="";this.jsRunSequence[k].status="failed";this.jsRunSequence[k].path=path}}this.runjs()};lsloader.cssfallback=function(path,name,cssonload){if(!!this.cssnamemap[name]){return}else{this.cssnamemap[name]=1}var link=document.createElement("link");link.type="text/css";link.href=path;link.rel="stylesheet";link.onload=link.onerror=cssonload;var root=document.getElementsByTagName("script")[0];root.parentNode.insertBefore(link,root)};lsloader.runInlineScript=function(scriptId,codeId){var code=document.getElementById(codeId).innerText;this.jsRunSequence.push({name:scriptId,code:code});this.runjs()};lsloader.loadCombo=function(jslist){var updateList="";var requestingModules={};for(var k in jslist){var LS=this.getLS(jslist[k].name);if(!!LS){var version=LS.split(versionString)[0];var code=LS.split(versionString)[1]}else{var version=""}if(version==jslist[k].path){this.jsRunSequence.push({name:jslist[k].name,code:code,path:jslist[k].path})}else{this.jsRunSequence.push({name:jslist[k].name,code:null,path:jslist[k].path,status:"comboloading"});requestingModules[jslist[k].name]=true;updateList+=(updateList==""?"":";")+jslist[k].path}}var that=this;if(!!updateList){var xhr=new XMLHttpRequest;xhr.open("get",combo+updateList,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){that.runCombo(xhr.response,requestingModules);return}}else{for(var i in that.jsRunSequence){if(requestingModules[that.jsRunSequence[i].name]){that.jsRunSequence[i].status="failed"}}that.runjs()}}};xhr.send(null)}this.runjs()};lsloader.runCombo=function(comboCode,requestingModules){comboCode=comboCode.split("/*combojs*/");comboCode.shift();for(var k in this.jsRunSequence){if(!!requestingModules[this.jsRunSequence[k].name]&&!!comboCode[0]){this.jsRunSequence[k].status="comboJS";this.jsRunSequence[k].code=comboCode[0];this.setLS(this.jsRunSequence[k].name,this.jsRunSequence[k].path+versionString+comboCode[0]);comboCode.shift()}}this.runjs()}})();</script>
@@ -231,18 +231,18 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="https://zacksleo.github.io">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="PHP编码规范 | zacks&#39;s blog">
+    <meta property="og:title" content="高并发优化初试 | zacks&#39;s blog">
     <meta property="og:image" content="https://zacksleo.github.io/img/favicon.png" />
     <meta property="og:description" content="zacks&#39;s blog, Web Develop, PHP, Yii2, Docker, AI, JavaScript">
-    <meta property="og:article:tag" content="php"> 
+    <meta property="og:article:tag" content="docker"> <meta property="og:article:tag" content="高并发"> <meta property="og:article:tag" content="nginx"> 
 
     
-        <meta property="article:published_time" content="Tue Mar 07 2017 23:16:16 GMT+0800" />
+        <meta property="article:published_time" content="Tue Nov 21 2017 20:53:06 GMT+0800" />
         <meta property="article:modified_time" content="Wed Nov 22 2017 12:55:10 GMT+0000" />
     
 
     <!-- The Twitter Card protocol -->
-    <meta name="twitter:title" content="PHP编码规范 | zacks&#39;s blog">
+    <meta name="twitter:title" content="高并发优化初试 | zacks&#39;s blog">
     <meta name="twitter:description" content="zacks&#39;s blog, Web Develop, PHP, Yii2, Docker, AI, JavaScript">
     <meta name="twitter:image" content="https://zacksleo.github.io/img/favicon.png">
     <meta name="twitter:card" content="summary_large_image" />
@@ -250,7 +250,7 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="https://zacksleo.github.io/2017/03/07/PHP编码规范/index.html" />
+        <link rel="canonical" href="https://zacksleo.github.io/2017/11/21/高并发优化初试/index.html" />
     
 
     <!-- Structured-data for SEO -->
@@ -262,9 +262,9 @@
 {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "mainEntityOfPage": "https://zacksleo.github.io/2017/03/07/PHP编码规范/index.html",
-    "headline": "PHP编码规范",
-    "datePublished": "Tue Mar 07 2017 23:16:16 GMT+0800",
+    "mainEntityOfPage": "https://zacksleo.github.io/2017/11/21/高并发优化初试/index.html",
+    "headline": "高并发优化初试",
+    "datePublished": "Tue Nov 21 2017 20:53:06 GMT+0800",
     "dateModified": "Wed Nov 22 2017 12:55:10 GMT+0000",
     "author": {
         "@type": "Person",
@@ -283,7 +283,7 @@
             "url": "/img/favicon.png"
         }
     },
-    "keywords": ",phpnull",
+    "keywords": ",docker,高并发,nginxnull",
     "description": "zacks&#39;s blog, Web Develop, PHP, Yii2, Docker, AI, JavaScript",
 }
 </script>
@@ -349,7 +349,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#PSR"><span class="post-toc-number">1.</span> <span class="post-toc-text">PSR</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#PSR-1-基础编码规范"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">PSR-1 基础编码规范</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#PSR-2-编码风格规范"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">PSR-2 编码风格规范</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#PSR-3-志接口规范"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">PSR-3 志接口规范</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#PSR-4-自动加载规范"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">PSR-4 自动加载规范</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#PSR-6-缓存接口规范"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">PSR-6 缓存接口规范</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#PSR-7-HTTP-消息接口规范"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">PSR-7 HTTP 消息接口规范</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#注意"><span class="post-toc-number">2.</span> <span class="post-toc-text">注意</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#引子"><span class="post-toc-number">1.</span> <span class="post-toc-text">引子</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#需要分析"><span class="post-toc-number">2.</span> <span class="post-toc-text">需要分析</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#实施步骤"><span class="post-toc-number">3.</span> <span class="post-toc-text">实施步骤</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#前端方面"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">前端方面</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#减少客户端访问次数。"><span class="post-toc-number">3.1.1.</span> <span class="post-toc-text">减少客户端访问次数。</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#服务端优化"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">服务端优化</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#使用缓存"><span class="post-toc-number">3.2.1.</span> <span class="post-toc-text">使用缓存</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#部分业务逻辑异步处理"><span class="post-toc-number">3.2.2.</span> <span class="post-toc-text">部分业务逻辑异步处理</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Nginx-优化"><span class="post-toc-number">3.2.3.</span> <span class="post-toc-text">Nginx 优化</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参考资料"><span class="post-toc-number">4.</span> <span class="post-toc-text">参考资料</span></a></li></ol>
     </ul>
     
 
@@ -381,7 +381,7 @@
         
     
             <p class="article-headline-p">
-                PHP编码规范
+                高并发优化初试
             </p>
         </div>
 
@@ -400,7 +400,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>zacksleo</strong>
-        <span>3月 07, 2017</span>
+        <span>11月 21, 2017</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -424,7 +424,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        <a class="post_tag-link" href="/tags/php/">php</a>
+        <a class="post_tag-link" href="/tags/docker/">docker</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/nginx/">nginx</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/高并发/">高并发</a>
     </ul>
     
 
@@ -440,7 +440,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=PHP编码规范&url=https://zacksleo.github.io/2017/03/07/PHP编码规范/index.html&pic=https://zacksleo.github.io/img/favicon.png&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=高并发优化初试&url=https://zacksleo.github.io/2017/11/21/高并发优化初试/index.html&pic=https://zacksleo.github.io/img/favicon.png&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -449,7 +449,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=PHP编码规范&url=https://zacksleo.github.io/2017/03/07/PHP编码规范/index.html&via=zacksleo" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=高并发优化初试&url=https://zacksleo.github.io/2017/11/21/高并发优化初试/index.html&via=zacksleo" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Twitter
             </li>
@@ -458,7 +458,7 @@
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=https://zacksleo.github.io/2017/03/07/PHP编码规范/index.html" target="_blank">
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=https://zacksleo.github.io/2017/11/21/高并发优化初试/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Facebook
             </li>
@@ -467,7 +467,7 @@
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=https://zacksleo.github.io/2017/03/07/PHP编码规范/index.html" target="_blank">
+        <a class="post_share-link" href="https://plus.google.com/share?url=https://zacksleo.github.io/2017/11/21/高并发优化初试/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Google+
             </li>
@@ -491,13 +491,55 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h2 id="PSR"><a href="#PSR" class="headerlink" title="PSR"></a>PSR</h2><blockquote>
-<p>PSR 是 PHP Standard Recommendations 的简写，由 PHP FIG 组织制定的 PHP 规范，是 PHP 开发的实践标准。</p>
-</blockquote>
-<p><strong>PHP编码遵循PSR的建议</strong></p>
-<p>主要包括以下几个方面:</p>
-<h3 id="PSR-1-基础编码规范"><a href="#PSR-1-基础编码规范" class="headerlink" title="PSR-1 基础编码规范"></a>PSR-1 基础编码规范</h3><h3 id="PSR-2-编码风格规范"><a href="#PSR-2-编码风格规范" class="headerlink" title="PSR-2 编码风格规范"></a>PSR-2 编码风格规范</h3><h3 id="PSR-3-志接口规范"><a href="#PSR-3-志接口规范" class="headerlink" title="PSR-3 志接口规范"></a>PSR-3 志接口规范</h3><h3 id="PSR-4-自动加载规范"><a href="#PSR-4-自动加载规范" class="headerlink" title="PSR-4 自动加载规范"></a>PSR-4 自动加载规范</h3><h3 id="PSR-6-缓存接口规范"><a href="#PSR-6-缓存接口规范" class="headerlink" title="PSR-6 缓存接口规范"></a>PSR-6 缓存接口规范</h3><h3 id="PSR-7-HTTP-消息接口规范"><a href="#PSR-7-HTTP-消息接口规范" class="headerlink" title="PSR-7 HTTP 消息接口规范"></a>PSR-7 HTTP 消息接口规范</h3><p>详细内容见: <a href="https://psr.phphub.org/" target="_blank" rel="noopener">https://psr.phphub.org/</a> 和 <a href="https://github.com/PizzaLiu/PHP-FIG" target="_blank" rel="noopener">https://github.com/PizzaLiu/PHP-FIG</a></p>
-<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>代码审核时将遵守以上规范</p>
+        <h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h2><p>最近接触了一个抽奖的项目，由于用户量比较大，而且第三方提供的认证接口并发量有限，为了保证服务的高可用性，所以对高并限制发有一定的要求。经过一系列研究和讨论，做出了以下一些优化方案。</p>
+<h2 id="需要分析"><a href="#需要分析" class="headerlink" title="需要分析"></a>需要分析</h2><ul>
+<li><p>根据用户量和日活情况，估算出并发值在100左右，所以该项目的并发量就当在100上以，初期目标定为600-800</p>
+</li>
+<li><p>特定页面的并发量不超过300，为了保证不对第三方服务造成访问压力，特将并发控制在150以内</p>
+</li>
+<li><p>由于奖品数量有限，故得奖时，需要进行并发写入控制，防止奖品超发</p>
+</li>
+</ul>
+<h2 id="实施步骤"><a href="#实施步骤" class="headerlink" title="实施步骤"></a>实施步骤</h2><h3 id="前端方面"><a href="#前端方面" class="headerlink" title="前端方面"></a>前端方面</h3><h4 id="减少客户端访问次数。"><a href="#减少客户端访问次数。" class="headerlink" title="减少客户端访问次数。"></a>减少客户端访问次数。</h4><ul>
+<li><p>使用CDN对网站的静态资源进行优化，可以答复静态请求次数。</p>
+</li>
+<li><p>抽奖结果一次性生成。</p>
+</li>
+</ul>
+<p>每个用户有有一次抽奖机会，但只能有一次中奖，其他两次随机弹出推荐产品。所以有一次抽奖中，只需要访问一次服务器的抽奖接口。</p>
+<ul>
+<li>使用本地缓存。</li>
+</ul>
+<p>将抽奖次数，是否中奖等信息记录在本地，避免超次抽奖和多余的服务器请求。例如，一旦该用户中过将，就不需要再访问服务器抽奖接口。</p>
+<h3 id="服务端优化"><a href="#服务端优化" class="headerlink" title="服务端优化"></a>服务端优化</h3><h4 id="使用缓存"><a href="#使用缓存" class="headerlink" title="使用缓存"></a>使用缓存</h4><ul>
+<li>使用服务端缓存。</li>
+</ul>
+<p>将页面和相关数据查询进行缓存，减少数据库访问次数。</p>
+<h4 id="部分业务逻辑异步处理"><a href="#部分业务逻辑异步处理" class="headerlink" title="部分业务逻辑异步处理"></a>部分业务逻辑异步处理</h4><p>对于不需要实时处理的业务逻辑，压入队列，实现异步处理。例如优惠券的发放。</p>
+<h4 id="Nginx-优化"><a href="#Nginx-优化" class="headerlink" title="Nginx 优化"></a>Nginx 优化</h4><ul>
+<li>提高 Nginx 处理性能</li>
+</ul>
+<p>使用 <code>worker_processes</code>，<code>worker_cpu_affinity</code>，<code>worker_rlimit_nofile</code>， <code>worker_connections</code>，<code>open_file_cache</code>等命令，提高nginx的处理性能。</p>
+<ul>
+<li>Nginx 并发控制。</li>
+</ul>
+<p>先看实例，如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">limit_req_zone $binary_remote_addr zone=req_ip:10m rate=40r/s; // #每个IP平均处理的请求频率为每秒40次</span><br><span class="line">limit_conn_zone $binary_remote_addr zone=conn_ip:10m;</span><br><span class="line">limit_conn_zone $server_name zone=conn_server:10m;</span><br><span class="line">limit_conn conn_ip 5; // #限制某个IP来源的连接并发数，此处为5个</span><br><span class="line">limit_conn conn_server 600; //#限制某个虚拟服务器的总连接数，此处为600个</span><br><span class="line">limit_req zone=req_ip burst=5; //小为5的缓冲区, 当有大量请求过来时，超过了访问频次限制的请求可以先放到这个缓冲区内</span><br></pre></td></tr></table></figure>
+<p>在这里，限制了每个IP的请求频率，限制了同一IP的并发连接数，限制了服务器的总连接数</p>
+<ul>
+<li>使用 Docker 实现负载均衡</li>
+</ul>
+<p>配置 nginx, 使用负载均衡</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">upstream icontact_pool &#123;</span><br><span class="line">    server  web:9000    weight=5    max_fails=3 fail_timeout=10s;</span><br><span class="line">    server  web2:9000   weight=5    max_fails=3 fail_timeout=10s;</span><br><span class="line">    server  web3:9000   weight=5    max_fails=3 fail_timeout=10s;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如上，通过 Docker 启动多个处理请求的服务容器，在 nginx 中配置每个服务的地址，权重等信息，扩大请求的处理能力</p>
+<ul>
+<li>其他服务器环境优化</li>
+</ul>
+<p>例如，增加服务器配置（CPU，内存，带宽），如果是PHP, 开启 opcache, 并使用较新版本（php7+）, 各种依赖尽量使用最新版本。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">zend_extension=opcache.so</span><br><span class="line">opcache.enable=1</span><br><span class="line">opcache.enable_cli=1</span><br></pre></td></tr></table></figure>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="http://www.jiagoumi.com/work/718.html" target="_blank" rel="noopener">Nginx限制IP并发连接数和请求数的研究</a></li>
+</ul>
 
         
     
@@ -518,21 +560,13 @@
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2017/03/07/JavaScript编码规范/" id="post_nav-newer" class="prev-content">
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_back</i>
-            </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            新篇
-        </a>
-    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
     
-        <a href="/2017/03/07/RESTful接口规范/" id="post_nav-older" class="next-content">
+        <a href="/2017/11/18/使用Travis-CI 将github上的博客内容与静态网站分离并持续部署/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
