@@ -1,7 +1,7 @@
 ---
 title: GitLab-CI简介
 date: 2017-04-26 09:27:52
-tags: [GitLab-CI]
+tags: [GitLab-CI,DevOps]
 ---
 
 ## 概述
