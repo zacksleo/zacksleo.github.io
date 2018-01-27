@@ -1,7 +1,7 @@
 ---
 title: GitLab-CI使用Rsync进行持续部署
 date: 2017-09-08 12:52:37
-tags: [GitLab-CI,DevOps]
+tags: [GitLab-CI,DevOps,CD]
 ---
 
 ## 简介
