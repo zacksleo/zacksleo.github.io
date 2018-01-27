@@ -91,3 +91,9 @@ tags: [GitLab-CI,Wiki,Gollum,DevOps]
 
 打开项目的 integrations 选项, 在URL中, 填写上一步中拿到的URL
 
+
+
+## 相关文档
+
++ [[GitLab-CI使用Docker进行持续部署]]
++ [[使用Git和Gollum搭建Wiki系统]]
