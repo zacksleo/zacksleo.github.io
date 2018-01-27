@@ -1,7 +1,7 @@
-layout: gitlab
-title: GitLabCI通过ssh进行自动部署
+---
+title: GitLab-CI通过ssh进行自动部署
 date: 2017-04-14 14:39:50
-tags: [GitLab-CI]
+tags: [GitLab-CI,DevOps,SSH,CD]
 ---
 
 ## 需求
