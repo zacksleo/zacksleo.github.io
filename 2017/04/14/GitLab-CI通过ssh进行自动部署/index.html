@@ -37,7 +37,7 @@
     
     <title>
         
-            GitLab-CI使用Docker进行持续部署 | 
+            GitLab-CI通过ssh进行自动部署 | 
         
         zacks&#39;s blog
     </title>
@@ -49,7 +49,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="zacksleo">
     <meta name="description" itemprop="description" content="zacks&#39;s blog, Web Develop, PHP, Yii2, Docker, AI, JavaScript">
-    <meta name="keywords" content="null,GitLab-CI,docker">
+    <meta name="keywords" content="null,GitLab-CI,DevOps,CD,SSH">
 
     <!-- Import lsloader -->
     <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(key){try{localStorage.removeItem(key)}catch(e){}};lsloader.setLS=function(key,val){try{localStorage.setItem(key,val)}catch(e){}};lsloader.getLS=function(key){var val="";try{val=localStorage.getItem(key)}catch(e){val=""}return val};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var keys=[];for(var i=0;i<localStorage.length;i++){keys.push(localStorage.key(i))}keys.forEach(function(key){var data=lsloader.getLS(key);if(window.oldVersion){var remove=window.oldVersion.reduce(function(p,c){return p||data.indexOf("/*"+c+"*/")!==-1},false);if(remove){lsloader.removeLS(key)}}})}catch(e){}};lsloader.clean();lsloader.load=function(jsname,jspath,cssonload,isJs){if(typeof cssonload==="boolean"){isJs=cssonload;cssonload=undefined}isJs=isJs||false;cssonload=cssonload||function(){};var code;code=this.getLS(jsname);if(code&&code.indexOf(versionString)===-1){this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload,isJs);return}if(code){var versionNumber=code.split(versionString)[0];if(versionNumber!=jspath){console.log("reload:"+jspath);this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload,isJs);return}code=code.split(versionString)[1];if(isJs){this.jsRunSequence.push({name:jsname,code:code});this.runjs(jspath,jsname,code)}else{document.getElementById(jsname).appendChild(document.createTextNode(code));cssonload()}}else{this.requestResource(jsname,jspath,cssonload,isJs)}};lsloader.requestResource=function(name,path,cssonload,isJs){var that=this;if(isJs){this.iojs(path,name,function(path,name,code){that.setLS(name,path+versionString+code);that.runjs(path,name,code)})}else{this.iocss(path,name,function(code){document.getElementById(name).appendChild(document.createTextNode(code));that.setLS(name,path+versionString+code)},cssonload)}};lsloader.iojs=function(path,jsname,callback){var that=this;that.jsRunSequence.push({name:jsname,code:""});try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(path,jsname,xhr.response);return}}that.jsfallback(path,jsname)}};xhr.send(null)}catch(e){that.jsfallback(path,jsname)}};lsloader.iocss=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.iofonts=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.runjs=function(path,name,code){if(!!name&&!!code){for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code=code}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var script=document.createElement("script");script.appendChild(document.createTextNode(this.jsRunSequence[0].code));script.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(script);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var that=this;var script=document.createElement("script");script.src=this.jsRunSequence[0].path;script.type="text/javascript";this.jsRunSequence[0].status="loading";script.onload=function(){that.jsRunSequence.shift();if(that.jsRunSequence.length>0){that.runjs()}};document.body.appendChild(script)}};lsloader.tagLoad=function(path,name){this.jsRunSequence.push({name:name,code:"",path:path,status:"failed"});this.runjs()};lsloader.jsfallback=function(path,name){if(!!this.jsnamemap[name]){return}else{this.jsnamemap[name]=name}for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code="";this.jsRunSequence[k].status="failed";this.jsRunSequence[k].path=path}}this.runjs()};lsloader.cssfallback=function(path,name,cssonload){if(!!this.cssnamemap[name]){return}else{this.cssnamemap[name]=1}var link=document.createElement("link");link.type="text/css";link.href=path;link.rel="stylesheet";link.onload=link.onerror=cssonload;var root=document.getElementsByTagName("script")[0];root.parentNode.insertBefore(link,root)};lsloader.runInlineScript=function(scriptId,codeId){var code=document.getElementById(codeId).innerText;this.jsRunSequence.push({name:scriptId,code:code});this.runjs()};lsloader.loadCombo=function(jslist){var updateList="";var requestingModules={};for(var k in jslist){var LS=this.getLS(jslist[k].name);if(!!LS){var version=LS.split(versionString)[0];var code=LS.split(versionString)[1]}else{var version=""}if(version==jslist[k].path){this.jsRunSequence.push({name:jslist[k].name,code:code,path:jslist[k].path})}else{this.jsRunSequence.push({name:jslist[k].name,code:null,path:jslist[k].path,status:"comboloading"});requestingModules[jslist[k].name]=true;updateList+=(updateList==""?"":";")+jslist[k].path}}var that=this;if(!!updateList){var xhr=new XMLHttpRequest;xhr.open("get",combo+updateList,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){that.runCombo(xhr.response,requestingModules);return}}else{for(var i in that.jsRunSequence){if(requestingModules[that.jsRunSequence[i].name]){that.jsRunSequence[i].status="failed"}}that.runjs()}}};xhr.send(null)}this.runjs()};lsloader.runCombo=function(comboCode,requestingModules){comboCode=comboCode.split("/*combojs*/");comboCode.shift();for(var k in this.jsRunSequence){if(!!requestingModules[this.jsRunSequence[k].name]&&!!comboCode[0]){this.jsRunSequence[k].status="comboJS";this.jsRunSequence[k].code=comboCode[0];this.setLS(this.jsRunSequence[k].name,this.jsRunSequence[k].path+versionString+comboCode[0]);comboCode.shift()}}this.runjs()}})();</script>
@@ -231,18 +231,18 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="https://zacksleo.github.io">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="GitLab-CI使用Docker进行持续部署 | zacks&#39;s blog">
+    <meta property="og:title" content="GitLab-CI通过ssh进行自动部署 | zacks&#39;s blog">
     <meta property="og:image" content="https://zacksleo.github.io/img/favicon.png" />
     <meta property="og:description" content="zacks&#39;s blog, Web Develop, PHP, Yii2, Docker, AI, JavaScript">
-    <meta property="og:article:tag" content="GitLab-CI"> <meta property="og:article:tag" content="docker"> 
+    <meta property="og:article:tag" content="GitLab-CI"> <meta property="og:article:tag" content="DevOps"> <meta property="og:article:tag" content="CD"> <meta property="og:article:tag" content="SSH"> 
 
     
-        <meta property="article:published_time" content="Sat Apr 22 2017 22:33:31 GMT+0800" />
+        <meta property="article:published_time" content="Fri Apr 14 2017 14:39:50 GMT+0800" />
         <meta property="article:modified_time" content="Sat Jan 27 2018 03:33:40 GMT+0000" />
     
 
     <!-- The Twitter Card protocol -->
-    <meta name="twitter:title" content="GitLab-CI使用Docker进行持续部署 | zacks&#39;s blog">
+    <meta name="twitter:title" content="GitLab-CI通过ssh进行自动部署 | zacks&#39;s blog">
     <meta name="twitter:description" content="zacks&#39;s blog, Web Develop, PHP, Yii2, Docker, AI, JavaScript">
     <meta name="twitter:image" content="https://zacksleo.github.io/img/favicon.png">
     <meta name="twitter:card" content="summary_large_image" />
@@ -250,7 +250,7 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="https://zacksleo.github.io/2017/04/22/GitLab-CI使用Docker进行持续部署/index.html" />
+        <link rel="canonical" href="https://zacksleo.github.io/2017/04/14/GitLab-CI通过ssh进行自动部署/index.html" />
     
 
     <!-- Structured-data for SEO -->
@@ -262,9 +262,9 @@
 {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "mainEntityOfPage": "https://zacksleo.github.io/2017/04/22/GitLab-CI使用Docker进行持续部署/index.html",
-    "headline": "GitLab-CI使用Docker进行持续部署",
-    "datePublished": "Sat Apr 22 2017 22:33:31 GMT+0800",
+    "mainEntityOfPage": "https://zacksleo.github.io/2017/04/14/GitLab-CI通过ssh进行自动部署/index.html",
+    "headline": "GitLab-CI通过ssh进行自动部署",
+    "datePublished": "Fri Apr 14 2017 14:39:50 GMT+0800",
     "dateModified": "Sat Jan 27 2018 03:33:40 GMT+0000",
     "author": {
         "@type": "Person",
@@ -283,7 +283,7 @@
             "url": "/img/favicon.png"
         }
     },
-    "keywords": ",GitLab-CI,dockernull",
+    "keywords": ",GitLab-CI,DevOps,CD,SSHnull",
     "description": "zacks&#39;s blog, Web Develop, PHP, Yii2, Docker, AI, JavaScript",
 }
 </script>
@@ -349,7 +349,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#相关文档"><span class="post-toc-number">1.</span> <span class="post-toc-text">相关文档</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#需求"><span class="post-toc-number">1.</span> <span class="post-toc-text">需求</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#实现过程"><span class="post-toc-number">2.</span> <span class="post-toc-text">实现过程</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#过程"><span class="post-toc-number">3.</span> <span class="post-toc-text">过程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#首先需要在服务器上生成ssh证书"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">首先需要在服务器上生成ssh证书</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#将公钥添加到gitlab上-以便于该用于可以拉取代码"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">将公钥添加到gitlab上, 以便于该用于可以拉取代码</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#在-CI-CD-Piplines中设置-Secret-Variables-包括-DEPLOY-SERVER-和-SSH-PRIVATE-KEY"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">在 CI/CD Piplines中设置 Secret Variables, 包括 DEPLOY_SERVER 和 SSH_PRIVATE_KEY</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#编写-gitlab-ci-yml-文件-注入密钥-通过ssh执行远程命令"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">编写 .gitlab-ci.yml 文件, 注入密钥, 通过ssh执行远程命令</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#完整代码"><span class="post-toc-number">4.</span> <span class="post-toc-text">完整代码</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#相关文档"><span class="post-toc-number">5.</span> <span class="post-toc-text">相关文档</span></a></li></ol>
     </ul>
     
 
@@ -381,7 +381,7 @@
         
     
             <p class="article-headline-p">
-                GitLab-CI使用Docker进行持续部署
+                GitLab-CI通过ssh进行自动部署
             </p>
         </div>
 
@@ -400,7 +400,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>zacksleo</strong>
-        <span>4月 22, 2017</span>
+        <span>4月 14, 2017</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -424,7 +424,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        <a class="post_tag-link" href="/tags/GitLab-CI/">GitLab-CI</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/docker/">docker</a>
+        <a class="post_tag-link" href="/tags/CD/">CD</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/DevOps/">DevOps</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/GitLab-CI/">GitLab-CI</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/SSH/">SSH</a>
     </ul>
     
 
@@ -440,7 +440,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=GitLab-CI使用Docker进行持续部署&url=https://zacksleo.github.io/2017/04/22/GitLab-CI使用Docker进行持续部署/index.html&pic=https://zacksleo.github.io/img/favicon.png&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=GitLab-CI通过ssh进行自动部署&url=https://zacksleo.github.io/2017/04/14/GitLab-CI通过ssh进行自动部署/index.html&pic=https://zacksleo.github.io/img/favicon.png&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -449,7 +449,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=GitLab-CI使用Docker进行持续部署&url=https://zacksleo.github.io/2017/04/22/GitLab-CI使用Docker进行持续部署/index.html&via=zacksleo" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=GitLab-CI通过ssh进行自动部署&url=https://zacksleo.github.io/2017/04/14/GitLab-CI通过ssh进行自动部署/index.html&via=zacksleo" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Twitter
             </li>
@@ -458,7 +458,7 @@
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=https://zacksleo.github.io/2017/04/22/GitLab-CI使用Docker进行持续部署/index.html" target="_blank">
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=https://zacksleo.github.io/2017/04/14/GitLab-CI通过ssh进行自动部署/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Facebook
             </li>
@@ -467,7 +467,7 @@
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=https://zacksleo.github.io/2017/04/22/GitLab-CI使用Docker进行持续部署/index.html" target="_blank">
+        <a class="post_share-link" href="https://plus.google.com/share?url=https://zacksleo.github.io/2017/04/14/GitLab-CI通过ssh进行自动部署/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Google+
             </li>
@@ -491,19 +491,14 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <p>Docker镜像通过私有仓库进行发布(如阿里云), 发布命令为:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker login -u username -p password registry.demo.com</span><br><span class="line">docker build -t registry.demo.com/repos/$CI_PROJECT_NAME:latest .</span><br><span class="line">docker push registry.demo.com/repos/$CI_PROJECT_NAME:latest</span><br></pre></td></tr></table></figure>
-<p>其中 <code>username</code>是用户名, <code>password</code>是密码, <code>registry.demo.com</code>是私有镜像库地址,</p>
-<p><code>$CI_PROJECT_NAME</code> 是GitLab-CI内置变量, 会自动替换为项目的名称, 这里也可以直接写死, 如</p>
-<p><code>docker build -t registry.demo.com/repos/image-name:latest .</code></p>
-<p><code>image-name</code>, 就是要构建的镜像名称, <code>latest</code>是TAG标签, <code>repos</code>是仓库的空间名称</p>
-<p>在下面的例子中, 首先通过composer安装依赖库, 然后通过artifacts传递给构建任务, 构建完镜像将镜像发布到私有库,<br>部署时通过拉取最新的镜像库, 进行部署</p>
-<blockquote>
-<p>项目的deploy目录中, 放置一些配置文件, 如<code>Dockerfile</code>, <code>docker-compose.yml</code>等, 通过<code>rsync</code>同步到部署服务器上, 用于部署所需</p>
+        <h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p>通过gitlab-ci实现文件的自动部署</p>
+<h2 id="实现过程"><a href="#实现过程" class="headerlink" title="实现过程"></a>实现过程</h2><p>文档托管在gitlab上, 每次代码更新, 会自动出发gitlab-ci构建<br>在构建脚本中, 通过ssh 登录远程服务器执行git拉取文档的命令</p>
+<h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><h3 id="首先需要在服务器上生成ssh证书"><a href="#首先需要在服务器上生成ssh证书" class="headerlink" title="首先需要在服务器上生成ssh证书"></a>首先需要在服务器上生成ssh证书</h3><blockquote>
+<p>注意该证书的用户必须与ssh远程登录的用户一样, 例如我们的用户名是root</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">image: zacksleo/docker-composer:1.1</span><br><span class="line"></span><br><span class="line">before_script:</span><br><span class="line">    - &apos;which ssh-agent || ( apk update &amp;&amp; apk add openssh-client)&apos;</span><br><span class="line">    - apk add rsync</span><br><span class="line">    - eval $(ssh-agent -s)</span><br><span class="line">    - echo &quot;$SSH_PRIVATE_KEY&quot; &gt; ~/deploy.key</span><br><span class="line">    - chmod 0600 ~/deploy.key</span><br><span class="line">    - ssh-add ~/deploy.key</span><br><span class="line">    - mkdir -p ~/.ssh</span><br><span class="line">    - &apos;[[ -f /.dockerenv ]] &amp;&amp; echo -e &quot;Host *\n\tStrictHostKeyChecking no\n\n&quot; &gt; ~/.ssh/config&apos;</span><br><span class="line">    - export APP_ENV=testing</span><br><span class="line"></span><br><span class="line">stages:</span><br><span class="line">    - prepare    </span><br><span class="line">    - build</span><br><span class="line">    - deploy</span><br><span class="line"></span><br><span class="line">variables:</span><br><span class="line">    COMPOSER_CACHE_DIR: &quot;/cache/composer&quot;</span><br><span class="line">    DOCKER_DRIVER: overlay</span><br><span class="line"></span><br><span class="line">installing-dependencies:</span><br><span class="line">    stage: prepare</span><br><span class="line">    script:</span><br><span class="line">        - composer install --prefer-dist -n --no-interaction -v --no-suggest</span><br><span class="line">    artifacts:</span><br><span class="line">        name: &quot;vendor&quot;</span><br><span class="line">        untracked: true</span><br><span class="line">        expire_in: 60 mins</span><br><span class="line">        paths:</span><br><span class="line">            - $CI_PROJECT_DIR/vendor    </span><br><span class="line">test-image:</span><br><span class="line">    stage: build</span><br><span class="line">    image: docker:latest</span><br><span class="line">    services:</span><br><span class="line">        - docker:dind</span><br><span class="line">    dependencies:</span><br><span class="line">        - installing-dependencies</span><br><span class="line">    script:</span><br><span class="line">        - docker login -u username -p password registry.demo.com</span><br><span class="line">        - docker build -t registry.demo.com/repos/$CI_PROJECT_NAME:latest .</span><br><span class="line">        - docker push registry.demo.com/repos/$CI_PROJECT_NAME:latest</span><br><span class="line">testing-server:</span><br><span class="line">    stage: deploy</span><br><span class="line">    image: alpine</span><br><span class="line">    variables:</span><br><span class="line">        DEPLOY_SERVER: &quot;server-host&quot;</span><br><span class="line">    script:</span><br><span class="line">        - cd deploy</span><br><span class="line">        - rsync -rtvhze ssh . root@$DEPLOY_SERVER:/data/$CI_PROJECT_NAME --stats        </span><br><span class="line">        - ssh root@$DEPLOY_SERVER &quot;docker login -u username -p password registry.demo.com&quot;</span><br><span class="line">        - ssh root@$DEPLOY_SERVER &quot;cd /data/$CI_PROJECT_NAME &amp;&amp; docker-compose stop &amp;&amp; docker-compose rm -f &amp;&amp; docker-compose pull &amp;&amp; docker-compose up -d&quot;</span><br><span class="line">        - ssh root@$DEPLOY_SERVER &quot;docker exec -i $CI_PROJECT_NAME chown www-data:www-data web/assets&quot;</span><br><span class="line">        - ssh root@$DEPLOY_SERVER &quot;docker exec -i $CI_PROJECT_NAME ./yii migrate/up --interactive=0&quot;</span><br></pre></td></tr></table></figure>
-<p><img src="http://ww1.sinaimg.cn/large/675eb504ly1fezvjdberyj20w30axdh2.jpg" alt=""></p>
-<h2 id="相关文档"><a href="#相关文档" class="headerlink" title="相关文档"></a>相关文档</h2><p><a href="https://docs.gitlab.com/ce/ci/docker/using_docker_build.html" target="_blank" rel="noopener">Using Docker Build</a></p>
+<h3 id="将公钥添加到gitlab上-以便于该用于可以拉取代码"><a href="#将公钥添加到gitlab上-以便于该用于可以拉取代码" class="headerlink" title="将公钥添加到gitlab上, 以便于该用于可以拉取代码"></a>将公钥添加到gitlab上, 以便于该用于可以拉取代码</h3><h3 id="在-CI-CD-Piplines中设置-Secret-Variables-包括-DEPLOY-SERVER-和-SSH-PRIVATE-KEY"><a href="#在-CI-CD-Piplines中设置-Secret-Variables-包括-DEPLOY-SERVER-和-SSH-PRIVATE-KEY" class="headerlink" title="在 CI/CD Piplines中设置 Secret Variables, 包括 DEPLOY_SERVER 和 SSH_PRIVATE_KEY"></a>在 <code>CI/CD Piplines</code>中设置 <code>Secret Variables</code>, 包括 <code>DEPLOY_SERVER</code> 和 <code>SSH_PRIVATE_KEY</code></h3><p>其中 <code>SSH_PRIVATE_KEY</code> 的内容是服务器上的私钥, <code>DEPLOY_SERVER</code> 是服务器地址</p>
+<h3 id="编写-gitlab-ci-yml-文件-注入密钥-通过ssh执行远程命令"><a href="#编写-gitlab-ci-yml-文件-注入密钥-通过ssh执行远程命令" class="headerlink" title="编写 .gitlab-ci.yml 文件, 注入密钥, 通过ssh执行远程命令"></a>编写 <code>.gitlab-ci.yml</code> 文件, 注入密钥, 通过<code>ssh</code>执行远程命令</h3><h2 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h2> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"># 使用alpine镜像, 该镜像很少,只有几兆</span><br><span class="line">image: alpine</span><br><span class="line">stages:</span><br><span class="line">    - deploy</span><br><span class="line">before_script:</span><br><span class="line">    # 预先装 ssh-agent</span><br><span class="line">    - &apos;which ssh-agent || ( apk update &amp;&amp; apk add openssh-client)&apos;</span><br><span class="line">    # 启动服务</span><br><span class="line">    - eval $(ssh-agent -s)</span><br><span class="line">    # 将私钥写入deploy.key 文件</span><br><span class="line">    - echo &quot;$SSH_PRIVATE_KEY&quot; &gt; deploy.key</span><br><span class="line">    # 配置较低权限</span><br><span class="line">    - chmod 0600 deploy.key</span><br><span class="line">    # 注入密钥</span><br><span class="line">    - ssh-add deploy.key</span><br><span class="line">    - mkdir -p ~/.ssh    </span><br><span class="line">    - &apos;[[ -f /.dockerenv ]] &amp;&amp; echo -e &quot;Host *\n\tStrictHostKeyChecking no\n\n&quot; &gt; ~/.ssh/config&apos;</span><br><span class="line"> </span><br><span class="line">release-doc:</span><br><span class="line">    stage: deploy</span><br><span class="line">    script:</span><br><span class="line">        # 连接远程服务器并执行拉取代码的命令</span><br><span class="line">        - ssh root@$DEPLOY_SERVER &quot;cd /path/to/wiki &amp;&amp; git pull origin master&quot;</span><br><span class="line">    only:</span><br><span class="line">        - master</span><br><span class="line">    environment:</span><br><span class="line">        name: production</span><br><span class="line">        url: http://$DEPLOY_SERVER</span><br></pre></td></tr></table></figure>
+<h2 id="相关文档"><a href="#相关文档" class="headerlink" title="相关文档"></a>相关文档</h2><p><a href="https://docs.gitlab.com/ce/ci/ssh_keys/README.html" target="_blank" rel="noopener">Using SSH keys</a></p>
 
         
     
@@ -524,7 +519,7 @@
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2017/04/26/GitLab-CI简介/" id="post_nav-newer" class="prev-content">
+        <a href="/2017/04/18/GitLab-CI中的artifacts使用研究/" id="post_nav-newer" class="prev-content">
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
                 <i class="material-icons">arrow_back</i>
             </button>
@@ -538,7 +533,7 @@
 
     <!-- Next Nav -->
     
-        <a href="/2017/04/18/GitLab-CI中的artifacts使用研究/" id="post_nav-older" class="next-content">
+        <a href="/2017/03/12/使用Git和Gollum搭建Wiki系统/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
