@@ -1,7 +1,7 @@
 ---
 title: GitLab-CI使用cache加速构建过程
 date: 2018-01-26 16:13:06
-tags: [GitLab-CI,devops, GitLab, CI/CD]
+tags: [GitLab-CI,DevOps,GitLab,CI,CD]
 ---
 <!-- --- title: GitLab-CI使用cache加速构建过程 -->
 
