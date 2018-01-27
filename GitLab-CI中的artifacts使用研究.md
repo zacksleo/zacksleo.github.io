@@ -1,7 +1,7 @@
 ---
 title: GitLab-CI中的artifacts使用研究
 date: 2017-04-18 23:56:44
-tags: [GitLab-CI]
+tags: [GitLab-CI,DevOps]
 ---
 
 在GitLab-CI中, `cache`与`artifacts`比较容易混淆.
