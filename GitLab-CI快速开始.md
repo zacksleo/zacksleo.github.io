@@ -1,7 +1,7 @@
 ---
 title: GitLab-CI快速开始
 date: 2017-04-26 09:58:09
-tags: [GitLab-CI]
+tags: [GitLab-CI,DevOps]
 ---
 
 > 假定已经安装好了`GitLab-Runners`
