@@ -1,0 +1,203 @@
+---
+title: 使用GitLab-CI对JavaScript项目持续集成或部署
+date: 2017-03-13 11:34:00
+tags: [GitLab-CI,DevOps,SSH,CD,CI,Yarn,npm,React]
+---
+
+## 需求
+
+团队使用React开发了一套前端页面, 为了方便协作和部署, 使用 EsLint 进行代码格式审查, 同时进行持续集成和部署, 提高开发效率
+
+```
+image: zacksleo/node
+
+before_script:
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY" > ~/deploy.key
+    - chmod 0600 ~/deploy.key
+    - ssh-add ~/deploy.key
+    - mkdir -p ~/.ssh
+    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+    - export APP_ENV=testing
+    - yarn config set registry 'https://registry.npm.taobao.org'
+stages:
+    - prepare
+    - test
+    - build
+    - deploy
+
+variables:
+    COMPOSER_CACHE_DIR: "/cache/composer"
+    DOCKER_DRIVER: overlay2
+build-cache:
+    stage: prepare
+    script:
+        - yarn install --cache-folder /cache/yarn
+    cache:
+      key: "$CI_COMMIT_REF_NAME"
+      paths:
+        - node_modules
+    except:
+        - docs
+        - tags
+    when: manual
+    tags:
+        - mainland
+eslint:
+    stage: test
+    dependencies: []
+    cache:
+      key: "$CI_COMMIT_REF_NAME"
+      policy: pull
+      paths:
+        - node_modules
+    script:
+        - if [ ! -d "node_modules" ]; then
+        - yarn install --cache-folder /cache/yarn
+        - fi
+        - yarn eslint ./
+    except:
+        - docs
+        - develop
+        - master
+        - tags
+    tags:
+        - mainland
+build-check:
+    stage: test
+    dependencies: []
+    cache:
+      key: "$CI_COMMIT_REF_NAME"
+      policy: pull
+      paths:
+        - node_modules
+    script:
+        - if [ ! -d "node_modules" ]; then
+        - yarn install --cache-folder /cache/yarn
+        - fi
+        - yarn build
+    except:
+        - docs
+        - develop
+        - master
+        - tags
+    tags:
+        - mainland
+build-package:
+    stage: test
+    script:
+        - if [ ! -d "node_modules" ]; then
+        - yarn install --cache-folder /cache/yarn
+        - fi
+        - if [ $CI_COMMIT_TAG ];then
+        - cp deploy/production/.env .env
+        - fi
+        - yarn build
+    dependencies: []
+    cache:
+      key: "$CI_COMMIT_REF_NAME"
+      policy: pull
+      paths:
+        - node_modules
+    artifacts:
+        name: "build"
+        untracked: false
+        expire_in: 60 mins
+        paths:
+            - build
+    except:
+        - docs
+    only:
+        - develop
+        - master
+        - tags
+    tags:
+        - mainland
+testing-image:
+    stage: build
+    image: docker:latest
+    dependencies:
+        - build-package
+    cache: {}
+    before_script: []
+    script:
+        - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
+        - docker build -t $CI_REGISTRY_IMAGE:latest .
+        - docker push $CI_REGISTRY_IMAGE:latest
+        - docker rmi $CI_REGISTRY_IMAGE:latest
+    only:
+        - develop
+    tags:
+        - mainland
+staging-image:
+    stage: build
+    image: docker:latest
+    dependencies:
+        - build-package
+    cache: {}
+    before_script: []
+    script:
+        - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
+        - docker build -t $CI_REGISTRY_IMAGE:stable .
+        - docker push $CI_REGISTRY_IMAGE:stable
+        - docker rmi $CI_REGISTRY_IMAGE:stable
+    only:
+        - master
+production-image:
+    stage: build
+    image: docker:latest
+    dependencies:
+        - build-package
+    before_script: []
+    script:
+        - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
+        - docker build -t $CI_REGISTRY_IMAGE:$CI_COMMIT_TAG .
+        - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_TAG
+        - docker rmi $CI_REGISTRY_IMAGE:$CI_COMMIT_TAG
+    only:
+        - tags
+testing-server:
+    stage: deploy
+    dependencies: []
+    cache: {}
+    script:
+        - cd deploy/testing
+        - rsync -rtvhze ssh . root@$DEPLOY_SERVER:/data/$CI_PROJECT_NAME --stats
+        - ssh root@$DEPLOY_SERVER "docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY"
+        - ssh root@$DEPLOY_SERVER "export COMPOSE_HTTP_TIMEOUT=120 && export DOCKER_CLIENT_TIMEOUT=120 && cd /data/$CI_PROJECT_NAME && docker-compose pull web && docker-compose stop && docker-compose rm -f && docker-compose up -d --build"
+    only:
+        - develop
+    environment:
+        name: testing
+        url: https://xxx.com
+    tags:
+        - mainland
+staging-server:
+    stage: deploy
+    dependencies: []
+    cache: {}
+    script:
+        - cd deploy/staging
+        - rsync -rtvhze ssh . root@$DEPLOY_SERVER:/data/$CI_PROJECT_NAME --stats
+        - ssh root@$DEPLOY_SERVER "docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY"
+        - ssh root@$DEPLOY_SERVER "export COMPOSE_HTTP_TIMEOUT=120 && export DOCKER_CLIENT_TIMEOUT=120 && cd /data/$CI_PROJECT_NAME && docker-compose pull web && docker-compose stop && docker-compose rm -f && docker-compose up -d --build"
+    only:
+        - master
+    environment:
+        name: staging
+        url: https://xxx.com
+production-server:
+    stage: deploy
+    dependencies: []
+    cache: {}
+    script:
+        - cd deploy/production
+        - rsync -rtvhze ssh . root@$DEPLOY_SERVER:/data/$CI_PROJECT_NAME --stats
+        - ssh root@$DEPLOY_SERVER "docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY"
+        - ssh root@$DEPLOY_SERVER "export COMPOSE_HTTP_TIMEOUT=120 && export DOCKER_CLIENT_TIMEOUT=120 && echo -e '\nTAG=$CI_COMMIT_TAG' >> .env && cd /data/$CI_PROJECT_NAME && docker-compose pull web && docker-compose stop && docker-compose rm -f && docker-compose up -d --build"
+    only:
+        - tags
+    environment:
+        name: staging
+        url: https://$DEPLOY_SERVER:1004
+```
