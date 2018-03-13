@@ -8,6 +8,9 @@ tags: [GitLab-CI,DevOps,SSH,CD,CI,Yarn,npm,React]
 
 团队使用React开发了一套前端页面, 为了方便协作和部署, 使用 EsLint 进行代码格式审查, 同时进行持续集成和部署, 提高开发效率
 
+
+## 配置
+
 ```
 image: zacksleo/node
 
@@ -41,8 +44,6 @@ build-cache:
         - docs
         - tags
     when: manual
-    tags:
-        - mainland
 eslint:
     stage: test
     dependencies: []
@@ -61,8 +62,6 @@ eslint:
         - develop
         - master
         - tags
-    tags:
-        - mainland
 build-check:
     stage: test
     dependencies: []
@@ -81,8 +80,6 @@ build-check:
         - develop
         - master
         - tags
-    tags:
-        - mainland
 build-package:
     stage: test
     script:
@@ -111,38 +108,6 @@ build-package:
         - develop
         - master
         - tags
-    tags:
-        - mainland
-testing-image:
-    stage: build
-    image: docker:latest
-    dependencies:
-        - build-package
-    cache: {}
-    before_script: []
-    script:
-        - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
-        - docker build -t $CI_REGISTRY_IMAGE:latest .
-        - docker push $CI_REGISTRY_IMAGE:latest
-        - docker rmi $CI_REGISTRY_IMAGE:latest
-    only:
-        - develop
-    tags:
-        - mainland
-staging-image:
-    stage: build
-    image: docker:latest
-    dependencies:
-        - build-package
-    cache: {}
-    before_script: []
-    script:
-        - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
-        - docker build -t $CI_REGISTRY_IMAGE:stable .
-        - docker push $CI_REGISTRY_IMAGE:stable
-        - docker rmi $CI_REGISTRY_IMAGE:stable
-    only:
-        - master
 production-image:
     stage: build
     image: docker:latest
@@ -156,36 +121,6 @@ production-image:
         - docker rmi $CI_REGISTRY_IMAGE:$CI_COMMIT_TAG
     only:
         - tags
-testing-server:
-    stage: deploy
-    dependencies: []
-    cache: {}
-    script:
-        - cd deploy/testing
-        - rsync -rtvhze ssh . root@$DEPLOY_SERVER:/data/$CI_PROJECT_NAME --stats
-        - ssh root@$DEPLOY_SERVER "docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY"
-        - ssh root@$DEPLOY_SERVER "export COMPOSE_HTTP_TIMEOUT=120 && export DOCKER_CLIENT_TIMEOUT=120 && cd /data/$CI_PROJECT_NAME && docker-compose pull web && docker-compose stop && docker-compose rm -f && docker-compose up -d --build"
-    only:
-        - develop
-    environment:
-        name: testing
-        url: https://xxx.com
-    tags:
-        - mainland
-staging-server:
-    stage: deploy
-    dependencies: []
-    cache: {}
-    script:
-        - cd deploy/staging
-        - rsync -rtvhze ssh . root@$DEPLOY_SERVER:/data/$CI_PROJECT_NAME --stats
-        - ssh root@$DEPLOY_SERVER "docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY"
-        - ssh root@$DEPLOY_SERVER "export COMPOSE_HTTP_TIMEOUT=120 && export DOCKER_CLIENT_TIMEOUT=120 && cd /data/$CI_PROJECT_NAME && docker-compose pull web && docker-compose stop && docker-compose rm -f && docker-compose up -d --build"
-    only:
-        - master
-    environment:
-        name: staging
-        url: https://xxx.com
 production-server:
     stage: deploy
     dependencies: []
@@ -199,5 +134,11 @@ production-server:
         - tags
     environment:
         name: staging
-        url: https://$DEPLOY_SERVER:1004
+        url: https://xxx.com
 ```
+
+## 说明
+
+首先使用EsLint进行代码格式检查, 每次合并到主干分支, 进行构建检查, 每次添加Tags, 构建Docker镜像,并进行部署
+
+
