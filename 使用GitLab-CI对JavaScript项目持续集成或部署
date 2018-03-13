@@ -1,6 +1,6 @@
 ---
-title: 使用GitLab-CI对JavaScript项目持续集成或部署
-date: 2017-03-13 11:34:00
+title: GitLab-CI对JavaScript项目持续集成或部署
+date: 2018-03-13 11:34:00
 tags: [GitLab-CI,DevOps,SSH,CD,CI,Yarn,npm,React]
 ---
 
