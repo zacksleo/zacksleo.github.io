@@ -69,3 +69,4 @@ sqlsrv:Server=mssql;Database=dev
 ```
 sqlsrv 为驱动名称
 
+注：如果是使用Yii2框架，可以使用我构建好的镜像：[zacksleo/php:7.1-fpm-mssql](https://hub.docker.com/r/zacksleo/php/tags/)
