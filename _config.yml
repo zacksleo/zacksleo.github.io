@@ -78,6 +78,14 @@ theme: next
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type: git
-  repo: git@github.com:zacksleo/zacksleo.github.io.git
-  branch: master
+  - type: git
+  - repo: git@github.com:zacksleo/zacksleo.github.io.git
+  - branch: master
+  - type: leancloud_counter_security_sync
+
+leancloud_counter_security:
+  enable_sync: true
+  app_id: 6ewRRbjRaYybcLL2fRlMKDtT-gzGzoHsz
+  app_key: NhhOjGzUPay4gOs6hP0RzgdH
+  username: password
+  password: username
