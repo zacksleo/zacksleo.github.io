@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="HSx2g2b2GklalbFMNOUlf16CH8h8aJMsL6Wa1CvfqSw" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.2.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.2.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="GitLab-Ci实现自动化测试 持续集成的目的，就是让产品可以快速迭代，同时还能保持高质量。它的核心措施是，代码集成到主干之前，必须通过自动化测试。只要有一个测试用例失败，就不能集成。  使用自动化测试, 可以提高软件的质量和可靠性, 今早发现其中的缺陷和问题, 以便即时改正. 配置环境首先需要一个满足运行自动化测试的Docker镜像, 以便后面运行测试代码, 例如: 1image: zacks">
+<meta name="keywords" content="GitLab-CI,自动化测试">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GitLab-CI实现自动化测试">
+<meta property="og:url" content="https://zacksleo.github.io/2017/05/30/GitLab-CI实现自动化测试/index.html">
+<meta property="og:site_name" content="zacks&#39;s blog">
+<meta property="og:description" content="GitLab-Ci实现自动化测试 持续集成的目的，就是让产品可以快速迭代，同时还能保持高质量。它的核心措施是，代码集成到主干之前，必须通过自动化测试。只要有一个测试用例失败，就不能集成。  使用自动化测试, 可以提高软件的质量和可靠性, 今早发现其中的缺陷和问题, 以便即时改正. 配置环境首先需要一个满足运行自动化测试的Docker镜像, 以便后面运行测试代码, 例如: 1image: zacks">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-04-18T09:48:43.188Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="GitLab-CI实现自动化测试">
+<meta name="twitter:description" content="GitLab-Ci实现自动化测试 持续集成的目的，就是让产品可以快速迭代，同时还能保持高质量。它的核心措施是，代码集成到主干之前，必须通过自动化测试。只要有一个测试用例失败，就不能集成。  使用自动化测试, 可以提高软件的质量和可靠性, 今早发现其中的缺陷和问题, 以便即时改正. 配置环境首先需要一个满足运行自动化测试的Docker镜像, 以便后面运行测试代码, 例如: 1image: zacks">
+
+
+
+
+
+
+  <link rel="canonical" href="https://zacksleo.github.io/2017/05/30/GitLab-CI实现自动化测试/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>GitLab-CI实现自动化测试 | zacks's blog</title>
+  
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-80154310-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-80154310-2');
+</script>
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">zacks's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">清净无为</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2017/05/30/GitLab-CI实现自动化测试/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zacksleo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zacks's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">GitLab-CI实现自动化测试
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-05-30 10:37:33" itemprop="dateCreated datePublished" datetime="2017-05-30T10:37:33+08:00">2017-05-30</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-04-18 17:48:43" itemprop="dateModified" datetime="2018-04-18T17:48:43+08:00">2018-04-18</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/05/30/GitLab-CI实现自动化测试/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count gitment-comments-count" data-xid="/2017/05/30/GitLab-CI实现自动化测试/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/05/30/GitLab-CI实现自动化测试/" class="leancloud_visitors" data-flag-title="GitLab-CI实现自动化测试">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="GitLab-Ci实现自动化测试"><a href="#GitLab-Ci实现自动化测试" class="headerlink" title="GitLab-Ci实现自动化测试"></a>GitLab-Ci实现自动化测试</h1><blockquote>
+<p>持续集成的目的，就是让产品可以快速迭代，同时还能保持高质量。它的核心措施是，代码集成到主干之前，必须通过自动化测试。只要有一个测试用例失败，就不能集成。</p>
+</blockquote>
+<p>使用自动化测试, 可以提高软件的质量和可靠性, 今早发现其中的缺陷和问题, 以便即时改正.</p>
+<h2 id="配置环境"><a href="#配置环境" class="headerlink" title="配置环境"></a>配置环境</h2><p>首先需要一个满足运行自动化测试的Docker镜像, 以便后面运行测试代码, 例如:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">image: zacksleo/docker-composer:develop</span><br></pre></td></tr></table></figure>
+<h2 id="配置服务"><a href="#配置服务" class="headerlink" title="配置服务"></a>配置服务</h2><p>某些测试需要使用额外的服务, 如数据库、缓存服务器等等, 并通过<code>variables</code>配置服务中的一些变量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">services:</span><br><span class="line">    - mysql:5.6</span><br><span class="line">    - redis:latest</span><br><span class="line">variables:</span><br><span class="line">    MYSQL_ROOT_PASSWORD: root</span><br><span class="line">    MYSQL_DATABASE: web</span><br><span class="line">    MYSQL_USER: web</span><br><span class="line">    MYSQL_PASSWORD: web</span><br></pre></td></tr></table></figure>
+<h2 id="声明依赖工件"><a href="#声明依赖工件" class="headerlink" title="声明依赖工件"></a>声明依赖工件</h2><p>一般在测试前要进行准备过程, 如安装依赖库或者编译等, 可将上述过程生成的的文件, 通过依赖声明, 传递过来, 这样可以比避免重复执行相关过程.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">installing-dependencies:</span><br><span class="line">    stage: prepare</span><br><span class="line">    script:</span><br><span class="line">        - composer install --prefer-dist --optimize-autoloader -n --no-interaction -v --no-suggest</span><br><span class="line">        - composer dump-autoload --optimize</span><br><span class="line">    artifacts:</span><br><span class="line">        name: &quot;vendor&quot;</span><br><span class="line">        untracked: true</span><br><span class="line">        expire_in: 60 mins</span><br><span class="line">        paths:</span><br><span class="line">            - $CI_PROJECT_DIR/vendor</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dependencies:</span><br><span class="line">    - installing-dependencies</span><br></pre></td></tr></table></figure>
+<h2 id="配置测试脚本"><a href="#配置测试脚本" class="headerlink" title="配置测试脚本"></a>配置测试脚本</h2><p>  假定你已经在本地编写好了测试代码, 并且可以本地运行, 那么就可以通过调整和适配, 让测试可以在GitLab-CI中自动化执行, 在下面的例子中,</p>
+<p>  测试代码位于<code>tests</code>目录,并且<code>.env</code>中配置了一些环境变量, 该文件的作用是为了让不同环境使用不同的一组变量, 如数据库、接口地址、账号等等，<br>  这样做的目录可以尽量少的变更代码，保持核心代码的稳定性和适应能力， 通过<code>php -S</code> 启动了一个本地接口服务, 最后调用api测试, 对所有接口<br>  进行测试</p>
+<p>  在下面的例子中, 还声明了<code>coverage</code>, 这个用来说明代码测试覆盖率的取得方法, 因为在测试中会将覆盖率输出(<code>--coverage --no-colors</code>),<br>  GitLab-CI 通过正则匹配输出内容, 读取到覆盖率, 从而显示在项目徽标处  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">dependencies:</span><br><span class="line">    - installing-dependencies</span><br><span class="line">script:</span><br><span class="line">    - cp tests/.env .env</span><br><span class="line">    - ./yii migrate/up --interactive=0</span><br><span class="line">    - php -S localhost:80 --docroot api/tests &amp;&gt;/dev/null&amp;</span><br><span class="line">    - ./vendor/bin/codecept run api -c tests --coverage --no-colors</span><br><span class="line"></span><br><span class="line">    coverage: &apos;/^\s*Lines:\s*\d+.\d+\%/&apos;</span><br></pre></td></tr></table></figure>
+<h2 id="测试失败如何处理"><a href="#测试失败如何处理" class="headerlink" title="测试失败如何处理"></a>测试失败如何处理</h2><p>  当测试失败后, 除了查看<code>Pipline</code>中的任务输出, 我们还应当详细查看测试中的相关日志, 下面这里, 将需要查看的文件生成工件, 在GitLab中下载,<br>  然后可以在本地详细查看, <code>when</code>说明了仅在测试失败时, 才生成工件</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">artifacts:</span><br><span class="line">    name: &quot;debug&quot;</span><br><span class="line">    when: on_failure</span><br><span class="line">    untracked: true</span><br><span class="line">    expire_in: 60 mins</span><br><span class="line">    paths:</span><br><span class="line">        - $CI_PROJECT_DIR/api/runtime</span><br><span class="line">        - $CI_PROJECT_DIR/tests/_output</span><br></pre></td></tr></table></figure>
+<h2 id="完整的例子"><a href="#完整的例子" class="headerlink" title="完整的例子"></a>完整的例子</h2><p>下面是一个完整的API自动化测试的盒子</p>
+<pre><code>api-test:
+    stage: testing
+    services:
+        - mysql:5.6
+        - redis:latest
+    variables:
+        MYSQL_ROOT_PASSWORD: root
+        MYSQL_DATABASE: web
+        MYSQL_USER: web
+        MYSQL_PASSWORD: web
+    dependencies:
+        - installing-dependencies
+    script:
+        - cp tests/.env .env
+        - ./yii migrate/up --interactive=0
+        - php -S localhost:80 --docroot api/tests &amp;&gt;/dev/null&amp;
+        - ./vendor/bin/codecept run api -c tests
+    artifacts:
+        name: &quot;debug&quot;
+        when: on_failure
+        untracked: true
+        expire_in: 60 mins
+        paths:
+            - $CI_PROJECT_DIR/api/runtime
+            - $CI_PROJECT_DIR/tests/_output
+    only:
+        - develop
+        - master
+</code></pre><p>关于持续集成完整的项目, 请查看 <a href="https://github.com/zacksleo/yii2-app-advanced" target="_blank" rel="noopener">zacksleo/yii2-app-advanced</a> 项目</p>
+<p>  <a href="https://docs.gitlab.com/ce/ci/docker/using_docker_images.html" target="_blank" rel="noopener">使用Docker镜像</a></p>
+
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>Thanks for reading.</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="https://ws1.sinaimg.cn/large/675eb504gy1fqguzrumh6j20yi1aun1z.jpg" alt="zacksleo 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/GitLab-CI/" rel="tag"># GitLab-CI</a>
+          
+            <a href="/tags/自动化测试/" rel="tag"># 自动化测试</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/05/21/从PHP到Python-两种编程语言的异同/" rel="next" title="从PHP到Python-两种编程语言的异同">
+                <i class="fa fa-chevron-left"></i> 从PHP到Python-两种编程语言的异同
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/20/README/" rel="prev" title="欢迎访问我的博客">
+                欢迎访问我的博客 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">zacksleo</p>
+              <p class="site-description motion-element" itemprop="description">Full Stack Web Developer</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">42</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">62</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/zacksleo" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#GitLab-Ci实现自动化测试"><span class="nav-number">1.</span> <span class="nav-text">GitLab-Ci实现自动化测试</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#配置环境"><span class="nav-number">1.1.</span> <span class="nav-text">配置环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置服务"><span class="nav-number">1.2.</span> <span class="nav-text">配置服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#声明依赖工件"><span class="nav-number">1.3.</span> <span class="nav-text">声明依赖工件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置测试脚本"><span class="nav-number">1.4.</span> <span class="nav-text">配置测试脚本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试失败如何处理"><span class="nav-number">1.5.</span> <span class="nav-text">测试失败如何处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#完整的例子"><span class="nav-number">1.6.</span> <span class="nav-text">完整的例子</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zacksleo</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.2.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.2.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.2.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.2.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.2.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.2.0"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname,
+            owner: 'zacksleo',
+            repo: 'zacksleo.github.io',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '923e43b826a027e48d5ce4745cb01f25bf9c8585',
+            
+                client_id: 'fcf50191d703c4f37d35'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("6ewRRbjRaYybcLL2fRlMKDtT-gzGzoHsz", "NhhOjGzUPay4gOs6hP0RzgdH");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            
+            counter.save(null, {
+              success: function(counter) {
+                
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(counter.get('time'));
+                
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            
+              var $element = $(document.getElementById(url));
+              $element.find('.leancloud-visitors-count').text('Counter not initialized! See more at console err msg.');
+              console.error('ATTENTION! LeanCloud counter has security bug, see here how to solve it: https://github.com/theme-next/hexo-leancloud-counter-security. \n But you also can use LeanCloud without security, by set \'security\' option to \'false\'.');
+            
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

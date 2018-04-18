@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="HSx2g2b2GklalbFMNOUlf16CH8h8aJMsL6Wa1CvfqSw" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.2.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.2.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="常见面试内容技术线（偏深度）：  基础知识，比如数据结构，多线程，I/O，Http协议等    语言深度，比如PHP的运行机制，性能优化，APC（以及其原理等）    源码阅读，比如看过哪些框     写出一下各段代码的输出结果： 1. 1234567$a = (1 &amp;lt; &amp;lt; 0);$b = (1 &amp;lt; &amp;lt; $a);$c = (1 &amp;lt; &amp;lt; $b);echo ($c$">
+<meta name="keywords" content="php,面试材料">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP常见面试材料">
+<meta property="og:url" content="https://zacksleo.github.io/2016/05/29/PHP常见面试材料/index.html">
+<meta property="og:site_name" content="zacks&#39;s blog">
+<meta property="og:description" content="常见面试内容技术线（偏深度）：  基础知识，比如数据结构，多线程，I/O，Http协议等    语言深度，比如PHP的运行机制，性能优化，APC（以及其原理等）    源码阅读，比如看过哪些框     写出一下各段代码的输出结果： 1. 1234567$a = (1 &amp;lt; &amp;lt; 0);$b = (1 &amp;lt; &amp;lt; $a);$c = (1 &amp;lt; &amp;lt; $b);echo ($c$">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-04-18T09:48:43.188Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PHP常见面试材料">
+<meta name="twitter:description" content="常见面试内容技术线（偏深度）：  基础知识，比如数据结构，多线程，I/O，Http协议等    语言深度，比如PHP的运行机制，性能优化，APC（以及其原理等）    源码阅读，比如看过哪些框     写出一下各段代码的输出结果： 1. 1234567$a = (1 &amp;lt; &amp;lt; 0);$b = (1 &amp;lt; &amp;lt; $a);$c = (1 &amp;lt; &amp;lt; $b);echo ($c$">
+
+
+
+
+
+
+  <link rel="canonical" href="https://zacksleo.github.io/2016/05/29/PHP常见面试材料/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>PHP常见面试材料 | zacks's blog</title>
+  
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-80154310-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-80154310-2');
+</script>
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">zacks's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">清净无为</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2016/05/29/PHP常见面试材料/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zacksleo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zacks's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">PHP常见面试材料
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-05-29 17:34:37" itemprop="dateCreated datePublished" datetime="2016-05-29T17:34:37+08:00">2016-05-29</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-04-18 17:48:43" itemprop="dateModified" datetime="2018-04-18T17:48:43+08:00">2018-04-18</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/05/29/PHP常见面试材料/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count gitment-comments-count" data-xid="/2016/05/29/PHP常见面试材料/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2016/05/29/PHP常见面试材料/" class="leancloud_visitors" data-flag-title="PHP常见面试材料">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="常见面试内容"><a href="#常见面试内容" class="headerlink" title="常见面试内容"></a>常见面试内容</h2><h3 id="技术线（偏深度）："><a href="#技术线（偏深度）：" class="headerlink" title="技术线（偏深度）："></a>技术线（偏深度）：</h3><ul>
+<li><ol>
+<li>基础知识，比如数据结构，多线程，I/O，Http协议等</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>语言深度，比如PHP的运行机制，性能优化，APC（以及其原理等）</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>源码阅读，比如看过哪些框</li>
+</ol>
+</li>
+</ul>
+<hr>
+<h3 id="写出一下各段代码的输出结果："><a href="#写出一下各段代码的输出结果：" class="headerlink" title="写出一下各段代码的输出结果："></a>写出一下各段代码的输出结果：</h3><ul>
+<li><p>1.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$a = (1 &lt; &lt; 0);</span><br><span class="line">$b = (1 &lt; &lt; $a);</span><br><span class="line">$c = (1 &lt; &lt; $b);</span><br><span class="line">echo ($c</span><br><span class="line"></span><br><span class="line">$b) &lt; &lt; 2 * $a</span><br><span class="line">$a;</span><br></pre></td></tr></table></figure>
+</li>
+<li><ol start="2">
+<li><code>echo &#39;1&#39;.print(2)+3;</code></li>
+</ol>
+</li>
+<li><p>3</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$a = 0x01;</span><br><span class="line">$b = 0x02;</span><br><span class="line">echo $a===$b &gt; &gt; $a;</span><br><span class="line"></span><br><span class="line">$foo = 5 + &apos;10 things&apos;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><ol start="4">
+<li><code>print (196*100) !== (double)1960;</code></li>
+</ol>
+</li>
+<li><ol start="5">
+<li><code>echo 0500</code></li>
+</ol>
+</li>
+<li><ol start="6">
+<li><code>$a = 0; echo ~$a;</code></li>
+</ol>
+</li>
+</ul>
+<hr>
+<h3 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h3><ul>
+<li><ol>
+<li>解释一下SQL注入的原理及危害，假设这里有一个不严谨的登陆程序，如何利用SQL注入进入。</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>解释一下跨站脚本的原理及危害，假设这里有一个不严谨的留言板，请构造跨站脚本范例。</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>解释一下数据索引为什么能提高效率。<br>场景 <code>SQL select * from user where area=&#39;广州‘ and sex=&#39;女‘ order by lastlogin desc limit 30;</code></li>
+</ol>
+</li>
+<li>4.如何设计索引？</li>
+<li>5.现在有10万条 IP地址对应区间表，格式为 <code>startip, endip, area</code><br>要求每个用户访问时都能快速分析出对方地区，请设计实现。数据库或不用数据库，要求每秒钟实现超过千次的查询。<br>基本上到这些对我而言就已经足够了，如果上面题目特别满意的，再附加</li>
+<li><ol start="6">
+<li>现在有一个屏蔽词列表，大约几千个词；假设有一个繁忙的论坛社区，发帖量巨大，要求用户每发一篇文章就要快速分析是否包含屏蔽词，请给出程序设计。</li>
+</ol>
+</li>
+<li><ol start="7">
+<li>一个游戏网站，有数千个小游戏，每个游戏要做积分排行，数据结构如下<br><code>gameid,userid,gamescore</code></li>
+</ol>
+</li>
+<li>8.每天数百万积分提交，数据量巨大，目前要求分库处理。<br>要求，可以基于每个游戏id可以查询积分排行榜。 可以基于用户id查询，比如自己或好友的历史游戏积分记录。请问如何处理分库。</li>
+</ul>
+<hr>
+<p>专业程度体现在对PHP的基本功的掌握和一些进阶知识的了解，比如对常见性能点、不同版本特性等，session的实现机制、include/require的差异，进一步的主流框架掌握程度、常见的性能优化策略、其作为脚本语言所具备的一些特性、如何规避PHP的性能劣势打造高并发的系统、如何保证高并发下的可用性和数据完整性等等。</p>
+<p>周边知识主要会包括MySQL性能优化、Memcache使用、Nginx/Apache的配合、对于PV/Click等数据收集和观察的方法等。 同样的，利用curl/socket操作http/tcp/udp，进一步的RPC调用（Web Service/JSONP/Thrift等）的前后端实现，进一步的包括更多的Cache策略（远近、一致性哈希、数据一致性）、对Sharding即分库分表之类操作的了解、更多NoSQL产品知识、各类常见协议细节、安全性（注入和旁注、跨站和CC）等。</p>
+<hr>
+<ul>
+<li>0.简单做一下自我介绍,? 然后谈一下近三年来你的得意之作?</li>
+<li>1.看看简历，会问一些过去做的项目的用户量、pv、吞吐量、相关难点和解决方法等</li>
+<li>2.数据库设计经验,为什么进行分表? 分库?<br>一般多少数据量开始分表? 分库? 分库分表的目的? 什么是数据库垂直拆分? 水平拆分? 分区等等？可以举例说明</li>
+<li>3.数据库优化有哪些? 分别需要注意什么?</li>
+<li>4.web开发方面会遇到哪些缓存? 分别如何优化?</li>
+<li>5.给你256M的内存,对10G的文件进行排序(文件每行1个数字),如何实现？<br>对10G的文件进行查找如何实现？<br>统计10G文件每个关键字出现的次数如何实现？</li>
+<li>6.假如你现在是12306火车订票的设计师,你该如何设计满足全国人民订票?</li>
+<li>7.假如有1亿用户的访问量,你的服务器架构是怎样的? 用户信息的存储方案如何设计?</li>
+<li>8.如果你是技术组长,所带团队任务进度无法完成你该如何解决?<br>如果在进度排满的前提下插入任务,你该如何保证总进度不延期?<br>如果有的工程师今天预定任务没有完成,你该如何解决?</li>
+<li>9.从你的经验方面谈一下如何构建高性能web站点? 需要哪些环节? 步骤? 每个步骤需要注意什么如何优化等?</li>
+<li>10.为什么要对数据库进行主从分离?</li>
+<li>11.如何处理多服务器共享session?</li>
+<li>12.一个10G的表,你用php程序统计某个字段出现的次数,思路是?</li>
+<li>13.会告诉你一个nginx日志例子,用你认为最佳的编程语言统计一下http响应时间超过1秒的前10个url?</li>
+<li>14.给你一个mysql配置文件,用你认为最佳的编程语言解析该文件?</li>
+<li>15.给你两个路径a和b,写一个算法或思路计算a和b差距几层并显示a和b的交集?</li>
+<li>16.给你一个url,在nginx配置一下rewrite指定到某个具体路径?</li>
+<li>17.一个php文件的解释过程是? 一般加速php有哪些? 提高php整体性能会用到哪些技术?</li>
+<li>18.session和cookie生存周期区别? 存储位置区别?</li>
+<li>19.require、include、require_once、include_once区别? 加载区别? 如果程序按需加载某个php文件你如何实现?</li>
+<li>20.chrome号称为多线程的,所以多线程和多进程的区别为?</li>
+<li>21.php在2011年底出现hash碰撞,hash碰撞原理为? 如何进行修复?</li>
+<li>22.web不安全因素有哪些? 分别如何防范?</li>
+<li>23.假如两个单链表相交,写一个最优算法计算交点位置,说思路也可以?</li>
+<li>24.假如你是技术组长? 如何提高团队效率?</li>
+<li>25.nginx负载均衡有哪些? 如果其中一台服务器挂掉,报警机制如何实现?</li>
+<li>26.不优化前提下,apache一般最大连接数为? nginx一般最大连接数为? mysql 每秒insert ? select ? update ? delete?</li>
+<li>27.mysql 数据类型有哪些 ? 分别占用多少存储空间 ?</li>
+<li>28.nginx设置缓存js、css、图片等信息,缓存的实现原理是?</li>
+<li>29.如何提高缓存命中率? 如何对缓存进行颗粒化?</li>
+<li>30.php的内存回收机制是?</li>
+<li><p>31.我的所有问题都问完了,你有什么问题问我没有？</p>
+</li>
+<li><p>32.请使用shell命令获取a文件的前10行与后10行的数据，将其放进b文件中。</p>
+</li>
+<li>33.如何设计安全的php程序，可以防止SQL攻击。</li>
+<li>34.这里有一个sql语句，select id from table where a=? order by b，请你就句子判断，建立索引，使其能够在innodb和myisam引擎下，查询效果都可以加快。</li>
+<li>35.有一天，突然有一个用户投诉，说网页打不开，你该如何进行排查？</li>
+<li>36.何对一个亿级数据的表按照一个没有索引的字段进行统计</li>
+</ul>
+<hr>
+<p>php实现扩展的机制</p>
+<p>全站消息系统</p>
+<p>消息队列</p>
+<p>PHP的数组为什么不按照索引遍历</p>
+<p><a href="http://blog.sina.com.cn/s/blog_60d07c3101010m2h.html" target="_blank" rel="noopener">http://blog.sina.com.cn/s/blog_60d07c3101010m2h.html</a></p>
+<p><a href="http://www.php-note.com/article/detail/546" target="_blank" rel="noopener">http://www.php-note.com/article/detail/546</a></p>
+<p><a href="http://my.oschina.net/u/574366/blog/64814" target="_blank" rel="noopener">http://my.oschina.net/u/574366/blog/64814</a></p>
+
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>Thanks for reading.</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="https://ws1.sinaimg.cn/large/675eb504gy1fqguzrumh6j20yi1aun1z.jpg" alt="zacksleo 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/php/" rel="tag"># php</a>
+          
+            <a href="/tags/面试材料/" rel="tag"># 面试材料</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2013/12/16/ThinkPHP结合使用PHPConsole向Chrome 控制台输出SQL/" rel="next" title="ThinkPHP结合使用PHP Console向Chrome 控制台输出SQL">
+                <i class="fa fa-chevron-left"></i> ThinkPHP结合使用PHP Console向Chrome 控制台输出SQL
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/08/23/使用Docker安装Redmine/" rel="prev" title="使用Docker安装Redmine">
+                使用Docker安装Redmine <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">zacksleo</p>
+              <p class="site-description motion-element" itemprop="description">Full Stack Web Developer</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">42</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">62</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/zacksleo" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#常见面试内容"><span class="nav-number">1.</span> <span class="nav-text">常见面试内容</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#技术线（偏深度）："><span class="nav-number">1.1.</span> <span class="nav-text">技术线（偏深度）：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#写出一下各段代码的输出结果："><span class="nav-number">1.2.</span> <span class="nav-text">写出一下各段代码的输出结果：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库"><span class="nav-number">1.3.</span> <span class="nav-text">数据库</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zacksleo</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.2.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.2.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.2.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.2.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.2.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.2.0"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname,
+            owner: 'zacksleo',
+            repo: 'zacksleo.github.io',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '923e43b826a027e48d5ce4745cb01f25bf9c8585',
+            
+                client_id: 'fcf50191d703c4f37d35'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("6ewRRbjRaYybcLL2fRlMKDtT-gzGzoHsz", "NhhOjGzUPay4gOs6hP0RzgdH");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            
+            counter.save(null, {
+              success: function(counter) {
+                
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(counter.get('time'));
+                
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            
+              var $element = $(document.getElementById(url));
+              $element.find('.leancloud-visitors-count').text('Counter not initialized! See more at console err msg.');
+              console.error('ATTENTION! LeanCloud counter has security bug, see here how to solve it: https://github.com/theme-next/hexo-leancloud-counter-security. \n But you also can use LeanCloud without security, by set \'security\' option to \'false\'.');
+            
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
