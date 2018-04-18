@@ -110,7 +110,7 @@
 <meta property="og:description" content="CI项目自动上报Bug原理通过重写CI_Exceptions, 当程序出错时, 通过调用GitLab中提交issue的API, 将相关信息自动提交 如果是Yii2项目,见 Yii自动上报Bug 步骤 获取项目id和自己的id可以通过GitLab的project接口, 从中拿到project_id和assignee_id  在此提供一个方法, 给自己提交一个issue, 提交时审查HTML, 可以找">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://ww3.sinaimg.cn/large/675eb504gw1fbtdv1gcjcj20oq0d543f.jpg">
-<meta property="og:updated_time" content="2018-04-18T15:22:37.762Z">
+<meta property="og:updated_time" content="2018-04-18T15:31:39.363Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CodeIgniter项目自动向GitLab上报Bug">
 <meta name="twitter:description" content="CI项目自动上报Bug原理通过重写CI_Exceptions, 当程序出错时, 通过调用GitLab中提交issue的API, 将相关信息自动提交 如果是Yii2项目,见 Yii自动上报Bug 步骤 获取项目id和自己的id可以通过GitLab的project接口, 从中拿到project_id和assignee_id  在此提供一个方法, 给自己提交一个issue, 提交时审查HTML, 可以找">
@@ -347,7 +347,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-04-18 23:22:37" itemprop="dateModified" datetime="2018-04-18T23:22:37+08:00">2018-04-18</time>
+                <time title="修改时间：2018-04-18 23:31:39" itemprop="dateModified" datetime="2018-04-18T23:31:39+08:00">2018-04-18</time>
               
             
           </span>
@@ -362,7 +362,8 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2016/10/12/CodeIgniter项目自动向GitLab上报Bug/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count gitment-comments-count" data-xid="/2016/10/12/CodeIgniter项目自动向GitLab上报Bug/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/10/12/CodeIgniter项目自动向GitLab上报Bug/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -517,9 +518,12 @@
 
   
     <div class="comments" id="comments">
-      
-        <div id="gitment-container"></div>
-      
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
     </div>
 
   
@@ -908,6 +912,31 @@
 
   
 
+  
+    <script id="dsq-count-scr" src="https://zacksleo.disqus.com/count.js" async></script>
+  
+
+  
+    <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.url = 'https://zacksleo.github.io/2016/10/12/CodeIgniter项目自动向GitLab上报Bug/';
+        this.page.identifier = '2016/10/12/CodeIgniter项目自动向GitLab上报Bug/';
+        this.page.title = 'CodeIgniter项目自动向GitLab上报Bug';
+      };
+      function loadComments () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://zacksleo.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      }
+      
+        loadComments();
+      
+    </script>
+  
+
+
+
 
 
 	
@@ -922,48 +951,7 @@
 
 
 
-  
 
-
-
-
-
-
-<!-- LOCAL: You can save these files to your site and update links -->
-    
-        
-        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
-        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
-    
-<!-- END LOCAL -->
-
-    
-
-    
-      <script type="text/javascript">
-      function renderGitment(){
-        var gitment = new Gitmint({
-            id: window.location.pathname,
-            owner: 'zacksleo',
-            repo: 'zacksleo.github.io',
-            
-            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
-            
-            oauth: {
-            
-            
-                client_secret: '923e43b826a027e48d5ce4745cb01f25bf9c8585',
-            
-                client_id: 'fcf50191d703c4f37d35'
-            }});
-        gitment.render('gitment-container');
-      }
-
-      
-      renderGitment();
-      
-      </script>
-    
 
 
 
@@ -1050,9 +1038,25 @@
             });
           } else {
             
-              var $element = $(document.getElementById(url));
-              $element.find('.leancloud-visitors-count').text('Counter not initialized! See more at console err msg.');
-              console.error('ATTENTION! LeanCloud counter has security bug, see here how to solve it: https://github.com/theme-next/hexo-leancloud-counter-security. \n But you also can use LeanCloud without security, by set \'security\' option to \'false\'.');
+              var newcounter = new Counter();
+              /* Set ACL */
+              var acl = new AV.ACL();
+              acl.setPublicReadAccess(true);
+              acl.setPublicWriteAccess(true);
+              newcounter.setACL(acl);
+              /* End Set ACL */
+              newcounter.set("title", title);
+              newcounter.set("url", url);
+              newcounter.set("time", 1);
+              newcounter.save(null, {
+                success: function(newcounter) {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+                },
+                error: function(newcounter, error) {
+                  console.log('Failed to create');
+                }
+              });
             
           }
         },

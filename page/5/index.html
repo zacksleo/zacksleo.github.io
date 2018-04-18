@@ -349,7 +349,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-04-18 23:22:37" itemprop="dateModified" datetime="2018-04-18T23:22:37+08:00">2018-04-18</time>
+                <time title="修改时间：2018-04-18 23:31:39" itemprop="dateModified" datetime="2018-04-18T23:31:39+08:00">2018-04-18</time>
               
             
           </span>
@@ -357,6 +357,17 @@
           
 
           
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/05/29/PHP常见面试材料/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/05/29/PHP常见面试材料/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -629,7 +640,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-04-18 23:22:37" itemprop="dateModified" datetime="2018-04-18T23:22:37+08:00">2018-04-18</time>
+                <time title="修改时间：2018-04-18 23:31:39" itemprop="dateModified" datetime="2018-04-18T23:31:39+08:00">2018-04-18</time>
               
             
           </span>
@@ -637,6 +648,17 @@
           
 
           
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2013/12/16/ThinkPHP结合使用PHPConsole向Chrome 控制台输出SQL/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2013/12/16/ThinkPHP结合使用PHPConsole向Chrome 控制台输出SQL/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -1091,6 +1113,14 @@
 
   
 
+  
+    <script id="dsq-count-scr" src="https://zacksleo.disqus.com/count.js" async></script>
+  
+
+  
+
+
+
 
 
 	
@@ -1105,24 +1135,7 @@
 
 
 
-  
 
-
-
-
-
-
-<!-- LOCAL: You can save these files to your site and update links -->
-    
-        
-        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
-        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
-    
-<!-- END LOCAL -->
-
-    
-
-    
 
 
 
@@ -1209,9 +1222,25 @@
             });
           } else {
             
-              var $element = $(document.getElementById(url));
-              $element.find('.leancloud-visitors-count').text('Counter not initialized! See more at console err msg.');
-              console.error('ATTENTION! LeanCloud counter has security bug, see here how to solve it: https://github.com/theme-next/hexo-leancloud-counter-security. \n But you also can use LeanCloud without security, by set \'security\' option to \'false\'.');
+              var newcounter = new Counter();
+              /* Set ACL */
+              var acl = new AV.ACL();
+              acl.setPublicReadAccess(true);
+              acl.setPublicWriteAccess(true);
+              newcounter.setACL(acl);
+              /* End Set ACL */
+              newcounter.set("title", title);
+              newcounter.set("url", url);
+              newcounter.set("time", 1);
+              newcounter.save(null, {
+                success: function(newcounter) {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+                },
+                error: function(newcounter, error) {
+                  console.log('Failed to create');
+                }
+              });
             
           }
         },

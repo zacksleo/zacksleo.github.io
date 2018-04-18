@@ -109,7 +109,7 @@
 <meta property="og:site_name" content="zacks&#39;s blog">
 <meta property="og:description" content="原理先解析markdown为HTML, 然后解析出h1-h10标签, 根据h标签的前后大小, 决定ul的层级, 以此生成ul序列的嵌套  如果当前H标签和前面H标签相同, 则生成&amp;lt;li&amp;gt;&amp;lt;/li&amp;gt;, 如果比前面的大, 则生成&amp;lt;ul&amp;gt; 如果比前面的小, 生成&amp;lt;/ul&amp;gt;&amp;lt;ul&amp;gt;&amp;lt;li&amp;gt;&amp;lt;/li&amp;gt;    上手 选择一个m">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-04-18T15:22:37.766Z">
+<meta property="og:updated_time" content="2018-04-18T15:31:39.367Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PHP解析提取Markdown中的标题来生成TOC">
 <meta name="twitter:description" content="原理先解析markdown为HTML, 然后解析出h1-h10标签, 根据h标签的前后大小, 决定ul的层级, 以此生成ul序列的嵌套  如果当前H标签和前面H标签相同, 则生成&amp;lt;li&amp;gt;&amp;lt;/li&amp;gt;, 如果比前面的大, 则生成&amp;lt;ul&amp;gt; 如果比前面的小, 生成&amp;lt;/ul&amp;gt;&amp;lt;ul&amp;gt;&amp;lt;li&amp;gt;&amp;lt;/li&amp;gt;    上手 选择一个m">
@@ -345,7 +345,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-04-18 23:22:37" itemprop="dateModified" datetime="2018-04-18T23:22:37+08:00">2018-04-18</time>
+                <time title="修改时间：2018-04-18 23:31:39" itemprop="dateModified" datetime="2018-04-18T23:31:39+08:00">2018-04-18</time>
               
             
           </span>
@@ -360,7 +360,8 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2016/10/12/PHP解析提取Markdown中的标题来生成TOC/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count gitment-comments-count" data-xid="/2016/10/12/PHP解析提取Markdown中的标题来生成TOC/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/10/12/PHP解析提取Markdown中的标题来生成TOC/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -524,9 +525,12 @@
 
   
     <div class="comments" id="comments">
-      
-        <div id="gitment-container"></div>
-      
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
     </div>
 
   
@@ -915,6 +919,31 @@
 
   
 
+  
+    <script id="dsq-count-scr" src="https://zacksleo.disqus.com/count.js" async></script>
+  
+
+  
+    <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.url = 'https://zacksleo.github.io/2016/10/12/PHP解析提取Markdown中的标题来生成TOC/';
+        this.page.identifier = '2016/10/12/PHP解析提取Markdown中的标题来生成TOC/';
+        this.page.title = 'PHP解析提取Markdown中的标题来生成TOC';
+      };
+      function loadComments () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://zacksleo.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      }
+      
+        loadComments();
+      
+    </script>
+  
+
+
+
 
 
 	
@@ -929,48 +958,7 @@
 
 
 
-  
 
-
-
-
-
-
-<!-- LOCAL: You can save these files to your site and update links -->
-    
-        
-        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
-        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
-    
-<!-- END LOCAL -->
-
-    
-
-    
-      <script type="text/javascript">
-      function renderGitment(){
-        var gitment = new Gitmint({
-            id: window.location.pathname,
-            owner: 'zacksleo',
-            repo: 'zacksleo.github.io',
-            
-            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
-            
-            oauth: {
-            
-            
-                client_secret: '923e43b826a027e48d5ce4745cb01f25bf9c8585',
-            
-                client_id: 'fcf50191d703c4f37d35'
-            }});
-        gitment.render('gitment-container');
-      }
-
-      
-      renderGitment();
-      
-      </script>
-    
 
 
 
@@ -1057,9 +1045,25 @@
             });
           } else {
             
-              var $element = $(document.getElementById(url));
-              $element.find('.leancloud-visitors-count').text('Counter not initialized! See more at console err msg.');
-              console.error('ATTENTION! LeanCloud counter has security bug, see here how to solve it: https://github.com/theme-next/hexo-leancloud-counter-security. \n But you also can use LeanCloud without security, by set \'security\' option to \'false\'.');
+              var newcounter = new Counter();
+              /* Set ACL */
+              var acl = new AV.ACL();
+              acl.setPublicReadAccess(true);
+              acl.setPublicWriteAccess(true);
+              newcounter.setACL(acl);
+              /* End Set ACL */
+              newcounter.set("title", title);
+              newcounter.set("url", url);
+              newcounter.set("time", 1);
+              newcounter.save(null, {
+                success: function(newcounter) {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+                },
+                error: function(newcounter, error) {
+                  console.log('Failed to create');
+                }
+              });
             
           }
         },
