@@ -470,7 +470,7 @@ pangu: false
 
 # Disqus
 disqus:
-  enable: true
+  enable: false
   shortname: zacksleo
   count: true
   lazyload: false
@@ -511,7 +511,7 @@ valine:
 # Gitment
 # Introduction: https://imsun.net/posts/gitment-introduction/
 gitment:
-  enable: false
+  enable: true
   mint: true # RECOMMEND, A mint on Gitment, to support count, language and proxy_gateway
   count: true # Show comments count in post meta area
   lazy: false # Comments lazy loading with a button

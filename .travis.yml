@@ -27,6 +27,7 @@ script:
   - npm install --no-optional
   - curl https://codeload.github.com/theme-next/hexo-theme-next/tar.gz/v6.2.0 -o themes/next.tar.gz && tar zxvf themes/next.tar.gz -C themes/
   - mv themes/hexo-theme-next-* themes/next &&  mv themes/_config.yml themes/next/_config.yml
+  - mv themes/gitment.swig themes/layout/_third-party/comments/gitment.swig
 after_script:
   - hexo generate
   - cp -r public/* .deploy_git/
