@@ -349,7 +349,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-04-18 23:50:09" itemprop="dateModified" datetime="2018-04-18T23:50:09+08:00">2018-04-18</time>
+                <time title="修改时间：2018-04-18 23:52:58" itemprop="dateModified" datetime="2018-04-18T23:52:58+08:00">2018-04-18</time>
               
             
           </span>
@@ -629,7 +629,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-04-18 23:50:09" itemprop="dateModified" datetime="2018-04-18T23:50:09+08:00">2018-04-18</time>
+                <time title="修改时间：2018-04-18 23:52:58" itemprop="dateModified" datetime="2018-04-18T23:52:58+08:00">2018-04-18</time>
               
             
           </span>
@@ -1196,11 +1196,11 @@
             counter.fetchWhenSave(true);
             counter.increment("time");
             
+              var $element = $(document.getElementById(url));
+              $element.find('.leancloud-visitors-count').text(counter.get('time'));
+            
             counter.save(null, {
               success: function(counter) {
-                
-                  var $element = $(document.getElementById(url));
-                  $element.find('.leancloud-visitors-count').text(counter.get('time'));
                 
               },
               error: function(counter, error) {
