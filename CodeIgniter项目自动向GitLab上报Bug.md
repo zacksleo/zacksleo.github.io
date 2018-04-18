@@ -1,5 +1,6 @@
 ---
 title: CodeIgniter项目自动向GitLab上报Bug
+subtitle: auto-report-bug-in-codeigniter
 date: 2016-10-12 17:48:25
 tags: CodeIgniter, GitLab, Bug, 自动化
 ---

@@ -1,5 +1,6 @@
 ---
 title: CentOS上安装docker-compose
+subtitle: install-docker-compose-on-centos
 date: 2017-02-15 13:42:06
 tags: [docker-composer]
 ---

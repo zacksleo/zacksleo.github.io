@@ -1,5 +1,6 @@
 ---
 title: GitHub使用Style-CI进行格式检查
+subtitle: use-style-ci-in-github
 date: 2018-01-30 10:55:06
 tags: [GitHub,Style-CI,DevOps]
 ---

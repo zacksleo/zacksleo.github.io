@@ -5,7 +5,7 @@
 body='{
 "request": {
     "message": "Update docs (triggered by zacksleo/zacksleo.github.io:docs).",
-    "branch":"hexo"
+    "branch":"hexo-theme-next"
   }
 }'
 
