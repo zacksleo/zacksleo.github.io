@@ -28,3 +28,7 @@ gollum --adapter rugged
 ## 使用 Docker
 
 使用Docker 安装gullum的内容见 [gollum](http://zacksleo.github.io/2017/03/11/gollum/)
+
+## 参考文档
+
++ [Docker Goolum](https://github.com/zacksleo/gollum)
