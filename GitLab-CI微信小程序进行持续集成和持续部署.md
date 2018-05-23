@@ -65,6 +65,8 @@ gitlab-runner start
 
 ### 编写 `.gitlab-ci.yml`
 
+在此之前，你需要对GitLab-CI有一定的掌握，这部分资料参考下方的相关文档
+
 ```YAML
 image: node:alpine
 
@@ -127,6 +129,9 @@ deploy:
 
 ## 相关文档
 
++ [如何编写GitLab-CI配置文件](https://zacksleo.github.io/2017/04/27/%E5%A6%82%E4%BD%95%E7%BC%96%E5%86%99GitLab-CI%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/)
++ [GitLab-CI中的artifacts使用研究](https://zacksleo.github.io/2017/04/18/GitLab-CI%E4%B8%AD%E7%9A%84artifacts%E4%BD%BF%E7%94%A8%E7%A0%94%E7%A9%B6/)
++ [GitLab-CI使用cache加速构建过程](https://zacksleo.github.io/2018/01/26/GitLab-CI%E4%BD%BF%E7%94%A8cache%E5%8A%A0%E9%80%9F%E6%9E%84%E5%BB%BA%E8%BF%87%E7%A8%8B/)
 + [微信开发者工具HTTP调用](https://developers.weixin.qq.com/miniprogram/dev/devtools/http.html)
 + [Install GitLab Runner](https://docs.gitlab.com/runner/install/)
 + [Registering Runners](https://docs.gitlab.com/runner/register/index.html)
