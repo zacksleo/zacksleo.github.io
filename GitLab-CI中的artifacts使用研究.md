@@ -11,12 +11,12 @@ tags: [GitLab-CI,DevOps]
 
 两个主要有以下几个区别:
 
-1. 虽然定义了`cache`, 但是如果`cache`和`.gitignore`中重复的这部分, 仍然需要重新安装
+1. `cache`不一定命中，`artifacts`肯定命中, 能否使用`cache`取决当当前机器是否生成过cache, artifacts则每次都会从GitLab下载
 2. 重新安装时因为使用的是缓存, 所以很有可能不是最新的
 3. 特别是开发环境, 如果每次都希望使用最新的更新, 应当删除`cache`, 使用`artifacts`, 这样可以保证确定的更新
 4.`artifacts`中定义的部分, 会自动生成, 并可以传到下面的`job`中解压使用, 避免了重复依赖安装等工作
 5. 如果使用Docker运行Gitlab-Runner, `cache`会生成一些临时容器, 不容易清理
-6. `artifacts`可以设置自动过期时间, 过期自动删除
+6. `artifacts`可以设置自动过期时间, 过期自动删除，`cache`不会自动清理
 7. `artifacts`会先传到GitLab服务器, 然后需要时再重新下载, 所以这部分也可以在GitLab下载和浏览
 
 ## `artifacts` 的依赖使用
