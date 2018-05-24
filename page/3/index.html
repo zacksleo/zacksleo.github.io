@@ -349,7 +349,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-05-23 20:35:33" itemprop="dateModified" datetime="2018-05-23T20:35:33+08:00">2018-05-23</time>
+                <time title="修改时间：2018-05-24 10:06:36" itemprop="dateModified" datetime="2018-05-24T10:06:36+08:00">2018-05-24</time>
               
             
           </span>
@@ -529,7 +529,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-05-23 20:35:33" itemprop="dateModified" datetime="2018-05-23T20:35:33+08:00">2018-05-23</time>
+                <time title="修改时间：2018-05-24 10:06:36" itemprop="dateModified" datetime="2018-05-24T10:06:36+08:00">2018-05-24</time>
               
             
           </span>
@@ -704,7 +704,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-05-23 20:35:33" itemprop="dateModified" datetime="2018-05-23T20:35:33+08:00">2018-05-23</time>
+                <time title="修改时间：2018-05-24 10:06:36" itemprop="dateModified" datetime="2018-05-24T10:06:36+08:00">2018-05-24</time>
               
             
           </span>
@@ -754,11 +754,11 @@
 <p>其中 <code>cache</code> 指的是缓存, 常用于依赖安装中, 如几个<code>jobs</code>都需要安装相同的依赖, 可以使用<code>依赖</code>, 此时可以加快依赖的安装进度;<br>对于<code>artifacts</code>则是将某个<code>工件</code>上传到GitLab提供下载或后续操作使用, 由于每个<code>job</code>启动时, 都会自动删除<code>.gitignore</code>中指定的文件, 因此对于依赖安装目录, 即可以使用<code>cache</code>, 也可以使用<code>artifacts</code>.</p>
 <p>两个主要有以下几个区别:</p>
 <ol>
-<li>虽然定义了<code>cache</code>, 但是如果<code>cache</code>和<code>.gitignore</code>中重复的这部分, 仍然需要重新安装</li>
+<li><code>cache</code>不一定命中，<code>artifacts</code>肯定命中, 能否使用<code>cache</code>取决当当前机器是否生成过cache, artifacts则每次都会从GitLab下载</li>
 <li>重新安装时因为使用的是缓存, 所以很有可能不是最新的</li>
 <li>特别是开发环境, 如果每次都希望使用最新的更新, 应当删除<code>cache</code>, 使用<code>artifacts</code>, 这样可以保证确定的更新<br>4.<code>artifacts</code>中定义的部分, 会自动生成, 并可以传到下面的<code>job</code>中解压使用, 避免了重复依赖安装等工作</li>
 <li>如果使用Docker运行Gitlab-Runner, <code>cache</code>会生成一些临时容器, 不容易清理</li>
-<li><code>artifacts</code>可以设置自动过期时间, 过期自动删除</li>
+<li><code>artifacts</code>可以设置自动过期时间, 过期自动删除，<code>cache</code>不会自动清理</li>
 <li><code>artifacts</code>会先传到GitLab服务器, 然后需要时再重新下载, 所以这部分也可以在GitLab下载和浏览</li>
 </ol>
 <h2 id="artifacts-的依赖使用"><a href="#artifacts-的依赖使用" class="headerlink" title="artifacts 的依赖使用"></a><code>artifacts</code> 的依赖使用</h2><p>下面是一个使用<code>artifacts</code>的例子, 首先有一个安装依赖的工作, 然后工作完成后, 会将安装文件转移到后续的工作时</p>
@@ -892,7 +892,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-05-23 20:35:33" itemprop="dateModified" datetime="2018-05-23T20:35:33+08:00">2018-05-23</time>
+                <time title="修改时间：2018-05-24 10:06:36" itemprop="dateModified" datetime="2018-05-24T10:06:36+08:00">2018-05-24</time>
               
             
           </span>
@@ -1062,7 +1062,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-05-23 20:35:33" itemprop="dateModified" datetime="2018-05-23T20:35:33+08:00">2018-05-23</time>
+                <time title="修改时间：2018-05-24 10:06:36" itemprop="dateModified" datetime="2018-05-24T10:06:36+08:00">2018-05-24</time>
               
             
           </span>
@@ -1236,7 +1236,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-05-23 20:35:33" itemprop="dateModified" datetime="2018-05-23T20:35:33+08:00">2018-05-23</time>
+                <time title="修改时间：2018-05-24 10:06:36" itemprop="dateModified" datetime="2018-05-24T10:06:36+08:00">2018-05-24</time>
               
             
           </span>
@@ -1412,7 +1412,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-05-23 20:35:33" itemprop="dateModified" datetime="2018-05-23T20:35:33+08:00">2018-05-23</time>
+                <time title="修改时间：2018-05-24 10:06:36" itemprop="dateModified" datetime="2018-05-24T10:06:36+08:00">2018-05-24</time>
               
             
           </span>
@@ -1597,7 +1597,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-05-23 20:35:33" itemprop="dateModified" datetime="2018-05-23T20:35:33+08:00">2018-05-23</time>
+                <time title="修改时间：2018-05-24 10:06:36" itemprop="dateModified" datetime="2018-05-24T10:06:36+08:00">2018-05-24</time>
               
             
           </span>
@@ -1788,7 +1788,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-05-23 20:35:33" itemprop="dateModified" datetime="2018-05-23T20:35:33+08:00">2018-05-23</time>
+                <time title="修改时间：2018-05-24 10:06:36" itemprop="dateModified" datetime="2018-05-24T10:06:36+08:00">2018-05-24</time>
               
             
           </span>
@@ -1952,7 +1952,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-05-23 20:35:33" itemprop="dateModified" datetime="2018-05-23T20:35:33+08:00">2018-05-23</time>
+                <time title="修改时间：2018-05-24 10:06:36" itemprop="dateModified" datetime="2018-05-24T10:06:36+08:00">2018-05-24</time>
               
             
           </span>
