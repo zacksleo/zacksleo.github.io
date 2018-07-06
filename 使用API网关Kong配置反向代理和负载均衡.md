@@ -39,9 +39,9 @@ tags: [Gateway,网关,Kong,反向代理,负载均衡]
 | Hosts  |  dashboard.xxx.com | 绑定的域名，类似于vhosts  | 
 | Uris  |  / | 绑定目录  | 
 | Methods  |   | 请求方法，默认不填  | 
-| Upstream URL  | http://192.168.0.2:8080  |   | 
+| Upstream URL  | http://192.168.0.2:8080  | 实际微服务地址，建议使用内网ip, 并将该服务屏蔽外网访问  | 
 | Strip uri  | YES |  |
-| Preserve Host | YES |  |
+| Preserve Host | YES | 转发时保留域名，处理301问题 |
 | Https only  | YES | 如果不使用https，不勾选 |
 
 
@@ -60,20 +60,20 @@ UPSTREAMS 配置
 
 | 配置项  | 内容 | 说明  |
 |---|---|---|
-| Name  | coupon.api.foundation.com  |   | 
+| Name  | coupon.api.foundation.com  | 类域名的别名  | 
 
 Targets 配置
 
 | 配置项  | 内容 | 说明  |
 |---|---|---|
-| Target  | 192.168.0.2:8001  |   | 
+| Target  | 192.168.0.2:8001  | 微服务1的地址（建议使用内网）  | 
 | WEIGHT  | 100  | 权重  | 
 
 Targets2 配置
 
 | 配置项  | 内容 | 说明  |
 |---|---|---|
-| Target  | 192.168.0.3:8001  |   | 
+| Target  | 192.168.0.3:8001  | 微服务1的地址  | 
 | WEIGHT  | 100  | 权重  | 
 
 ...
@@ -82,10 +82,10 @@ Apis 配置
 
 | 配置项  | 内容 | 说明  |
 |---|---|---|
-| Name  | coupon  |   | 
+| Name  | coupon  | 名称，任意  | 
 | Hosts  |  |  留空使用网关默认的域名，如 api.xxx.com  | 
 | Uris  | /coupon |  通过 api.xxx.com/coupon 访问该服务 | 
-| Methods  |   |   | 
+| Methods  |   |  留空不限制 | 
 | Upstream URL  | http://coupon.api.foundation.com/api/  | 这里为配置的 UPSTREAMS 里的 Name  | 
 | Strip uri  | YES |  |
 | Preserve Host | YES |  |
