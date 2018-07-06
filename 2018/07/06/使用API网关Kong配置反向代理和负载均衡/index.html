@@ -109,7 +109,7 @@
 <meta property="og:site_name" content="zacks&#39;s blog">
 <meta property="og:description" content="简介Kong 是一个微服务API网关。  Kong是一个云原生，快速，可扩展和分布式微服务抽象层（也称为API网关，API中间件或在某些情况下为Service Mesh）。作为2015年的开源项目，其核心价值在于高性能和可扩展性。Kong积极维护，广泛应用于从创业公司到Global 5000以及政府组织等公司的生产。  Konga 是一个用于管理网关Kong的管理端，通过它可以方便的进网关进行管理">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-07-06T09:15:54.970Z">
+<meta property="og:updated_time" content="2018-07-06T09:22:04.532Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用API网关Kong配置反向代理和负载均衡">
 <meta name="twitter:description" content="简介Kong 是一个微服务API网关。  Kong是一个云原生，快速，可扩展和分布式微服务抽象层（也称为API网关，API中间件或在某些情况下为Service Mesh）。作为2015年的开源项目，其核心价值在于高性能和可扩展性。Kong积极维护，广泛应用于从创业公司到Global 5000以及政府组织等公司的生产。  Konga 是一个用于管理网关Kong的管理端，通过它可以方便的进网关进行管理">
@@ -328,7 +328,7 @@
                 
               
 
-              <time title="创建时间：2018-07-06 15:02:00 / 修改时间：17:15:54" itemprop="dateCreated datePublished" datetime="2018-07-06T15:02:00+08:00">2018-07-06</time>
+              <time title="创建时间：2018-07-06 15:02:00 / 修改时间：17:22:04" itemprop="dateCreated datePublished" datetime="2018-07-06T15:02:00+08:00">2018-07-06</time>
             
 
             
@@ -434,7 +434,7 @@
 <tr>
 <td>Upstream URL</td>
 <td><a href="http://192.168.0.2:8080" target="_blank" rel="noopener">http://192.168.0.2:8080</a></td>
-<td></td>
+<td>实际微服务地址，建议使用内网ip, 并将该服务屏蔽外网访问</td>
 </tr>
 <tr>
 <td>Strip uri</td>
@@ -444,7 +444,7 @@
 <tr>
 <td>Preserve Host</td>
 <td>YES</td>
-<td></td>
+<td>转发时保留域名，处理301问题</td>
 </tr>
 <tr>
 <td>Https only</td>
@@ -469,6 +469,7 @@
 <tr>
 <td>Name</td>
 <td>coupon.api.foundation.com</td>
+<td>类域名的别名</td>
 </tr>
 </tbody>
 </table>
@@ -485,7 +486,7 @@
 <tr>
 <td>Target</td>
 <td>192.168.0.2:8001</td>
-<td></td>
+<td>微服务1的地址（建议使用内网）</td>
 </tr>
 <tr>
 <td>WEIGHT</td>
@@ -507,7 +508,7 @@
 <tr>
 <td>Target</td>
 <td>192.168.0.3:8001</td>
-<td></td>
+<td>微服务1的地址</td>
 </tr>
 <tr>
 <td>WEIGHT</td>
@@ -530,7 +531,7 @@
 <tr>
 <td>Name</td>
 <td>coupon</td>
-<td></td>
+<td>名称，任意</td>
 </tr>
 <tr>
 <td>Hosts</td>
@@ -545,7 +546,7 @@
 <tr>
 <td>Methods</td>
 <td></td>
-<td></td>
+<td>留空不限制</td>
 </tr>
 <tr>
 <td>Upstream URL</td>
