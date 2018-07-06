@@ -109,7 +109,7 @@
 <meta property="og:site_name" content="zacks&#39;s blog">
 <meta property="og:description" content="简介Kong 是一个微服务API网关。  Kong是一个云原生，快速，可扩展和分布式微服务抽象层（也称为API网关，API中间件或在某些情况下为Service Mesh）。作为2015年的开源项目，其核心价值在于高性能和可扩展性。Kong积极维护，广泛应用于从创业公司到Global 5000以及政府组织等公司的生产。  Konga 是一个用于管理网关Kong的管理端，通过它可以方便的进网关进行管理">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-07-06T09:22:04.532Z">
+<meta property="og:updated_time" content="2018-07-06T09:36:25.520Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用API网关Kong配置反向代理和负载均衡">
 <meta name="twitter:description" content="简介Kong 是一个微服务API网关。  Kong是一个云原生，快速，可扩展和分布式微服务抽象层（也称为API网关，API中间件或在某些情况下为Service Mesh）。作为2015年的开源项目，其核心价值在于高性能和可扩展性。Kong积极维护，广泛应用于从创业公司到Global 5000以及政府组织等公司的生产。  Konga 是一个用于管理网关Kong的管理端，通过它可以方便的进网关进行管理">
@@ -328,7 +328,7 @@
                 
               
 
-              <time title="创建时间：2018-07-06 15:02:00 / 修改时间：17:22:04" itemprop="dateCreated datePublished" datetime="2018-07-06T15:02:00+08:00">2018-07-06</time>
+              <time title="创建时间：2018-07-06 15:02:00 / 修改时间：17:36:25" itemprop="dateCreated datePublished" datetime="2018-07-06T15:02:00+08:00">2018-07-06</time>
             
 
             
@@ -392,6 +392,13 @@
 <p>Kong是一个云原生，快速，可扩展和分布式微服务抽象层（也称为API网关，API中间件或在某些情况下为Service Mesh）。<br>作为2015年的开源项目，其核心价值在于高性能和可扩展性。<br>Kong积极维护，广泛应用于从创业公司到Global 5000以及政府组织等公司的生产。</p>
 </blockquote>
 <p><a href="https://github.com/pantsel/konga" target="_blank" rel="noopener">Konga</a> 是一个用于管理网关Kong的管理端，通过它可以方便的进网关进行管理配置。</p>
+<p>使用网关能解决很多问题：</p>
+<ol>
+<li>解决端口和域名问题，代理后消除端口，将域名映射到端口，将服务映射成目录</li>
+<li>微服务代理，将微服务置于内网，统一由网关代理</li>
+<li>授权，可以配置授权管理，主要用于API授权</li>
+<li>负载均衡，可以增强高访问量下的可用性，解决部署时的服务中断问题</li>
+</ol>
 <p>本文主要讲述使用 Konga 对 Kong 进行网关管理配置</p>
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>安装过程具体请参考官网文档，如果使用docker安装 Kong 和 Konga，可以参考 配置<a href="https://github.com/warnstar/basic-auth-trans/blob/master/docker-compose.yml.dist" target="_blank" rel="noopener">docker-compose</a></p>
 <h2 id="配置反向代理"><a href="#配置反向代理" class="headerlink" title="配置反向代理"></a>配置反向代理</h2><p>在 APIS 一栏，点击 <code>ADD NEW API</code> 按钮，添加一个代理：</p>
