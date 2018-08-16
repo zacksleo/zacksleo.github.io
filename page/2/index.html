@@ -286,6 +286,391 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2017/11/21/高并发优化初试/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zacksleo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zacks's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/11/21/高并发优化初试/" itemprop="url">
+                  高并发优化初试
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-11-21 20:53:06" itemprop="dateCreated datePublished" datetime="2017-11-21T20:53:06+08:00">2017-11-21</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-08-16 22:10:31" itemprop="dateModified" datetime="2018-08-16T22:10:31+08:00">2018-08-16</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/11/21/高并发优化初试/" class="leancloud_visitors" data-flag-title="高并发优化初试">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h2><p>最近接触了一个抽奖的项目，由于用户量比较大，而且第三方提供的认证接口并发量有限，为了保证服务的高可用性，所以对高并限制发有一定的要求。经过一系列研究和讨论，做出了以下一些优化方案。</p>
+<h2 id="需求分析"><a href="#需求分析" class="headerlink" title="需求分析"></a>需求分析</h2><ul>
+<li><p>根据用户量和日活情况，估算出并发值在100左右，所以该项目的并发量就当在100上以，初期目标定为600-800</p>
+</li>
+<li><p>特定页面的并发量不超过300，为了保证不对第三方服务造成访问压力，特将并发控制在150以内</p>
+</li>
+<li><p>由于奖品数量有限，故得奖时，需要进行并发写入控制，防止奖品超发</p>
+</li>
+</ul>
+<h2 id="实施步骤"><a href="#实施步骤" class="headerlink" title="实施步骤"></a>实施步骤</h2><h3 id="前端方面"><a href="#前端方面" class="headerlink" title="前端方面"></a>前端方面</h3><h4 id="减少客户端访问次数。"><a href="#减少客户端访问次数。" class="headerlink" title="减少客户端访问次数。"></a>减少客户端访问次数。</h4><ul>
+<li><p>使用CDN对网站的静态资源进行优化，可以答复静态请求次数。</p>
+</li>
+<li><p>抽奖结果一次性生成。</p>
+</li>
+</ul>
+<p>每个用户有有一次抽奖机会，但只能有一次中奖，其他两次随机弹出推荐产品。所以有一次抽奖中，只需要访问一次服务器的抽奖接口。</p>
+<ul>
+<li>使用本地缓存。</li>
+</ul>
+<p>将抽奖次数，是否中奖等信息记录在本地，避免超次抽奖和多余的服务器请求。例如，一旦该用户中过将，就不需要再访问服务器抽奖接口。</p>
+<h3 id="服务端优化"><a href="#服务端优化" class="headerlink" title="服务端优化"></a>服务端优化</h3><h4 id="使用缓存"><a href="#使用缓存" class="headerlink" title="使用缓存"></a>使用缓存</h4><ul>
+<li>使用服务端缓存。</li>
+</ul>
+<p>将页面和相关数据查询进行缓存，减少数据库访问次数。</p>
+<h4 id="部分业务逻辑异步处理"><a href="#部分业务逻辑异步处理" class="headerlink" title="部分业务逻辑异步处理"></a>部分业务逻辑异步处理</h4><p>对于不需要实时处理的业务逻辑，压入队列，实现异步处理。例如优惠券的发放。</p>
+<h4 id="Nginx-优化"><a href="#Nginx-优化" class="headerlink" title="Nginx 优化"></a>Nginx 优化</h4><ul>
+<li>提高 Nginx 处理性能</li>
+</ul>
+<p>使用 <code>worker_processes</code>，<code>worker_cpu_affinity</code>，<code>worker_rlimit_nofile</code>， <code>worker_connections</code>，<code>open_file_cache</code>等命令，提高nginx的处理性能。</p>
+<ul>
+<li>Nginx 并发控制。</li>
+</ul>
+<p>先看实例，如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">limit_req_zone $binary_remote_addr zone=req_ip:10m rate=40r/s; // #每个IP平均处理的请求频率为每秒40次</span><br><span class="line">limit_conn_zone $binary_remote_addr zone=conn_ip:10m;</span><br><span class="line">limit_conn_zone $server_name zone=conn_server:10m;</span><br><span class="line">limit_conn conn_ip 5; // #限制某个IP来源的连接并发数，此处为5个</span><br><span class="line">limit_conn conn_server 600; //#限制某个虚拟服务器的总连接数，此处为600个</span><br><span class="line">limit_req zone=req_ip burst=5; //小为5的缓冲区, 当有大量请求过来时，超过了访问频次限制的请求可以先放到这个缓冲区内</span><br></pre></td></tr></table></figure>
+<p>在这里，限制了每个IP的请求频率，限制了同一IP的并发连接数，限制了服务器的总连接数</p>
+<ul>
+<li>使用 Docker 实现负载均衡</li>
+</ul>
+<p>配置 nginx, 使用负载均衡</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">upstream icontact_pool &#123;</span><br><span class="line">    server  web:9000    weight=5    max_fails=3 fail_timeout=10s;</span><br><span class="line">    server  web2:9000   weight=5    max_fails=3 fail_timeout=10s;</span><br><span class="line">    server  web3:9000   weight=5    max_fails=3 fail_timeout=10s;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如上，通过 Docker 启动多个处理请求的服务容器，在 nginx 中配置每个服务的地址，权重等信息，扩大请求的处理能力</p>
+<ul>
+<li>其他服务器环境优化</li>
+</ul>
+<p>例如，增加服务器配置（CPU，内存，带宽），如果是PHP, 开启 opcache, 并使用较新版本（php7+）, 各种依赖尽量使用最新版本。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">zend_extension=opcache.so</span><br><span class="line">opcache.enable=1</span><br><span class="line">opcache.enable_cli=1</span><br></pre></td></tr></table></figure>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="http://www.jiagoumi.com/work/718.html" target="_blank" rel="noopener">Nginx限制IP并发连接数和请求数的研究</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2017/11/18/使用Travis-CI 将github上的博客内容与静态网站分离并持续部署/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zacksleo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zacks's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/11/18/使用Travis-CI 将github上的博客内容与静态网站分离并持续部署/" itemprop="url">
+                  使用Travis-CI 将github上的博客内容与静态网站分离并持续部署
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-11-18 23:14:25" itemprop="dateCreated datePublished" datetime="2017-11-18T23:14:25+08:00">2017-11-18</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-08-16 22:10:31" itemprop="dateModified" datetime="2018-08-16T22:10:31+08:00">2018-08-16</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/11/18/使用Travis-CI 将github上的博客内容与静态网站分离并持续部署/" class="leancloud_visitors" data-flag-title="使用Travis-CI 将github上的博客内容与静态网站分离并持续部署">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>按照以往的做法，你会使用hexo来生成博客的静态文件，并通过git提交到github上，以此来写作和发布文章。</p>
+<p>然而，经过一段时间，你会发现，这种写作方式存在几个问题：</p>
+<ul>
+<li>文章源和相关编译、部署程序都存储在本地，如果在其他设备上写作，没有同步措施。这样书写多有不便。</li>
+<li>文章源没有备份，也没有充分使用Git来管理。</li>
+<li>每次书写完文章，需要手动编译和部署。</li>
+</ul>
+<p>鉴于以上几个问题，结合Travis-CI的使用经验，我决定对往常的写作方式进行改进：</p>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><h3 id="新建分支"><a href="#新建分支" class="headerlink" title="新建分支"></a>新建分支</h3><p>除了原来博客中的master分支, 再新建两个分支：docs分支用于存放文章源：hexo分支用于存放一些配置文件，我们将在该分支上进行持续部署。</p>
+<h3 id="docs-分支"><a href="#docs-分支" class="headerlink" title="docs 分支"></a>docs 分支</h3><p>该分支下存放文章源，各篇均以markdow格式书写。除此之外，有 <code>.travis.yml</code> 配置文件和一个触发部署的脚本 <code>deploy.sh</code>。</p>
+<p>每当有文章提交上来，就会自动触发一次构建，其内容是通过调用Travis-CI的API，自动执行一次 hexo 分支上的自动构建。</p>
+<h3 id="hexo-分支"><a href="#hexo-分支" class="headerlink" title="hexo 分支"></a>hexo 分支</h3><p>该分支存放一些hexo的配置文件，当构建被触发时，会自动拉取docs中的文章内容，安装一个material皮肤，并进行hexo的自动网站编译。<br>最后编译完的静态Html，强制推送到master分支，从而博客自动更新。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2017/10/25/GitLab-CI使用CodeClimate评估代码质量/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -349,7 +734,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-07-06 17:36:25" itemprop="dateModified" datetime="2018-07-06T17:36:25+08:00">2018-07-06</time>
+                <time title="修改时间：2018-08-16 22:10:31" itemprop="dateModified" datetime="2018-08-16T22:10:31+08:00">2018-08-16</time>
               
             
           </span>
@@ -524,7 +909,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-07-06 17:36:25" itemprop="dateModified" datetime="2018-07-06T17:36:25+08:00">2018-07-06</time>
+                <time title="修改时间：2018-08-16 22:10:31" itemprop="dateModified" datetime="2018-08-16T22:10:31+08:00">2018-08-16</time>
               
             
           </span>
@@ -707,7 +1092,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-07-06 17:36:25" itemprop="dateModified" datetime="2018-07-06T17:36:25+08:00">2018-07-06</time>
+                <time title="修改时间：2018-08-16 22:10:31" itemprop="dateModified" datetime="2018-08-16T22:10:31+08:00">2018-08-16</time>
               
             
           </span>
@@ -893,7 +1278,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-07-06 17:36:25" itemprop="dateModified" datetime="2018-07-06T17:36:25+08:00">2018-07-06</time>
+                <time title="修改时间：2018-08-16 22:10:31" itemprop="dateModified" datetime="2018-08-16T22:10:31+08:00">2018-08-16</time>
               
             
           </span>
@@ -1069,7 +1454,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-07-06 17:36:25" itemprop="dateModified" datetime="2018-07-06T17:36:25+08:00">2018-07-06</time>
+                <time title="修改时间：2018-08-16 22:10:31" itemprop="dateModified" datetime="2018-08-16T22:10:31+08:00">2018-08-16</time>
               
             
           </span>
@@ -1246,7 +1631,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-07-06 17:36:25" itemprop="dateModified" datetime="2018-07-06T17:36:25+08:00">2018-07-06</time>
+                <time title="修改时间：2018-08-16 22:10:31" itemprop="dateModified" datetime="2018-08-16T22:10:31+08:00">2018-08-16</time>
               
             
           </span>
@@ -1460,7 +1845,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-07-06 17:36:25" itemprop="dateModified" datetime="2018-07-06T17:36:25+08:00">2018-07-06</time>
+                <time title="修改时间：2018-08-16 22:10:31" itemprop="dateModified" datetime="2018-08-16T22:10:31+08:00">2018-08-16</time>
               
             
           </span>
@@ -1623,7 +2008,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-07-06 17:36:25" itemprop="dateModified" datetime="2018-07-06T17:36:25+08:00">2018-07-06</time>
+                <time title="修改时间：2018-08-16 22:10:31" itemprop="dateModified" datetime="2018-08-16T22:10:31+08:00">2018-08-16</time>
               
             
           </span>
@@ -1755,527 +2140,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2017/05/21/从PHP到Python-两种编程语言的异同/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zacksleo">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zacks's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/05/21/从PHP到Python-两种编程语言的异同/" itemprop="url">
-                  从PHP到Python-两种编程语言的异同
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2017-05-21 22:08:21" itemprop="dateCreated datePublished" datetime="2017-05-21T22:08:21+08:00">2017-05-21</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-07-06 17:36:25" itemprop="dateModified" datetime="2018-07-06T17:36:25+08:00">2018-07-06</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2017/05/21/从PHP到Python-两种编程语言的异同/" class="leancloud_visitors" data-flag-title="从PHP到Python-两种编程语言的异同">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="语言"><a href="#语言" class="headerlink" title="语言"></a>语言</h2><ol>
-<li>两者都是胶水语言, 不需要编译, 逐行运行, 因此报错时可以追中到行</li>
-<li>主流都是用C实现的, 因此底层仍然是C</li>
-</ol>
-<h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><ol>
-<li>PHP与Python在代码格式上有非常大的不同, 首先最明显的一个区别就是, 没有大括号包裹函数和类库.</li>
-<li>Python使用缩进来替代大括号的功能, 开始的时候可能会让你不太习惯, 不过时间长了, 也就慢慢接受了</li>
-</ol>
-<h2 id="依赖管理"><a href="#依赖管理" class="headerlink" title="依赖管理"></a>依赖管理</h2><ol>
-<li>PHP使用composer进行依赖管理，既可以全局安装，也可以安装到当前项目</li>
-<li>Python使用Pip进行依赖管理，只能全局安装</li>
-</ol>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2017/04/27/如何编写GitLab-CI配置文件/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zacksleo">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zacks's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/04/27/如何编写GitLab-CI配置文件/" itemprop="url">
-                  如何编写GitLab-CI配置文件
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2017-04-27 15:45:00" itemprop="dateCreated datePublished" datetime="2017-04-27T15:45:00+08:00">2017-04-27</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-07-06 17:36:25" itemprop="dateModified" datetime="2018-07-06T17:36:25+08:00">2018-07-06</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2017/04/27/如何编写GitLab-CI配置文件/" class="leancloud_visitors" data-flag-title="如何编写GitLab-CI配置文件">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="创建文件"><a href="#创建文件" class="headerlink" title="创建文件"></a>创建文件</h2><p>在根目录新建<code>.gitlab-ci.yml</code>文件.</p>
-<p>该文件与项目其他文件一样, 同样受到版本控制, 所以可以在不同的分支下, 配置不同的持续集成脚本</p>
-<h2 id="YAML语法"><a href="#YAML语法" class="headerlink" title="YAML语法"></a>YAML语法</h2><p>配置文件遵循YAML语法, 关于该语法的内容, 自行搜索</p>
-<p>参考 <a href="http://www.ruanyifeng.com/blog/2016/07/yaml.html" target="_blank" rel="noopener">YAML 语言教程</a></p>
-<h2 id="关键词"><a href="#关键词" class="headerlink" title="关键词"></a>关键词</h2><h3 id="根主要关键词一览"><a href="#根主要关键词一览" class="headerlink" title="根主要关键词一览"></a>根主要关键词一览</h3><table>
-<thead>
-<tr>
-<th>关键词</th>
-<th>含义</th>
-<th>可选</th>
-<th>备注</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>image</td>
-<td>声明使用的Docker镜像</td>
-<td>为空时使用默认镜像</td>
-<td>该镜像应当满足脚本执行的环境依赖</td>
-</tr>
-<tr>
-<td>services</td>
-<td>Docker镜像使用的服务, 通过链接的方式来调用所需服务</td>
-<td>可空</td>
-<td>常用于链接数据库</td>
-</tr>
-<tr>
-<td>stages</td>
-<td>定义构建阶段</td>
-<td>为空时, 单纯定义jobs</td>
-<td>项目的构建分为多个阶段, 例如: 安装依赖/准备, 编译, 测试, 发布等, 同时每个阶段包含若干任务</td>
-</tr>
-<tr>
-<td>before_script</td>
-<td>定义每个job之前执行的脚本</td>
-<td>可空</td>
-<td>每个job启动时会先执行该脚本</td>
-</tr>
-<tr>
-<td>after_script</td>
-<td>定义每个job之后执行的脚本</td>
-<td>可空</td>
-<td>同上</td>
-</tr>
-<tr>
-<td>variables</td>
-<td>定义变量</td>
-<td>可空</td>
-<td>同上</td>
-</tr>
-<tr>
-<td>cache</td>
-<td>定义与后续job之间应缓存的文件</td>
-<td>可空</td>
-<td>同上</td>
-</tr>
-</tbody>
-</table>
-<p>Demo:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">image: aipline</span><br><span class="line">services:</span><br><span class="line">    - mysql</span><br><span class="line">    - redis</span><br><span class="line">stages:</span><br><span class="line">    - build</span><br><span class="line">    - test</span><br><span class="line">    - deploy</span><br><span class="line">before_script:</span><br><span class="line">    - bundle install  </span><br><span class="line">after_script:</span><br><span class="line">    - rm secrets</span><br><span class="line">cache:</span><br><span class="line">    paths:</span><br><span class="line">    - binaries/</span><br><span class="line">    - .config</span><br></pre></td></tr></table></figure>
-<h3 id="Jobs中的关键词"><a href="#Jobs中的关键词" class="headerlink" title="Jobs中的关键词"></a>Jobs中的关键词</h3><p>jobs中存在一些与根中相同的关键词, 这些一旦定义, 则会向前覆盖, 即根中定义的则不会在该job执行</p>
-<p>job 这里译为<strong>任务</strong></p>
-<table>
-<thead>
-<tr>
-<th>关键词</th>
-<th>含义</th>
-<th>可选</th>
-<th>备注</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>image</td>
-<td>声明任务使用的Docker镜像</td>
-<td>为空时使用根中的定义</td>
-<td>该镜像应当满足脚本执行的环境依赖</td>
-</tr>
-<tr>
-<td>services</td>
-<td>任务中Docker镜像使用的服务, 通过链接的方式来调用所需服务</td>
-<td>可空</td>
-<td>常用于链接数据库</td>
-</tr>
-<tr>
-<td>stage</td>
-<td>所属构建阶段</td>
-<td>为空时则不使用stages</td>
-<td>一个任务属于一个构建阶段</td>
-</tr>
-<tr>
-<td>before_script</td>
-<td>定义每个job之前执行的脚本</td>
-<td>可选</td>
-<td>如果在job中定义则会覆盖根中的内容</td>
-</tr>
-<tr>
-<td>script</td>
-<td>定义每个job执行的脚本</td>
-<td>必须</td>
-<td></td>
-</tr>
-<tr>
-<td>after_script</td>
-<td>定义每个job之后执行的脚本</td>
-<td>可选</td>
-<td>同上</td>
-</tr>
-<tr>
-<td>variables</td>
-<td>定义任务中使用的变量</td>
-<td>可选</td>
-<td>同上</td>
-</tr>
-<tr>
-<td>cache</td>
-<td>定义与后续job之间应缓存的文件</td>
-<td>可选</td>
-<td>同上</td>
-</tr>
-<tr>
-<td>only</td>
-<td>指定应用的Git分支</td>
-<td>可选</td>
-<td>可以是分支名称, 可用正则匹配分支, 也可是tags来指定打过标签的分支</td>
-</tr>
-<tr>
-<td>except</td>
-<td>排除应用的Git分支</td>
-<td>可选</td>
-<td>同上</td>
-</tr>
-<tr>
-<td>tags</td>
-<td>指定执行的GitLab-Runners</td>
-<td>可选</td>
-<td>通过匹配Runners的标签选定</td>
-</tr>
-<tr>
-<td>allow_failure</td>
-<td>允许失败</td>
-<td>默认为false</td>
-<td>如果允许失败, 本次任务不会影响整个构建的结果</td>
-</tr>
-<tr>
-<td>when</td>
-<td>定义合适执行任务</td>
-<td>默认为always</td>
-<td>有<code>on_success</code>, <code>on_failure</code>, <code>always</code> or <code>manual</code>可选</td>
-</tr>
-<tr>
-<td>dependencies</td>
-<td>定义合任务所需要的工件</td>
-<td>可空</td>
-<td>需要首先定义工件</td>
-</tr>
-<tr>
-<td>artifacts</td>
-<td>定义工件</td>
-<td>可空</td>
-<td>工件中指定的目录会在任务执行成功后压缩传到GitLab, 后面需要该工件的任务执行时, 再自行下载解压</td>
-</tr>
-<tr>
-<td>environment</td>
-<td>定义环境</td>
-<td>可空</td>
-<td>在部署任务中, 定义该任务所属的环境</td>
-</tr>
-</tbody>
-</table>
-<p>Demo:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">installing-dependencies:</span><br><span class="line">    script:</span><br><span class="line">        - composer install --prefer-dist --optimize-autoloader -n --no-interaction -v --no-suggest</span><br><span class="line">        - composer dump-autoload --optimize</span><br><span class="line">    artifacts:</span><br><span class="line">        name: &quot;vendor&quot;</span><br><span class="line">        untracked: true</span><br><span class="line">        expire_in: 60 mins</span><br><span class="line">        paths:</span><br><span class="line">            - vendor/    </span><br><span class="line">docker-build-image:    </span><br><span class="line">    stage: test</span><br><span class="line">    only:</span><br><span class="line">        - master</span><br><span class="line">    except:</span><br><span class="line">        - develop</span><br><span class="line">    tags:</span><br><span class="line">        - ruby</span><br><span class="line">        - postgres</span><br><span class="line">    allow_failure: true</span><br><span class="line">    dependencies:</span><br><span class="line">        - installing-dependencies</span><br><span class="line">    script:        </span><br><span class="line">        - docker build -t registry.com/mops/image:latest .</span><br><span class="line">        - docker push registry.com/mops/image:latest</span><br></pre></td></tr></table></figure>
-<p>注意:</p>
-<ol>
-<li>jobs的名称不能重名</li>
-<li>同一阶段中的任务, 是并行执行的</li>
-<li>上一阶段所有任务执行完后, 才会进入下一阶段</li>
-<li>定义工件时, 务必定义工件的过期时间, 否则工件会一直寸在GitLab上, 占用空间</li>
-<li>如果需要在任务中传递文件, 优先选择使用 <code>dependencies</code> (结合<code>artifacts</code>)</li>
-</ol>
-<h2 id="验证配置文件合法性"><a href="#验证配置文件合法性" class="headerlink" title="验证配置文件合法性"></a>验证配置文件合法性</h2><p>在GitLab中, 打开 <code>/ci/lint</code>网址, 将配置文件粘贴在些, 进行验证</p>
-<h3 id="相关文档"><a href="#相关文档" class="headerlink" title="相关文档"></a>相关文档</h3><ul>
-<li><a href="https://docs.gitlab.com.cn/ce/ci/yaml/README.html" target="_blank" rel="noopener">配置构建任务</a></li>
-<li><a href="https://docs.gitlab.com/ce/ci/yaml/README.html" target="_blank" rel="noopener">Configuration of your jobs with .gitlab-ci.yml</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2323,7 +2187,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">43</span>
+                    <span class="site-state-item-count">45</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2472,7 +2336,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">67</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">69</span>
                     <span class="site-state-item-name">标签</span>
                   
                 </div>

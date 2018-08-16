@@ -286,6 +286,217 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2018/08/16/手机号国际化支持解决方案/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zacksleo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zacks's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/16/手机号国际化支持解决方案/" itemprop="url">
+                  手机号国际化支持解决方案
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-08-16 22:08:26 / 修改时间：22:10:31" itemprop="dateCreated datePublished" datetime="2018-08-16T22:08:26+08:00">2018-08-16</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/08/16/手机号国际化支持解决方案/" class="leancloud_visitors" data-flag-title="手机号国际化支持解决方案">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><ul>
+<li>手机号参数对11位大陆手机号兼容  </li>
+<li>支持国际手机号，请使用形如<code>(加号)(地区编码)(一个空格)(手机号)</code>的手机格式，例如</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>地区</th>
+<th>合法格式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>中国大陆</td>
+<td>18682300424</td>
+</tr>
+<tr>
+<td>中国大陆</td>
+<td>+86 18682300424</td>
+</tr>
+<tr>
+<td>美国</td>
+<td>+1 2067925640</td>
+</tr>
+<tr>
+<td>加拿大</td>
+<td>+1 12042345678</td>
+</tr>
+<tr>
+<td>英国</td>
+<td>+44 7400123456</td>
+</tr>
+<tr>
+<td>澳大利亚</td>
+<td>+61 412345678</td>
+</tr>
+</tbody>
+</table>
+<p>所以手机格式为：以加号开头，前面是地区区号，后面是手机号码，中间保留一个空格</p>
+<ul>
+<li>如果国际手机号出现在URL中，请对手机号进行编码（urlencode）</li>
+</ul>
+<h2 id="存储和处理手机号码"><a href="#存储和处理手机号码" class="headerlink" title="存储和处理手机号码"></a>存储和处理手机号码</h2><ul>
+<li>地区编号和手机号应当分开存储</li>
+<li>增加对原11位手机号的兼容性（例如默认自动添加+86前缀）</li>
+<li>存储用户信息时，需要将<code>phone</code>和<code>country_code</code>两个信息分别存储</li>
+</ul>
+<h2 id="验证和格式化手机号"><a href="#验证和格式化手机号" class="headerlink" title="验证和格式化手机号"></a>验证和格式化手机号</h2><ul>
+<li>使用类库<code>https://github.com/googlei18n/libphonenumber</code> 或者其他语言的实现： <code>https://github.com/googlei18n/libphonenumber#third-party-ports</code></li>
+</ul>
+<h2 id="使用国际手机号测试"><a href="#使用国际手机号测试" class="headerlink" title="使用国际手机号测试"></a>使用国际手机号测试</h2><ul>
+<li>搜索可以在线接收短信验证码的平台</li>
+<li>在线接收短信验证码，进行后续测试</li>
+<li>验证码接收网站参考网址:</li>
+</ul>
+<ul>
+<li><code>http://receive-sms.com/</code></li>
+<li><code>https://tieba.baidu.com/p/3752380669</code></li>
+<li><code>http://uuxn.com/seven-recerve-sms-online-free-phone</code></li>
+<li><code>http://www.mfwu.net/receive-sms.html</code></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2018/07/06/使用API网关Kong配置反向代理和负载均衡/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -332,12 +543,24 @@
                 
               
 
-              <time title="创建时间：2018-07-06 15:02:00 / 修改时间：17:36:25" itemprop="dateCreated datePublished" datetime="2018-07-06T15:02:00+08:00">2018-07-06</time>
+              <time title="创建时间：2018-07-06 15:02:00" itemprop="dateCreated datePublished" datetime="2018-07-06T15:02:00+08:00">2018-07-06</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-08-16 22:10:31" itemprop="dateModified" datetime="2018-08-16T22:10:31+08:00">2018-08-16</time>
               
             
           </span>
@@ -631,6 +854,187 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2018/06/16/使用Taro和Typescript进行小程序开发/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zacksleo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zacks's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/16/使用Taro和Typescript进行小程序开发/" itemprop="url">
+                  使用Taro和Typescript进行小程序开发
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-06-16 22:03:25" itemprop="dateCreated datePublished" datetime="2018-06-16T22:03:25+08:00">2018-06-16</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-08-16 22:10:31" itemprop="dateModified" datetime="2018-08-16T22:10:31+08:00">2018-08-16</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/06/16/使用Taro和Typescript进行小程序开发/" class="leancloud_visitors" data-flag-title="使用Taro和Typescript进行小程序开发">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="使用Taro和Typescript进行小程序开发"><a href="#使用Taro和Typescript进行小程序开发" class="headerlink" title="使用Taro和Typescript进行小程序开发"></a>使用Taro和Typescript进行小程序开发</h2><h2 id="使用指南"><a href="#使用指南" class="headerlink" title="使用指南"></a>使用指南</h2><p>在使用 taro 生成 Typescript 模板以后，需要做以下修改：</p>
+<h3 id="配置-eslintrc"><a href="#配置-eslintrc" class="headerlink" title="配置 .eslintrc"></a>配置 .eslintrc</h3><ul>
+<li>加入 <code>&quot;no-undef&quot;: 0,</code> 以解决变量<code>undefined</code>的问题</li>
+<li>加入 <code>&quot;react/jsx-filename-extension&quot;: [1, { &quot;extensions&quot;: [&quot;.js&quot;, &quot;.jsx&quot;] }]</code> 以解决 <code>JSX not allowed in files with extension &#39;.tsx</code></li>
+</ul>
+<h3 id="增加配置文件"><a href="#增加配置文件" class="headerlink" title="增加配置文件"></a>增加配置文件</h3><ul>
+<li>tsconfig.json</li>
+<li>tslint 文件</li>
+</ul>
+<h3 id="增加依赖库"><a href="#增加依赖库" class="headerlink" title="增加依赖库"></a>增加依赖库</h3><ul>
+<li>yarn add –dev tslint</li>
+<li>yarn add –dev tslint-react</li>
+<li>yarn add –dev ptypescript-eslint-parser</li>
+</ul>
+<h2 id="开始使用"><a href="#开始使用" class="headerlink" title="开始使用"></a>开始使用</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">yarn install</span><br></pre></td></tr></table></figure>
+<h2 id="代码静态检查"><a href="#代码静态检查" class="headerlink" title="代码静态检查"></a>代码静态检查</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn run lint</span><br></pre></td></tr></table></figure>
+<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><ul>
+<li><a href="https://taro.aotu.io/" target="_blank" rel="noopener">Taro官方文档</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2018/04/08/GitLab-CI微信小程序进行持续集成和持续部署/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -694,7 +1098,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-07-06 17:36:25" itemprop="dateModified" datetime="2018-07-06T17:36:25+08:00">2018-07-06</time>
+                <time title="修改时间：2018-08-16 22:10:31" itemprop="dateModified" datetime="2018-08-16T22:10:31+08:00">2018-08-16</time>
               
             
           </span>
@@ -877,7 +1281,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-07-06 17:36:25" itemprop="dateModified" datetime="2018-07-06T17:36:25+08:00">2018-07-06</time>
+                <time title="修改时间：2018-08-16 22:10:31" itemprop="dateModified" datetime="2018-08-16T22:10:31+08:00">2018-08-16</time>
               
             
           </span>
@@ -1049,7 +1453,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-07-06 17:36:25" itemprop="dateModified" datetime="2018-07-06T17:36:25+08:00">2018-07-06</time>
+                <time title="修改时间：2018-08-16 22:10:31" itemprop="dateModified" datetime="2018-08-16T22:10:31+08:00">2018-08-16</time>
               
             
           </span>
@@ -1221,7 +1625,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-07-06 17:36:25" itemprop="dateModified" datetime="2018-07-06T17:36:25+08:00">2018-07-06</time>
+                <time title="修改时间：2018-08-16 22:10:31" itemprop="dateModified" datetime="2018-08-16T22:10:31+08:00">2018-08-16</time>
               
             
           </span>
@@ -1386,7 +1790,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-07-06 17:36:25" itemprop="dateModified" datetime="2018-07-06T17:36:25+08:00">2018-07-06</time>
+                <time title="修改时间：2018-08-16 22:10:31" itemprop="dateModified" datetime="2018-08-16T22:10:31+08:00">2018-08-16</time>
               
             
           </span>
@@ -1554,7 +1958,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-07-06 17:36:25" itemprop="dateModified" datetime="2018-07-06T17:36:25+08:00">2018-07-06</time>
+                <time title="修改时间：2018-08-16 22:10:31" itemprop="dateModified" datetime="2018-08-16T22:10:31+08:00">2018-08-16</time>
               
             
           </span>
@@ -1742,7 +2146,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-07-06 17:36:25" itemprop="dateModified" datetime="2018-07-06T17:36:25+08:00">2018-07-06</time>
+                <time title="修改时间：2018-08-16 22:10:31" itemprop="dateModified" datetime="2018-08-16T22:10:31+08:00">2018-08-16</time>
               
             
           </span>
@@ -1841,391 +2245,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2017/11/21/高并发优化初试/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zacksleo">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zacks's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/21/高并发优化初试/" itemprop="url">
-                  高并发优化初试
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2017-11-21 20:53:06" itemprop="dateCreated datePublished" datetime="2017-11-21T20:53:06+08:00">2017-11-21</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-07-06 17:36:25" itemprop="dateModified" datetime="2018-07-06T17:36:25+08:00">2018-07-06</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2017/11/21/高并发优化初试/" class="leancloud_visitors" data-flag-title="高并发优化初试">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h2><p>最近接触了一个抽奖的项目，由于用户量比较大，而且第三方提供的认证接口并发量有限，为了保证服务的高可用性，所以对高并限制发有一定的要求。经过一系列研究和讨论，做出了以下一些优化方案。</p>
-<h2 id="需求分析"><a href="#需求分析" class="headerlink" title="需求分析"></a>需求分析</h2><ul>
-<li><p>根据用户量和日活情况，估算出并发值在100左右，所以该项目的并发量就当在100上以，初期目标定为600-800</p>
-</li>
-<li><p>特定页面的并发量不超过300，为了保证不对第三方服务造成访问压力，特将并发控制在150以内</p>
-</li>
-<li><p>由于奖品数量有限，故得奖时，需要进行并发写入控制，防止奖品超发</p>
-</li>
-</ul>
-<h2 id="实施步骤"><a href="#实施步骤" class="headerlink" title="实施步骤"></a>实施步骤</h2><h3 id="前端方面"><a href="#前端方面" class="headerlink" title="前端方面"></a>前端方面</h3><h4 id="减少客户端访问次数。"><a href="#减少客户端访问次数。" class="headerlink" title="减少客户端访问次数。"></a>减少客户端访问次数。</h4><ul>
-<li><p>使用CDN对网站的静态资源进行优化，可以答复静态请求次数。</p>
-</li>
-<li><p>抽奖结果一次性生成。</p>
-</li>
-</ul>
-<p>每个用户有有一次抽奖机会，但只能有一次中奖，其他两次随机弹出推荐产品。所以有一次抽奖中，只需要访问一次服务器的抽奖接口。</p>
-<ul>
-<li>使用本地缓存。</li>
-</ul>
-<p>将抽奖次数，是否中奖等信息记录在本地，避免超次抽奖和多余的服务器请求。例如，一旦该用户中过将，就不需要再访问服务器抽奖接口。</p>
-<h3 id="服务端优化"><a href="#服务端优化" class="headerlink" title="服务端优化"></a>服务端优化</h3><h4 id="使用缓存"><a href="#使用缓存" class="headerlink" title="使用缓存"></a>使用缓存</h4><ul>
-<li>使用服务端缓存。</li>
-</ul>
-<p>将页面和相关数据查询进行缓存，减少数据库访问次数。</p>
-<h4 id="部分业务逻辑异步处理"><a href="#部分业务逻辑异步处理" class="headerlink" title="部分业务逻辑异步处理"></a>部分业务逻辑异步处理</h4><p>对于不需要实时处理的业务逻辑，压入队列，实现异步处理。例如优惠券的发放。</p>
-<h4 id="Nginx-优化"><a href="#Nginx-优化" class="headerlink" title="Nginx 优化"></a>Nginx 优化</h4><ul>
-<li>提高 Nginx 处理性能</li>
-</ul>
-<p>使用 <code>worker_processes</code>，<code>worker_cpu_affinity</code>，<code>worker_rlimit_nofile</code>， <code>worker_connections</code>，<code>open_file_cache</code>等命令，提高nginx的处理性能。</p>
-<ul>
-<li>Nginx 并发控制。</li>
-</ul>
-<p>先看实例，如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">limit_req_zone $binary_remote_addr zone=req_ip:10m rate=40r/s; // #每个IP平均处理的请求频率为每秒40次</span><br><span class="line">limit_conn_zone $binary_remote_addr zone=conn_ip:10m;</span><br><span class="line">limit_conn_zone $server_name zone=conn_server:10m;</span><br><span class="line">limit_conn conn_ip 5; // #限制某个IP来源的连接并发数，此处为5个</span><br><span class="line">limit_conn conn_server 600; //#限制某个虚拟服务器的总连接数，此处为600个</span><br><span class="line">limit_req zone=req_ip burst=5; //小为5的缓冲区, 当有大量请求过来时，超过了访问频次限制的请求可以先放到这个缓冲区内</span><br></pre></td></tr></table></figure>
-<p>在这里，限制了每个IP的请求频率，限制了同一IP的并发连接数，限制了服务器的总连接数</p>
-<ul>
-<li>使用 Docker 实现负载均衡</li>
-</ul>
-<p>配置 nginx, 使用负载均衡</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">upstream icontact_pool &#123;</span><br><span class="line">    server  web:9000    weight=5    max_fails=3 fail_timeout=10s;</span><br><span class="line">    server  web2:9000   weight=5    max_fails=3 fail_timeout=10s;</span><br><span class="line">    server  web3:9000   weight=5    max_fails=3 fail_timeout=10s;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>如上，通过 Docker 启动多个处理请求的服务容器，在 nginx 中配置每个服务的地址，权重等信息，扩大请求的处理能力</p>
-<ul>
-<li>其他服务器环境优化</li>
-</ul>
-<p>例如，增加服务器配置（CPU，内存，带宽），如果是PHP, 开启 opcache, 并使用较新版本（php7+）, 各种依赖尽量使用最新版本。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">zend_extension=opcache.so</span><br><span class="line">opcache.enable=1</span><br><span class="line">opcache.enable_cli=1</span><br></pre></td></tr></table></figure>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
-<li><a href="http://www.jiagoumi.com/work/718.html" target="_blank" rel="noopener">Nginx限制IP并发连接数和请求数的研究</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2017/11/18/使用Travis-CI 将github上的博客内容与静态网站分离并持续部署/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zacksleo">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zacks's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/18/使用Travis-CI 将github上的博客内容与静态网站分离并持续部署/" itemprop="url">
-                  使用Travis-CI 将github上的博客内容与静态网站分离并持续部署
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2017-11-18 23:14:25" itemprop="dateCreated datePublished" datetime="2017-11-18T23:14:25+08:00">2017-11-18</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-07-06 17:36:25" itemprop="dateModified" datetime="2018-07-06T17:36:25+08:00">2018-07-06</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2017/11/18/使用Travis-CI 将github上的博客内容与静态网站分离并持续部署/" class="leancloud_visitors" data-flag-title="使用Travis-CI 将github上的博客内容与静态网站分离并持续部署">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>按照以往的做法，你会使用hexo来生成博客的静态文件，并通过git提交到github上，以此来写作和发布文章。</p>
-<p>然而，经过一段时间，你会发现，这种写作方式存在几个问题：</p>
-<ul>
-<li>文章源和相关编译、部署程序都存储在本地，如果在其他设备上写作，没有同步措施。这样书写多有不便。</li>
-<li>文章源没有备份，也没有充分使用Git来管理。</li>
-<li>每次书写完文章，需要手动编译和部署。</li>
-</ul>
-<p>鉴于以上几个问题，结合Travis-CI的使用经验，我决定对往常的写作方式进行改进：</p>
-<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><h3 id="新建分支"><a href="#新建分支" class="headerlink" title="新建分支"></a>新建分支</h3><p>除了原来博客中的master分支, 再新建两个分支：docs分支用于存放文章源：hexo分支用于存放一些配置文件，我们将在该分支上进行持续部署。</p>
-<h3 id="docs-分支"><a href="#docs-分支" class="headerlink" title="docs 分支"></a>docs 分支</h3><p>该分支下存放文章源，各篇均以markdow格式书写。除此之外，有 <code>.travis.yml</code> 配置文件和一个触发部署的脚本 <code>deploy.sh</code>。</p>
-<p>每当有文章提交上来，就会自动触发一次构建，其内容是通过调用Travis-CI的API，自动执行一次 hexo 分支上的自动构建。</p>
-<h3 id="hexo-分支"><a href="#hexo-分支" class="headerlink" title="hexo 分支"></a>hexo 分支</h3><p>该分支存放一些hexo的配置文件，当构建被触发时，会自动拉取docs中的文章内容，安装一个material皮肤，并进行hexo的自动网站编译。<br>最后编译完的静态Html，强制推送到master分支，从而博客自动更新。</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2273,7 +2292,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">43</span>
+                    <span class="site-state-item-count">45</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2422,7 +2441,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">67</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">69</span>
                     <span class="site-state-item-name">标签</span>
                   
                 </div>

@@ -286,6 +286,359 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2016/10/12/Yii2项目自动向GitLab上报Bug/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zacksleo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zacks's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/10/12/Yii2项目自动向GitLab上报Bug/" itemprop="url">
+                  Yii2项目自动向GitLab上报Bug
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-10-12 17:47:20" itemprop="dateCreated datePublished" datetime="2016-10-12T17:47:20+08:00">2016-10-12</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-08-16 22:10:31" itemprop="dateModified" datetime="2018-08-16T22:10:31+08:00">2018-08-16</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2016/10/12/Yii2项目自动向GitLab上报Bug/" class="leancloud_visitors" data-flag-title="Yii2项目自动向GitLab上报Bug">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Yii2-项目自动上报Bug"><a href="#Yii2-项目自动上报Bug" class="headerlink" title="Yii2 项目自动上报Bug"></a>Yii2 项目自动上报Bug</h1><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>  yii2在程序报错时, 会执行指定action, 通过重写ErrorAction, 实现Bug自动提交至GitLab的issue</p>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ul>
+<li>配置SiteController中的actions方法</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public function actions()</span><br><span class="line">&#123;</span><br><span class="line">    return [</span><br><span class="line">        &apos;error&apos; =&gt; [</span><br><span class="line">            &apos;class&apos; =&gt; &apos;app\helpers\web\ErrorAction&apos;,</span><br><span class="line">        ],</span><br><span class="line">    ];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>重写ErrorAction, 位于app\helpers\web\ErrorAction, 并修改常量URL,PRIVATE_TOKEN和ASSIGNEE_ID</li>
+</ul>
+<p>如何获取project_id和assignee_id见 <a href="https://zacksleo.github.io/2017/10/12/CI%E9%A1%B9%E7%9B%AE%E8%87%AA%E5%8A%A8%E5%90%91GitLab%E4%B8%8A%E6%8A%A5Bug/">WIKI</a> </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line">namespace app\helpers\web;</span><br><span class="line"></span><br><span class="line">use yii;</span><br><span class="line">use yii\base\Action;</span><br><span class="line">use yii\base\Exception;</span><br><span class="line">use yii\base\UserException;</span><br><span class="line">use yii\web\HttpException;</span><br><span class="line"></span><br><span class="line">class ErrorAction extends \yii\web\ErrorAction</span><br><span class="line">&#123;</span><br><span class="line">    const URL = &apos;&#123;host&#125;/api/v3/projects/&#123;project_id&#125;/issues&apos;; // host替换为主机地址, project_id为项目id</span><br><span class="line">    const PRIVATE_TOKEN = &apos;tD3Te-ctECeGwEHH7-ec&apos;;</span><br><span class="line">    const ASSIGNEE_ID = 21;</span><br><span class="line"></span><br><span class="line">    public function run()</span><br><span class="line">    &#123;</span><br><span class="line">        if (($exception = Yii::$app-&gt;getErrorHandler()-&gt;exception) === null) &#123;</span><br><span class="line">            $exception = new HttpException(404, Yii::t(&apos;yii&apos;, &apos;Page not found.&apos;));</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        if ($exception instanceof HttpException) &#123;</span><br><span class="line">            $code = $exception-&gt;statusCode;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            $code = $exception-&gt;getCode();</span><br><span class="line">        &#125;</span><br><span class="line">        if ($exception instanceof Exception) &#123;</span><br><span class="line">            $name = $exception-&gt;getName();</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            $name = $this-&gt;defaultName ?: Yii::t(&apos;yii&apos;, &apos;Error&apos;);</span><br><span class="line">        &#125;</span><br><span class="line">        $preCode = $code;</span><br><span class="line">        if ($code) &#123;</span><br><span class="line">            $name .= &quot; (#$code)&quot;;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        if ($exception instanceof UserException) &#123;</span><br><span class="line">            $message = $exception-&gt;getMessage();</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            $message = $this-&gt;defaultMessage ?: Yii::t(&apos;yii&apos;, &apos;An internal server error occurred.&apos;);</span><br><span class="line">        &#125;</span><br><span class="line">        if ($code != &apos;404&apos;) &#123;</span><br><span class="line">            //自动向GitLab提交Bug</span><br><span class="line">            $url = self::URL;</span><br><span class="line">            $ch = curl_init();</span><br><span class="line">            curl_setopt($ch, CURLOPT_URL, $url);</span><br><span class="line">            curl_setopt($ch, CURLOPT_HTTPHEADER, array(</span><br><span class="line">                &apos;PRIVATE-TOKEN: &apos;.self::PRIVATE_TOKEN,</span><br><span class="line">            ));</span><br><span class="line"></span><br><span class="line">            curl_setopt($ch, CURLOPT_POSTFIELDS, [</span><br><span class="line">                &apos;title&apos; =&gt; $message,</span><br><span class="line">                &apos;description&apos; =&gt; &apos;&lt;blockquote&gt;&apos;.Yii::$app-&gt;request-&gt;getReferrer().&apos;&lt;/blockquote&gt;&apos;. &apos;&lt;blockquote&gt;&apos; . Yii::$app-&gt;request-&gt;absoluteUrl . &apos;&lt;/blockquote&gt;&lt;br/&gt;&lt;pre&gt;&apos; . $exception . &apos;&lt;/pre&gt;&apos;,</span><br><span class="line">                &apos;assignee_id&apos; =&gt; self::ASSIGNEE_ID,</span><br><span class="line">                &apos;labels&apos; =&gt; &apos;捕虫器,&apos; . $name,</span><br><span class="line">            ]);</span><br><span class="line">            curl_setopt($ch, CURLOPT_HEADER, false);</span><br><span class="line">            // Pass TRUE or 1 if you want to wait for and catch the response against the request made</span><br><span class="line">            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);</span><br><span class="line">            // For Debug mode; shows up any error encountered during the operation</span><br><span class="line">            curl_setopt($ch, CURLOPT_VERBOSE, false);</span><br><span class="line">            $response = curl_exec($ch);</span><br><span class="line">            curl_close($ch);</span><br><span class="line">        &#125;</span><br><span class="line">        if (Yii::$app-&gt;getRequest()-&gt;getIsAjax() || strpos($_SERVER[&apos;REQUEST_URI&apos;], &apos;/api/&apos;) &gt; -1) &#123;</span><br><span class="line">            \Yii::$app-&gt;response-&gt;format = \yii\web\Response::FORMAT_JSON;</span><br><span class="line">            return [</span><br><span class="line">                &apos;message&apos; =&gt; $message</span><br><span class="line">            ];</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            return $this-&gt;controller-&gt;render($this-&gt;view ?: $this-&gt;id, [</span><br><span class="line">                &apos;name&apos; =&gt; $name,</span><br><span class="line">                &apos;message&apos; =&gt; $message,</span><br><span class="line">                &apos;exception&apos; =&gt; $exception,</span><br><span class="line">            ]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2016/10/12/PHP解析提取Markdown中的标题来生成TOC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zacksleo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zacks's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/10/12/PHP解析提取Markdown中的标题来生成TOC/" itemprop="url">
+                  PHP解析提取Markdown中的标题来生成TOC
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-10-12 16:46:48" itemprop="dateCreated datePublished" datetime="2016-10-12T16:46:48+08:00">2016-10-12</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-08-16 22:10:31" itemprop="dateModified" datetime="2018-08-16T22:10:31+08:00">2018-08-16</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2016/10/12/PHP解析提取Markdown中的标题来生成TOC/" class="leancloud_visitors" data-flag-title="PHP解析提取Markdown中的标题来生成TOC">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>先解析markdown为HTML, 然后解析出h1-h10标签, 根据h标签的前后大小, 决定ul的层级, 以此生成ul序列的嵌套</p>
+<ul>
+<li>如果当前H标签和前面H标签相同, 则生成<code>&lt;li&gt;&lt;/li&gt;</code>,</li>
+<li>如果比前面的大, 则生成<code>&lt;ul&gt;</code><ul>
+<li>如果比前面的小, 生成<code>&lt;/ul&gt;&lt;ul&gt;&lt;li&gt;&lt;/li&gt;</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="上手"><a href="#上手" class="headerlink" title="上手"></a>上手</h2><ul>
+<li>选择一个markdown Parser库, 将markdown解析</li>
+</ul>
+<p>$file为文件路径, $docs为解析后的html字串</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$content = file_get_contents($file);</span><br><span class="line"> require_once(&apos;/var/www/html/vendor/erusev/parsedown/Parsedown.php&apos;);</span><br><span class="line"> $parsedown = new \Parsedown();</span><br><span class="line"> $docs = $parsedown-&gt;text($content);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>解析DOM, 根据H标签的前后顺序, 生成TOC</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">$dom = new \DOMDocument();</span><br><span class="line"> $docs = mb_convert_encoding($docs, &apos;HTML-ENTITIES&apos;, &quot;UTF-8&quot;);</span><br><span class="line"> $dom-&gt;loadHTML($docs);</span><br><span class="line"></span><br><span class="line"> // The toc being generated.</span><br><span class="line"> $toc = &apos;&apos;;</span><br><span class="line"> $curr = $last = 0;</span><br><span class="line"> $type = &quot;ul&quot;;</span><br><span class="line"> $xpath = new \DomXPath($dom);</span><br><span class="line"> $t = $xpath-&gt;query(&apos;//h1|//h2|//h3|//h4|//h5|//h6&apos;);</span><br><span class="line"> foreach ($t as $key =&gt; $item) &#123;</span><br><span class="line">     $level = ltrim($item-&gt;nodeName, &apos;h&apos;);</span><br><span class="line">     sscanf($item-&gt;nodeName, &apos;h%u&apos;, $curr);</span><br><span class="line">     // If the current level is greater than the last level indent one level</span><br><span class="line">     if ($curr &gt; $last) &#123;</span><br><span class="line">         if ($last == 0) &#123;</span><br><span class="line">             $toc .= &apos;&lt;&apos; . $type . &quot; class=&apos;nav doc-menu affix-top&apos; id=&apos;doc-menu&apos; data-spy=&apos;affix&apos;&gt;\n&quot;;</span><br><span class="line">         &#125; else &#123;</span><br><span class="line">             $toc .= &apos;&lt;&apos; . $type . &quot; class=&apos;nav doc-sub-menu&apos;&gt;\n&quot;;</span><br><span class="line">         &#125;</span><br><span class="line">     &#125; // If the current level is less than the last level go up appropriate amount.</span><br><span class="line">     elseif ($curr &lt; $last) &#123;</span><br><span class="line">         $toc .= str_repeat(&apos;&lt;/li&gt;&lt;/&apos; . $type . &quot;&gt;\n&quot;, $last - $curr) . &quot;&lt;/li&gt;\n&quot;;</span><br><span class="line">     &#125; // If the current level is equal to the last.</span><br><span class="line">     else &#123;</span><br><span class="line">         $toc .= &quot;&lt;/li&gt;\n&quot;;</span><br><span class="line">     &#125;</span><br><span class="line">     // Get and/or set an id</span><br><span class="line">     if ($item-&gt;hasAttribute(&apos;id&apos;)) &#123;</span><br><span class="line">         $id = $item-&gt;getAttribute(&apos;id&apos;);</span><br><span class="line">     &#125; else &#123;</span><br><span class="line">        //auto generate id for the tag</span><br><span class="line">         $id = uniqid();</span><br><span class="line">         $t[$key]-&gt;setAttribute(&apos;id&apos;, $id);</span><br><span class="line">     &#125;</span><br><span class="line">     if ($last == 0) &#123;</span><br><span class="line">         $toc .= &apos;&lt;li class=&quot;active&quot;&gt;&lt;a class=&quot;scrollto&quot; href=&quot;#&apos; . $id . &apos;&quot;&gt;&apos; . $item-&gt;nodeValue . &quot;&lt;/a&gt;\n&quot;;</span><br><span class="line">     &#125; else &#123;</span><br><span class="line">         $toc .= &apos;&lt;li&gt;&lt;a class=&quot;scrollto&quot; href=&quot;#&apos; . $id . &apos;&quot;&gt;&apos; . $item-&gt;nodeValue . &quot;&lt;/a&gt;\n&quot;;</span><br><span class="line">     &#125;</span><br><span class="line">     $last = $curr;</span><br><span class="line"> &#125;</span><br><span class="line">// 将修改后的DOM 赋值为docs</span><br><span class="line"> $docs = $dom-&gt;saveHTML();</span><br></pre></td></tr></table></figure>
+<ul>
+<li>渲染页面<br>$docs为html主体内容<br>$toc为生成的目录, 形如<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul&gt;</span><br><span class="line">  &lt;li&gt;&lt;/li&gt;</span><br><span class="line">    &lt;ul&gt;</span><br><span class="line">      &lt;li&gt;&lt;/li&gt;</span><br><span class="line">      &lt;li&gt;&lt;/li&gt;</span><br><span class="line">    &lt;/ul&gt;</span><br><span class="line">  &lt;li&gt;&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;&lt;/li&gt;</span><br><span class="line"> &lt;/ul&gt;</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2016/08/23/使用Docker安装Redmine/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -349,7 +702,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-07-06 17:36:25" itemprop="dateModified" datetime="2018-07-06T17:36:25+08:00">2018-07-06</time>
+                <time title="修改时间：2018-08-16 22:10:31" itemprop="dateModified" datetime="2018-08-16T22:10:31+08:00">2018-08-16</time>
               
             
           </span>
@@ -552,7 +905,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-07-06 17:36:25" itemprop="dateModified" datetime="2018-07-06T17:36:25+08:00">2018-07-06</time>
+                <time title="修改时间：2018-08-16 22:10:31" itemprop="dateModified" datetime="2018-08-16T22:10:31+08:00">2018-08-16</time>
               
             
           </span>
@@ -832,7 +1185,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-07-06 17:36:25" itemprop="dateModified" datetime="2018-07-06T17:36:25+08:00">2018-07-06</time>
+                <time title="修改时间：2018-08-16 22:10:31" itemprop="dateModified" datetime="2018-08-16T22:10:31+08:00">2018-08-16</time>
               
             
           </span>
@@ -976,7 +1329,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">43</span>
+                    <span class="site-state-item-count">45</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1125,7 +1478,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">67</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">69</span>
                     <span class="site-state-item-name">标签</span>
                   
                 </div>
