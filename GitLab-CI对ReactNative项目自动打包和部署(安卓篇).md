@@ -12,14 +12,14 @@ tags: [GitLab-CI, DevOps, ReactNative, 持续部署, React Native]
 
 ## 环境依赖
 
-1. Docker环境使用 registry.gitlab.com/wldhx/gitlab-ci-react-native-android:master 镜像, 该镜像包含了ReactNative打包安卓应用所需要的所有依赖
+1. Docker环境使用 registry.gitlab.com/wldhx/gitlab-ci-react-native-android:master 镜像, 该镜像包含了 ReactNative 打包安卓应用所需要的所有依赖
 2. 注册一个 [fir.im](https://fir.im/) 账号
-2. Python3。 部署应用采用的 fir.im平台发布，因此实现了一段用于自动上传apk的Python脚本
+2. Python3。 部署应用采用的 fir.im 平台发布，因此实现了一段用于自动上传 apk 的 Python 脚本
 3. Node。 用于安卓依赖和格式化检查
 
 ## 编写GitLab-CI 脚本
 
-cat .gitlab-ci.yml
+`$ cat .gitlab-ci.yml`
 
 ```YAML
 image: node
@@ -113,19 +113,20 @@ release-android:
         - tags
 ```
 
-该脚本分为三个阶段，第一阶段进行格式化检查，和安装npm依赖，第二阶段用于构建apk, 第三阶段将apk上传到fir.im平台上，
-其中 release.txt 用于存储最近的更新日志，便于在上传apk时，加上对应信息。
+该脚本分为三个阶段，第一阶段进行格式化检查，和安装 npm 依赖，第二阶段用于构建 apk, 第三阶段将apk上传到 fir.im 平台上，
+其中 release.txt 用于存储最近的更新日志，便于在上传 apk 时，加上对应信息。
 
 requirement.txt 文件中则使用了`request`库:
 
-cat requirement.txt
+`$ cat requirement.txt`
+
 ```
 requests
 ```
 
 upload.py 文件则调用fir.im的上传API, 则 apk 上传到改平台，需要注意的时，api_token 需要在 fir.im 平台的右上角个人信息处获取
 
-cat upload.py
+`$ cat upload.py`
 
 ```python
 
