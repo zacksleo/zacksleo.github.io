@@ -1,7 +1,7 @@
 ---
 title: GitLab-CI对ReactNative项目自动打包和部署(安卓篇)
 date: 2018-04-08 11:21:26
-tags: [GitLab-CI, DevOps, ReactNative, 持续部署, React Native]
+tags: [GitLab-CI, DevOps, ReactNative, React Native, Python]
 ---
 
 # GitLab-CI对ReactNative项目自动打包和部署(安卓篇)
