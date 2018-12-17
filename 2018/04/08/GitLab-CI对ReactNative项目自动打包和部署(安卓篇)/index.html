@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="HSx2g2b2GklalbFMNOUlf16CH8h8aJMsL6Wa1CvfqSw" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.2.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.2.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="GitLab-CI对ReactNative项目自动打包和部署(安卓篇)简述本文讲述了如何使用 GitLab-CI 对 ReactNative 项目，自动打包和部署，由于安卓环境更易于在Docker上搭建环境，所以先实现了安卓应用的打包和部署。 环境依赖 Docker环境使用 registry.gitlab.com/wldhx/gitlab-ci-react-native-android:maste">
+<meta name="keywords" content="DevOps,GitLab-CI,ReactNative,React Native,Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GitLab-CI对ReactNative项目自动打包和部署(安卓篇)">
+<meta property="og:url" content="https://zacksleo.github.io/2018/04/08/GitLab-CI对ReactNative项目自动打包和部署(安卓篇)/index.html">
+<meta property="og:site_name" content="zacks&#39;s blog">
+<meta property="og:description" content="GitLab-CI对ReactNative项目自动打包和部署(安卓篇)简述本文讲述了如何使用 GitLab-CI 对 ReactNative 项目，自动打包和部署，由于安卓环境更易于在Docker上搭建环境，所以先实现了安卓应用的打包和部署。 环境依赖 Docker环境使用 registry.gitlab.com/wldhx/gitlab-ci-react-native-android:maste">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-12-17T06:15:58.754Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="GitLab-CI对ReactNative项目自动打包和部署(安卓篇)">
+<meta name="twitter:description" content="GitLab-CI对ReactNative项目自动打包和部署(安卓篇)简述本文讲述了如何使用 GitLab-CI 对 ReactNative 项目，自动打包和部署，由于安卓环境更易于在Docker上搭建环境，所以先实现了安卓应用的打包和部署。 环境依赖 Docker环境使用 registry.gitlab.com/wldhx/gitlab-ci-react-native-android:maste">
+
+
+
+
+
+
+  <link rel="canonical" href="https://zacksleo.github.io/2018/04/08/GitLab-CI对ReactNative项目自动打包和部署(安卓篇)/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>GitLab-CI对ReactNative项目自动打包和部署(安卓篇) | zacks's blog</title>
+  
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-80154310-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-80154310-2');
+</script>
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">zacks's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">清净无为</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2018/04/08/GitLab-CI对ReactNative项目自动打包和部署(安卓篇)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zacksleo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zacks's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">GitLab-CI对ReactNative项目自动打包和部署(安卓篇)
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-04-08 11:21:26" itemprop="dateCreated datePublished" datetime="2018-04-08T11:21:26+08:00">2018-04-08</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-12-17 14:15:58" itemprop="dateModified" datetime="2018-12-17T14:15:58+08:00">2018-12-17</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/04/08/GitLab-CI对ReactNative项目自动打包和部署(安卓篇)/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count gitment-comments-count" data-xid="/2018/04/08/GitLab-CI对ReactNative项目自动打包和部署(安卓篇)/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/04/08/GitLab-CI对ReactNative项目自动打包和部署(安卓篇)/" class="leancloud_visitors" data-flag-title="GitLab-CI对ReactNative项目自动打包和部署(安卓篇)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="GitLab-CI对ReactNative项目自动打包和部署-安卓篇"><a href="#GitLab-CI对ReactNative项目自动打包和部署-安卓篇" class="headerlink" title="GitLab-CI对ReactNative项目自动打包和部署(安卓篇)"></a>GitLab-CI对ReactNative项目自动打包和部署(安卓篇)</h1><h2 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h2><p>本文讲述了如何使用 GitLab-CI 对 ReactNative 项目，自动打包和部署，由于安卓环境更易于在Docker上搭建环境，所以先实现了安卓应用的打包和部署。</p>
+<h2 id="环境依赖"><a href="#环境依赖" class="headerlink" title="环境依赖"></a>环境依赖</h2><ol>
+<li>Docker环境使用 registry.gitlab.com/wldhx/gitlab-ci-react-native-android:master 镜像, 该镜像包含了 ReactNative 打包安卓应用所需要的所有依赖</li>
+<li>注册一个 <a href="https://fir.im/" target="_blank" rel="noopener">fir.im</a> 账号</li>
+<li>Python3。 部署应用采用的 fir.im 平台发布，因此实现了一段用于自动上传 apk 的 Python 脚本</li>
+<li>Node。 用于安卓依赖和格式化检查</li>
+</ol>
+<h2 id="编写GitLab-CI-脚本"><a href="#编写GitLab-CI-脚本" class="headerlink" title="编写GitLab-CI 脚本"></a>编写GitLab-CI 脚本</h2><p><code>$ cat .gitlab-ci.yml</code></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">image:</span> <span class="string">node</span></span><br><span class="line"></span><br><span class="line"><span class="attr">stages:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">test</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">build</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">deploy</span></span><br><span class="line"></span><br><span class="line"><span class="attr">cache:</span></span><br><span class="line"><span class="attr">  key:</span> <span class="string">$&#123;CI_PROJECT_ID&#125;</span></span><br><span class="line"><span class="attr">  paths:</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">android/.gradle/</span></span><br><span class="line"></span><br><span class="line"><span class="attr">variables:</span></span><br><span class="line"><span class="attr">    NPM_CONFIG_CACHE:</span> <span class="string">"/cache/npm"</span></span><br><span class="line"><span class="attr">    YARN_CACHE_FOLDER:</span> <span class="string">"/cache/yarn"</span></span><br><span class="line"><span class="attr">    DOCKER_DRIVER:</span> <span class="string">overlay2</span></span><br><span class="line"><span class="attr">lint:</span></span><br><span class="line"><span class="attr">    stage:</span> <span class="string">test</span></span><br><span class="line"><span class="attr">    dependencies:</span> <span class="string">[]</span></span><br><span class="line"><span class="attr">    cache:</span></span><br><span class="line"><span class="attr">      key:</span> <span class="string">"$CI_COMMIT_REF_NAME"</span></span><br><span class="line"><span class="attr">      policy:</span> <span class="string">pull</span></span><br><span class="line"><span class="attr">      paths:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">node_modules</span></span><br><span class="line"><span class="attr">    script:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">if</span> <span class="string">[</span> <span class="string">!</span> <span class="bullet">-d</span> <span class="string">"node_modules"</span> <span class="string">];</span> <span class="string">then</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">yarn</span> <span class="string">install</span> <span class="bullet">--cache-folder</span> <span class="string">/cache/yarn</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">fi</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">yarn</span> <span class="string">run</span> <span class="string">lint</span></span><br><span class="line"><span class="attr">    except:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">master</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">tags</span></span><br><span class="line"><span class="attr">    tags:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">docker</span></span><br><span class="line"></span><br><span class="line"><span class="attr">build-package:</span></span><br><span class="line"><span class="attr">    stage:</span> <span class="string">test</span></span><br><span class="line"><span class="attr">    dependencies:</span> <span class="string">[]</span></span><br><span class="line"><span class="attr">    cache:</span></span><br><span class="line"><span class="attr">      key:</span> <span class="string">"$CI_COMMIT_REF_NAME"</span></span><br><span class="line"><span class="attr">      policy:</span> <span class="string">pull</span></span><br><span class="line"><span class="attr">      paths:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">node_modules</span></span><br><span class="line"><span class="attr">    script:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">yarn</span> <span class="string">install</span></span><br><span class="line"><span class="attr">    artifacts:</span></span><br><span class="line"><span class="attr">        name:</span> <span class="string">"node_modules"</span></span><br><span class="line"><span class="attr">        untracked:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">        expire_in:</span> <span class="number">60</span> <span class="string">mins</span></span><br><span class="line"><span class="attr">        paths:</span></span><br><span class="line"><span class="bullet">            -</span> <span class="string">node_modules</span></span><br><span class="line"><span class="attr">    only:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">master</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">tags</span></span><br><span class="line"><span class="attr">    tags:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">docker</span></span><br><span class="line"></span><br><span class="line"><span class="attr">build-android:</span></span><br><span class="line"><span class="attr">    image:</span> <span class="string">registry.gitlab.com/wldhx/gitlab-ci-react-native-android:master</span></span><br><span class="line"><span class="attr">    stage:</span> <span class="string">build</span></span><br><span class="line"><span class="attr">    dependencies:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">build-package</span></span><br><span class="line"><span class="attr">    script:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">cd</span> <span class="string">android</span> <span class="string">&amp;&amp;</span> <span class="string">./gradlew</span> <span class="string">assembleRelease</span> <span class="bullet">--no-daemon</span></span><br><span class="line"><span class="attr">    artifacts:</span></span><br><span class="line"><span class="attr">        expire_in:</span> <span class="number">7</span> <span class="string">days</span></span><br><span class="line"><span class="attr">        paths:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">android/app/build/outputs/apk/</span></span><br><span class="line"><span class="attr">    only:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">master</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">tags</span></span><br><span class="line"></span><br><span class="line"><span class="attr">release-android:</span></span><br><span class="line"><span class="attr">    image:</span> <span class="attr">python:3</span></span><br><span class="line"><span class="attr">    stage:</span> <span class="string">deploy</span></span><br><span class="line"><span class="attr">    cache:</span> <span class="string">&#123;&#125;</span></span><br><span class="line"><span class="attr">    dependencies:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">build-android</span></span><br><span class="line"><span class="attr">    script:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">pip</span> <span class="string">install</span> <span class="bullet">-r</span> <span class="string">requirements.txt</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">if</span> <span class="string">[[</span> <span class="bullet">-z</span> <span class="string">"$CI_COMMIT_TAG"</span> <span class="string">]];then</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">echo</span> <span class="string">$(git</span> <span class="string">log</span> <span class="bullet">-3</span> <span class="bullet">--pretty=%s</span> <span class="string">| tail -1) &gt; ./release.txt</span></span><br><span class="line"><span class="string">        - else</span></span><br><span class="line"><span class="string">        - echo $(git tag -l --format='%(contents)' $CI_COMMIT_TAG) &gt; ./release.txt</span></span><br><span class="line"><span class="string">        - fi</span></span><br><span class="line"><span class="string">        - python ./upload.py</span></span><br><span class="line"><span class="string"></span><span class="attr">    only:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">master</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">tags</span></span><br></pre></td></tr></table></figure>
+<p>该脚本分为三个阶段，第一阶段进行格式化检查，和安装 npm 依赖，第二阶段用于构建 apk, 第三阶段将apk上传到 fir.im 平台上，<br>其中 release.txt 用于存储最近的更新日志，便于在上传 apk 时，加上对应信息。</p>
+<p>requirement.txt 文件中则使用了<code>request</code>库:</p>
+<p><code>$ cat requirement.txt</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">requests</span><br></pre></td></tr></table></figure>
+<p>upload.py 文件则调用fir.im的上传API, 则 apk 上传到改平台，需要注意的时，api_token 需要在 fir.im 平台的右上角个人信息处获取</p>
+<p><code>$ cat upload.py</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">file_get_contents</span><span class="params">(filename)</span>:</span></span><br><span class="line">    <span class="keyword">with</span> open(filename) <span class="keyword">as</span> f:</span><br><span class="line">        <span class="keyword">return</span> f.read()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">r = requests.post(</span><br><span class="line">    <span class="string">'https://api.fir.im/apps'</span>,</span><br><span class="line">    data=&#123;<span class="string">'type'</span>: <span class="string">'android'</span>,</span><br><span class="line">          <span class="string">'bundle_id'</span>: <span class="string">'com.company.package'</span>,</span><br><span class="line">          <span class="string">'api_token'</span>: <span class="string">'个人的API TOKEN'</span></span><br><span class="line">          &#125;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">data = r.json()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> os.environ.get(<span class="string">'CI_COMMIT_TAG'</span>) <span class="keyword">is</span> <span class="keyword">None</span>:</span><br><span class="line">    tag = <span class="string">'latest'</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    tag = os.environ[<span class="string">'CI_COMMIT_TAG'</span>]</span><br><span class="line"></span><br><span class="line">changelog = file_get_contents(<span class="string">'./release.txt'</span>)</span><br><span class="line"></span><br><span class="line">files = &#123;<span class="string">'file'</span>: open(</span><br><span class="line">    <span class="string">'./android/app/build/outputs/apk/release/app-release.apk'</span>, <span class="string">'rb'</span>)&#125;</span><br><span class="line">r2 = requests.post(</span><br><span class="line">    data[<span class="string">'cert'</span>][<span class="string">'binary'</span>][<span class="string">'upload_url'</span>],</span><br><span class="line">    data=&#123;</span><br><span class="line">        <span class="string">'key'</span>: data[<span class="string">'cert'</span>][<span class="string">'binary'</span>][<span class="string">'key'</span>],</span><br><span class="line">        <span class="string">'token'</span>: data[<span class="string">'cert'</span>][<span class="string">'binary'</span>][<span class="string">'token'</span>],</span><br><span class="line">        <span class="string">'x:name'</span>: <span class="string">'应用名称'</span>,</span><br><span class="line">        <span class="string">'x:version'</span>: tag,</span><br><span class="line">        <span class="string">'x:build'</span>: <span class="string">'com.company.package'</span>,</span><br><span class="line">        <span class="string">'x:changelog'</span>: changelog</span><br><span class="line">    &#125;,</span><br><span class="line">    files=files</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">print(r2.json())</span><br></pre></td></tr></table></figure>
+<h2 id="参考内容"><a href="#参考内容" class="headerlink" title="参考内容"></a>参考内容</h2><ul>
+<li><a href="https://gitlab.com/gitlab-com/community-writers/issues/12" target="_blank" rel="noopener">How to build and publish your React Native Android applications using GitLab CI</a></li>
+<li><a href="https://gitlab.com/wldhx/gitlab-ci-react-native-android" target="_blank" rel="noopener">gitlab-ci-react-native-android</a></li>
+<li><a href="https://fir.im/docs" target="_blank" rel="noopener">fir.im 开发文档</a></li>
+</ul>
+
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>Thanks for reading.</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="https://ws1.sinaimg.cn/large/675eb504gy1fqguzrumh6j20yi1aun1z.jpg" alt="zacksleo 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/DevOps/" rel="tag"># DevOps</a>
+          
+            <a href="/tags/GitLab-CI/" rel="tag"># GitLab-CI</a>
+          
+            <a href="/tags/ReactNative/" rel="tag"># ReactNative</a>
+          
+            <a href="/tags/React-Native/" rel="tag"># React Native</a>
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/31/Python-使用openpyxl操作Excel表格/" rel="next" title="Python-使用openpyxl操作Excel表格">
+                <i class="fa fa-chevron-left"></i> Python-使用openpyxl操作Excel表格
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/08/GitLab-CI微信小程序进行持续集成和持续部署/" rel="prev" title="GitLab-CI微信小程序进行持续集成和持续部署">
+                GitLab-CI微信小程序进行持续集成和持续部署 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">zacksleo</p>
+              <p class="site-description motion-element" itemprop="description">Full Stack Web Developer</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">46</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">72</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/zacksleo" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#GitLab-CI对ReactNative项目自动打包和部署-安卓篇"><span class="nav-number">1.</span> <span class="nav-text">GitLab-CI对ReactNative项目自动打包和部署(安卓篇)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#简述"><span class="nav-number">1.1.</span> <span class="nav-text">简述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#环境依赖"><span class="nav-number">1.2.</span> <span class="nav-text">环境依赖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编写GitLab-CI-脚本"><span class="nav-number">1.3.</span> <span class="nav-text">编写GitLab-CI 脚本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考内容"><span class="nav-number">1.4.</span> <span class="nav-text">参考内容</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zacksleo</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.2.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.2.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.2.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.2.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.2.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.2.0"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: '1523157686000',
+            owner: 'zacksleo',
+            repo: 'zacksleo.github.io',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '923e43b826a027e48d5ce4745cb01f25bf9c8585',
+            
+                client_id: 'fcf50191d703c4f37d35'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("6ewRRbjRaYybcLL2fRlMKDtT-gzGzoHsz", "NhhOjGzUPay4gOs6hP0RzgdH");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            
+              var $element = $(document.getElementById(url));
+              $element.find('.leancloud-visitors-count').text(counter.get('time'));
+            
+            counter.save(null, {
+              success: function(counter) {
+                
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            
+              var newcounter = new Counter();
+              /* Set ACL */
+              var acl = new AV.ACL();
+              acl.setPublicReadAccess(true);
+              acl.setPublicWriteAccess(true);
+              newcounter.setACL(acl);
+              /* End Set ACL */
+              newcounter.set("title", title);
+              newcounter.set("url", url);
+              newcounter.set("time", 1);
+              newcounter.save(null, {
+                success: function(newcounter) {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+                },
+                error: function(newcounter, error) {
+                  console.log('Failed to create');
+                }
+              });
+            
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
