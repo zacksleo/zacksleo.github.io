@@ -1,10 +1,10 @@
 ---
 title: GitLab-CI对ReactNative项目自动打包和部署(安卓篇)
-date: 2018-04-08 11:21:26
+subtitle: audo-deploy-react-native-android-apps
+date: 2018-12-16 11:21:26
 tags: [GitLab-CI, DevOps, ReactNative, React Native, Python]
 ---
 
-# GitLab-CI对ReactNative项目自动打包和部署(安卓篇)
 
 ## 简述
 
