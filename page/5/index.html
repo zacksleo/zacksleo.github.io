@@ -286,6 +286,204 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2016/11/04/如何自动部署GitLab项目/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zacksleo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zacks's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/11/04/如何自动部署GitLab项目/" itemprop="url">
+                  如何自动部署GitLab项目
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-11-04 14:01:48" itemprop="dateCreated datePublished" datetime="2016-11-04T14:01:48+08:00">2016-11-04</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-12-27 16:36:51" itemprop="dateModified" datetime="2018-12-27T16:36:51+08:00">2018-12-27</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2016/11/04/如何自动部署GitLab项目/" class="leancloud_visitors" data-flag-title="如何自动部署GitLab项目">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="如何自动部署"><a href="#如何自动部署" class="headerlink" title="如何自动部署"></a>如何自动部署</h1><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><ul>
+<li>GitLab有预制的钩子, 在代码提交/合并等事件中,会自动调用WebHoos, 即向该URL发送POST请求</li>
+<li>在布署服务器上监听该POST, 验证通过后执行相关的布置Shell脚本, 即可完成自动布署</li>
+</ul>
+<h2 id="配置环境"><a href="#配置环境" class="headerlink" title="配置环境"></a>配置环境</h2><ul>
+<li><ol>
+<li>安装Python和Pip</li>
+</ol>
+</li>
+<li><p>2.如果需要, 安装python的requests模块和argparse模块</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install requests</span><br><span class="line">easy_install argparse</span><br></pre></td></tr></table></figure>
+</li>
+<li><ol start="3">
+<li>下载监听脚本<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl https://raw.githubusercontent.com/zacksleo/docker-hook/master/docker-hook &gt; /usr/local/bin/docker-hook; chmod +x /usr/local/bin/docker-hook</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>4.脚本安装完成后即可使用docker-hook 命令, 默认监听8555端口</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup docker-hook  -t  &lt;auth-token&gt;  -c  &lt;command&gt; &amp;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>其中, auth-token 替换为授权token, command替换为要执行的命令, 例如<br>auth-token为<code>auto-deploy-pushserver</code>,command为<code>sh /mnt/pushserver/deploy.sh</code><br>则执行命令: <code>docker-hook -t auto-deploy-pushserver -c sh /mnt/pushserver/deploy.sh</code></p>
+<p>deploy.sh的内容为:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin dev</span><br></pre></td></tr></table></figure></p>
+<p>nohup+&amp;命令为该进程设置为守护进程, 防止进程退出</p>
+<ul>
+<li><p>5.在GitLab的项目设置里面,设置Webhooks, 本例子中则为<code>139.198.9.141:8555/audo-deploy-pushserver</code></p>
+</li>
+<li><ol start="6">
+<li>注意, 如果需要部署多个hooks, 则需要通过–port配置不同的端口, 例如</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup docker-hook  -t  &lt;auth-token2&gt;  -c  &lt;command2&gt;  --port 8556 &amp;</span><br></pre></td></tr></table></figure>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://github.com/zacksleo/docker-hook" target="_blank" rel="noopener">docker-hook</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2016/10/12/CodeIgniter项目自动向GitLab上报Bug/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -349,7 +547,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-12-17 14:25:36" itemprop="dateModified" datetime="2018-12-17T14:25:36+08:00">2018-12-17</time>
+                <time title="修改时间：2018-12-27 16:36:51" itemprop="dateModified" datetime="2018-12-27T16:36:51+08:00">2018-12-27</time>
               
             
           </span>
@@ -526,7 +724,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-12-17 14:25:36" itemprop="dateModified" datetime="2018-12-17T14:25:36+08:00">2018-12-17</time>
+                <time title="修改时间：2018-12-27 16:36:51" itemprop="dateModified" datetime="2018-12-27T16:36:51+08:00">2018-12-27</time>
               
             
           </span>
@@ -697,7 +895,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-12-17 14:25:36" itemprop="dateModified" datetime="2018-12-17T14:25:36+08:00">2018-12-17</time>
+                <time title="修改时间：2018-12-27 16:36:51" itemprop="dateModified" datetime="2018-12-27T16:36:51+08:00">2018-12-27</time>
               
             
           </span>
@@ -879,7 +1077,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-12-17 14:25:36" itemprop="dateModified" datetime="2018-12-17T14:25:36+08:00">2018-12-17</time>
+                <time title="修改时间：2018-12-27 16:36:51" itemprop="dateModified" datetime="2018-12-27T16:36:51+08:00">2018-12-27</time>
               
             
           </span>
@@ -1082,7 +1280,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-12-17 14:25:36" itemprop="dateModified" datetime="2018-12-17T14:25:36+08:00">2018-12-17</time>
+                <time title="修改时间：2018-12-27 16:36:51" itemprop="dateModified" datetime="2018-12-27T16:36:51+08:00">2018-12-27</time>
               
             
           </span>
@@ -1362,7 +1560,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-12-17 14:25:36" itemprop="dateModified" datetime="2018-12-17T14:25:36+08:00">2018-12-17</time>
+                <time title="修改时间：2018-12-27 16:36:51" itemprop="dateModified" datetime="2018-12-27T16:36:51+08:00">2018-12-27</time>
               
             
           </span>
@@ -1506,7 +1704,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">46</span>
+                    <span class="site-state-item-count">47</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1665,7 +1863,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">72</span>
+                      
+                    
+                    <span class="site-state-item-count">73</span>
                     <span class="site-state-item-name">标签</span>
                   
                 </div>
