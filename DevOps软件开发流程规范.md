@@ -1,7 +1,8 @@
 ---
 title：DevOps 软件开发流程规范
+subtitle: devops-software-develop-guideline
 日期：2019-04-16 15:34:00
-标签：[GitLab-CI，Docker，DevOps，CD, 规范]
+标签：[GitLab-CI，Docker，DevOps，CD, guideline]
 ---
 
 ## 流程概要
