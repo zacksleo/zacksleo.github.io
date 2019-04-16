@@ -286,6 +286,350 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2017/04/14/GitLab-CI通过ssh进行自动部署/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zacksleo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zacks's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/04/14/GitLab-CI通过ssh进行自动部署/" itemprop="url">
+                  GitLab-CI通过ssh进行自动部署
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-04-14 14:39:50" itemprop="dateCreated datePublished" datetime="2017-04-14T14:39:50+08:00">2017-04-14</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-16 16:02:07" itemprop="dateModified" datetime="2019-04-16T16:02:07+08:00">2019-04-16</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/04/14/GitLab-CI通过ssh进行自动部署/" class="leancloud_visitors" data-flag-title="GitLab-CI通过ssh进行自动部署">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p>通过gitlab-ci实现文件的自动部署</p>
+<h2 id="实现过程"><a href="#实现过程" class="headerlink" title="实现过程"></a>实现过程</h2><p>文档托管在gitlab上, 每次代码更新, 会自动出发gitlab-ci构建<br>在构建脚本中, 通过ssh 登录远程服务器执行git拉取文档的命令</p>
+<h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><h3 id="首先需要在服务器上生成ssh证书"><a href="#首先需要在服务器上生成ssh证书" class="headerlink" title="首先需要在服务器上生成ssh证书"></a>首先需要在服务器上生成ssh证书</h3><blockquote>
+<p>注意该证书的用户必须与ssh远程登录的用户一样, 例如我们的用户名是root</p>
+</blockquote>
+<h3 id="将公钥添加到gitlab上-以便于该用于可以拉取代码"><a href="#将公钥添加到gitlab上-以便于该用于可以拉取代码" class="headerlink" title="将公钥添加到gitlab上, 以便于该用于可以拉取代码"></a>将公钥添加到gitlab上, 以便于该用于可以拉取代码</h3><h3 id="在-CI-CD-Piplines中设置-Secret-Variables-包括-DEPLOY-SERVER-和-SSH-PRIVATE-KEY"><a href="#在-CI-CD-Piplines中设置-Secret-Variables-包括-DEPLOY-SERVER-和-SSH-PRIVATE-KEY" class="headerlink" title="在 CI/CD Piplines中设置 Secret Variables, 包括 DEPLOY_SERVER 和 SSH_PRIVATE_KEY"></a>在 <code>CI/CD Piplines</code>中设置 <code>Secret Variables</code>, 包括 <code>DEPLOY_SERVER</code> 和 <code>SSH_PRIVATE_KEY</code></h3><p>其中 <code>SSH_PRIVATE_KEY</code> 的内容是服务器上的私钥, <code>DEPLOY_SERVER</code> 是服务器地址</p>
+<h3 id="编写-gitlab-ci-yml-文件-注入密钥-通过ssh执行远程命令"><a href="#编写-gitlab-ci-yml-文件-注入密钥-通过ssh执行远程命令" class="headerlink" title="编写 .gitlab-ci.yml 文件, 注入密钥, 通过ssh执行远程命令"></a>编写 <code>.gitlab-ci.yml</code> 文件, 注入密钥, 通过<code>ssh</code>执行远程命令</h3><h2 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h2> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"># 使用alpine镜像, 该镜像很少,只有几兆</span><br><span class="line">image: alpine</span><br><span class="line">stages:</span><br><span class="line">    - deploy</span><br><span class="line">before_script:</span><br><span class="line">    # 预先装 ssh-agent</span><br><span class="line">    - &apos;which ssh-agent || ( apk update &amp;&amp; apk add openssh-client)&apos;</span><br><span class="line">    # 启动服务</span><br><span class="line">    - eval $(ssh-agent -s)</span><br><span class="line">    # 将私钥写入deploy.key 文件</span><br><span class="line">    - echo &quot;$SSH_PRIVATE_KEY&quot; &gt; deploy.key</span><br><span class="line">    # 配置较低权限</span><br><span class="line">    - chmod 0600 deploy.key</span><br><span class="line">    # 注入密钥</span><br><span class="line">    - ssh-add deploy.key</span><br><span class="line">    - mkdir -p ~/.ssh    </span><br><span class="line">    - &apos;[[ -f /.dockerenv ]] &amp;&amp; echo -e &quot;Host *\n\tStrictHostKeyChecking no\n\n&quot; &gt; ~/.ssh/config&apos;</span><br><span class="line"> </span><br><span class="line">release-doc:</span><br><span class="line">    stage: deploy</span><br><span class="line">    script:</span><br><span class="line">        # 连接远程服务器并执行拉取代码的命令</span><br><span class="line">        - ssh root@$DEPLOY_SERVER &quot;cd /path/to/wiki &amp;&amp; git pull origin master&quot;</span><br><span class="line">    only:</span><br><span class="line">        - master</span><br><span class="line">    environment:</span><br><span class="line">        name: production</span><br><span class="line">        url: http://$DEPLOY_SERVER</span><br></pre></td></tr></table></figure>
+<h2 id="相关文档"><a href="#相关文档" class="headerlink" title="相关文档"></a>相关文档</h2><p><a href="https://docs.gitlab.com/ce/ci/ssh_keys/README.html" target="_blank" rel="noopener">Using SSH keys</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2017/03/12/使用Git和Gollum搭建Wiki系统/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zacksleo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zacks's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/03/12/使用Git和Gollum搭建Wiki系统/" itemprop="url">
+                  使用Git和Gollum搭建Wiki系统
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-03-13 01:22:09" itemprop="dateCreated datePublished" datetime="2017-03-13T01:22:09+08:00">2017-03-13</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-16 16:02:07" itemprop="dateModified" datetime="2019-04-16T16:02:07+08:00">2019-04-16</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/03/12/使用Git和Gollum搭建Wiki系统/" class="leancloud_visitors" data-flag-title="使用Git和Gollum搭建Wiki系统">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://github.com/gollum/gollum" target="_blank" rel="noopener">Gollum</a>是一个开源的Wiki系统, 该系统基于Git, 支持 Markdown, RDoc 等多种排版格式.</p>
+<p>下面是在搭建的过程中经常会遇到一些问题</p>
+<h2 id="UTF-8-问题"><a href="#UTF-8-问题" class="headerlink" title="UTF-8 问题"></a>UTF-8 问题</h2><ul>
+<li>安装 <code>gollum-rugged_adapter</code></li>
+<li>通过参数 <code>--adapter rugged</code> 启动gollum</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install cmake</span><br><span class="line">sudo gem install gollum-rugged_adapter</span><br><span class="line">gollum --adapter rugged</span><br></pre></td></tr></table></figure>
+<h2 id="如何设置只读"><a href="#如何设置只读" class="headerlink" title="如何设置只读"></a>如何设置只读</h2><p>启动Gollum时, 设置 <code>--no-edit</code> 来禁止编辑</p>
+<h2 id="使用-Docker"><a href="#使用-Docker" class="headerlink" title="使用 Docker"></a>使用 Docker</h2><p>使用Docker 安装gullum的内容见 <a href="http://zacksleo.github.io/2017/03/11/gollum/">gollum</a></p>
+<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><ul>
+<li><a href="https://github.com/zacksleo/gollum" target="_blank" rel="noopener">Docker Goolum</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2017/03/11/gollum/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -349,7 +693,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-12-27 16:36:51" itemprop="dateModified" datetime="2018-12-27T16:36:51+08:00">2018-12-27</time>
+                <time title="修改时间：2019-04-16 16:02:07" itemprop="dateModified" datetime="2019-04-16T16:02:07+08:00">2019-04-16</time>
               
             
           </span>
@@ -525,7 +869,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-12-27 16:36:51" itemprop="dateModified" datetime="2018-12-27T16:36:51+08:00">2018-12-27</time>
+                <time title="修改时间：2019-04-16 16:02:07" itemprop="dateModified" datetime="2019-04-16T16:02:07+08:00">2019-04-16</time>
               
             
           </span>
@@ -710,7 +1054,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-12-27 16:36:51" itemprop="dateModified" datetime="2018-12-27T16:36:51+08:00">2018-12-27</time>
+                <time title="修改时间：2019-04-16 16:02:07" itemprop="dateModified" datetime="2019-04-16T16:02:07+08:00">2019-04-16</time>
               
             
           </span>
@@ -757,18 +1101,21 @@
         
           
             <h2 id="Git工作流程"><a href="#Git工作流程" class="headerlink" title="Git工作流程"></a>Git工作流程</h2><h3 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h3><ul>
-<li>master: 用于生产环境部署, 只接受合并请求, 不直接提交</li>
-<li>testing: 用于测试环境测试</li>
-<li>develop: 用于日常开发主线, 其他分支只能合并到 develop 分支</li>
+<li>tags: 用于于生产环境</li>
+<li>master: 用于测试环境/预演环境, 一般只接受合并请求, 不直接提交</li>
+<li>testing: 用于测试环境测试 （可选）</li>
+<li>develop: 用于日常开发主线, 其他分支只能合并到 develop 分支 （可选）</li>
 <li>feature-xxx: 用于增加一个新功能</li>
 <li>hotfix-xxx: 用于修复一个紧急bug</li>
+<li>refact-xxx: 代码重构</li>
+<li>docs-xxx: 文档修改</li>
 <li>每次开发新功能，都应该新建一个单独的分支</li>
 </ul>
 <h3 id="工作流"><a href="#工作流" class="headerlink" title="工作流"></a>工作流</h3><ul>
-<li>如果要贡献代码, 首先应阅读<strong>贡献指南</strong>, 确认如果贡献代码</li>
-<li>Fork对应的项目, 然后基于develop分支, 新建一个分支, 在这个分支上进行开发</li>
+<li>贡献代码时,如果项目存在贡献指南，需阅读并遵守<strong>贡献指南</strong></li>
+<li>Fork对应的项目, 然后基于develop/master分支, 新建一个分支, 在这个分支上进行开发</li>
 <li>开发时应遵守相应的编码规范和Git日志规范, 提交日志应当给出完整扼要的提交信息</li>
-<li>开发完毕后, 先在本项目库上合并到develop分支, 合并完成之后再PR到原项目库</li>
+<li>开发完毕后, 先在本项目库上合并到develop/master分支, 合并完成之后再PR到原项目库</li>
 </ul>
 <h3 id="Commit-message-和-Change-log-编写指南"><a href="#Commit-message-和-Change-log-编写指南" class="headerlink" title="Commit message 和 Change log 编写指南"></a>Commit message 和 Change log 编写指南</h3><ul>
 <li>Git 每次提交代码，都要写 Commit message（提交说明），否则就不允许提交<br>+Commit message 遵从 <a href="http://blog.cheenwe.cn/2016-04-18/git-commit-message/" target="_blank" rel="noopener">Angular 规范</a></li>
@@ -780,10 +1127,14 @@
 <li>项目根目录运行 <code>commitizen init cz-conventional-changelog --save --save-exact</code></li>
 <li>每次提交代码时, 用 <code>git cz</code> 代替 <code>git commit</code></li>
 </ul>
+<h3 id="Tag"><a href="#Tag" class="headerlink" title="Tag"></a>Tag</h3><ul>
+<li>打 tag 时，需要遵守<strong>语义化版本</strong>规范</li>
+</ul>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
 <li><a href="http://www.ruanyifeng.com/blog/2015/08/git-use-process.html" target="_blank" rel="noopener">Git 使用规范流程</a></li>
 <li><a href="http://www.ruanyifeng.com/blog/2016/01/commit_message_change_log.html" target="_blank" rel="noopener">Commit message 和 Change log 编写指南</a></li>
 <li><a href="http://blog.cheenwe.cn/2016-04-18/git-commit-message/" target="_blank" rel="noopener">Git commit message 规范</a></li>
+<li><a href="https://semver.org/lang/zh-CN/" target="_blank" rel="noopener">语义化版本 2.0.0</a></li>
 </ul>
 
           
@@ -901,7 +1252,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-12-27 16:36:51" itemprop="dateModified" datetime="2018-12-27T16:36:51+08:00">2018-12-27</time>
+                <time title="修改时间：2019-04-16 16:02:07" itemprop="dateModified" datetime="2019-04-16T16:02:07+08:00">2019-04-16</time>
               
             
           </span>
@@ -1065,7 +1416,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-12-27 16:36:51" itemprop="dateModified" datetime="2018-12-27T16:36:51+08:00">2018-12-27</time>
+                <time title="修改时间：2019-04-16 16:02:07" itemprop="dateModified" datetime="2019-04-16T16:02:07+08:00">2019-04-16</time>
               
             
           </span>
@@ -1229,7 +1580,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-12-27 16:36:51" itemprop="dateModified" datetime="2018-12-27T16:36:51+08:00">2018-12-27</time>
+                <time title="修改时间：2019-04-16 16:02:07" itemprop="dateModified" datetime="2019-04-16T16:02:07+08:00">2019-04-16</time>
               
             
           </span>
@@ -1398,7 +1749,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-12-27 16:36:51" itemprop="dateModified" datetime="2018-12-27T16:36:51+08:00">2018-12-27</time>
+                <time title="修改时间：2019-04-16 16:02:07" itemprop="dateModified" datetime="2019-04-16T16:02:07+08:00">2019-04-16</time>
               
             
           </span>
@@ -1595,180 +1946,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2017/02/15/CentOS上安装docker-compose/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zacksleo">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zacks's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/02/15/CentOS上安装docker-compose/" itemprop="url">
-                  CentOS上安装docker-compose
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2017-02-15 13:42:06" itemprop="dateCreated datePublished" datetime="2017-02-15T13:42:06+08:00">2017-02-15</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-12-27 16:36:51" itemprop="dateModified" datetime="2018-12-27T16:36:51+08:00">2018-12-27</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2017/02/15/CentOS上安装docker-compose/" class="leancloud_visitors" data-flag-title="CentOS上安装docker-compose">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>在安装完 docker 后, 我们常常安装 docker-compose 来简化 docker 的日常维护,<br>但是由于 GitHub 在国内较慢, 经常安装不了,所以使用 DaoCloud 提供的镜像来快速安装</p>
-<h2 id="官方的安装方法"><a href="#官方的安装方法" class="headerlink" title="官方的安装方法"></a>官方的安装方法</h2><ol>
-<li>安装 docker <code>yum install docker</code></li>
-<li>安装 docker-compose</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ curl -L &quot;https://github.com/docker/compose/releases/download/1.10.0/docker-compose-$(uname -s)-$(uname -m)&quot; -o /usr/local/bin/docker-compose</span><br><span class="line"></span><br><span class="line">$ chmod +x /usr/local/bin/docker-compose</span><br></pre></td></tr></table></figure>
-<h2 id="使用DaoCloud镜像安装-docker-compose"><a href="#使用DaoCloud镜像安装-docker-compose" class="headerlink" title="使用DaoCloud镜像安装 docker-compose"></a>使用DaoCloud镜像安装 docker-compose</h2><ol>
-<li>安装 docker <code>yum install docker</code></li>
-<li>安装 docker-compose<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ curl -L https://get.daocloud.io/docker/compose/releases/download/1.11.1/docker-compose-`uname -s`-`uname -m` &gt; /usr/local/bin/docker-compose</span><br><span class="line">chmod +x /usr/local/bin/docker-compose</span><br><span class="line"></span><br><span class="line">$ chmod +x /usr/local/bin/docker-compose</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h2 id="Docker-镜像加速"><a href="#Docker-镜像加速" class="headerlink" title="Docker 镜像加速"></a>Docker 镜像加速</h2><p>由于下载镜像较慢, 可以使用 DaoCloud 提供的镜像对 Docker 进行加速  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://0835afe2.m.daocloud.io</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2017/02/15/使用swoole作为MQTT客户端并接收实现即时消息推送/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1832,7 +2009,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-12-27 16:36:51" itemprop="dateModified" datetime="2018-12-27T16:36:51+08:00">2018-12-27</time>
+                <time title="修改时间：2019-04-16 16:02:07" itemprop="dateModified" datetime="2019-04-16T16:02:07+08:00">2019-04-16</time>
               
             
           </span>
@@ -1924,191 +2101,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2016/12/26/基于OAuth2的通用授权认证规则/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zacksleo">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zacks's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/12/26/基于OAuth2的通用授权认证规则/" itemprop="url">
-                  基于OAuth2的通用授权认证规则
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2016-12-26 13:55:57" itemprop="dateCreated datePublished" datetime="2016-12-26T13:55:57+08:00">2016-12-26</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-12-27 16:36:51" itemprop="dateModified" datetime="2018-12-27T16:36:51+08:00">2018-12-27</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2016/12/26/基于OAuth2的通用授权认证规则/" class="leancloud_visitors" data-flag-title="基于OAuth2的通用授权认证规则">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="普遍适用的接口授权及认证规则"><a href="#普遍适用的接口授权及认证规则" class="headerlink" title="普遍适用的接口授权及认证规则"></a>普遍适用的接口授权及认证规则</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>接口授权和认证有许多处理方案, 其中最简单的一种使用appkey和appsecret的方式进行验证</p>
-<p>另外还有一种是通过对接口中的参数排序并按照一定加密算法求得哈希值, 作为授权验证的令牌</p>
-<p>本文介绍基于OAuth2的通用授权认证规则</p>
-<p>简言之, 客户端首先通过一定方式获取访问令牌, 然后在每次调用接口时, 携带该令牌, 服务端验证该令牌</p>
-<h3 id="为什么要使用"><a href="#为什么要使用" class="headerlink" title="为什么要使用"></a>为什么要使用</h3><ul>
-<li>部分接口目前没有使用接口认证授权, 接口一旦泄露, 将存在很大安全隐患</li>
-<li>不同项目的接口认证机制不统一, 加重了开发人员的工作负担</li>
-<li>一旦接口泄露, 服务器亦不能及时对相关接口进行封锁</li>
-</ul>
-<h3 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h3><ul>
-<li>在<strong>用户中心</strong>获取访问令牌, 访问令牌会同步到公用Redis缓存中, 以便其他项目访问</li>
-<li>客户端调用相关查询接口</li>
-<li>服务器通过查询Redis中的令牌, 验证该令牌是否合法, 如果不合法, 提醒客户端重新登录</li>
-<li>令牌验证通过, 服务器执行后续操作, 返回结果</li>
-</ul>
-<h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><ul>
-<li>访问令牌存储于公用Redis缓存中, 所有客户端共用一套授权认证机制</li>
-<li>用户在修改/重置密码后, 令牌自动失效, 所有客户端会强制下线, 保证安全性</li>
-<li>与<strong>用户中心</strong>深度结合, 统一注册和登录, 统一授权认证</li>
-<li>Redis可以使用集群进行扩展, 加速授权和访问</li>
-<li>用户信息也将缓存在Redis中, 方便各个项目统一, 快速读取用户信息</li>
-<li>基于OAuth2实现, 服务端可以方便的控制接口的访问权限, 例如一旦client_id和client_secret泄露, 可立即封杀</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2156,7 +2148,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">47</span>
+                    <span class="site-state-item-count">49</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2317,7 +2309,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">73</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">76</span>
                     <span class="site-state-item-name">标签</span>
                   
                 </div>
@@ -2366,7 +2364,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>

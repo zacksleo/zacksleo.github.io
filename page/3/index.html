@@ -286,6 +286,183 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2017/08/22/Codeception中如何使用Fixtures优化测试/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zacksleo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zacks's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/22/Codeception中如何使用Fixtures优化测试/" itemprop="url">
+                  Codeception中如何使用Fixtures优化测试
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-08-22 09:25:26" itemprop="dateCreated datePublished" datetime="2017-08-22T09:25:26+08:00">2017-08-22</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-16 16:02:07" itemprop="dateModified" datetime="2019-04-16T16:02:07+08:00">2019-04-16</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/08/22/Codeception中如何使用Fixtures优化测试/" class="leancloud_visitors" data-flag-title="Codeception中如何使用Fixtures优化测试">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Fixtures 是测试中非常重要的一部分。主要目的是建立一个固定/已知的环境状态以确保 测试可重复并且按照预期方式运行。</p>
+<p>简答说就是Fixtures提供一种预填充数据的方式，即在测试前需要准备好哪些数据，以便测试可以正常展开，不受其他测试的影响。</p>
+<p>一个 Fixture 可能依赖于其他的 Fixtures ，所定义的依赖会自动加载。</p>
+<p>该方法相比于<code>dump.sql</code>的填充方法更加灵活, 且不会出去填充的冲突问题.</p>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><h3 id="定义一个Fixtures"><a href="#定义一个Fixtures" class="headerlink" title="定义一个Fixtures"></a>定义一个Fixtures</h3><p>通过继成<code>yii\test\ActiveFixture</code>, 并声明 <code>modelClass</code> 来定义一个Fixtures , <code>depends</code>为要依赖的Fixtures, 可选。</p>
+<p>Fixtures通常放置于<code>tests</code>目录中的<code>fixtures</code>目录下.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">namespace tests\fixtures;</span><br><span class="line"></span><br><span class="line">use yii\test\ActiveFixture;</span><br><span class="line"></span><br><span class="line">class UserFixture extends ActiveFixture</span><br><span class="line">&#123;</span><br><span class="line">    public $modelClass = &apos;app\models\User&apos;;</span><br><span class="line">    public $depends = [&apos;app\tests\fixtures\UserFixture&apos;];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="设置填充数据"><a href="#设置填充数据" class="headerlink" title="设置填充数据"></a>设置填充数据</h3><p>在 <code>@tests/fixtures/data</code>目录中,每个Fixtures添加一个数据文档</p>
+<p>在位置 <code>@tests/fixtures/data/user.php</code> 中, 设置以下数据, 为要被插入用户表中的数据文件, <code>user1</code>和<code>user2</code>为别名, 方便调用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">return [</span><br><span class="line">    &apos;user1&apos; =&gt; [</span><br><span class="line">        &apos;username&apos; =&gt; &apos;lmayert&apos;,</span><br><span class="line">        &apos;email&apos; =&gt; &apos;strosin.vernice@jerde.com&apos;,</span><br><span class="line">        &apos;auth_key&apos; =&gt; &apos;K3nF70it7tzNsHddEiq0BZ0i-OU8S3xV&apos;,</span><br><span class="line">        &apos;password&apos; =&gt; &apos;$2y$13$WSyE5hHsG1rWN2jV8LRHzubilrCLI5Ev/iK0r3jRuwQEs2ldRu.a2&apos;,</span><br><span class="line">    ],</span><br><span class="line">    &apos;user2&apos; =&gt; [</span><br><span class="line">        &apos;username&apos; =&gt; &apos;napoleon69&apos;,</span><br><span class="line">        &apos;email&apos; =&gt; &apos;aileen.barton@heaneyschumm.com&apos;,</span><br><span class="line">        &apos;auth_key&apos; =&gt; &apos;dZlXsVnIDgIzFgX4EduAqkEPuphhOh9q&apos;,</span><br><span class="line">        &apos;password&apos; =&gt; &apos;$2y$13$kkgpvJ8lnjKo8RuoR30ay.RjDf15bMcHIF7Vz1zz/6viYG5xJExU6&apos;,</span><br><span class="line">    ],</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>在测试用例中, 通过定义<code>_fixtures方法</code>, 声明需要使用的Fixtures及填充数据文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * @var \UnitTester</span><br><span class="line"> */</span><br><span class="line">protected $tester;</span><br><span class="line"></span><br><span class="line">public function _fixtures()</span><br><span class="line">&#123;</span><br><span class="line">    return [</span><br><span class="line">        &apos;users&apos; =&gt; [</span><br><span class="line">            &apos;class&apos; =&gt; UserFixture::className(),</span><br><span class="line">            &apos;dataFile&apos; =&gt; &apos;@tests/fixtures/data/user.php&apos;</span><br><span class="line">        ],</span><br><span class="line">        &apos;profiles&apos; =&gt; [</span><br><span class="line">            &apos;class&apos; =&gt; UserProfileFixture::className(),</span><br><span class="line">            &apos;dataFile&apos; =&gt; &apos;@tests/fixtures/data/user_profile.php&apos;</span><br><span class="line">        ],</span><br><span class="line">    ];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>通过如下方法, 可以获取插入的记录, 返回值为该Fixture类中对应的<code>modelClass</code>的一个实例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$user = $this-&gt;tester-&gt;grabFixture(&apos;users&apos;, &apos;default&apos;);</span><br></pre></td></tr></table></figure>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="http://www.yiichina.com/doc/guide/2.0/test-fixtures" target="_blank" rel="noopener">Fixtures</a><br><a href="http://www.yiiframework.com/doc-2.0/guide-test-fixtures.html" target="_blank" rel="noopener">Fixtures</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2017/07/20/README/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -349,7 +526,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-12-27 16:36:51" itemprop="dateModified" datetime="2018-12-27T16:36:51+08:00">2018-12-27</time>
+                <time title="修改时间：2019-04-16 16:02:07" itemprop="dateModified" datetime="2019-04-16T16:02:07+08:00">2019-04-16</time>
               
             
           </span>
@@ -396,6 +573,220 @@
         
           
             <h1 id="zacks’-Blog"><a href="#zacks’-Blog" class="headerlink" title="zacks’ Blog"></a>zacks’ Blog</h1><p>首页: <a href="https://zacksleo.github.io/">https://zacksleo.github.io/</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2017/07/20/使用Composer创建公共类库/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zacksleo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zacks's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/07/20/使用Composer创建公共类库/" itemprop="url">
+                  使用Composer创建公共类库
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-07-20 09:33:12" itemprop="dateCreated datePublished" datetime="2017-07-20T09:33:12+08:00">2017-07-20</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-16 16:02:07" itemprop="dateModified" datetime="2019-04-16T16:02:07+08:00">2019-04-16</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/07/20/使用Composer创建公共类库/" class="leancloud_visitors" data-flag-title="使用Composer创建公共类库">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>如果多个项目中存在使用相同类库、模块的情况，此时可以考虑将类库或者模块单独抽取出来，形成独立类库，通过composer<br>来进行依赖管理，这样可以更方便维护，大大提升开发效率。</p>
+<h2 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h2><ul>
+<li>可以对特定模块进行统一维护和升级</li>
+<li>特定的类库可由专人进行维护，保证稳定性和可靠性</li>
+<li>避免了重复开发的情况</li>
+</ul>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><h3 id="本地开发"><a href="#本地开发" class="headerlink" title="本地开发"></a>本地开发</h3><p>为了方便调试，可先在本地现有项目中开发类库，等到开发完成后，再将相关代码单独抽取出来。</p>
+<ul>
+<li>首先在项目中创建一个存放类库的目录，如<code>packages/zacksleo/my-libs</code>,</li>
+</ul>
+<p>其中<code>packages</code>是类库总目录， <code>zacksleo</code>是用户名，相当于命名空间的第一级，<code>my-libs</code>是类库存放目录。</p>
+<ul>
+<li>在目录中创建<code>composer.json</code> 文件，并添加形如以下的内容：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;name&quot;: &quot;zacksleo/my-libs&quot;,</span><br><span class="line">  &quot;description&quot;: &quot;my libs&quot;,</span><br><span class="line">  &quot;type&quot;: &quot;library&quot;,</span><br><span class="line">  &quot;license&quot;: &quot;MIT&quot;,</span><br><span class="line">  &quot;authors&quot;: [</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;name&quot;: &quot;zacksleo&quot;,</span><br><span class="line">      &quot;email&quot;: &quot;zacksleo@gmail.com&quot;</span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  &quot;minimum-stability&quot;: &quot;stable&quot;,</span><br><span class="line">  &quot;autoload&quot;: &#123;</span><br><span class="line">    &quot;psr-4&quot;: &#123;</span><br><span class="line">      &quot;zacksleo\\my\\libs\\&quot;: &quot;src&quot;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中，<code>name</code>是类库名称，<code>descrption</code>是详细说明，<code>type</code>是类别，<code>license</code>是使用的协议，<code>authers</code>是作者信息，</p>
+<p><code>minimum-stability</code> 用来声明最小依赖，通常有<code>dev</code>和 <code>stable</code>可选，<code>autoload</code>中的<code>psr-4</code>声明了</p>
+<p>命名空间和对应的目录，注意命名空间就当使用双反斜杠，目录使用相对路径，此外声明了目录为<code>src`</code>目录</p>
+<ul>
+<li><p>在<code>src</code>目录中添加相关代码，其中的类使用命名空间<code>zacksleo\\my\\libs</code></p>
+</li>
+<li><p>在项目的<code>composer.json</code>中，通过<code>path</code>方式引入本地类库，如可在<code>repositories</code>中添加如下信息：</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&quot;repositories&quot;: &#123;</span><br><span class="line">  &quot;my-libs&quot;: &#123;</span><br><span class="line">    &quot;type&quot;: &quot;path&quot;,</span><br><span class="line">    &quot;url&quot;: &quot;packages/zacksleo/my-libs&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中<code>my-libs</code>是别名，可任意填写，<code>type</code>设置成<code>path</code>, <code>url</code>为类库所在的相对路径（与composer.json文件相对）</p>
+<ul>
+<li>通过<code>composer require</code>命令或者在<code>composer.json</code>中的<code>require</code>部分添加声音，来实现依赖加载，如</li>
+</ul>
+<p><code>composer require zacksleo/my-libs</code></p>
+<h3 id="在Github上创建库并上传代码"><a href="#在Github上创建库并上传代码" class="headerlink" title="在Github上创建库并上传代码"></a>在Github上创建库并上传代码</h3><p>当在本地开发完成后，可将类库独立抽取出来（此处的<code>my-libs</code>目录下的内容），并提交到Github上新建的仓库中</p>
+<h3 id="配置packagist并发布"><a href="#配置packagist并发布" class="headerlink" title="配置packagist并发布"></a>配置packagist并发布</h3><ol>
+<li>先在packagist.org中注册好账号，以便发布包。</li>
+<li>在Github的仓库中，点击<code>settings</code>，找到 <code>Intergrations &amp; services</code>, 点击<code>Add servies</code>, 选择<code>Packagist</code>,</li>
+</ol>
+<p>填写在packagist.org注册的用户名和Token(在<a href="https://packagist.org/profile/" target="_blank" rel="noopener">Profile</a>中找到Your API Token)</p>
+<p>点击确定添加，这样，每次Github的变动，都会自动更新到packagist上，免去了手动更新的麻烦</p>
+<h3 id="本地依赖改成线上版本-并清除开发代码"><a href="#本地依赖改成线上版本-并清除开发代码" class="headerlink" title="本地依赖改成线上版本, 并清除开发代码"></a>本地依赖改成线上版本, 并清除开发代码</h3><p>类库一经发布到packagist上后，就可将本地项目<code>composer.json</code>添加的<code>repositories</code>移除，重新运行<code>composer install</code>，</p>
+<p>来安装packagist上的版本，同时<code>packages</code> 目录亦可删除。</p>
+<h2 id="版本问题说明"><a href="#版本问题说明" class="headerlink" title="版本问题说明"></a>版本问题说明</h2><p>composer使用语义化的版本进行依赖管理，因此类库在更新和发布时，所标记的版本号，也就当遵循<a href="http://semver.org/lang/zh-CN/" target="_blank" rel="noopener">语义化的版本规范</a>。</p>
+<p>基主要有以下几个内容：</p>
+<p>版本格式：主版本号.次版本号.修订号，版本号递增规则如下：</p>
+<ol>
+<li>主版本号：当你做了不兼容的 API 修改，</li>
+<li>次版本号：当你做了向下兼容的功能性新增，</li>
+<li>修订号：当你做了向下兼容的问题修正。</li>
+<li>先行版本号及版本编译信息可以加到“主版本号.次版本号.修订号”的后面，作为延伸。</li>
+</ol>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="http://docs.phpcomposer.com/" target="_blank" rel="noopener">Composer中文文档</a></li>
+<li><a href="http://semver.org/lang/zh-CN/" target="_blank" rel="noopener">语义化的版本规范</a></li>
+</ul>
 
           
         
@@ -512,7 +903,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-12-27 16:36:51" itemprop="dateModified" datetime="2018-12-27T16:36:51+08:00">2018-12-27</time>
+                <time title="修改时间：2019-04-16 16:02:07" itemprop="dateModified" datetime="2019-04-16T16:02:07+08:00">2019-04-16</time>
               
             
           </span>
@@ -722,7 +1113,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-12-27 16:36:51" itemprop="dateModified" datetime="2018-12-27T16:36:51+08:00">2018-12-27</time>
+                <time title="修改时间：2019-04-16 16:02:07" itemprop="dateModified" datetime="2019-04-16T16:02:07+08:00">2019-04-16</time>
               
             
           </span>
@@ -896,7 +1287,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-12-27 16:36:51" itemprop="dateModified" datetime="2018-12-27T16:36:51+08:00">2018-12-27</time>
+                <time title="修改时间：2019-04-16 16:02:07" itemprop="dateModified" datetime="2019-04-16T16:02:07+08:00">2019-04-16</time>
               
             
           </span>
@@ -1243,7 +1634,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-12-27 16:36:51" itemprop="dateModified" datetime="2018-12-27T16:36:51+08:00">2018-12-27</time>
+                <time title="修改时间：2019-04-16 16:02:07" itemprop="dateModified" datetime="2019-04-16T16:02:07+08:00">2019-04-16</time>
               
             
           </span>
@@ -1421,7 +1812,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-12-27 16:36:51" itemprop="dateModified" datetime="2018-12-27T16:36:51+08:00">2018-12-27</time>
+                <time title="修改时间：2019-04-16 16:02:07" itemprop="dateModified" datetime="2019-04-16T16:02:07+08:00">2019-04-16</time>
               
             
           </span>
@@ -1601,7 +1992,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-12-27 16:36:51" itemprop="dateModified" datetime="2018-12-27T16:36:51+08:00">2018-12-27</time>
+                <time title="修改时间：2019-04-16 16:02:07" itemprop="dateModified" datetime="2019-04-16T16:02:07+08:00">2019-04-16</time>
               
             
           </span>
@@ -1776,7 +2167,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-12-27 16:36:51" itemprop="dateModified" datetime="2018-12-27T16:36:51+08:00">2018-12-27</time>
+                <time title="修改时间：2019-04-16 16:02:07" itemprop="dateModified" datetime="2019-04-16T16:02:07+08:00">2019-04-16</time>
               
             
           </span>
@@ -1886,350 +2277,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2017/04/14/GitLab-CI通过ssh进行自动部署/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zacksleo">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zacks's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/04/14/GitLab-CI通过ssh进行自动部署/" itemprop="url">
-                  GitLab-CI通过ssh进行自动部署
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2017-04-14 14:39:50" itemprop="dateCreated datePublished" datetime="2017-04-14T14:39:50+08:00">2017-04-14</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-12-27 16:36:51" itemprop="dateModified" datetime="2018-12-27T16:36:51+08:00">2018-12-27</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2017/04/14/GitLab-CI通过ssh进行自动部署/" class="leancloud_visitors" data-flag-title="GitLab-CI通过ssh进行自动部署">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p>通过gitlab-ci实现文件的自动部署</p>
-<h2 id="实现过程"><a href="#实现过程" class="headerlink" title="实现过程"></a>实现过程</h2><p>文档托管在gitlab上, 每次代码更新, 会自动出发gitlab-ci构建<br>在构建脚本中, 通过ssh 登录远程服务器执行git拉取文档的命令</p>
-<h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><h3 id="首先需要在服务器上生成ssh证书"><a href="#首先需要在服务器上生成ssh证书" class="headerlink" title="首先需要在服务器上生成ssh证书"></a>首先需要在服务器上生成ssh证书</h3><blockquote>
-<p>注意该证书的用户必须与ssh远程登录的用户一样, 例如我们的用户名是root</p>
-</blockquote>
-<h3 id="将公钥添加到gitlab上-以便于该用于可以拉取代码"><a href="#将公钥添加到gitlab上-以便于该用于可以拉取代码" class="headerlink" title="将公钥添加到gitlab上, 以便于该用于可以拉取代码"></a>将公钥添加到gitlab上, 以便于该用于可以拉取代码</h3><h3 id="在-CI-CD-Piplines中设置-Secret-Variables-包括-DEPLOY-SERVER-和-SSH-PRIVATE-KEY"><a href="#在-CI-CD-Piplines中设置-Secret-Variables-包括-DEPLOY-SERVER-和-SSH-PRIVATE-KEY" class="headerlink" title="在 CI/CD Piplines中设置 Secret Variables, 包括 DEPLOY_SERVER 和 SSH_PRIVATE_KEY"></a>在 <code>CI/CD Piplines</code>中设置 <code>Secret Variables</code>, 包括 <code>DEPLOY_SERVER</code> 和 <code>SSH_PRIVATE_KEY</code></h3><p>其中 <code>SSH_PRIVATE_KEY</code> 的内容是服务器上的私钥, <code>DEPLOY_SERVER</code> 是服务器地址</p>
-<h3 id="编写-gitlab-ci-yml-文件-注入密钥-通过ssh执行远程命令"><a href="#编写-gitlab-ci-yml-文件-注入密钥-通过ssh执行远程命令" class="headerlink" title="编写 .gitlab-ci.yml 文件, 注入密钥, 通过ssh执行远程命令"></a>编写 <code>.gitlab-ci.yml</code> 文件, 注入密钥, 通过<code>ssh</code>执行远程命令</h3><h2 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h2> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"># 使用alpine镜像, 该镜像很少,只有几兆</span><br><span class="line">image: alpine</span><br><span class="line">stages:</span><br><span class="line">    - deploy</span><br><span class="line">before_script:</span><br><span class="line">    # 预先装 ssh-agent</span><br><span class="line">    - &apos;which ssh-agent || ( apk update &amp;&amp; apk add openssh-client)&apos;</span><br><span class="line">    # 启动服务</span><br><span class="line">    - eval $(ssh-agent -s)</span><br><span class="line">    # 将私钥写入deploy.key 文件</span><br><span class="line">    - echo &quot;$SSH_PRIVATE_KEY&quot; &gt; deploy.key</span><br><span class="line">    # 配置较低权限</span><br><span class="line">    - chmod 0600 deploy.key</span><br><span class="line">    # 注入密钥</span><br><span class="line">    - ssh-add deploy.key</span><br><span class="line">    - mkdir -p ~/.ssh    </span><br><span class="line">    - &apos;[[ -f /.dockerenv ]] &amp;&amp; echo -e &quot;Host *\n\tStrictHostKeyChecking no\n\n&quot; &gt; ~/.ssh/config&apos;</span><br><span class="line"> </span><br><span class="line">release-doc:</span><br><span class="line">    stage: deploy</span><br><span class="line">    script:</span><br><span class="line">        # 连接远程服务器并执行拉取代码的命令</span><br><span class="line">        - ssh root@$DEPLOY_SERVER &quot;cd /path/to/wiki &amp;&amp; git pull origin master&quot;</span><br><span class="line">    only:</span><br><span class="line">        - master</span><br><span class="line">    environment:</span><br><span class="line">        name: production</span><br><span class="line">        url: http://$DEPLOY_SERVER</span><br></pre></td></tr></table></figure>
-<h2 id="相关文档"><a href="#相关文档" class="headerlink" title="相关文档"></a>相关文档</h2><p><a href="https://docs.gitlab.com/ce/ci/ssh_keys/README.html" target="_blank" rel="noopener">Using SSH keys</a></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2017/03/12/使用Git和Gollum搭建Wiki系统/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zacksleo">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zacks's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/03/12/使用Git和Gollum搭建Wiki系统/" itemprop="url">
-                  使用Git和Gollum搭建Wiki系统
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2017-03-13 01:22:09" itemprop="dateCreated datePublished" datetime="2017-03-13T01:22:09+08:00">2017-03-13</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-12-27 16:36:51" itemprop="dateModified" datetime="2018-12-27T16:36:51+08:00">2018-12-27</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2017/03/12/使用Git和Gollum搭建Wiki系统/" class="leancloud_visitors" data-flag-title="使用Git和Gollum搭建Wiki系统">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="https://github.com/gollum/gollum" target="_blank" rel="noopener">Gollum</a>是一个开源的Wiki系统, 该系统基于Git, 支持 Markdown, RDoc 等多种排版格式.</p>
-<p>下面是在搭建的过程中经常会遇到一些问题</p>
-<h2 id="UTF-8-问题"><a href="#UTF-8-问题" class="headerlink" title="UTF-8 问题"></a>UTF-8 问题</h2><ul>
-<li>安装 <code>gollum-rugged_adapter</code></li>
-<li>通过参数 <code>--adapter rugged</code> 启动gollum</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install cmake</span><br><span class="line">sudo gem install gollum-rugged_adapter</span><br><span class="line">gollum --adapter rugged</span><br></pre></td></tr></table></figure>
-<h2 id="如何设置只读"><a href="#如何设置只读" class="headerlink" title="如何设置只读"></a>如何设置只读</h2><p>启动Gollum时, 设置 <code>--no-edit</code> 来禁止编辑</p>
-<h2 id="使用-Docker"><a href="#使用-Docker" class="headerlink" title="使用 Docker"></a>使用 Docker</h2><p>使用Docker 安装gullum的内容见 <a href="http://zacksleo.github.io/2017/03/11/gollum/">gollum</a></p>
-<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><ul>
-<li><a href="https://github.com/zacksleo/gollum" target="_blank" rel="noopener">Docker Goolum</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2277,7 +2324,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">47</span>
+                    <span class="site-state-item-count">49</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2438,7 +2485,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">73</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">76</span>
                     <span class="site-state-item-name">标签</span>
                   
                 </div>
@@ -2487,7 +2540,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>

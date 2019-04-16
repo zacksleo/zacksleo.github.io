@@ -286,6 +286,349 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2019/04/16/REST接口文档编写规范/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zacksleo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zacks's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/16/REST接口文档编写规范/" itemprop="url">
+                  REST接口文档编写规范
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-16 15:41:26 / 修改时间：16:02:07" itemprop="dateCreated datePublished" datetime="2019-04-16T15:41:26+08:00">2019-04-16</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/04/16/REST接口文档编写规范/" class="leancloud_visitors" data-flag-title="REST接口文档编写规范">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>REST接口文档遵循 <a href="https://apiblueprint.org/" target="_blank" rel="noopener">API Blueprint 编码规范</a></p>
+<p>中文说明需要遵循 <a href="https://github.com/mzlogin/chinese-copywriting-guidelines" target="_blank" rel="noopener">中文文案排版指北</a></p>
+<p>按照该格式书写的文档, 可以被 GitLab 及 Gollum 完美解析</p>
+<h2 id="主要内容"><a href="#主要内容" class="headerlink" title="主要内容"></a>主要内容</h2><ol>
+<li>使用 Markdown 编写</li>
+<li>请求和响应主体, 使用8个字符缩进</li>
+<li>不使用` 包裹json代码</li>
+</ol>
+<h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## 用户密码 [/users/password]</span><br><span class="line"></span><br><span class="line">### 重置密码 [PATCH]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">+ Attributes</span><br><span class="line">    + phone (number, required) - 手机号码</span><br><span class="line">    + password (string, required) - 密码</span><br><span class="line">    + verify_code (string, required) - 短信验证码</span><br><span class="line"></span><br><span class="line">+ Header </span><br><span class="line">    + Authorization Bearer: &#123;clientToken&#125; - 访问令牌, 通过客户端模式获得</span><br><span class="line">    + Content-Type: application/json</span><br><span class="line"></span><br><span class="line">+ Request (application/json)</span><br><span class="line"></span><br><span class="line">        &#123;</span><br><span class="line">            &quot;phone&quot;:&quot;17083300514&quot;,</span><br><span class="line">            &quot;password&quot;:&quot;pa66w0rd&quot;,</span><br><span class="line">            &quot;verify_code&quot;:&quot;312338&quot;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">+ Response 201 (application/json)      </span><br><span class="line"></span><br><span class="line">        &#123;</span><br><span class="line">            &quot;phone&quot;:&quot;17083300514&quot;,</span><br><span class="line">            &quot;password&quot;:&quot;pa66w0rd&quot;,</span><br><span class="line">            &quot;verify_code&quot;:&quot;312338&quot;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">+ Response 422 (application/json)</span><br><span class="line"></span><br><span class="line">        [</span><br><span class="line">          &#123;</span><br><span class="line">            &quot;field&quot;: &quot;verify_code&quot;,</span><br><span class="line">            &quot;message&quot;: &quot;短信验证码错误&quot;</span><br><span class="line">          &#125;,</span><br><span class="line">          &#123;</span><br><span class="line">            &quot;field&quot;: &quot;phone&quot;,</span><br><span class="line">            &quot;message&quot;: &quot;手机号不存在&quot;</span><br><span class="line">          &#125;,</span><br><span class="line">         &#123;</span><br><span class="line">            &quot;field&quot;: &quot;password&quot;,</span><br><span class="line">            &quot;message&quot;: &quot;密码至少包含一位数字&quot;</span><br><span class="line">          &#125;</span><br><span class="line">        ]</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">## 扫描二维码 [/qrcode-tokens/&#123;ticket&#125;]</span><br><span class="line"></span><br><span class="line">### 更新状态 [PUT]</span><br><span class="line"></span><br><span class="line">+ Attributes</span><br><span class="line">    + action (string, required) - 动作, 值为SCANNED或LOGGED_IN</span><br><span class="line">    + ticket (string, required) - ticket 二维码中链接中后面的字符串</span><br><span class="line"></span><br><span class="line">+ Header </span><br><span class="line">    + Authorization: Bearer &#123;clientToken&#125;</span><br><span class="line">    + Content-Type: application/json</span><br><span class="line"></span><br><span class="line">+ Request (application/json)</span><br><span class="line"></span><br><span class="line">        &#123;</span><br><span class="line">            &quot;action&quot;:&quot;SCANNED&quot;</span><br><span class="line">        &#125;</span><br><span class="line">  </span><br><span class="line">+ Response 201 (application/json)      </span><br><span class="line"></span><br><span class="line">        &#123;</span><br><span class="line">            &quot;action&quot;:&quot;SCANNED&quot;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ul>
+<li><a href="https://apiblueprint.org/" target="_blank" rel="noopener">API Blueprint官网</a></li>
+<li><a href="https://github.com/apiaryio/api-blueprint" target="_blank" rel="noopener">GitHub</a></li>
+<li><a href="https://blog.callmewhy.com/2014/06/05/blueprint-tutorial/" target="_blank" rel="noopener">API Blueprint 指导手册</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2019/04/16/DevOps软件开发流程规范/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zacksleo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zacks's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/16/DevOps软件开发流程规范/" itemprop="url">
+                  DevOps 软件开发流程规范
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-16 15:34:00 / 修改时间：16:02:07" itemprop="dateCreated datePublished" datetime="2019-04-16T15:34:00+08:00">2019-04-16</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/04/16/DevOps软件开发流程规范/" class="leancloud_visitors" data-flag-title="DevOps 软件开发流程规范">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="流程概要"><a href="#流程概要" class="headerlink" title="流程概要"></a>流程概要</h2><p>持续集成和持续交付是 DevOps 最核心的两个部分。</p>
+<p>持续集成通过即时将最新的代码，集成到主干分支，并进行相关的测试（单元测试、集成测试等）和静态检查（代码格式，代码质量等），以期提早发现问题。</p>
+<p>持续交付，在持续集成完成之后，即时生成生产环境可用的产物（如二进制文件、包、或者 Docker镜像），并准备随时部署，如果伴随着部署过程，则称为持续部署。</p>
+<h2 id="开发流程"><a href="#开发流程" class="headerlink" title="开发流程"></a>开发流程</h2><ul>
+<li>系统分析与设计：需求分析，架构设计，数据库设计等</li>
+<li>相关文档编写, 文档应与代码仓库一起</li>
+<li><p>系统开发</p>
+<ul>
+<li>持续集成 (gitlab-ci)</li>
+<li>格式检查和静态检查 (vscode, linter)</li>
+<li>数据库迁移 (migration)</li>
+<li>使用 Docker 搭建开发、测试和生产环境，docker-compose</li>
+<li>Git开发流程 (git cz, master, branch )</li>
+<li>自动化测试：单元测试，HTTP测试（api测试），功能测试，基准测试 (ab)</li>
+<li>自动化部署（主备）(ngixn back)</li>
+<li>更新日志 (angular changelog)</li>
+<li>crontab supervisord</li>
+</ul>
+</li>
+<li><p>测试与验收</p>
+</li>
+</ul>
+<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><ul>
+<li><a href="https://zacksleo.github.io/2017/03/07/RESTful%E6%8E%A5%E5%8F%A3%E8%A7%84%E8%8C%83/">RESTful接口规范</a></li>
+<li>接口文档编写规范</li>
+<li><a href="https://zacksleo.github.io/2017/03/07/PHP%E7%BC%96%E7%A0%81%E8%A7%84%E8%8C%83/">PHP编码规范</a></li>
+<li><a href="https://zacksleo.github.io/2017/03/07/Git%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%A7%84%E8%8C%83/">Git工作流程及使用规范</a></li>
+<li><a href="https://semver.org/lang/zh-CN/" target="_blank" rel="noopener">语义化版本 2.0.0</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2018/12/27/CentOS安装Docker并设置开机启动/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -332,12 +675,24 @@
                 
               
 
-              <time title="创建时间：2018-12-27 16:31:06 / 修改时间：16:36:51" itemprop="dateCreated datePublished" datetime="2018-12-27T16:31:06+08:00">2018-12-27</time>
+              <time title="创建时间：2018-12-27 16:31:06" itemprop="dateCreated datePublished" datetime="2018-12-27T16:31:06+08:00">2018-12-27</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-16 16:02:07" itemprop="dateModified" datetime="2019-04-16T16:02:07+08:00">2019-04-16</time>
               
             
           </span>
@@ -520,7 +875,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-12-27 16:36:51" itemprop="dateModified" datetime="2018-12-27T16:36:51+08:00">2018-12-27</time>
+                <time title="修改时间：2019-04-16 16:02:07" itemprop="dateModified" datetime="2019-04-16T16:02:07+08:00">2019-04-16</time>
               
             
           </span>
@@ -703,7 +1058,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-12-27 16:36:51" itemprop="dateModified" datetime="2018-12-27T16:36:51+08:00">2018-12-27</time>
+                <time title="修改时间：2019-04-16 16:02:07" itemprop="dateModified" datetime="2019-04-16T16:02:07+08:00">2019-04-16</time>
               
             
           </span>
@@ -926,7 +1281,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-12-27 16:36:51" itemprop="dateModified" datetime="2018-12-27T16:36:51+08:00">2018-12-27</time>
+                <time title="修改时间：2019-04-16 16:02:07" itemprop="dateModified" datetime="2019-04-16T16:02:07+08:00">2019-04-16</time>
               
             
           </span>
@@ -1283,7 +1638,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-12-27 16:36:51" itemprop="dateModified" datetime="2018-12-27T16:36:51+08:00">2018-12-27</time>
+                <time title="修改时间：2019-04-16 16:02:07" itemprop="dateModified" datetime="2019-04-16T16:02:07+08:00">2019-04-16</time>
               
             
           </span>
@@ -1464,7 +1819,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-12-27 16:36:51" itemprop="dateModified" datetime="2018-12-27T16:36:51+08:00">2018-12-27</time>
+                <time title="修改时间：2019-04-16 16:02:07" itemprop="dateModified" datetime="2019-04-16T16:02:07+08:00">2019-04-16</time>
               
             
           </span>
@@ -1647,7 +2002,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-12-27 16:36:51" itemprop="dateModified" datetime="2018-12-27T16:36:51+08:00">2018-12-27</time>
+                <time title="修改时间：2019-04-16 16:02:07" itemprop="dateModified" datetime="2019-04-16T16:02:07+08:00">2019-04-16</time>
               
             
           </span>
@@ -1819,7 +2174,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-12-27 16:36:51" itemprop="dateModified" datetime="2018-12-27T16:36:51+08:00">2018-12-27</time>
+                <time title="修改时间：2019-04-16 16:02:07" itemprop="dateModified" datetime="2019-04-16T16:02:07+08:00">2019-04-16</time>
               
             
           </span>
@@ -1913,339 +2268,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2018/03/13/GitLab-CI对JavaScript项目持续集成或部署/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zacksleo">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zacks's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/13/GitLab-CI对JavaScript项目持续集成或部署/" itemprop="url">
-                  GitLab-CI对JavaScript项目持续集成或部署
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-03-13 11:34:00" itemprop="dateCreated datePublished" datetime="2018-03-13T11:34:00+08:00">2018-03-13</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-12-27 16:36:51" itemprop="dateModified" datetime="2018-12-27T16:36:51+08:00">2018-12-27</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/03/13/GitLab-CI对JavaScript项目持续集成或部署/" class="leancloud_visitors" data-flag-title="GitLab-CI对JavaScript项目持续集成或部署">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p>团队使用React开发了一套前端页面, 为了方便协作和部署, 使用 EsLint 进行代码格式审查, 同时进行持续集成和部署, 提高开发效率</p>
-<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br></pre></td><td class="code"><pre><span class="line">image: zacksleo/node</span><br><span class="line"></span><br><span class="line">before_script:</span><br><span class="line">    - eval $(ssh-agent -s)</span><br><span class="line">    - echo &quot;$SSH_PRIVATE_KEY&quot; &gt; ~/deploy.key</span><br><span class="line">    - chmod 0600 ~/deploy.key</span><br><span class="line">    - ssh-add ~/deploy.key</span><br><span class="line">    - mkdir -p ~/.ssh</span><br><span class="line">    - &apos;[[ -f /.dockerenv ]] &amp;&amp; echo -e &quot;Host *\n\tStrictHostKeyChecking no\n\n&quot; &gt; ~/.ssh/config&apos;</span><br><span class="line">    - export APP_ENV=testing</span><br><span class="line">    - yarn config set registry &apos;https://registry.npm.taobao.org&apos;</span><br><span class="line">stages:</span><br><span class="line">    - prepare</span><br><span class="line">    - test</span><br><span class="line">    - build</span><br><span class="line">    - deploy</span><br><span class="line"></span><br><span class="line">variables:</span><br><span class="line">    COMPOSER_CACHE_DIR: &quot;/cache/composer&quot;</span><br><span class="line">    DOCKER_DRIVER: overlay2</span><br><span class="line">build-cache:</span><br><span class="line">    stage: prepare</span><br><span class="line">    script:</span><br><span class="line">        - yarn install --cache-folder /cache/yarn</span><br><span class="line">    cache:</span><br><span class="line">      key: &quot;$CI_COMMIT_REF_NAME&quot;</span><br><span class="line">      paths:</span><br><span class="line">        - node_modules</span><br><span class="line">    except:</span><br><span class="line">        - docs</span><br><span class="line">        - tags</span><br><span class="line">    when: manual</span><br><span class="line">eslint:</span><br><span class="line">    stage: test</span><br><span class="line">    dependencies: []</span><br><span class="line">    cache:</span><br><span class="line">      key: &quot;$CI_COMMIT_REF_NAME&quot;</span><br><span class="line">      policy: pull</span><br><span class="line">      paths:</span><br><span class="line">        - node_modules</span><br><span class="line">    script:</span><br><span class="line">        - if [ ! -d &quot;node_modules&quot; ]; then</span><br><span class="line">        - yarn install --cache-folder /cache/yarn</span><br><span class="line">        - fi</span><br><span class="line">        - yarn eslint ./</span><br><span class="line">    except:</span><br><span class="line">        - docs</span><br><span class="line">        - develop</span><br><span class="line">        - master</span><br><span class="line">        - tags</span><br><span class="line">build-check:</span><br><span class="line">    stage: test</span><br><span class="line">    dependencies: []</span><br><span class="line">    cache:</span><br><span class="line">      key: &quot;$CI_COMMIT_REF_NAME&quot;</span><br><span class="line">      policy: pull</span><br><span class="line">      paths:</span><br><span class="line">        - node_modules</span><br><span class="line">    script:</span><br><span class="line">        - if [ ! -d &quot;node_modules&quot; ]; then</span><br><span class="line">        - yarn install --cache-folder /cache/yarn</span><br><span class="line">        - fi</span><br><span class="line">        - yarn build</span><br><span class="line">    except:</span><br><span class="line">        - docs</span><br><span class="line">        - develop</span><br><span class="line">        - master</span><br><span class="line">        - tags</span><br><span class="line">build-package:</span><br><span class="line">    stage: test</span><br><span class="line">    script:</span><br><span class="line">        - if [ ! -d &quot;node_modules&quot; ]; then</span><br><span class="line">        - yarn install --cache-folder /cache/yarn</span><br><span class="line">        - fi</span><br><span class="line">        - if [ $CI_COMMIT_TAG ];then</span><br><span class="line">        - cp deploy/production/.env .env</span><br><span class="line">        - fi</span><br><span class="line">        - yarn build</span><br><span class="line">    dependencies: []</span><br><span class="line">    cache:</span><br><span class="line">      key: &quot;$CI_COMMIT_REF_NAME&quot;</span><br><span class="line">      policy: pull</span><br><span class="line">      paths:</span><br><span class="line">        - node_modules</span><br><span class="line">    artifacts:</span><br><span class="line">        name: &quot;build&quot;</span><br><span class="line">        untracked: false</span><br><span class="line">        expire_in: 60 mins</span><br><span class="line">        paths:</span><br><span class="line">            - build</span><br><span class="line">    except:</span><br><span class="line">        - docs</span><br><span class="line">    only:</span><br><span class="line">        - develop</span><br><span class="line">        - master</span><br><span class="line">        - tags</span><br><span class="line">production-image:</span><br><span class="line">    stage: build</span><br><span class="line">    image: docker:latest</span><br><span class="line">    dependencies:</span><br><span class="line">        - build-package</span><br><span class="line">    before_script: []</span><br><span class="line">    script:</span><br><span class="line">        - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY</span><br><span class="line">        - docker build -t $CI_REGISTRY_IMAGE:$CI_COMMIT_TAG .</span><br><span class="line">        - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_TAG</span><br><span class="line">        - docker rmi $CI_REGISTRY_IMAGE:$CI_COMMIT_TAG</span><br><span class="line">    only:</span><br><span class="line">        - tags</span><br><span class="line">production-server:</span><br><span class="line">    stage: deploy</span><br><span class="line">    dependencies: []</span><br><span class="line">    cache: &#123;&#125;</span><br><span class="line">    script:</span><br><span class="line">        - cd deploy/production</span><br><span class="line">        - rsync -rtvhze ssh . root@$DEPLOY_SERVER:/data/$CI_PROJECT_NAME --stats</span><br><span class="line">        - ssh root@$DEPLOY_SERVER &quot;docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY&quot;</span><br><span class="line">        - ssh root@$DEPLOY_SERVER &quot;export COMPOSE_HTTP_TIMEOUT=120 &amp;&amp; export DOCKER_CLIENT_TIMEOUT=120 &amp;&amp; echo -e &apos;\nTAG=$CI_COMMIT_TAG&apos; &gt;&gt; .env &amp;&amp; cd /data/$CI_PROJECT_NAME &amp;&amp; docker-compose pull web &amp;&amp; docker-compose stop &amp;&amp; docker-compose rm -f &amp;&amp; docker-compose up -d --build&quot;</span><br><span class="line">    only:</span><br><span class="line">        - tags</span><br><span class="line">    environment:</span><br><span class="line">        name: staging</span><br><span class="line">        url: https://xxx.com</span><br></pre></td></tr></table></figure>
-<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>首先使用EsLint进行代码格式检查, 每次合并到主干分支, 进行构建检查, 每次添加Tags, 构建Docker镜像,并进行部署</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2018/01/30/GitHub使用Style-CI进行格式检查/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zacksleo">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zacks's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/30/GitHub使用Style-CI进行格式检查/" itemprop="url">
-                  GitHub使用Style-CI进行格式检查
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-01-30 10:55:06" itemprop="dateCreated datePublished" datetime="2018-01-30T10:55:06+08:00">2018-01-30</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-12-27 16:36:51" itemprop="dateModified" datetime="2018-12-27T16:36:51+08:00">2018-12-27</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/01/30/GitHub使用Style-CI进行格式检查/" class="leancloud_visitors" data-flag-title="GitHub使用Style-CI进行格式检查">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <!-- GitHub使用Style-CI进行格式检查 -->
-<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>在项目根目录，新建<code>.styleci.yml</code> 配置文件，并编写配置内容：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">preset: psr2</span><br></pre></td></tr></table></figure>
-<h2 id="查看"><a href="#查看" class="headerlink" title="查看"></a>查看</h2><p>打开<a href="https://styleci.io/，使用Gitlab账号登录，找到对应的项目，点击右侧的" target="_blank" rel="noopener">https://styleci.io/，使用Gitlab账号登录，找到对应的项目，点击右侧的</a> <code>ENABLE STYLECI</code> 启用按钮，即可使用，</p>
-<p>每次提交代码，都会看到检测结果</p>
-<h2 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h2><p>如果没有找到自己的项目，打开 <code>https://styleci.io/account#repos</code> 点击 <code>Sync With GitHub</code> 同步，就会看到</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2293,7 +2315,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">47</span>
+                    <span class="site-state-item-count">49</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2454,7 +2476,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">73</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">76</span>
                     <span class="site-state-item-name">标签</span>
                   
                 </div>
@@ -2503,7 +2531,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
