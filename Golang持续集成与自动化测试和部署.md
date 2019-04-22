@@ -38,7 +38,7 @@ Golang是一门性能优异的静态类型语言，但因其奇快的编译速�
 
 在上述过程中，如需连接数据库时，可通过 GoDotEnv 来实现环境变量的使用
 
-## 相关测试脚本
+## 相关CI脚本
 
 
 <script src="https://gist.github.com/zacksleo/6b86c61fff51939de7dbd6af531de9f3.js"></script>
