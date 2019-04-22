@@ -101,18 +101,18 @@
 
 
 
-  <meta name="description" content="概述Golang是一门性能优异的静态类型语言，但因其奇快的编译速度，结合DevOps, 使得它也非常适合快速开发和迭代。 本文讲述如何使用Golang, 进行持续集成与自动化测试和部署。主要使用了以下相关技术：  dep： 进行包的依赖管理 gin： 搭建 api 服务 gorm：ORM, 数据CRUD mysql: 存储数据 testfixtures： 测试夹具，用于在自动化测试时，自动向数据库">
+  <meta name="description" content="概述Golang是一门性能优异的静态类型语言，但因其奇快的编译速度，结合DevOps, 使得它也非常适合快速开发和迭代。 本文讲述如何使用Golang, 进行持续集成与自动化测试和部署。主要使用了以下相关技术：  dep： 进行包的依赖管理 gin： 搭建 api 服务 gorm：ORM, 数据CRUD mysql: 存储数据 testfixtures： 测试夹具，在自动化测试时，自动向数据库填充">
 <meta name="keywords" content="Docker,DevOps,Gitlab-CI,REST,RESTful,Go">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Golang持续集成与自动化测试和部署">
 <meta property="og:url" content="https://zacksleo.github.io/2019/04/22/Golang持续集成与自动化测试和部署/index.html">
 <meta property="og:site_name" content="zacks&#39;s blog">
-<meta property="og:description" content="概述Golang是一门性能优异的静态类型语言，但因其奇快的编译速度，结合DevOps, 使得它也非常适合快速开发和迭代。 本文讲述如何使用Golang, 进行持续集成与自动化测试和部署。主要使用了以下相关技术：  dep： 进行包的依赖管理 gin： 搭建 api 服务 gorm：ORM, 数据CRUD mysql: 存储数据 testfixtures： 测试夹具，用于在自动化测试时，自动向数据库">
+<meta property="og:description" content="概述Golang是一门性能优异的静态类型语言，但因其奇快的编译速度，结合DevOps, 使得它也非常适合快速开发和迭代。 本文讲述如何使用Golang, 进行持续集成与自动化测试和部署。主要使用了以下相关技术：  dep： 进行包的依赖管理 gin： 搭建 api 服务 gorm：ORM, 数据CRUD mysql: 存储数据 testfixtures： 测试夹具，在自动化测试时，自动向数据库填充">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-22T04:00:56.603Z">
+<meta property="og:updated_time" content="2019-04-22T04:04:10.104Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Golang持续集成与自动化测试和部署">
-<meta name="twitter:description" content="概述Golang是一门性能优异的静态类型语言，但因其奇快的编译速度，结合DevOps, 使得它也非常适合快速开发和迭代。 本文讲述如何使用Golang, 进行持续集成与自动化测试和部署。主要使用了以下相关技术：  dep： 进行包的依赖管理 gin： 搭建 api 服务 gorm：ORM, 数据CRUD mysql: 存储数据 testfixtures： 测试夹具，用于在自动化测试时，自动向数据库">
+<meta name="twitter:description" content="概述Golang是一门性能优异的静态类型语言，但因其奇快的编译速度，结合DevOps, 使得它也非常适合快速开发和迭代。 本文讲述如何使用Golang, 进行持续集成与自动化测试和部署。主要使用了以下相关技术：  dep： 进行包的依赖管理 gin： 搭建 api 服务 gorm：ORM, 数据CRUD mysql: 存储数据 testfixtures： 测试夹具，在自动化测试时，自动向数据库填充">
 
 
 
@@ -328,7 +328,7 @@
                 
               
 
-              <time title="创建时间：2019-04-22 11:20:00 / 修改时间：12:00:56" itemprop="dateCreated datePublished" datetime="2019-04-22T11:20:00+08:00">2019-04-22</time>
+              <time title="创建时间：2019-04-22 11:20:00 / 修改时间：12:04:10" itemprop="dateCreated datePublished" datetime="2019-04-22T11:20:00+08:00">2019-04-22</time>
             
 
             
@@ -394,7 +394,7 @@
 <li><a href="https://github.com/gin-gonic/gin" target="_blank" rel="noopener">gin</a>： 搭建 api 服务</li>
 <li><a href="https://github.com/jinzhu/gorm" target="_blank" rel="noopener">gorm</a>：ORM, 数据CRUD</li>
 <li><a href="http://github.com/go-sql-driver/mysql" target="_blank" rel="noopener">mysql</a>: 存储数据</li>
-<li><a href="https://github.com/go-testfixtures/testfixtures" target="_blank" rel="noopener">testfixtures</a>： 测试夹具，用于在自动化测试时，自动向数据库填充用于测试的数据</li>
+<li><a href="https://github.com/go-testfixtures/testfixtures" target="_blank" rel="noopener">testfixtures</a>： 测试夹具，在自动化测试时，自动向数据库填充用于测试的数据</li>
 <li><a href="https://github.com/gavv/httpexpect" target="_blank" rel="noopener">httpexpect</a>: HTTP 测试包，用于API测试</li>
 <li><a href="https://github.com/joho/godotenv" target="_blank" rel="noopener">GoDotEnv</a>: 环境变量处理</li>
 <li>go test: 使用test命令进行单元测试, 基准测试和 HTTP 测试</li>
@@ -406,12 +406,13 @@
 <li><a href="https://github.com/cweagans/apig/tree/dep-conversion" target="_blank" rel="noopener">apig</a>: 基于 gorm 和 gin 一键生成 CRUD API</li>
 </ul>
 <h2 id="开发流程"><a href="#开发流程" class="headerlink" title="开发流程"></a>开发流程</h2><ul>
-<li>使用 apig 生成模板</li>
+<li>使用 apig 脚手架工具初始化项目结构和目录</li>
 <li>使用 dep 安装相关依赖</li>
 <li>使用 migrate 编写数据库迁移方法，并执行迁移创建数据表</li>
 <li>使用 db2struct 生成 models</li>
 <li>使用 apig 生成 crud 代码</li>
 <li>使用 httpexpect 编写 api 测试代码，并通过 testfixtures 实现数据的自动填充</li>
+<li>编写 GitLabCI 脚本进行持续集成</li>
 </ul>
 <p>在上述过程中，如需连接数据库时，可通过 GoDotEnv 来实现环境变量的使用</p>
 <h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2>
