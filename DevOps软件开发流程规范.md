@@ -2,7 +2,7 @@
 title: DevOps 软件开发流程规范
 subtitle: devops-software-develop-guideline
 date: 2019-04-16 15:34:00
-tags: [DevOps, Docker, Gitlab-CI, REST, RESTful, guideline]
+tags: [DevOps, Docker, GitLab-CI, REST, RESTful, guideline]
 ---
 
 ## 流程概要
