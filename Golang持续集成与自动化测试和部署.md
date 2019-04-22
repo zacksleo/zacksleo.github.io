@@ -2,7 +2,7 @@
 title: Golang持续集成与自动化测试和部署
 subtitle: golang-devops-and-auto-deploy
 date: 2019-04-22 11:20:00
-tags: [DevOps, Docker, Gitlab-CI, REST, RESTful, Go]
+tags: [DevOps, Docker, GitLab-CI, REST, RESTful, Go, Golang]
 ---
 
 ## 概述
