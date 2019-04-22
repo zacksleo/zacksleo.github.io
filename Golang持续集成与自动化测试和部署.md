@@ -23,7 +23,7 @@ Golang是一门性能优异的静态类型语言，但因其奇快的编译速�
 + [golint](https://github.com/golang/lint): Golang 静态检查工具
 + [migrate](https://github.com/golang-migrate/migrate/): 数据库迁移工具
 + Docker: 使用 [zacksleo/golang](https://github.com/zacksleo/golang) 镜像, 该镜像默认安装了 curl,git,build-base,dep 和 golint
-+ [db2struct](https://github.com/Shelnutt2/db2struct): 将数据库表结构一键生成为 struct
++ [db2struct](https://github.com/Shelnutt2/db2struct): 将数据库表结构一键生成为 struct(gorm的model)
 + [apig](https://github.com/cweagans/apig/tree/dep-conversion): 基于 gorm 和 gin 一键生成 CRUD API
 
 ##  开发流程
