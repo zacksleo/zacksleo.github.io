@@ -286,6 +286,178 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2018/03/24/PHP7连接访问SqlServer及开发环境搭建/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zacksleo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zacks's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/24/PHP7连接访问SqlServer及开发环境搭建/" itemprop="url">
+                  PHP7连接访问SqlServer及开发环境搭建
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-03-24 11:06:00" itemprop="dateCreated datePublished" datetime="2018-03-24T11:06:00+08:00">2018-03-24</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-22 11:53:39" itemprop="dateModified" datetime="2019-04-22T11:53:39+08:00">2019-04-22</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/03/24/PHP7连接访问SqlServer及开发环境搭建/" class="leancloud_visitors" data-flag-title="PHP7连接访问SqlServer及开发环境搭建">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="PHP运行环境镜像构建"><a href="#PHP运行环境镜像构建" class="headerlink" title="PHP运行环境镜像构建"></a>PHP运行环境镜像构建</h2><p>PHP7中访问SqlServer需要安装sqlsrv 和 pdo_sqlsrv，在此之前需要安装一此必备依赖，如msodbcsql 和 unixodbc-dev，由于SqlServer暂时不支持alpine,所以选择jessie，尽量使镜像保持最小，构建脚本如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">FROM php:7.1-fpm-jessie</span><br><span class="line"></span><br><span class="line">ENV ACCEPT_EULA=Y</span><br><span class="line"></span><br><span class="line"># Microsoft SQL Server Prerequisites</span><br><span class="line">RUN apt-get update \</span><br><span class="line">    &amp;&amp; curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - \</span><br><span class="line">    &amp;&amp; curl https://packages.microsoft.com/config/debian/8/prod.list \</span><br><span class="line">        &gt; /etc/apt/sources.list.d/mssql-release.list \</span><br><span class="line">    &amp;&amp; apt-get install -y --no-install-recommends \</span><br><span class="line">        locales \</span><br><span class="line">        apt-transport-https \</span><br><span class="line">    &amp;&amp; echo &quot;en_US.UTF-8 UTF-8&quot; &gt; /etc/locale.gen \</span><br><span class="line">    &amp;&amp; locale-gen \</span><br><span class="line">    &amp;&amp; apt-get update \</span><br><span class="line">    &amp;&amp; apt-get -y --no-install-recommends install msodbcsql  unixodbc-dev</span><br><span class="line"></span><br><span class="line">RUN docker-php-ext-install mbstring \</span><br><span class="line">    &amp;&amp; pecl install sqlsrv pdo_sqlsrv \</span><br><span class="line">    &amp;&amp; docker-php-ext-enable sqlsrv pdo_sqlsrv</span><br></pre></td></tr></table></figure>
+<h2 id="启动本地开发需要的SqlServer服务"><a href="#启动本地开发需要的SqlServer服务" class="headerlink" title="启动本地开发需要的SqlServer服务"></a>启动本地开发需要的SqlServer服务</h2><p>由于微软官方提供的SqlServer镜像，无法通过环境变量配置的方便创建数据库，故选择<a href="https://github.com/mcmoe/mssqldocker" target="_blank" rel="noopener">mcmoe/mssqldocker</a>镜像，</p>
+<p>使用docker-compose配置方式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">version: &apos;3.2&apos;</span><br><span class="line"></span><br><span class="line">services:</span><br><span class="line">  db:</span><br><span class="line">    build: .</span><br><span class="line">    image: mcmoe/mssqldocker</span><br><span class="line">    environment:</span><br><span class="line">      ACCEPT_EULA: Y</span><br><span class="line">      SA_PASSWORD: 2astazeY</span><br><span class="line">      MSSQL_DB: dev</span><br><span class="line">      MSSQL_USER: Kobeissi</span><br><span class="line">      MSSQL_PASSWORD: 7ellowEl7akey</span><br><span class="line">    ports:</span><br><span class="line">      - &quot;1433:1433&quot;</span><br><span class="line">    container_name: mssqldev</span><br></pre></td></tr></table></figure>
+<p>需要注意的是，MSSQL密码(即上面的SA_PASSWORD和MSSQL_PASSWORD)必须至少8个字符长，包含大写，小写和数字，否则数据库会创建失败</p>
+<h2 id="连接访问数据库"><a href="#连接访问数据库" class="headerlink" title="连接访问数据库"></a>连接访问数据库</h2><p>在程序中配置数据库的地方，配置DSN如下 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlsrv:Server=mssql;Database=dev</span><br></pre></td></tr></table></figure>
+<p>sqlsrv 为驱动名称</p>
+<p>注：如果是使用Yii2框架，可以使用我构建好的镜像：<a href="https://hub.docker.com/r/zacksleo/php/tags/" target="_blank" rel="noopener">zacksleo/php:7.1-fpm-mssql</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2018/03/13/GitLab-CI对JavaScript项目持续集成或部署/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -349,7 +521,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-16 16:04:30" itemprop="dateModified" datetime="2019-04-16T16:04:30+08:00">2019-04-16</time>
+                <time title="修改时间：2019-04-22 11:53:39" itemprop="dateModified" datetime="2019-04-22T11:53:39+08:00">2019-04-22</time>
               
             
           </span>
@@ -514,7 +686,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-16 16:04:30" itemprop="dateModified" datetime="2019-04-16T16:04:30+08:00">2019-04-16</time>
+                <time title="修改时间：2019-04-22 11:53:39" itemprop="dateModified" datetime="2019-04-22T11:53:39+08:00">2019-04-22</time>
               
             
           </span>
@@ -682,7 +854,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-16 16:04:30" itemprop="dateModified" datetime="2019-04-16T16:04:30+08:00">2019-04-16</time>
+                <time title="修改时间：2019-04-22 11:53:39" itemprop="dateModified" datetime="2019-04-22T11:53:39+08:00">2019-04-22</time>
               
             
           </span>
@@ -870,7 +1042,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-16 16:04:30" itemprop="dateModified" datetime="2019-04-16T16:04:30+08:00">2019-04-16</time>
+                <time title="修改时间：2019-04-22 11:53:39" itemprop="dateModified" datetime="2019-04-22T11:53:39+08:00">2019-04-22</time>
               
             
           </span>
@@ -1047,7 +1219,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-16 16:04:30" itemprop="dateModified" datetime="2019-04-16T16:04:30+08:00">2019-04-16</time>
+                <time title="修改时间：2019-04-22 11:53:39" itemprop="dateModified" datetime="2019-04-22T11:53:39+08:00">2019-04-22</time>
               
             
           </span>
@@ -1258,7 +1430,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-16 16:04:30" itemprop="dateModified" datetime="2019-04-16T16:04:30+08:00">2019-04-16</time>
+                <time title="修改时间：2019-04-22 11:53:39" itemprop="dateModified" datetime="2019-04-22T11:53:39+08:00">2019-04-22</time>
               
             
           </span>
@@ -1432,7 +1604,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-16 16:04:30" itemprop="dateModified" datetime="2019-04-16T16:04:30+08:00">2019-04-16</time>
+                <time title="修改时间：2019-04-22 11:53:39" itemprop="dateModified" datetime="2019-04-22T11:53:39+08:00">2019-04-22</time>
               
             
           </span>
@@ -1607,7 +1779,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-16 16:04:30" itemprop="dateModified" datetime="2019-04-16T16:04:30+08:00">2019-04-16</time>
+                <time title="修改时间：2019-04-22 11:53:39" itemprop="dateModified" datetime="2019-04-22T11:53:39+08:00">2019-04-22</time>
               
             
           </span>
@@ -1790,7 +1962,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-16 16:04:30" itemprop="dateModified" datetime="2019-04-16T16:04:30+08:00">2019-04-16</time>
+                <time title="修改时间：2019-04-22 11:53:39" itemprop="dateModified" datetime="2019-04-22T11:53:39+08:00">2019-04-22</time>
               
             
           </span>
@@ -1898,182 +2070,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2017/08/23/使用phpmd对PHP项目进行静态代码分析/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zacksleo">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zacks's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/08/23/使用phpmd对PHP项目进行静态代码分析/" itemprop="url">
-                  使用phpmd对PHP项目进行静态代码分析
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2017-08-23 09:48:23" itemprop="dateCreated datePublished" datetime="2017-08-23T09:48:23+08:00">2017-08-23</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-04-16 16:04:30" itemprop="dateModified" datetime="2019-04-16T16:04:30+08:00">2019-04-16</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2017/08/23/使用phpmd对PHP项目进行静态代码分析/" class="leancloud_visitors" data-flag-title="使用phpmd对PHP项目进行静态代码分析">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>PHPMD是与PMD类似的静态代码分析工具, 通过分析可以找出潜在的Bug或设计问题, 从而进一步提高代码质量</p>
-<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><ul>
-<li>首先通过composer安装phpmd库</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer require phpmd/phpmd --dev --prefer-dist</span><br></pre></td></tr></table></figure>
-<ul>
-<li>运行phpmd命令</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vendor/bin/phpmd ./ text phpmd.xml --suffixes php</span><br></pre></td></tr></table></figure>
-<p>phpmd.xml配置如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot;?&gt;</span><br><span class="line">&lt;ruleset name=&quot;PHPMD rule set for Yii 2&quot; xmlns=&quot;http://pmd.sf.net/ruleset/1.0.0&quot;</span><br><span class="line">         xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><br><span class="line">         xsi:schemaLocation=&quot;http://pmd.sf.net/ruleset/1.0.0 http://pmd.sf.net/ruleset_xml_schema.xsd&quot;</span><br><span class="line">         xsi:noNamespaceSchemaLocation=&quot;http://pmd.sf.net/ruleset_xml_schema.xsd&quot;&gt;</span><br><span class="line">    &lt;description&gt;Custom PHPMD settings for naming, cleancode and controversial rulesets&lt;/description&gt;</span><br><span class="line"></span><br><span class="line">    &lt;rule ref=&quot;rulesets/naming.xml/ConstructorWithNameAsEnclosingClass&quot; /&gt;</span><br><span class="line">    &lt;rule ref=&quot;rulesets/naming.xml/ConstantNamingConventions&quot; /&gt;</span><br><span class="line">    &lt;!-- Long variable names can help with better understanding so we increase the limit a bit --&gt;</span><br><span class="line">    &lt;rule ref=&quot;rulesets/naming.xml/LongVariable&quot;&gt;</span><br><span class="line">        &lt;properties&gt;</span><br><span class="line">            &lt;property name=&quot;maximum&quot; value=&quot;25&quot; /&gt;</span><br><span class="line">        &lt;/properties&gt;</span><br><span class="line">    &lt;/rule&gt;</span><br><span class="line">    &lt;!-- method names like up(), gc(), ... are okay. --&gt;</span><br><span class="line">    &lt;rule ref=&quot;rulesets/naming.xml/ShortMethodName&quot;&gt;</span><br><span class="line">        &lt;properties&gt;</span><br><span class="line">            &lt;property name=&quot;minimum&quot; value=&quot;2&quot; /&gt;</span><br><span class="line">        &lt;/properties&gt;</span><br><span class="line">    &lt;/rule&gt;</span><br><span class="line"></span><br><span class="line">    &lt;rule ref=&quot;rulesets/cleancode.xml&quot;&gt;</span><br><span class="line">        &lt;!-- else is not always bad. Disabling this as there is no way to differentiate between early return and normal else cases. --&gt;</span><br><span class="line">        &lt;exclude name=&quot;ElseExpression&quot; /&gt;</span><br><span class="line">        &lt;!-- Static access on Yii::$app is normal in Yii --&gt;</span><br><span class="line">        &lt;exclude name=&quot;StaticAccess&quot; /&gt;</span><br><span class="line">    &lt;/rule&gt;</span><br><span class="line"></span><br><span class="line">    &lt;rule ref=&quot;rulesets/controversial.xml/Superglobals&quot; /&gt;</span><br><span class="line">    &lt;rule ref=&quot;rulesets/controversial.xml/CamelCaseClassName&quot; /&gt;</span><br><span class="line">    &lt;rule ref=&quot;rulesets/controversial.xml/CamelCaseMethodName&quot; /&gt;</span><br><span class="line">    &lt;rule ref=&quot;rulesets/controversial.xml/CamelCaseParameterName&quot; /&gt;</span><br><span class="line">    &lt;rule ref=&quot;rulesets/controversial.xml/CamelCaseVariableName&quot; /&gt;</span><br><span class="line">    &lt;!-- allow private properties to start with $_ --&gt;</span><br><span class="line">    &lt;rule ref=&quot;rulesets/controversial.xml/CamelCasePropertyName&quot;&gt;</span><br><span class="line">        &lt;properties&gt;</span><br><span class="line">            &lt;property name=&quot;allow-underscore&quot; value=&quot;true&quot; /&gt;</span><br><span class="line">        &lt;/properties&gt;</span><br><span class="line">    &lt;/rule&gt;</span><br><span class="line">&lt;/ruleset&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="GitLab-CI-集成"><a href="#GitLab-CI-集成" class="headerlink" title="GitLab-CI 集成"></a>GitLab-CI 集成</h2><p>在.gitlab-ci.yml中添加一个任务, 用于执行静态分析, 一个典型的例子:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">phpmd:</span><br><span class="line">    stage: testing</span><br><span class="line">    dependencies:</span><br><span class="line">        - installing-dependencies</span><br><span class="line">    script:</span><br><span class="line">        - vendor/bin/phpmd api,backend,common,frontend,console text phpmd.xml --exclude console/migrations/ --suffixes php</span><br></pre></td></tr></table></figure>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://github.com/phpmd/phpmd" target="_blank" rel="noopener">Github</a></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2121,7 +2117,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">49</span>
+                    <span class="site-state-item-count">50</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2288,7 +2284,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">76</span>
+                      
+                    
+                    <span class="site-state-item-count">77</span>
                     <span class="site-state-item-name">标签</span>
                   
                 </div>
