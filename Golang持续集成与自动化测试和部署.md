@@ -28,12 +28,13 @@ Golang是一门性能优异的静态类型语言，但因其奇快的编译速�
 
 ##  开发流程
 
-+ 使用 apig 生成模板
++ 使用 apig 脚手架工具初始化项目结构和目录
 + 使用 dep 安装相关依赖
 + 使用 migrate 编写数据库迁移方法，并执行迁移创建数据表
 + 使用 db2struct 生成 models
 + 使用 apig 生成 crud 代码
 + 使用 httpexpect 编写 api 测试代码，并通过 testfixtures 实现数据的自动填充
++ 编写 GitLabCI 脚本进行持续集成
 
 在上述过程中，如需连接数据库时，可通过 GoDotEnv 来实现环境变量的使用
 
