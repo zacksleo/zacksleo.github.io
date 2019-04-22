@@ -38,5 +38,22 @@ Golang是一门性能优异的静态类型语言，但因其奇快的编译速�
 
 在上述过程中，如需连接数据库时，可通过 GoDotEnv 来实现环境变量的使用
 
+## 相关测试脚本
+
+
+<script src="https://gist.github.com/zacksleo/6b86c61fff51939de7dbd6af531de9f3.js"></script>
+
+## 注意事项
+
+在测试中，如果需要区分单元测试和集成测试，可以使用 build tags 实现，如在文件头部中添加 `// +build integration`, 运行测试使用 `- go test -tags=integration $(go list ./tests/... | grep -v /vendor/) -v` 可以只执行集成测试
+
+
+
 
 ## 参考文档
++ [Go Test](https://golang.org/pkg/testing/)
++ [How to write benchmarks in Go](https://dave.cheney.net/2013/06/30/how-to-write-benchmarks-in-go)
++ [Go 性能调优之 —— 基准测试](https://segmentfault.com/a/1190000016354758)
++ [Go语言圣经（中文版）](https://yar999.gitbooks.io/gopl-zh/content/)
++ [使用tags区隔单元测试和集成测试](https://stackoverflow.com/questions/25965584/separating-unit-tests-and-integration-tests-in-go)
+
