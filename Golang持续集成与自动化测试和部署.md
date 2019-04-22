@@ -15,7 +15,7 @@ Golang是一门性能优异的静态类型语言，但因其奇快的编译速�
 + [gin](https://github.com/gin-gonic/gin)： 搭建 api 服务
 + [gorm](https://github.com/jinzhu/gorm)：ORM, 数据CRUD
 + [mysql](http://github.com/go-sql-driver/mysql): 存储数据
-+ [testfixtures](https://github.com/go-testfixtures/testfixtures)： 测试夹具，用于在自动化测试时，自动向数据库填充用于测试的数据
++ [testfixtures](https://github.com/go-testfixtures/testfixtures)： 测试夹具，在自动化测试时，自动向数据库填充用于测试的数据
 + [httpexpect](https://github.com/gavv/httpexpect): HTTP 测试包，用于API测试
 + [GoDotEnv](https://github.com/joho/godotenv): 环境变量处理
 + go test: 使用test命令进行单元测试, 基准测试和 HTTP 测试
