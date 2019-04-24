@@ -286,6 +286,186 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2017/04/26/GitLab-CI简介/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zacksleo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zacks's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/04/26/GitLab-CI简介/" itemprop="url">
+                  GitLab-CI简介
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-04-26 09:27:52" itemprop="dateCreated datePublished" datetime="2017-04-26T09:27:52+08:00">2017-04-26</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-24 23:32:40" itemprop="dateModified" datetime="2019-04-24T23:32:40+08:00">2019-04-24</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/04/26/GitLab-CI简介/" class="leancloud_visitors" data-flag-title="GitLab-CI简介">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>持续集成（CI）和 持续交付(CD) 是一种流行的软件开发实践，每次提交都通过自动化的构建（测试、编译、发布）来验证，从而尽早的发现错误。</p>
+<p>持续集成实现了DevOps, 使开发人员和运维人员从繁琐的工作中解放出来。另外，这种形式极大地提高了开发者的开发效率和开发质量。<br>持续集成有多种工具，如Jenkins. GitLab内置了GitLab-CI，通过配置一段<code>YAML</code>脚本来实现持续集成.</p>
+<h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><p>持续集成可以实现的功能:</p>
+<ul>
+<li>代码审核: 自动化代码规范审查, 甚至代码质量检查</li>
+<li>自动化测试: 单元测试, 功能测试和验收测试</li>
+<li>编译发布: 将源代码编译成可执行程序, 并将程序上传到托管发布平台实现自动发布</li>
+<li>构建部署: 通过构建Docker镜像, 或登录远程服务器执行相关部署命令和脚本, 实现自动化部署</li>
+</ul>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>GitLab-CI 检测每次代码变动, 通过<code>.gitlab-ci.yml</code>脚本执行构建命令, 将命令发布到<code>GitLab-Runners(运行机)</code>上, 进而执行命令.</p>
+<p><code>GitLab-Runners</code> 基于Docker执行持续集成的每项任务, 这样就解决了环境依赖问题.</p>
+<p><code>GitLab-Runners</code>把实时将执行结果输出到GitLab网页上, 任务执行完后, 通过徽章标记和邮箱告知执行结果.</p>
+<p>下一章: [[GitLab 快速开始]]</p>
+<ul>
+<li><a href="http://www.ruanyifeng.com/blog/2015/09/continuous-integration.html" target="_blank" rel="noopener">持续集成是什么</a></li>
+<li><a href="https://about.gitlab.com/2015/12/14/getting-started-with-gitlab-and-gitlab-ci/" target="_blank" rel="noopener">Getting started with GitLab and GitLab CI</a></li>
+<li><a href="https://about.gitlab.com/2016/08/05/continuous-integration-delivery-and-deployment-with-gitlab/" target="_blank" rel="noopener">Continuous Integration, Delivery, and Deployment with GitLab</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2017/04/22/GitLab-CI使用Docker进行持续部署/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -349,7 +529,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-24 23:15:37" itemprop="dateModified" datetime="2019-04-24T23:15:37+08:00">2019-04-24</time>
+                <time title="修改时间：2019-04-24 23:32:40" itemprop="dateModified" datetime="2019-04-24T23:32:40+08:00">2019-04-24</time>
               
             
           </span>
@@ -524,7 +704,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-24 23:15:37" itemprop="dateModified" datetime="2019-04-24T23:15:37+08:00">2019-04-24</time>
+                <time title="修改时间：2019-04-24 23:32:40" itemprop="dateModified" datetime="2019-04-24T23:32:40+08:00">2019-04-24</time>
               
             
           </span>
@@ -712,7 +892,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-24 23:15:37" itemprop="dateModified" datetime="2019-04-24T23:15:37+08:00">2019-04-24</time>
+                <time title="修改时间：2019-04-24 23:32:40" itemprop="dateModified" datetime="2019-04-24T23:32:40+08:00">2019-04-24</time>
               
             
           </span>
@@ -882,7 +1062,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-24 23:15:37" itemprop="dateModified" datetime="2019-04-24T23:15:37+08:00">2019-04-24</time>
+                <time title="修改时间：2019-04-24 23:32:40" itemprop="dateModified" datetime="2019-04-24T23:32:40+08:00">2019-04-24</time>
               
             
           </span>
@@ -1056,7 +1236,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-24 23:15:37" itemprop="dateModified" datetime="2019-04-24T23:15:37+08:00">2019-04-24</time>
+                <time title="修改时间：2019-04-24 23:32:40" itemprop="dateModified" datetime="2019-04-24T23:32:40+08:00">2019-04-24</time>
               
             
           </span>
@@ -1232,7 +1412,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-24 23:15:37" itemprop="dateModified" datetime="2019-04-24T23:15:37+08:00">2019-04-24</time>
+                <time title="修改时间：2019-04-24 23:32:40" itemprop="dateModified" datetime="2019-04-24T23:32:40+08:00">2019-04-24</time>
               
             
           </span>
@@ -1417,7 +1597,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-24 23:15:37" itemprop="dateModified" datetime="2019-04-24T23:15:37+08:00">2019-04-24</time>
+                <time title="修改时间：2019-04-24 23:32:40" itemprop="dateModified" datetime="2019-04-24T23:32:40+08:00">2019-04-24</time>
               
             
           </span>
@@ -1615,7 +1795,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-24 23:15:37" itemprop="dateModified" datetime="2019-04-24T23:15:37+08:00">2019-04-24</time>
+                <time title="修改时间：2019-04-24 23:32:40" itemprop="dateModified" datetime="2019-04-24T23:32:40+08:00">2019-04-24</time>
               
             
           </span>
@@ -1779,7 +1959,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-24 23:15:37" itemprop="dateModified" datetime="2019-04-24T23:15:37+08:00">2019-04-24</time>
+                <time title="修改时间：2019-04-24 23:32:40" itemprop="dateModified" datetime="2019-04-24T23:32:40+08:00">2019-04-24</time>
               
             
           </span>
@@ -1865,175 +2045,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2017/03/07/PHP编码规范/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zacksleo">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zacks's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/03/07/PHP编码规范/" itemprop="url">
-                  PHP编码规范
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2017-03-07 23:16:16" itemprop="dateCreated datePublished" datetime="2017-03-07T23:16:16+08:00">2017-03-07</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-04-24 23:15:37" itemprop="dateModified" datetime="2019-04-24T23:15:37+08:00">2019-04-24</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2017/03/07/PHP编码规范/" class="leancloud_visitors" data-flag-title="PHP编码规范">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="PSR"><a href="#PSR" class="headerlink" title="PSR"></a>PSR</h2><blockquote>
-<p>PSR 是 PHP Standard Recommendations 的简写，由 PHP FIG 组织制定的 PHP 规范，是 PHP 开发的实践标准。</p>
-</blockquote>
-<p><strong>PHP编码遵循PSR的建议</strong></p>
-<p>主要包括以下几个方面:</p>
-<h3 id="PSR-1-基础编码规范"><a href="#PSR-1-基础编码规范" class="headerlink" title="PSR-1 基础编码规范"></a>PSR-1 基础编码规范</h3><h3 id="PSR-2-编码风格规范"><a href="#PSR-2-编码风格规范" class="headerlink" title="PSR-2 编码风格规范"></a>PSR-2 编码风格规范</h3><h3 id="PSR-3-志接口规范"><a href="#PSR-3-志接口规范" class="headerlink" title="PSR-3 志接口规范"></a>PSR-3 志接口规范</h3><h3 id="PSR-4-自动加载规范"><a href="#PSR-4-自动加载规范" class="headerlink" title="PSR-4 自动加载规范"></a>PSR-4 自动加载规范</h3><h3 id="PSR-6-缓存接口规范"><a href="#PSR-6-缓存接口规范" class="headerlink" title="PSR-6 缓存接口规范"></a>PSR-6 缓存接口规范</h3><h3 id="PSR-7-HTTP-消息接口规范"><a href="#PSR-7-HTTP-消息接口规范" class="headerlink" title="PSR-7 HTTP 消息接口规范"></a>PSR-7 HTTP 消息接口规范</h3><p>详细内容见: <a href="https://psr.phphub.org/" target="_blank" rel="noopener">https://psr.phphub.org/</a> 和 <a href="https://github.com/PizzaLiu/PHP-FIG" target="_blank" rel="noopener">https://github.com/PizzaLiu/PHP-FIG</a></p>
-<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>代码审核时将遵守以上规范</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2081,7 +2092,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">51</span>
+                    <span class="site-state-item-count">52</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2252,7 +2263,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">78</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">80</span>
                     <span class="site-state-item-name">标签</span>
                   
                 </div>
