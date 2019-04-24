@@ -40,13 +40,16 @@ Golang是一门性能优异的静态类型语言，但因其奇快的编译速�
 
 ## 相关CI脚本
 
-
 <script src="https://gist.github.com/zacksleo/6b86c61fff51939de7dbd6af531de9f3.js"></script>
+
+## 集成测试
+
+<script src="https://gist.github.com/zacksleo/a80e81fb4e7b8a8bd8289060c8190a60.js"></script>
+
 
 ## 注意事项
 
 在测试中，如果需要区分单元测试和集成测试，可以使用 build tags 实现，如在文件头部中添加 `// +build integration`, 运行测试使用 `- go test -tags=integration $(go list ./tests/... | grep -v /vendor/) -v` 可以只执行集成测试
-
 
 
 
