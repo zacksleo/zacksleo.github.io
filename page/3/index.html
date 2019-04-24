@@ -286,6 +286,192 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2017/09/08/GitLab-CI使用LFTP进行持续部署/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zacksleo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zacks's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/09/08/GitLab-CI使用LFTP进行持续部署/" itemprop="url">
+                  GitLab-CI使用LFTP进行持续部署
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-09-08 12:52:22" itemprop="dateCreated datePublished" datetime="2017-09-08T12:52:22+08:00">2017-09-08</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-24 23:15:37" itemprop="dateModified" datetime="2019-04-24T23:15:37+08:00">2019-04-24</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/09/08/GitLab-CI使用LFTP进行持续部署/" class="leancloud_visitors" data-flag-title="GitLab-CI使用LFTP进行持续部署">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>LFTP是一款FTP客户端软件, 支持 FTP 、 FTPS 、 HTTP 、 HTTPS 、 SFTP 、 FXP 等多种文件传输协议。</p>
+<p>本文介绍如何使用 LFTP 将文件同步到远程FTP服务器上, 从而实现自动部署</p>
+<h2 id="mirror-命令及主要参数"><a href="#mirror-命令及主要参数" class="headerlink" title="mirror 命令及主要参数"></a>mirror 命令及主要参数</h2><ul>
+<li><p>-R  反向传输, 因为是上传(put)到远程服务器, 所以使用该参数 (默认是从远程服务器下载)</p>
+</li>
+<li><p>-L  下载符号链接作为文件, 主要处理文件软链接的问题</p>
+</li>
+<li><p>-v  详细输出日志</p>
+</li>
+<li><p>-n  只传输新文件 (相同的旧文件不会传输, 大大提升了传输效率)</p>
+</li>
+<li><p>–transfer-all  传输所有文件, 不论新旧</p>
+</li>
+<li><p>–parallel  同时传输的文件数</p>
+</li>
+<li><p>–file  本地文件</p>
+</li>
+<li><p>–target-directory 目标目录</p>
+</li>
+</ul>
+<h2 id="配置参考"><a href="#配置参考" class="headerlink" title="配置参考"></a>配置参考</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">    stage: deploy</span><br><span class="line">    dependencies:</span><br><span class="line">        - installing-dependencies</span><br><span class="line">    script:</span><br><span class="line">        - apk add lftp</span><br><span class="line">        # 只上传新文件</span><br><span class="line">        - lftp -c &quot;set ftp:ssl-allow no; open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_HOST; cd /wwwroot; mirror -RLnv ./ /wwwroot --ignore-time --parallel=50 --exclude-glob .git* --exclude .git/&quot;</span><br><span class="line">        # 指定目录覆盖上传 (强制更新)</span><br><span class="line">        - lftp -c &quot;set ftp:ssl-allow no; open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_HOST;mirror -RLv ./vendor/composer /wwwroot/vendor/composer --ignore-time --transfer-all --parallel=50 --exclude-glob .git* --exclude .git/&quot;</span><br><span class="line">        # 单独上传autoload文件(强制更新)</span><br><span class="line">        - lftp -c &quot;set ftp:ssl-allow no; open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_HOST;mirror -Rv --file=vendor/autoload.php --target-directory=/wwwroot/vendor/ --transfer-all&quot;</span><br><span class="line">    only:</span><br><span class="line">        - master</span><br></pre></td></tr></table></figure>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="https://lftp.yar.ru/" target="_blank" rel="noopener">LFTP官网</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2017/08/23/使用phpmd对PHP项目进行静态代码分析/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -349,7 +535,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-24 22:35:18" itemprop="dateModified" datetime="2019-04-24T22:35:18+08:00">2019-04-24</time>
+                <time title="修改时间：2019-04-24 23:15:37" itemprop="dateModified" datetime="2019-04-24T23:15:37+08:00">2019-04-24</time>
               
             
           </span>
@@ -525,7 +711,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-24 22:35:18" itemprop="dateModified" datetime="2019-04-24T22:35:18+08:00">2019-04-24</time>
+                <time title="修改时间：2019-04-24 23:15:37" itemprop="dateModified" datetime="2019-04-24T23:15:37+08:00">2019-04-24</time>
               
             
           </span>
@@ -702,7 +888,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-24 22:35:18" itemprop="dateModified" datetime="2019-04-24T22:35:18+08:00">2019-04-24</time>
+                <time title="修改时间：2019-04-24 23:15:37" itemprop="dateModified" datetime="2019-04-24T23:15:37+08:00">2019-04-24</time>
               
             
           </span>
@@ -865,7 +1051,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-24 22:35:18" itemprop="dateModified" datetime="2019-04-24T22:35:18+08:00">2019-04-24</time>
+                <time title="修改时间：2019-04-24 23:15:37" itemprop="dateModified" datetime="2019-04-24T23:15:37+08:00">2019-04-24</time>
               
             
           </span>
@@ -1079,7 +1265,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-24 22:35:18" itemprop="dateModified" datetime="2019-04-24T22:35:18+08:00">2019-04-24</time>
+                <time title="修改时间：2019-04-24 23:15:37" itemprop="dateModified" datetime="2019-04-24T23:15:37+08:00">2019-04-24</time>
               
             
           </span>
@@ -1289,7 +1475,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-24 22:35:18" itemprop="dateModified" datetime="2019-04-24T22:35:18+08:00">2019-04-24</time>
+                <time title="修改时间：2019-04-24 23:15:37" itemprop="dateModified" datetime="2019-04-24T23:15:37+08:00">2019-04-24</time>
               
             
           </span>
@@ -1463,7 +1649,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-24 22:35:18" itemprop="dateModified" datetime="2019-04-24T22:35:18+08:00">2019-04-24</time>
+                <time title="修改时间：2019-04-24 23:15:37" itemprop="dateModified" datetime="2019-04-24T23:15:37+08:00">2019-04-24</time>
               
             
           </span>
@@ -1810,7 +1996,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-24 22:35:18" itemprop="dateModified" datetime="2019-04-24T22:35:18+08:00">2019-04-24</time>
+                <time title="修改时间：2019-04-24 23:15:37" itemprop="dateModified" datetime="2019-04-24T23:15:37+08:00">2019-04-24</time>
               
             
           </span>
@@ -1988,7 +2174,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-24 22:35:18" itemprop="dateModified" datetime="2019-04-24T22:35:18+08:00">2019-04-24</time>
+                <time title="修改时间：2019-04-24 23:15:37" itemprop="dateModified" datetime="2019-04-24T23:15:37+08:00">2019-04-24</time>
               
             
           </span>
@@ -2090,186 +2276,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2017/04/22/GitLab-CI使用Docker进行持续部署/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zacksleo">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zacks's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/04/22/GitLab-CI使用Docker进行持续部署/" itemprop="url">
-                  GitLab-CI使用Docker进行持续部署
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2017-04-22 22:33:31" itemprop="dateCreated datePublished" datetime="2017-04-22T22:33:31+08:00">2017-04-22</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-04-24 22:35:18" itemprop="dateModified" datetime="2019-04-24T22:35:18+08:00">2019-04-24</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2017/04/22/GitLab-CI使用Docker进行持续部署/" class="leancloud_visitors" data-flag-title="GitLab-CI使用Docker进行持续部署">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Docker镜像通过私有仓库进行发布(如阿里云), 发布命令为:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker login -u username -p password registry.demo.com</span><br><span class="line">docker build -t registry.demo.com/repos/$CI_PROJECT_NAME:latest .</span><br><span class="line">docker push registry.demo.com/repos/$CI_PROJECT_NAME:latest</span><br></pre></td></tr></table></figure>
-<p>其中 <code>username</code>是用户名, <code>password</code>是密码, <code>registry.demo.com</code>是私有镜像库地址,</p>
-<p><code>$CI_PROJECT_NAME</code> 是GitLab-CI内置变量, 会自动替换为项目的名称, 这里也可以直接写死, 如</p>
-<p><code>docker build -t registry.demo.com/repos/image-name:latest .</code></p>
-<p><code>image-name</code>, 就是要构建的镜像名称, <code>latest</code>是TAG标签, <code>repos</code>是仓库的空间名称</p>
-<p>在下面的例子中, 首先通过composer安装依赖库, 然后通过artifacts传递给构建任务, 构建完镜像将镜像发布到私有库,<br>部署时通过拉取最新的镜像库, 进行部署</p>
-<blockquote>
-<p>项目的deploy目录中, 放置一些配置文件, 如<code>Dockerfile</code>, <code>docker-compose.yml</code>等, 通过<code>rsync</code>同步到部署服务器上, 用于部署所需</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">image: zacksleo/docker-composer:1.1</span><br><span class="line"></span><br><span class="line">before_script:</span><br><span class="line">    - &apos;which ssh-agent || ( apk update &amp;&amp; apk add openssh-client)&apos;</span><br><span class="line">    - apk add rsync</span><br><span class="line">    - eval $(ssh-agent -s)</span><br><span class="line">    - echo &quot;$SSH_PRIVATE_KEY&quot; &gt; ~/deploy.key</span><br><span class="line">    - chmod 0600 ~/deploy.key</span><br><span class="line">    - ssh-add ~/deploy.key</span><br><span class="line">    - mkdir -p ~/.ssh</span><br><span class="line">    - &apos;[[ -f /.dockerenv ]] &amp;&amp; echo -e &quot;Host *\n\tStrictHostKeyChecking no\n\n&quot; &gt; ~/.ssh/config&apos;</span><br><span class="line">    - export APP_ENV=testing</span><br><span class="line"></span><br><span class="line">stages:</span><br><span class="line">    - prepare    </span><br><span class="line">    - build</span><br><span class="line">    - deploy</span><br><span class="line"></span><br><span class="line">variables:</span><br><span class="line">    COMPOSER_CACHE_DIR: &quot;/cache/composer&quot;</span><br><span class="line">    DOCKER_DRIVER: overlay</span><br><span class="line"></span><br><span class="line">installing-dependencies:</span><br><span class="line">    stage: prepare</span><br><span class="line">    script:</span><br><span class="line">        - composer install --prefer-dist -n --no-interaction -v --no-suggest</span><br><span class="line">    artifacts:</span><br><span class="line">        name: &quot;vendor&quot;</span><br><span class="line">        untracked: true</span><br><span class="line">        expire_in: 60 mins</span><br><span class="line">        paths:</span><br><span class="line">            - $CI_PROJECT_DIR/vendor    </span><br><span class="line">test-image:</span><br><span class="line">    stage: build</span><br><span class="line">    image: docker:latest</span><br><span class="line">    services:</span><br><span class="line">        - docker:dind</span><br><span class="line">    dependencies:</span><br><span class="line">        - installing-dependencies</span><br><span class="line">    script:</span><br><span class="line">        - docker login -u username -p password registry.demo.com</span><br><span class="line">        - docker build -t registry.demo.com/repos/$CI_PROJECT_NAME:latest .</span><br><span class="line">        - docker push registry.demo.com/repos/$CI_PROJECT_NAME:latest</span><br><span class="line">testing-server:</span><br><span class="line">    stage: deploy</span><br><span class="line">    image: alpine</span><br><span class="line">    variables:</span><br><span class="line">        DEPLOY_SERVER: &quot;server-host&quot;</span><br><span class="line">    script:</span><br><span class="line">        - cd deploy</span><br><span class="line">        - rsync -rtvhze ssh . root@$DEPLOY_SERVER:/data/$CI_PROJECT_NAME --stats        </span><br><span class="line">        - ssh root@$DEPLOY_SERVER &quot;docker login -u username -p password registry.demo.com&quot;</span><br><span class="line">        - ssh root@$DEPLOY_SERVER &quot;cd /data/$CI_PROJECT_NAME &amp;&amp; docker-compose stop &amp;&amp; docker-compose rm -f &amp;&amp; docker-compose pull &amp;&amp; docker-compose up -d&quot;</span><br><span class="line">        - ssh root@$DEPLOY_SERVER &quot;docker exec -i $CI_PROJECT_NAME chown www-data:www-data web/assets&quot;</span><br><span class="line">        - ssh root@$DEPLOY_SERVER &quot;docker exec -i $CI_PROJECT_NAME ./yii migrate/up --interactive=0&quot;</span><br></pre></td></tr></table></figure>
-<p><img src="http://ww1.sinaimg.cn/large/675eb504ly1fezvjdberyj20w30axdh2.jpg" alt=""></p>
-<h2 id="相关文档"><a href="#相关文档" class="headerlink" title="相关文档"></a>相关文档</h2><p><a href="https://docs.gitlab.com/ce/ci/docker/using_docker_build.html" target="_blank" rel="noopener">Using Docker Build</a></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -2312,7 +2323,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">50</span>
+                    <span class="site-state-item-count">51</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2481,7 +2492,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">77</span>
+                      
+                    
+                    <span class="site-state-item-count">78</span>
                     <span class="site-state-item-name">标签</span>
                   
                 </div>

@@ -286,6 +286,178 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2018/03/31/Python-使用openpyxl操作Excel表格/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zacksleo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zacks's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/31/Python-使用openpyxl操作Excel表格/" itemprop="url">
+                  Python-使用openpyxl操作Excel表格
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-03-31 21:05:25" itemprop="dateCreated datePublished" datetime="2018-03-31T21:05:25+08:00">2018-03-31</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-24 23:15:37" itemprop="dateModified" datetime="2019-04-24T23:15:37+08:00">2019-04-24</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/03/31/Python-使用openpyxl操作Excel表格/" class="leancloud_visitors" data-flag-title="Python-使用openpyxl操作Excel表格">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p>  前两天收到跨境电商事业部同事发来的一个需求，说有一个表格，里面只有产品ID和其他一些信息，但是没有其他信息，诸如产品中文名和发货地，这些信息需要通过调取API获得。希望我们帮忙导出合并到Excel中</p>
+<h2 id="分析及实现"><a href="#分析及实现" class="headerlink" title="分析及实现"></a>分析及实现</h2><ul>
+<li>首先需要读取Excel中，每个产品的ID</li>
+<li>然后调用产品查询API，该API通过GET+ID参数方式进行查询</li>
+<li>查询到信息后，将需要的信息追加到对应行的后面列中</li>
+</ul>
+<h2 id="openpyxl"><a href="#openpyxl" class="headerlink" title="openpyxl"></a>openpyxl</h2><p>Python 中操作 Excel 的库有许多，例如 xlrd、xlwt、xlsxwriter、openpyxl 等，openpyxl是其中一个，该库主要有几个特点：支持xlsx，支持对现有文档读写，被<a href="http://www.python-excel.org/" target="_blank" rel="noopener">Python-Excel</a>优先推荐。<br>几经对比调研，最终选择 openpyxl。</p>
+<h3 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># 打开excel</span><br><span class="line">wb = load_workbook(&apos;files/file.xlsx&apos;)</span><br><span class="line"># 拿到打开的sheet</span><br><span class="line">sheet = wb.active</span><br><span class="line">for index in range(0, sheet.max_row):</span><br><span class="line">    # load_data 通过requests调用API方法，拿到name和ship_from</span><br><span class="line">    name, ship_from = load_data(sheet[&apos;A&apos; + str(index + 1)].value)</span><br><span class="line">    # 产品中文名称</span><br><span class="line">    sheet[&apos;D&apos; + str(index + 1)] = name</span><br><span class="line">    # 发货地信息</span><br><span class="line">    sheet[&apos;E&apos; + str(index + 1)] = ship_from</span><br><span class="line">    print(&quot;同步第&quot; + str(index + 1) + &quot;行&quot;)</span><br><span class="line"># 将数据保存到另外一表格中，注意也可以保存到原来表格中    </span><br><span class="line">wb.save(&quot;files/file-export.xlsx&quot;)</span><br></pre></td></tr></table></figure>
+<p>在上述代码中，首先加载原始文件<code>files/file.xlsx</code>，然后对默认sheet进行行遍历，每一行第一列A<sub>n</sub>代表产品ID,<br>load_data方法通过调用API, 查询到该产品的中文名称和发货地，然后再写入后面的列中，如D<sub>n</sub>和E<sub>n</sub></p>
+<p>最后全部遍历完后，再保存表格，这样整个需求就实现了</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2018/03/24/PHP7连接访问SqlServer及开发环境搭建/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -349,7 +521,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-24 22:35:18" itemprop="dateModified" datetime="2019-04-24T22:35:18+08:00">2019-04-24</time>
+                <time title="修改时间：2019-04-24 23:15:37" itemprop="dateModified" datetime="2019-04-24T23:15:37+08:00">2019-04-24</time>
               
             
           </span>
@@ -521,7 +693,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-24 22:35:18" itemprop="dateModified" datetime="2019-04-24T22:35:18+08:00">2019-04-24</time>
+                <time title="修改时间：2019-04-24 23:15:37" itemprop="dateModified" datetime="2019-04-24T23:15:37+08:00">2019-04-24</time>
               
             
           </span>
@@ -686,7 +858,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-24 22:35:18" itemprop="dateModified" datetime="2019-04-24T22:35:18+08:00">2019-04-24</time>
+                <time title="修改时间：2019-04-24 23:15:37" itemprop="dateModified" datetime="2019-04-24T23:15:37+08:00">2019-04-24</time>
               
             
           </span>
@@ -854,7 +1026,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-24 22:35:18" itemprop="dateModified" datetime="2019-04-24T22:35:18+08:00">2019-04-24</time>
+                <time title="修改时间：2019-04-24 23:15:37" itemprop="dateModified" datetime="2019-04-24T23:15:37+08:00">2019-04-24</time>
               
             
           </span>
@@ -1042,7 +1214,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-24 22:35:18" itemprop="dateModified" datetime="2019-04-24T22:35:18+08:00">2019-04-24</time>
+                <time title="修改时间：2019-04-24 23:15:37" itemprop="dateModified" datetime="2019-04-24T23:15:37+08:00">2019-04-24</time>
               
             
           </span>
@@ -1219,7 +1391,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-24 22:35:18" itemprop="dateModified" datetime="2019-04-24T22:35:18+08:00">2019-04-24</time>
+                <time title="修改时间：2019-04-24 23:15:37" itemprop="dateModified" datetime="2019-04-24T23:15:37+08:00">2019-04-24</time>
               
             
           </span>
@@ -1430,7 +1602,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-24 22:35:18" itemprop="dateModified" datetime="2019-04-24T22:35:18+08:00">2019-04-24</time>
+                <time title="修改时间：2019-04-24 23:15:37" itemprop="dateModified" datetime="2019-04-24T23:15:37+08:00">2019-04-24</time>
               
             
           </span>
@@ -1604,7 +1776,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-24 22:35:18" itemprop="dateModified" datetime="2019-04-24T22:35:18+08:00">2019-04-24</time>
+                <time title="修改时间：2019-04-24 23:15:37" itemprop="dateModified" datetime="2019-04-24T23:15:37+08:00">2019-04-24</time>
               
             
           </span>
@@ -1779,7 +1951,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-24 22:35:18" itemprop="dateModified" datetime="2019-04-24T22:35:18+08:00">2019-04-24</time>
+                <time title="修改时间：2019-04-24 23:15:37" itemprop="dateModified" datetime="2019-04-24T23:15:37+08:00">2019-04-24</time>
               
             
           </span>
@@ -1884,197 +2056,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2017/09/08/GitLab-CI使用LFTP进行持续部署/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zacksleo">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zacks's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/09/08/GitLab-CI使用LFTP进行持续部署/" itemprop="url">
-                  GitLab-CI使用LFTP进行持续部署
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2017-09-08 12:52:22" itemprop="dateCreated datePublished" datetime="2017-09-08T12:52:22+08:00">2017-09-08</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-04-24 22:35:18" itemprop="dateModified" datetime="2019-04-24T22:35:18+08:00">2019-04-24</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2017/09/08/GitLab-CI使用LFTP进行持续部署/" class="leancloud_visitors" data-flag-title="GitLab-CI使用LFTP进行持续部署">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>LFTP是一款FTP客户端软件, 支持 FTP 、 FTPS 、 HTTP 、 HTTPS 、 SFTP 、 FXP 等多种文件传输协议。</p>
-<p>本文介绍如何使用 LFTP 将文件同步到远程FTP服务器上, 从而实现自动部署</p>
-<h2 id="mirror-命令及主要参数"><a href="#mirror-命令及主要参数" class="headerlink" title="mirror 命令及主要参数"></a>mirror 命令及主要参数</h2><ul>
-<li><p>-R  反向传输, 因为是上传(put)到远程服务器, 所以使用该参数 (默认是从远程服务器下载)</p>
-</li>
-<li><p>-L  下载符号链接作为文件, 主要处理文件软链接的问题</p>
-</li>
-<li><p>-v  详细输出日志</p>
-</li>
-<li><p>-n  只传输新文件 (相同的旧文件不会传输, 大大提升了传输效率)</p>
-</li>
-<li><p>–transfer-all  传输所有文件, 不论新旧</p>
-</li>
-<li><p>–parallel  同时传输的文件数</p>
-</li>
-<li><p>–file  本地文件</p>
-</li>
-<li><p>–target-directory 目标目录</p>
-</li>
-</ul>
-<h2 id="配置参考"><a href="#配置参考" class="headerlink" title="配置参考"></a>配置参考</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">    stage: deploy</span><br><span class="line">    dependencies:</span><br><span class="line">        - installing-dependencies</span><br><span class="line">    script:</span><br><span class="line">        - apk add lftp</span><br><span class="line">        # 只上传新文件</span><br><span class="line">        - lftp -c &quot;set ftp:ssl-allow no; open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_HOST; cd /wwwroot; mirror -RLnv ./ /wwwroot --ignore-time --parallel=50 --exclude-glob .git* --exclude .git/&quot;</span><br><span class="line">        # 指定目录覆盖上传 (强制更新)</span><br><span class="line">        - lftp -c &quot;set ftp:ssl-allow no; open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_HOST;mirror -RLv ./vendor/composer /wwwroot/vendor/composer --ignore-time --transfer-all --parallel=50 --exclude-glob .git* --exclude .git/&quot;</span><br><span class="line">        # 单独上传autoload文件(强制更新)</span><br><span class="line">        - lftp -c &quot;set ftp:ssl-allow no; open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_HOST;mirror -Rv --file=vendor/autoload.php --target-directory=/wwwroot/vendor/ --transfer-all&quot;</span><br><span class="line">    only:</span><br><span class="line">        - master</span><br></pre></td></tr></table></figure>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
-<li><a href="https://lftp.yar.ru/" target="_blank" rel="noopener">LFTP官网</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -2117,7 +2103,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">50</span>
+                    <span class="site-state-item-count">51</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2286,7 +2272,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">77</span>
+                      
+                    
+                    <span class="site-state-item-count">78</span>
                     <span class="site-state-item-name">标签</span>
                   
                 </div>

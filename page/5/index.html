@@ -286,7 +286,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2017/02/15/使用swoole作为MQTT客户端并接收实现即时消息推送/">
+    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2017/03/07/RESTful接口规范/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zacksleo">
@@ -305,8 +305,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/02/15/使用swoole作为MQTT客户端并接收实现即时消息推送/" itemprop="url">
-                  使用swoole作为MQTT客户端并接收实现即时消息推送
+                <a class="post-title-link" href="/2017/03/07/RESTful接口规范/" itemprop="url">
+                  RESTful接口规范
                 </a>
               
             
@@ -332,7 +332,7 @@
                 
               
 
-              <time title="创建时间：2017-02-15 13:42:06" itemprop="dateCreated datePublished" datetime="2017-02-15T13:42:06+08:00">2017-02-15</time>
+              <time title="创建时间：2017-03-07 23:14:35" itemprop="dateCreated datePublished" datetime="2017-03-07T23:14:35+08:00">2017-03-07</time>
             
 
             
@@ -349,7 +349,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-24 22:35:18" itemprop="dateModified" datetime="2019-04-24T22:35:18+08:00">2019-04-24</time>
+                <time title="修改时间：2019-04-24 23:15:37" itemprop="dateModified" datetime="2019-04-24T23:15:37+08:00">2019-04-24</time>
               
             
           </span>
@@ -362,7 +362,7 @@
 
           
           
-             <span id="/2017/02/15/使用swoole作为MQTT客户端并接收实现即时消息推送/" class="leancloud_visitors" data-flag-title="使用swoole作为MQTT客户端并接收实现即时消息推送">
+             <span id="/2017/03/07/RESTful接口规范/" class="leancloud_visitors" data-flag-title="RESTful接口规范">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -395,14 +395,104 @@
       
         
           
-            <h2 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h2><h3 id="首先需要安装swoole"><a href="#首先需要安装swoole" class="headerlink" title="首先需要安装swoole"></a>首先需要安装swoole</h3><p>可以使用pecl进行安装 ，如 <code>pecl install swool</code>, 注意加上版本号</p>
-<p>或者使用构建好的docker镜像，这里使用构建好的 <code>zacksleo/php:7.1-alpine-fpm-swoole</code> 镜像</p>
-<h3 id="使用-compose-安装依赖库"><a href="#使用-compose-安装依赖库" class="headerlink" title="使用 compose 安装依赖库"></a>使用 compose 安装依赖库</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer require jesusslim/mqttclient</span><br></pre></td></tr></table></figure>
-<h2 id="编写业务逻辑代码"><a href="#编写业务逻辑代码" class="headerlink" title="编写业务逻辑代码"></a>编写业务逻辑代码</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">console</span>\<span class="title">controllers</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">use</span> <span class="title">yii</span>;</span><br><span class="line"><span class="keyword">use</span> <span class="title">console</span>\<span class="title">components</span>\<span class="title">mqtt</span>\<span class="title">Logger</span>;</span><br><span class="line"><span class="keyword">use</span> <span class="title">console</span>\<span class="title">components</span>\<span class="title">mqtt</span>\<span class="title">Store</span>;</span><br><span class="line"><span class="keyword">use</span> <span class="title">yii</span>\<span class="title">console</span>\<span class="title">Controller</span>;</span><br><span class="line"><span class="keyword">use</span> <span class="title">mqttclient</span>\<span class="title">src</span>\<span class="title">swoole</span>\<span class="title">MqttClient</span>;</span><br><span class="line"><span class="keyword">use</span> <span class="title">mqttclient</span>\<span class="title">src</span>\<span class="title">subscribe</span>\<span class="title">Topic</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MqttController</span> <span class="keyword">extends</span> <span class="title">Controller</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">actionClient</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        $r = <span class="keyword">new</span> MqttClient(getenv(<span class="string">'TOKEN_MQTT_HOST'</span>), getenv(<span class="string">'TOKEN_MQTT_PORT'</span>), <span class="string">'push-server-client'</span>);</span><br><span class="line">        $r-&gt;setAuth(getenv(<span class="string">'TOKEN_MQTT_USERNAME'</span>), getenv(<span class="string">'TOKEN_MQTT_PASSWORD'</span>));</span><br><span class="line">        $r-&gt;setKeepAlive(<span class="number">60</span>);</span><br><span class="line">        $r-&gt;setLogger(<span class="keyword">new</span> Logger());</span><br><span class="line">        $r-&gt;setStore(<span class="keyword">new</span> Store());</span><br><span class="line">        $r-&gt;setTopics(</span><br><span class="line">            [</span><br><span class="line">                <span class="comment">//消息回执</span></span><br><span class="line">                <span class="keyword">new</span> Topic(<span class="string">'user-auth/create'</span>, <span class="function"><span class="keyword">function</span> <span class="params">(MqttClient $client, $msg)</span> </span>&#123;</span><br><span class="line">                    <span class="comment">//$msg 为获取到的消息体</span></span><br><span class="line">                &#125;),</span><br><span class="line">                <span class="comment">//消息打开</span></span><br><span class="line">                <span class="keyword">new</span> Topic(<span class="string">'user-auth/delete'</span>, <span class="function"><span class="keyword">function</span> <span class="params">(MqttClient $client, $msg)</span> </span>&#123;</span><br><span class="line">                   <span class="comment">//$msg 为获取到的消息体</span></span><br><span class="line">                &#125;)</span><br><span class="line">            ]</span><br><span class="line">        );</span><br><span class="line">        $r-&gt;connect();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="执行命令"><a href="#执行命令" class="headerlink" title="执行命令"></a>执行命令</h2><p>由于该客户端需要常驻内存，所以需要在 terminal 运行，如</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./yii mqtt/client</span><br></pre></td></tr></table></figure>
-<h2 id="进程保活"><a href="#进程保活" class="headerlink" title="进程保活"></a>进程保活</h2><p>为了防止进程被杀死，获取因为异常退出，可以使用进程管理工具进行管理，如 <code>supervisor</code></p>
-<p>更多内容，参见 [[使用supervisor管理进程]]</p>
+            <h1 id="RESTful接口规范-1-0"><a href="#RESTful接口规范-1-0" class="headerlink" title="RESTful接口规范 [1.0]"></a>RESTful接口规范 [1.0]</h1><p><a href="./history">更新日志</a></p>
+<h2 id="协议"><a href="#协议" class="headerlink" title="协议"></a>协议</h2><p>   使用https协议</p>
+<h2 id="版本"><a href="#版本" class="headerlink" title="版本"></a>版本</h2><p>   将API的版本号放入URL，如<a href="https://mqtt.lianluo.com/v1/" target="_blank" rel="noopener">https://mqtt.lianluo.com/v1/</a></p>
+<h2 id="HTTP动词"><a href="#HTTP动词" class="headerlink" title="HTTP动词"></a>HTTP动词</h2><ul>
+<li>GET（SELECT）：从服务器取出资源（一项或多项）。</li>
+<li>POST（CREATE）：在服务器新建一个资源。</li>
+<li>PUT（UPDATE）：在服务器更新资源（客户端提供改变后的完整资源）。</li>
+<li>PATCH（UPDATE）：在服务器更新资源（客户端提供改变的属性）。</li>
+<li>DELETE（DELETE）：从服务器删除资源。</li>
+</ul>
+<h2 id="路径"><a href="#路径" class="headerlink" title="路径"></a>路径</h2><ul>
+<li>每个网址代表一种资源（resource），所以网址中不能有动词，只能有名词</li>
+<li>URI中的名词表示资源集合，使用复数形式。</li>
+<li>不用大写；</li>
+<li>用中杠-不用下杠_；</li>
+<li>参数列表要encode；</li>
+</ul>
+<h2 id="状态码"><a href="#状态码" class="headerlink" title="状态码"></a>状态码</h2><ul>
+<li>200 OK - [GET]：服务器成功返回用户请求的数据，该操作是幂等的（Idempotent）。</li>
+<li>201 CREATED - [POST/PUT/PATCH]：用户新建或修改数据成功。</li>
+<li>202 Accepted - [*]：表示一个请求已经进入后台排队（异步任务）</li>
+<li>204 NO CONTENT - [DELETE]：用户删除数据成功。</li>
+<li>400 INVALID REQUEST - [POST/PUT/PATCH]：用户发出的请求有错误，服务器没有进行新建或修改数据的操作，该操作是幂等的。</li>
+<li>401 Unauthorized - [*]：表示用户没有权限（令牌、用户名、密码错误）。</li>
+<li>403 Forbidden - [*] 表示用户得到授权（与401错误相对），但是访问是被禁止的。</li>
+<li>404 NOT FOUND - [*]：用户发出的请求针对的是不存在的记录，服务器没有进行操作，该操作是幂等的。</li>
+<li>406 Not Acceptable - [GET]：用户请求的格式不可得（比如用户请求JSON格式，但是只有XML格式）。</li>
+<li>410 Gone -[GET]：用户请求的资源被永久删除，且不会再得到的。</li>
+<li>422 Unprocesable entity - [POST/PUT/PATCH] 当创建一个对象时，发生一个验证错误。</li>
+<li>500 INTERNAL SERVER ERROR - [*]：服务器发生错误，用户将无法判断发出的请求是否成功。</li>
+</ul>
+<blockquote>
+</blockquote>
+<p>1xx范围的状态码是保留给底层HTTP功能使用的，并且估计在你的职业生涯里面也用不着手动发送这样一个状态码出来。<br>2xx范围的状态码是保留给成功消息使用的，你尽可能的确保服务器总发送这些状态码给用户。<br>3xx范围的状态码是保留给重定向用的。大多数的API不会太常使用这类状态码，但是在新的超媒体样式的API中会使用更多一些。<br>4xx范围的状态码是保留给客户端错误用的。例如，客户端提供了一些错误的数据或请求了不存在的内容。这些请求应该是幂等的，不会改变任何服务器的状态。<br>5xx范围的状态码是保留给服务器端错误用的。这些错误常常是从底层的函数抛出来的，并且开发人员也通常没法处理。发送这类状态码的目的是确保客户端能得到一些响应。收到5xx响应后，客户端没办法知道服务器端的状态，所以这类状态码是要尽可能的避免。</p>
+<h2 id="国际化"><a href="#国际化" class="headerlink" title="国际化"></a>国际化</h2><ol>
+<li>在HTTP请求Header中, 携带Accept-Language字段, 表明当前要使用的语言, 如</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Accept-Language: zh-CN</span><br></pre></td></tr></table></figure>
+<p>以下是常用语言:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">字段</th>
+<th>值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Accept-Language</td>
+<td>zh-CN</td>
+<td>简体中文</td>
+</tr>
+<tr>
+<td style="text-align:center">Accept-Language</td>
+<td>zh-TW</td>
+<td>繁体中文</td>
+</tr>
+<tr>
+<td style="text-align:center">Accept-Language</td>
+<td>en-US</td>
+<td>英文</td>
+</tr>
+</tbody>
+</table>
+<h2 id="处理错误"><a href="#处理错误" class="headerlink" title="处理错误"></a>处理错误</h2><p>所有错误可以在HTTP请求处, 统一处理</p>
+<ol>
+<li>发生错误时, 状态码大于400; 只有当状态码位于200-300区间时, 请求才成功</li>
+<li>状态码为400,  404, 403, 406, 500 返回的JSON信息中, message为错误信息,如</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   &quot;message&quot;:&quot;验证失败_内容不能为空&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3.状态码为 422(验证失败)时返回的信息为一个对象数组, 每个对象中包含field和message信息, 如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">    &#123;</span><br><span class="line">        &quot;field&quot;: &quot;verify_code&quot;,</span><br><span class="line">        &quot;message&quot;: &quot;短信验证码不正确&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        &quot;field&quot;: &quot;phone&quot;,</span><br><span class="line">        &quot;message&quot;: &quot;手机号已被注册&quot;</span><br><span class="line">    &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
+<h2 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h2><p>所有API请求结果的Header中携带X-Debug-Tag参数,该参数为请求的id<br>调试时, 打开/debug网址, 然后使用debug-tag过滤找到相应的请求</p>
+<h2 id="返回结果"><a href="#返回结果" class="headerlink" title="返回结果"></a>返回结果</h2><ul>
+<li>GET /collection：返回资源对象的列表（数组）</li>
+<li>GET /collection/resource：返回单个资源对象</li>
+<li>POST /collection：返回新生成的资源对象</li>
+<li>PUT /collection/resource：返回完整的资源对象</li>
+<li>PATCH /collection/resource：返回完整的资源对象</li>
+<li>DELETE /collection/resource：返回一个空文档</li>
+</ul>
+<h2 id="数据格式"><a href="#数据格式" class="headerlink" title="数据格式"></a>数据格式</h2><p>只用以下常见的3种body format：</p>
+<ul>
+<li>Content-Type: application/json (API使用的格式)</li>
+<li>Content-Type: application/x-www-form-urlencoded (浏览器POST表单用的格式)</li>
+</ul>
+<h2 id="API携带超链接"><a href="#API携带超链接" class="headerlink" title="API携带超链接"></a>API携带超链接</h2><p>返回结果中提供链接，连向其他API方法，使得用户不查文档，也知道下一步应该做什么</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;link&quot;: &#123;</span><br><span class="line">  &quot;rel&quot;:   &quot;collection https://www.example.com/zoos&quot;,</span><br><span class="line">  &quot;href&quot;:  &quot;https://api.example.com/zoos&quot;,</span><br><span class="line">  &quot;title&quot;: &quot;List of zoos&quot;,</span><br><span class="line">  &quot;type&quot;:  &quot;application/vnd.yourformat+json&quot;</span><br><span class="line">&#125;&#125;</span><br></pre></td></tr></table></figure>
+<p>上面代码表示，文档中有一个link属性，用户读取这个属性就知道下一步该调用什么API了。rel表示这个API与当前网址的关系（collection关系，并给出该collection的网址），href表示API的路径，title表示API的标题，type表示返回类型。</p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ul>
+<li><a href="http://www.ruanyifeng.com/blog/2014/05/restful_api.html" target="_blank" rel="noopener">RESTful API设计指南-阮一峰</a></li>
+<li><a href="http://novoland.github.io/%E8%AE%BE%E8%AE%A1/2015/08/17/Restful%20API%20%E7%9A%84%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83.html" target="_blank" rel="noopener">Restful API的设计规范</a></li>
+<li><a href="http://www.cnblogs.com/moonz-wu/p/4211626.html" target="_blank" rel="noopener">好RESTful API的设计原则</a></li>
+<li><a href="https://github.com/cocoajin/http-api-design-ZH_CN" target="_blank" rel="noopener">HTTP API 设计指南</a></li>
+<li><a href="https://github.com/bolasblack/http-api-guide" target="_blank" rel="noopener">HTTP 接口设计指北</a></li>
+<li><a href="https://github.com/aisuhua/restful-api-design-references" target="_blank" rel="noopener">RESTful API 设计参考文献列表</a></li>
+<li><a href="http://blog.jobbole.com/41233/" target="_blank" rel="noopener">RESTful API 设计最佳实践</a></li>
+</ul>
 
           
         
@@ -519,7 +609,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-24 22:35:18" itemprop="dateModified" datetime="2019-04-24T22:35:18+08:00">2019-04-24</time>
+                <time title="修改时间：2019-04-24 23:15:37" itemprop="dateModified" datetime="2019-04-24T23:15:37+08:00">2019-04-24</time>
               
             
           </span>
@@ -578,6 +668,176 @@
 </ol>
 <h2 id="Docker-镜像加速"><a href="#Docker-镜像加速" class="headerlink" title="Docker 镜像加速"></a>Docker 镜像加速</h2><p>由于下载镜像较慢, 可以使用 DaoCloud 提供的镜像对 Docker 进行加速  </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://0835afe2.m.daocloud.io</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2017/02/15/使用swoole作为MQTT客户端并接收实现即时消息推送/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zacksleo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zacks's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/02/15/使用swoole作为MQTT客户端并接收实现即时消息推送/" itemprop="url">
+                  使用swoole作为MQTT客户端并接收实现即时消息推送
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-02-15 13:42:06" itemprop="dateCreated datePublished" datetime="2017-02-15T13:42:06+08:00">2017-02-15</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-24 23:15:37" itemprop="dateModified" datetime="2019-04-24T23:15:37+08:00">2019-04-24</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/02/15/使用swoole作为MQTT客户端并接收实现即时消息推送/" class="leancloud_visitors" data-flag-title="使用swoole作为MQTT客户端并接收实现即时消息推送">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h2><h3 id="首先需要安装swoole"><a href="#首先需要安装swoole" class="headerlink" title="首先需要安装swoole"></a>首先需要安装swoole</h3><p>可以使用pecl进行安装 ，如 <code>pecl install swool</code>, 注意加上版本号</p>
+<p>或者使用构建好的docker镜像，这里使用构建好的 <code>zacksleo/php:7.1-alpine-fpm-swoole</code> 镜像</p>
+<h3 id="使用-compose-安装依赖库"><a href="#使用-compose-安装依赖库" class="headerlink" title="使用 compose 安装依赖库"></a>使用 compose 安装依赖库</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer require jesusslim/mqttclient</span><br></pre></td></tr></table></figure>
+<h2 id="编写业务逻辑代码"><a href="#编写业务逻辑代码" class="headerlink" title="编写业务逻辑代码"></a>编写业务逻辑代码</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">console</span>\<span class="title">controllers</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">use</span> <span class="title">yii</span>;</span><br><span class="line"><span class="keyword">use</span> <span class="title">console</span>\<span class="title">components</span>\<span class="title">mqtt</span>\<span class="title">Logger</span>;</span><br><span class="line"><span class="keyword">use</span> <span class="title">console</span>\<span class="title">components</span>\<span class="title">mqtt</span>\<span class="title">Store</span>;</span><br><span class="line"><span class="keyword">use</span> <span class="title">yii</span>\<span class="title">console</span>\<span class="title">Controller</span>;</span><br><span class="line"><span class="keyword">use</span> <span class="title">mqttclient</span>\<span class="title">src</span>\<span class="title">swoole</span>\<span class="title">MqttClient</span>;</span><br><span class="line"><span class="keyword">use</span> <span class="title">mqttclient</span>\<span class="title">src</span>\<span class="title">subscribe</span>\<span class="title">Topic</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MqttController</span> <span class="keyword">extends</span> <span class="title">Controller</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">actionClient</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        $r = <span class="keyword">new</span> MqttClient(getenv(<span class="string">'TOKEN_MQTT_HOST'</span>), getenv(<span class="string">'TOKEN_MQTT_PORT'</span>), <span class="string">'push-server-client'</span>);</span><br><span class="line">        $r-&gt;setAuth(getenv(<span class="string">'TOKEN_MQTT_USERNAME'</span>), getenv(<span class="string">'TOKEN_MQTT_PASSWORD'</span>));</span><br><span class="line">        $r-&gt;setKeepAlive(<span class="number">60</span>);</span><br><span class="line">        $r-&gt;setLogger(<span class="keyword">new</span> Logger());</span><br><span class="line">        $r-&gt;setStore(<span class="keyword">new</span> Store());</span><br><span class="line">        $r-&gt;setTopics(</span><br><span class="line">            [</span><br><span class="line">                <span class="comment">//消息回执</span></span><br><span class="line">                <span class="keyword">new</span> Topic(<span class="string">'user-auth/create'</span>, <span class="function"><span class="keyword">function</span> <span class="params">(MqttClient $client, $msg)</span> </span>&#123;</span><br><span class="line">                    <span class="comment">//$msg 为获取到的消息体</span></span><br><span class="line">                &#125;),</span><br><span class="line">                <span class="comment">//消息打开</span></span><br><span class="line">                <span class="keyword">new</span> Topic(<span class="string">'user-auth/delete'</span>, <span class="function"><span class="keyword">function</span> <span class="params">(MqttClient $client, $msg)</span> </span>&#123;</span><br><span class="line">                   <span class="comment">//$msg 为获取到的消息体</span></span><br><span class="line">                &#125;)</span><br><span class="line">            ]</span><br><span class="line">        );</span><br><span class="line">        $r-&gt;connect();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="执行命令"><a href="#执行命令" class="headerlink" title="执行命令"></a>执行命令</h2><p>由于该客户端需要常驻内存，所以需要在 terminal 运行，如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./yii mqtt/client</span><br></pre></td></tr></table></figure>
+<h2 id="进程保活"><a href="#进程保活" class="headerlink" title="进程保活"></a>进程保活</h2><p>为了防止进程被杀死，获取因为异常退出，可以使用进程管理工具进行管理，如 <code>supervisor</code></p>
+<p>更多内容，参见 [[使用supervisor管理进程]]</p>
+
           
         
       
@@ -693,7 +953,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-24 22:35:18" itemprop="dateModified" datetime="2019-04-24T22:35:18+08:00">2019-04-24</time>
+                <time title="修改时间：2019-04-24 23:15:37" itemprop="dateModified" datetime="2019-04-24T23:15:37+08:00">2019-04-24</time>
               
             
           </span>
@@ -878,7 +1138,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-24 22:35:18" itemprop="dateModified" datetime="2019-04-24T22:35:18+08:00">2019-04-24</time>
+                <time title="修改时间：2019-04-24 23:15:37" itemprop="dateModified" datetime="2019-04-24T23:15:37+08:00">2019-04-24</time>
               
             
           </span>
@@ -1076,7 +1336,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-24 22:35:18" itemprop="dateModified" datetime="2019-04-24T22:35:18+08:00">2019-04-24</time>
+                <time title="修改时间：2019-04-24 23:15:37" itemprop="dateModified" datetime="2019-04-24T23:15:37+08:00">2019-04-24</time>
               
             
           </span>
@@ -1253,7 +1513,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-24 22:35:18" itemprop="dateModified" datetime="2019-04-24T22:35:18+08:00">2019-04-24</time>
+                <time title="修改时间：2019-04-24 23:15:37" itemprop="dateModified" datetime="2019-04-24T23:15:37+08:00">2019-04-24</time>
               
             
           </span>
@@ -1424,7 +1684,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-24 22:35:18" itemprop="dateModified" datetime="2019-04-24T22:35:18+08:00">2019-04-24</time>
+                <time title="修改时间：2019-04-24 23:15:37" itemprop="dateModified" datetime="2019-04-24T23:15:37+08:00">2019-04-24</time>
               
             
           </span>
@@ -1606,7 +1866,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-24 22:35:18" itemprop="dateModified" datetime="2019-04-24T22:35:18+08:00">2019-04-24</time>
+                <time title="修改时间：2019-04-24 23:15:37" itemprop="dateModified" datetime="2019-04-24T23:15:37+08:00">2019-04-24</time>
               
             
           </span>
@@ -1809,7 +2069,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-24 22:35:18" itemprop="dateModified" datetime="2019-04-24T22:35:18+08:00">2019-04-24</time>
+                <time title="修改时间：2019-04-24 23:15:37" itemprop="dateModified" datetime="2019-04-24T23:15:37+08:00">2019-04-24</time>
               
             
           </span>
@@ -2011,186 +2271,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2013/12/16/ThinkPHP结合使用PHPConsole向Chrome 控制台输出SQL/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zacksleo">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zacks's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2013/12/16/ThinkPHP结合使用PHPConsole向Chrome 控制台输出SQL/" itemprop="url">
-                  ThinkPHP结合使用PHP Console向Chrome 控制台输出SQL
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2013-12-16 15:16:39" itemprop="dateCreated datePublished" datetime="2013-12-16T15:16:39+08:00">2013-12-16</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-04-24 22:35:18" itemprop="dateModified" datetime="2019-04-24T22:35:18+08:00">2019-04-24</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2013/12/16/ThinkPHP结合使用PHPConsole向Chrome 控制台输出SQL/" class="leancloud_visitors" data-flag-title="ThinkPHP结合使用PHP Console向Chrome 控制台输出SQL">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li>在Chrome中安装PHP Console 插件</li>
-<li><p>下载PHP Console 服务器端程序包到ThinkPHP的Vendor目录下<br>例如 <code>/ThinkPHP/Extend/Vendor/PhpConsole</code></p>
-</li>
-<li><p>编写Behaviour行为类PhpConsoleBehavior.class</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;?php</span><br><span class="line">/*</span><br><span class="line"> * 程序初始化时，在DEBUG模式下自动导入PHP Console类并进行实例化</span><br><span class="line"> * PHP console for chrome degug tools</span><br><span class="line"> * @author zacksleo</span><br><span class="line"> */</span><br><span class="line">class PhpConsoleBehavior extends Behavior&#123;</span><br><span class="line"></span><br><span class="line">  protected $options = array(</span><br><span class="line">      &apos;PHP_CONSOLE&apos; =&gt; false,</span><br><span class="line">  );</span><br><span class="line"></span><br><span class="line">  public function run(&amp;$params)&#123;</span><br><span class="line">    if(C(&apos;PHP_CONSOLE&apos;))&#123;</span><br><span class="line">      if(APP_DEBUG)&#123;</span><br><span class="line">        vendor(&apos;PhpConsole.__autoload&apos;);  //导入文件</span><br><span class="line">        PhpConsole\Helper::register();  //注册，自动实例化</span><br><span class="line">        $connector = PhpConsole\Connector::getInstance();</span><br><span class="line">        $connector-&gt;setPassword(&apos;password&apos;);</span><br><span class="line">        $handler = PhpConsole\Handler::getInstance();</span><br><span class="line">        // 输出PHP错误和异常            </span><br><span class="line">        $handler-&gt;start(); </span><br><span class="line">        // 配置 eval provider（在Chrome中远程执行PHP），如果不使用，则不配置</span><br><span class="line">        $evalProvider = $connector-&gt;getEvalDispatcher()-&gt;getEvalProvider();</span><br><span class="line">        $evalProvider-&gt;setOpenBaseDirs(array(__DIR__)); </span><br><span class="line">        // 必须最后调用</span><br><span class="line">        $connector-&gt;startEvalRequestsListener(); </span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>在/App/Conf/tags.php 中配置标签位:’app_init’ =&gt; array(‘PhpConsole’),</li>
-<li>在config.php文件中定义标签’PHP_CONSOLE’ =&gt; true,</li>
-<li>修改ThinkPHP的Log.class文件（位于/ThinkPHP/Lib/Core/Log.class.php）中的recode方法如下</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">static function record($message, $level = self::ERR, $record = false)&#123;</span><br><span class="line">  //zacksleo   </span><br><span class="line">  if($level == self::SQL)&#123;</span><br><span class="line">    PC::debug($message, &apos;SQL&apos;);</span><br><span class="line">  &#125;</span><br><span class="line">  //zacksleo</span><br><span class="line">  if($record || false !== strpos(C(&apos;LOG_LEVEL&apos;), $level))&#123;</span><br><span class="line">    self::$log[] = &quot;&#123;$level&#125;: &#123;$message&#125;\r\n&quot;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span>
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -2233,7 +2318,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">50</span>
+                    <span class="site-state-item-count">51</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2402,7 +2487,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">77</span>
+                      
+                    
+                    <span class="site-state-item-count">78</span>
                     <span class="site-state-item-name">标签</span>
                   
                 </div>

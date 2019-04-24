@@ -286,6 +286,181 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2017/04/22/GitLab-CI使用Docker进行持续部署/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zacksleo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zacks's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/04/22/GitLab-CI使用Docker进行持续部署/" itemprop="url">
+                  GitLab-CI使用Docker进行持续部署
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-04-22 22:33:31" itemprop="dateCreated datePublished" datetime="2017-04-22T22:33:31+08:00">2017-04-22</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-24 23:15:37" itemprop="dateModified" datetime="2019-04-24T23:15:37+08:00">2019-04-24</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/04/22/GitLab-CI使用Docker进行持续部署/" class="leancloud_visitors" data-flag-title="GitLab-CI使用Docker进行持续部署">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Docker镜像通过私有仓库进行发布(如阿里云), 发布命令为:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker login -u username -p password registry.demo.com</span><br><span class="line">docker build -t registry.demo.com/repos/$CI_PROJECT_NAME:latest .</span><br><span class="line">docker push registry.demo.com/repos/$CI_PROJECT_NAME:latest</span><br></pre></td></tr></table></figure>
+<p>其中 <code>username</code>是用户名, <code>password</code>是密码, <code>registry.demo.com</code>是私有镜像库地址,</p>
+<p><code>$CI_PROJECT_NAME</code> 是GitLab-CI内置变量, 会自动替换为项目的名称, 这里也可以直接写死, 如</p>
+<p><code>docker build -t registry.demo.com/repos/image-name:latest .</code></p>
+<p><code>image-name</code>, 就是要构建的镜像名称, <code>latest</code>是TAG标签, <code>repos</code>是仓库的空间名称</p>
+<p>在下面的例子中, 首先通过composer安装依赖库, 然后通过artifacts传递给构建任务, 构建完镜像将镜像发布到私有库,<br>部署时通过拉取最新的镜像库, 进行部署</p>
+<blockquote>
+<p>项目的deploy目录中, 放置一些配置文件, 如<code>Dockerfile</code>, <code>docker-compose.yml</code>等, 通过<code>rsync</code>同步到部署服务器上, 用于部署所需</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">image: zacksleo/docker-composer:1.1</span><br><span class="line"></span><br><span class="line">before_script:</span><br><span class="line">    - &apos;which ssh-agent || ( apk update &amp;&amp; apk add openssh-client)&apos;</span><br><span class="line">    - apk add rsync</span><br><span class="line">    - eval $(ssh-agent -s)</span><br><span class="line">    - echo &quot;$SSH_PRIVATE_KEY&quot; &gt; ~/deploy.key</span><br><span class="line">    - chmod 0600 ~/deploy.key</span><br><span class="line">    - ssh-add ~/deploy.key</span><br><span class="line">    - mkdir -p ~/.ssh</span><br><span class="line">    - &apos;[[ -f /.dockerenv ]] &amp;&amp; echo -e &quot;Host *\n\tStrictHostKeyChecking no\n\n&quot; &gt; ~/.ssh/config&apos;</span><br><span class="line">    - export APP_ENV=testing</span><br><span class="line"></span><br><span class="line">stages:</span><br><span class="line">    - prepare    </span><br><span class="line">    - build</span><br><span class="line">    - deploy</span><br><span class="line"></span><br><span class="line">variables:</span><br><span class="line">    COMPOSER_CACHE_DIR: &quot;/cache/composer&quot;</span><br><span class="line">    DOCKER_DRIVER: overlay</span><br><span class="line"></span><br><span class="line">installing-dependencies:</span><br><span class="line">    stage: prepare</span><br><span class="line">    script:</span><br><span class="line">        - composer install --prefer-dist -n --no-interaction -v --no-suggest</span><br><span class="line">    artifacts:</span><br><span class="line">        name: &quot;vendor&quot;</span><br><span class="line">        untracked: true</span><br><span class="line">        expire_in: 60 mins</span><br><span class="line">        paths:</span><br><span class="line">            - $CI_PROJECT_DIR/vendor    </span><br><span class="line">test-image:</span><br><span class="line">    stage: build</span><br><span class="line">    image: docker:latest</span><br><span class="line">    services:</span><br><span class="line">        - docker:dind</span><br><span class="line">    dependencies:</span><br><span class="line">        - installing-dependencies</span><br><span class="line">    script:</span><br><span class="line">        - docker login -u username -p password registry.demo.com</span><br><span class="line">        - docker build -t registry.demo.com/repos/$CI_PROJECT_NAME:latest .</span><br><span class="line">        - docker push registry.demo.com/repos/$CI_PROJECT_NAME:latest</span><br><span class="line">testing-server:</span><br><span class="line">    stage: deploy</span><br><span class="line">    image: alpine</span><br><span class="line">    variables:</span><br><span class="line">        DEPLOY_SERVER: &quot;server-host&quot;</span><br><span class="line">    script:</span><br><span class="line">        - cd deploy</span><br><span class="line">        - rsync -rtvhze ssh . root@$DEPLOY_SERVER:/data/$CI_PROJECT_NAME --stats        </span><br><span class="line">        - ssh root@$DEPLOY_SERVER &quot;docker login -u username -p password registry.demo.com&quot;</span><br><span class="line">        - ssh root@$DEPLOY_SERVER &quot;cd /data/$CI_PROJECT_NAME &amp;&amp; docker-compose stop &amp;&amp; docker-compose rm -f &amp;&amp; docker-compose pull &amp;&amp; docker-compose up -d&quot;</span><br><span class="line">        - ssh root@$DEPLOY_SERVER &quot;docker exec -i $CI_PROJECT_NAME chown www-data:www-data web/assets&quot;</span><br><span class="line">        - ssh root@$DEPLOY_SERVER &quot;docker exec -i $CI_PROJECT_NAME ./yii migrate/up --interactive=0&quot;</span><br></pre></td></tr></table></figure>
+<p><img src="http://ww1.sinaimg.cn/large/675eb504ly1fezvjdberyj20w30axdh2.jpg" alt=""></p>
+<h2 id="相关文档"><a href="#相关文档" class="headerlink" title="相关文档"></a>相关文档</h2><p><a href="https://docs.gitlab.com/ce/ci/docker/using_docker_build.html" target="_blank" rel="noopener">Using Docker Build</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2017/04/18/GitLab-CI中的artifacts使用研究/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -349,7 +524,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-24 22:35:18" itemprop="dateModified" datetime="2019-04-24T22:35:18+08:00">2019-04-24</time>
+                <time title="修改时间：2019-04-24 23:15:37" itemprop="dateModified" datetime="2019-04-24T23:15:37+08:00">2019-04-24</time>
               
             
           </span>
@@ -537,7 +712,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-24 22:35:18" itemprop="dateModified" datetime="2019-04-24T22:35:18+08:00">2019-04-24</time>
+                <time title="修改时间：2019-04-24 23:15:37" itemprop="dateModified" datetime="2019-04-24T23:15:37+08:00">2019-04-24</time>
               
             
           </span>
@@ -707,7 +882,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-24 22:35:18" itemprop="dateModified" datetime="2019-04-24T22:35:18+08:00">2019-04-24</time>
+                <time title="修改时间：2019-04-24 23:15:37" itemprop="dateModified" datetime="2019-04-24T23:15:37+08:00">2019-04-24</time>
               
             
           </span>
@@ -881,7 +1056,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-24 22:35:18" itemprop="dateModified" datetime="2019-04-24T22:35:18+08:00">2019-04-24</time>
+                <time title="修改时间：2019-04-24 23:15:37" itemprop="dateModified" datetime="2019-04-24T23:15:37+08:00">2019-04-24</time>
               
             
           </span>
@@ -1057,7 +1232,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-24 22:35:18" itemprop="dateModified" datetime="2019-04-24T22:35:18+08:00">2019-04-24</time>
+                <time title="修改时间：2019-04-24 23:15:37" itemprop="dateModified" datetime="2019-04-24T23:15:37+08:00">2019-04-24</time>
               
             
           </span>
@@ -1242,7 +1417,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-24 22:35:18" itemprop="dateModified" datetime="2019-04-24T22:35:18+08:00">2019-04-24</time>
+                <time title="修改时间：2019-04-24 23:15:37" itemprop="dateModified" datetime="2019-04-24T23:15:37+08:00">2019-04-24</time>
               
             
           </span>
@@ -1440,7 +1615,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-24 22:35:18" itemprop="dateModified" datetime="2019-04-24T22:35:18+08:00">2019-04-24</time>
+                <time title="修改时间：2019-04-24 23:15:37" itemprop="dateModified" datetime="2019-04-24T23:15:37+08:00">2019-04-24</time>
               
             
           </span>
@@ -1604,7 +1779,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-24 22:35:18" itemprop="dateModified" datetime="2019-04-24T22:35:18+08:00">2019-04-24</time>
+                <time title="修改时间：2019-04-24 23:15:37" itemprop="dateModified" datetime="2019-04-24T23:15:37+08:00">2019-04-24</time>
               
             
           </span>
@@ -1768,7 +1943,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-24 22:35:18" itemprop="dateModified" datetime="2019-04-24T22:35:18+08:00">2019-04-24</time>
+                <time title="修改时间：2019-04-24 23:15:37" itemprop="dateModified" datetime="2019-04-24T23:15:37+08:00">2019-04-24</time>
               
             
           </span>
@@ -1859,271 +2034,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2017/03/07/RESTful接口规范/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zacksleo">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zacks's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/03/07/RESTful接口规范/" itemprop="url">
-                  RESTful接口规范
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2017-03-07 23:14:35" itemprop="dateCreated datePublished" datetime="2017-03-07T23:14:35+08:00">2017-03-07</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-04-24 22:35:18" itemprop="dateModified" datetime="2019-04-24T22:35:18+08:00">2019-04-24</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2017/03/07/RESTful接口规范/" class="leancloud_visitors" data-flag-title="RESTful接口规范">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="RESTful接口规范-1-0"><a href="#RESTful接口规范-1-0" class="headerlink" title="RESTful接口规范 [1.0]"></a>RESTful接口规范 [1.0]</h1><p><a href="./history">更新日志</a></p>
-<h2 id="协议"><a href="#协议" class="headerlink" title="协议"></a>协议</h2><p>   使用https协议</p>
-<h2 id="版本"><a href="#版本" class="headerlink" title="版本"></a>版本</h2><p>   将API的版本号放入URL，如<a href="https://mqtt.lianluo.com/v1/" target="_blank" rel="noopener">https://mqtt.lianluo.com/v1/</a></p>
-<h2 id="HTTP动词"><a href="#HTTP动词" class="headerlink" title="HTTP动词"></a>HTTP动词</h2><ul>
-<li>GET（SELECT）：从服务器取出资源（一项或多项）。</li>
-<li>POST（CREATE）：在服务器新建一个资源。</li>
-<li>PUT（UPDATE）：在服务器更新资源（客户端提供改变后的完整资源）。</li>
-<li>PATCH（UPDATE）：在服务器更新资源（客户端提供改变的属性）。</li>
-<li>DELETE（DELETE）：从服务器删除资源。</li>
-</ul>
-<h2 id="路径"><a href="#路径" class="headerlink" title="路径"></a>路径</h2><ul>
-<li>每个网址代表一种资源（resource），所以网址中不能有动词，只能有名词</li>
-<li>URI中的名词表示资源集合，使用复数形式。</li>
-<li>不用大写；</li>
-<li>用中杠-不用下杠_；</li>
-<li>参数列表要encode；</li>
-</ul>
-<h2 id="状态码"><a href="#状态码" class="headerlink" title="状态码"></a>状态码</h2><ul>
-<li>200 OK - [GET]：服务器成功返回用户请求的数据，该操作是幂等的（Idempotent）。</li>
-<li>201 CREATED - [POST/PUT/PATCH]：用户新建或修改数据成功。</li>
-<li>202 Accepted - [*]：表示一个请求已经进入后台排队（异步任务）</li>
-<li>204 NO CONTENT - [DELETE]：用户删除数据成功。</li>
-<li>400 INVALID REQUEST - [POST/PUT/PATCH]：用户发出的请求有错误，服务器没有进行新建或修改数据的操作，该操作是幂等的。</li>
-<li>401 Unauthorized - [*]：表示用户没有权限（令牌、用户名、密码错误）。</li>
-<li>403 Forbidden - [*] 表示用户得到授权（与401错误相对），但是访问是被禁止的。</li>
-<li>404 NOT FOUND - [*]：用户发出的请求针对的是不存在的记录，服务器没有进行操作，该操作是幂等的。</li>
-<li>406 Not Acceptable - [GET]：用户请求的格式不可得（比如用户请求JSON格式，但是只有XML格式）。</li>
-<li>410 Gone -[GET]：用户请求的资源被永久删除，且不会再得到的。</li>
-<li>422 Unprocesable entity - [POST/PUT/PATCH] 当创建一个对象时，发生一个验证错误。</li>
-<li>500 INTERNAL SERVER ERROR - [*]：服务器发生错误，用户将无法判断发出的请求是否成功。</li>
-</ul>
-<blockquote>
-</blockquote>
-<p>1xx范围的状态码是保留给底层HTTP功能使用的，并且估计在你的职业生涯里面也用不着手动发送这样一个状态码出来。<br>2xx范围的状态码是保留给成功消息使用的，你尽可能的确保服务器总发送这些状态码给用户。<br>3xx范围的状态码是保留给重定向用的。大多数的API不会太常使用这类状态码，但是在新的超媒体样式的API中会使用更多一些。<br>4xx范围的状态码是保留给客户端错误用的。例如，客户端提供了一些错误的数据或请求了不存在的内容。这些请求应该是幂等的，不会改变任何服务器的状态。<br>5xx范围的状态码是保留给服务器端错误用的。这些错误常常是从底层的函数抛出来的，并且开发人员也通常没法处理。发送这类状态码的目的是确保客户端能得到一些响应。收到5xx响应后，客户端没办法知道服务器端的状态，所以这类状态码是要尽可能的避免。</p>
-<h2 id="国际化"><a href="#国际化" class="headerlink" title="国际化"></a>国际化</h2><ol>
-<li>在HTTP请求Header中, 携带Accept-Language字段, 表明当前要使用的语言, 如</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Accept-Language: zh-CN</span><br></pre></td></tr></table></figure>
-<p>以下是常用语言:</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">字段</th>
-<th>值</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">Accept-Language</td>
-<td>zh-CN</td>
-<td>简体中文</td>
-</tr>
-<tr>
-<td style="text-align:center">Accept-Language</td>
-<td>zh-TW</td>
-<td>繁体中文</td>
-</tr>
-<tr>
-<td style="text-align:center">Accept-Language</td>
-<td>en-US</td>
-<td>英文</td>
-</tr>
-</tbody>
-</table>
-<h2 id="处理错误"><a href="#处理错误" class="headerlink" title="处理错误"></a>处理错误</h2><p>所有错误可以在HTTP请求处, 统一处理</p>
-<ol>
-<li>发生错误时, 状态码大于400; 只有当状态码位于200-300区间时, 请求才成功</li>
-<li>状态码为400,  404, 403, 406, 500 返回的JSON信息中, message为错误信息,如</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   &quot;message&quot;:&quot;验证失败_内容不能为空&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>3.状态码为 422(验证失败)时返回的信息为一个对象数组, 每个对象中包含field和message信息, 如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">    &#123;</span><br><span class="line">        &quot;field&quot;: &quot;verify_code&quot;,</span><br><span class="line">        &quot;message&quot;: &quot;短信验证码不正确&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        &quot;field&quot;: &quot;phone&quot;,</span><br><span class="line">        &quot;message&quot;: &quot;手机号已被注册&quot;</span><br><span class="line">    &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
-<h2 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h2><p>所有API请求结果的Header中携带X-Debug-Tag参数,该参数为请求的id<br>调试时, 打开/debug网址, 然后使用debug-tag过滤找到相应的请求</p>
-<h2 id="返回结果"><a href="#返回结果" class="headerlink" title="返回结果"></a>返回结果</h2><ul>
-<li>GET /collection：返回资源对象的列表（数组）</li>
-<li>GET /collection/resource：返回单个资源对象</li>
-<li>POST /collection：返回新生成的资源对象</li>
-<li>PUT /collection/resource：返回完整的资源对象</li>
-<li>PATCH /collection/resource：返回完整的资源对象</li>
-<li>DELETE /collection/resource：返回一个空文档</li>
-</ul>
-<h2 id="数据格式"><a href="#数据格式" class="headerlink" title="数据格式"></a>数据格式</h2><p>只用以下常见的3种body format：</p>
-<ul>
-<li>Content-Type: application/json (API使用的格式)</li>
-<li>Content-Type: application/x-www-form-urlencoded (浏览器POST表单用的格式)</li>
-</ul>
-<h2 id="API携带超链接"><a href="#API携带超链接" class="headerlink" title="API携带超链接"></a>API携带超链接</h2><p>返回结果中提供链接，连向其他API方法，使得用户不查文档，也知道下一步应该做什么</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;link&quot;: &#123;</span><br><span class="line">  &quot;rel&quot;:   &quot;collection https://www.example.com/zoos&quot;,</span><br><span class="line">  &quot;href&quot;:  &quot;https://api.example.com/zoos&quot;,</span><br><span class="line">  &quot;title&quot;: &quot;List of zoos&quot;,</span><br><span class="line">  &quot;type&quot;:  &quot;application/vnd.yourformat+json&quot;</span><br><span class="line">&#125;&#125;</span><br></pre></td></tr></table></figure>
-<p>上面代码表示，文档中有一个link属性，用户读取这个属性就知道下一步该调用什么API了。rel表示这个API与当前网址的关系（collection关系，并给出该collection的网址），href表示API的路径，title表示API的标题，type表示返回类型。</p>
-<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ul>
-<li><a href="http://www.ruanyifeng.com/blog/2014/05/restful_api.html" target="_blank" rel="noopener">RESTful API设计指南-阮一峰</a></li>
-<li><a href="http://novoland.github.io/%E8%AE%BE%E8%AE%A1/2015/08/17/Restful%20API%20%E7%9A%84%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83.html" target="_blank" rel="noopener">Restful API的设计规范</a></li>
-<li><a href="http://www.cnblogs.com/moonz-wu/p/4211626.html" target="_blank" rel="noopener">好RESTful API的设计原则</a></li>
-<li><a href="https://github.com/cocoajin/http-api-design-ZH_CN" target="_blank" rel="noopener">HTTP API 设计指南</a></li>
-<li><a href="https://github.com/bolasblack/http-api-guide" target="_blank" rel="noopener">HTTP 接口设计指北</a></li>
-<li><a href="https://github.com/aisuhua/restful-api-design-references" target="_blank" rel="noopener">RESTful API 设计参考文献列表</a></li>
-<li><a href="http://blog.jobbole.com/41233/" target="_blank" rel="noopener">RESTful API 设计最佳实践</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -2166,7 +2081,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">50</span>
+                    <span class="site-state-item-count">51</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2335,7 +2250,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">77</span>
+                      
+                    
+                    <span class="site-state-item-count">78</span>
                     <span class="site-state-item-name">标签</span>
                   
                 </div>
