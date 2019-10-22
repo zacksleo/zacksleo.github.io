@@ -113,9 +113,11 @@ deploy:
     before_script: []
     script:
         # 获取HTTP服务的端口, 该端口是不固定的
-        - PORT=`cat ~/Library/Application\ Support/微信web开发者工具/Default/.ide`
+        # - PORT=`cat ~/Library/Application\ Support/微信web开发者工具/Default/.ide`
         # 调用上传的API
-        - curl http://127.0.0.1:$PORT/upload\?projectpath\=$PWD/dist\&version\=$CI_COMMIT_TAG\&desc\=audo-deploy
+        # - curl http://127.0.0.1:$PORT/upload\?projectpath\=$PWD/dist\&version\=$CI_COMMIT_TAG\&desc\=audo-deploy
+        # 以下改用命令行替代旧的 HTTP 调用方式
+        - /Applications/wechatwebdevtools.app/Contents/MacOS/cli -u $CI_COMMIT_TAG@/$PWD/dist --upload-desc "aoto deploy"
     only:
         - tags
     tags:
