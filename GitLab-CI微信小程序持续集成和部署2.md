@@ -1,12 +1,8 @@
 ---
-title: GitLab-CI微信小程序进行持续集成和持续部署
-date: 2018-04-08 11:21:26
+title: GitLab-CI微信小程序进行持续集成和部署2
+date: 2020-06-08 08:05:26
 tags: [GitLab-CI, DevOps, 小程序, 持续部署, 微信小程序]
 ---
-
-## 2020 更新
-
-微信出了 miniprogram-ci ，可以通过命令行调用，故而改用改方案， 见 ［GitLab-CI微信小程序进行持续集成和持续部署2］
 
 ## 问题缘由
 
@@ -15,7 +11,7 @@ tags: [GitLab-CI, DevOps, 小程序, 持续部署, 微信小程序]
 
 ## 实现原理
 
-微信开发者工具，提供了HTTP调用方式,其中就包括上传和自动化测试的命令，我们可以通过脚本实现自动化集成
+微信 miniprogram-ci 库，提供了命令行调用方式,其中就包括上传的命令，我们可以通过脚本实现自动化集成
 
 ## 步骤
 
@@ -31,39 +27,6 @@ tags: [GitLab-CI, DevOps, 小程序, 持续部署, 微信小程序]
 
 ```bash
 gitlab-runner register
-
-```
-注意，注册时没有`sudo`, 因为需要使用用户模式来使用，而非系统模式
-
-注册时，将本机添加上了 `mac` 标签, 运行模式为`shell`，这样可以在部署时，指定运行环境
-
-```
-Please enter the gitlab-ci coordinator URL (e.g. https://gitlab.com/):
-https://xxxxxx.com/
-Please enter the gitlab-ci token for this runner:
-xxxxxx
-Please enter the gitlab-ci description for this runner:
-[xxx.com]: macbook.home
-Please enter the gitlab-ci tags for this runner (comma separated):
-mac,shell
-Whether to run untagged builds [true/false]:
-[false]: true
-Whether to lock the Runner to current project [true/false]:
-[true]: false
-Registering runner... succeeded                     runner=Gd3NhK2t
-Please enter the executor: docker-ssh, virtualbox, docker+machine, docker-ssh+machine, docker, parallels, shell, ssh, kubernetes:
-shell
-Runner registered successfully. Feel free to start it, but if it's running already the config should be automatically reloaded!
-
-```
-
-
-#### 运行服务
-
-```bash
-cd ~
-gitlab-runner install
-gitlab-runner start
 
 ```
 
@@ -108,31 +71,44 @@ build-package:
         - tags
     tags:
         - docker
-deploy:
+release:
     stage: deploy
+    before_script: []
     dependencies:
         - build-package
     variables:
         GIT_STRATEGY: none
-    before_script: []
     script:
-        # 获取HTTP服务的端口, 该端口是不固定的
-        # - PORT=`cat ~/Library/Application\ Support/微信web开发者工具/Default/.ide`
-        # 调用上传的API
-        # - curl http://127.0.0.1:$PORT/upload\?projectpath\=$PWD/dist\&version\=$CI_COMMIT_TAG\&desc\=audo-deploy
-        # 以下改用命令行替代旧的 HTTP 调用方式
-        - /Applications/wechatwebdevtools.app/Contents/MacOS/cli -u $CI_COMMIT_TAG@/$PWD/dist --upload-desc "aoto deploy"
+        - yarn global add miniprogram-ci
+        - if [[ -z "$CI_COMMIT_TAG" ]];then
+        #- CI_COMMIT_TAG=$CI_COMMIT_REF_NAME
+        - CI_COMMIT_TAG="测试版:$(date '+%Y-%m-%d')"
+        - fi
+        - COMMIT_MESSAGE=`cat ./dist/release.txt`
+        - rm -f ./dist/release.txt
+        # 将单行格式转为多行格式
+        - LF=$'\\\x0A'
+        - echo $UPLOAD_PRIVATE_KEY | sed -e "s/-----BEGIN RSA PRIVATE KEY-----/&${LF}/" -e "s/-----END RSA PRIVATE KEY-----/${LF}&${LF}/" | sed -e "s/[^[:blank:]]\{64\}/&${LF}/g" > private.key
+        - miniprogram-ci upload --project-path=$PWD/dist --appid=$APP_ID --upload-version=$CI_COMMIT_TAG --private-key-path=$PWD/private.key --upload-description="$COMMIT_MESSAGE"
+    environment:
+        name: production
+        url: https://mp.weixin.qq.com/wxamp/wacodepage/getcodepage
     only:
         - tags
-    tags:
-        - mac
+        - master
 ```
 
-注意，`deploy/project.config.json` 文件为 `project.config.json`的副本，但其他的 `projectname` 不同，这样做是为了解决 `已存在相同 AppID 和 projectname 的项目（路径），请修改后重试`的问题，这是因为，同一台电脑上，微信开发者工具不能有两个同名的项目
+注意，在设置-CI/CD-变量中，需要添加两个变量：
 
+APP_ID 小程序 appid
 
-另外注意，在运行自动部署时，微信开发者工具必须打开，且为登录状态
+UPLOAD_PRIVATE_KEY 小程序代码上传密钥, 需要在小程序后台获取
 
+由于配置的密钥，在运行时过去到是单行文本形式，需要转换为多行原始格式，并输出到文件，以便上传使用
+
+于是使用一下命令`- LF=$'\\\x0A'
+        - echo $UPLOAD_PRIVATE_KEY | sed -e "s/-----BEGIN RSA PRIVATE KEY-----/&${LF}/" -e "s/-----END RSA PRIVATE KEY-----/${LF}&${LF}/" | sed -e "s/[^[:blank:]]\{64\}/&${LF}/g" > private.key
+` 
 ## 相关文档
 
 + [如何编写GitLab-CI配置文件](https://zacksleo.github.io/2017/04/27/%E5%A6%82%E4%BD%95%E7%BC%96%E5%86%99GitLab-CI%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/)
