@@ -286,6 +286,187 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2018/06/16/使用Taro和Typescript进行小程序开发/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zacksleo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zacks's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/16/使用Taro和Typescript进行小程序开发/" itemprop="url">
+                  使用Taro和Typescript进行小程序开发
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-06-16 22:03:25" itemprop="dateCreated datePublished" datetime="2018-06-16T22:03:25+08:00">2018-06-16</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-06-08 08:31:32" itemprop="dateModified" datetime="2020-06-08T08:31:32+08:00">2020-06-08</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/06/16/使用Taro和Typescript进行小程序开发/" class="leancloud_visitors" data-flag-title="使用Taro和Typescript进行小程序开发">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="使用Taro和Typescript进行小程序开发"><a href="#使用Taro和Typescript进行小程序开发" class="headerlink" title="使用Taro和Typescript进行小程序开发"></a>使用Taro和Typescript进行小程序开发</h2><h2 id="使用指南"><a href="#使用指南" class="headerlink" title="使用指南"></a>使用指南</h2><p>在使用 taro 生成 Typescript 模板以后，需要做以下修改：</p>
+<h3 id="配置-eslintrc"><a href="#配置-eslintrc" class="headerlink" title="配置 .eslintrc"></a>配置 .eslintrc</h3><ul>
+<li>加入 <code>&quot;no-undef&quot;: 0,</code> 以解决变量<code>undefined</code>的问题</li>
+<li>加入 <code>&quot;react/jsx-filename-extension&quot;: [1, { &quot;extensions&quot;: [&quot;.js&quot;, &quot;.jsx&quot;] }]</code> 以解决 <code>JSX not allowed in files with extension &#39;.tsx</code></li>
+</ul>
+<h3 id="增加配置文件"><a href="#增加配置文件" class="headerlink" title="增加配置文件"></a>增加配置文件</h3><ul>
+<li>tsconfig.json</li>
+<li>tslint 文件</li>
+</ul>
+<h3 id="增加依赖库"><a href="#增加依赖库" class="headerlink" title="增加依赖库"></a>增加依赖库</h3><ul>
+<li>yarn add –dev tslint</li>
+<li>yarn add –dev tslint-react</li>
+<li>yarn add –dev ptypescript-eslint-parser</li>
+</ul>
+<h2 id="开始使用"><a href="#开始使用" class="headerlink" title="开始使用"></a>开始使用</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">yarn install</span><br></pre></td></tr></table></figure>
+<h2 id="代码静态检查"><a href="#代码静态检查" class="headerlink" title="代码静态检查"></a>代码静态检查</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn run lint</span><br></pre></td></tr></table></figure>
+<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><ul>
+<li><a href="https://taro.aotu.io/" target="_blank" rel="noopener">Taro官方文档</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2018/04/08/GitLab-CI微信小程序进行持续集成和持续部署/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -349,7 +530,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-10-22 12:28:32" itemprop="dateModified" datetime="2019-10-22T12:28:32+08:00">2019-10-22</time>
+                <time title="修改时间：2020-06-08 08:31:32" itemprop="dateModified" datetime="2020-06-08T08:31:32+08:00">2020-06-08</time>
               
             
           </span>
@@ -395,7 +576,8 @@
       
         
           
-            <h2 id="问题缘由"><a href="#问题缘由" class="headerlink" title="问题缘由"></a>问题缘由</h2><p>在微信小程序开发中，先要在本地使用微信开发者工具进行调试，如果需要在线测试，则需要将编译好的代码上传。<br>目前，只能通过微信开发者工具手动点击上传，而该过程无法与持续集成/持续部署结合在一起，本文就是为了解决能够实现自动化和持续部署的难题</p>
+            <h2 id="2020-更新"><a href="#2020-更新" class="headerlink" title="2020 更新"></a>2020 更新</h2><p>微信出了 miniprogram-ci ，可以通过命令行调用，故而改用改方案， 见 ［GitLab-CI微信小程序进行持续集成和持续部署2］</p>
+<h2 id="问题缘由"><a href="#问题缘由" class="headerlink" title="问题缘由"></a>问题缘由</h2><p>在微信小程序开发中，先要在本地使用微信开发者工具进行调试，如果需要在线测试，则需要将编译好的代码上传。<br>目前，只能通过微信开发者工具手动点击上传，而该过程无法与持续集成/持续部署结合在一起，本文就是为了解决能够实现自动化和持续部署的难题</p>
 <h2 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h2><p>微信开发者工具，提供了HTTP调用方式,其中就包括上传和自动化测试的命令，我们可以通过脚本实现自动化集成</p>
 <h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><h3 id="安装并配置-GitLab-Runner"><a href="#安装并配置-GitLab-Runner" class="headerlink" title="安装并配置 GitLab Runner"></a>安装并配置 GitLab Runner</h3><p>这部分文档在 <a href="https://docs.gitlab.com/runner/install/osx.html" target="_blank" rel="noopener">Install GitLab Runner on macOS</a></p>
 <h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>首先需要在本机上安装 <a href="https://docs.gitlab.com/runner/" target="_blank" rel="noopener">GitLab Runner</a>,  由于微信开发者工具只提供了 mac 和 windows 版本，所以目前只能在这两种系统上实现持续集成，本文讲述在 mac 的具体实现， windows 上的实现与此类似，只是相关命令和路径需要做些变更</p>
@@ -532,7 +714,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-10-22 12:28:32" itemprop="dateModified" datetime="2019-10-22T12:28:32+08:00">2019-10-22</time>
+                <time title="修改时间：2020-06-08 08:31:32" itemprop="dateModified" datetime="2020-06-08T08:31:32+08:00">2020-06-08</time>
               
             
           </span>
@@ -704,7 +886,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-10-22 12:28:32" itemprop="dateModified" datetime="2019-10-22T12:28:32+08:00">2019-10-22</time>
+                <time title="修改时间：2020-06-08 08:31:32" itemprop="dateModified" datetime="2020-06-08T08:31:32+08:00">2020-06-08</time>
               
             
           </span>
@@ -876,7 +1058,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-10-22 12:28:32" itemprop="dateModified" datetime="2019-10-22T12:28:32+08:00">2019-10-22</time>
+                <time title="修改时间：2020-06-08 08:31:32" itemprop="dateModified" datetime="2020-06-08T08:31:32+08:00">2020-06-08</time>
               
             
           </span>
@@ -1041,7 +1223,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-10-22 12:28:32" itemprop="dateModified" datetime="2019-10-22T12:28:32+08:00">2019-10-22</time>
+                <time title="修改时间：2020-06-08 08:31:32" itemprop="dateModified" datetime="2020-06-08T08:31:32+08:00">2020-06-08</time>
               
             
           </span>
@@ -1209,7 +1391,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-10-22 12:28:32" itemprop="dateModified" datetime="2019-10-22T12:28:32+08:00">2019-10-22</time>
+                <time title="修改时间：2020-06-08 08:31:32" itemprop="dateModified" datetime="2020-06-08T08:31:32+08:00">2020-06-08</time>
               
             
           </span>
@@ -1397,7 +1579,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-10-22 12:28:32" itemprop="dateModified" datetime="2019-10-22T12:28:32+08:00">2019-10-22</time>
+                <time title="修改时间：2020-06-08 08:31:32" itemprop="dateModified" datetime="2020-06-08T08:31:32+08:00">2020-06-08</time>
               
             
           </span>
@@ -1574,7 +1756,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-10-22 12:28:32" itemprop="dateModified" datetime="2019-10-22T12:28:32+08:00">2019-10-22</time>
+                <time title="修改时间：2020-06-08 08:31:32" itemprop="dateModified" datetime="2020-06-08T08:31:32+08:00">2020-06-08</time>
               
             
           </span>
@@ -1785,7 +1967,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-10-22 12:28:32" itemprop="dateModified" datetime="2019-10-22T12:28:32+08:00">2019-10-22</time>
+                <time title="修改时间：2020-06-08 08:31:32" itemprop="dateModified" datetime="2020-06-08T08:31:32+08:00">2020-06-08</time>
               
             
           </span>
@@ -1881,181 +2063,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2017/10/25/GitLab-CI使用CodeClimate评估代码质量/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zacksleo">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zacks's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/25/GitLab-CI使用CodeClimate评估代码质量/" itemprop="url">
-                  GitLab-CI使用CodeClimate评估代码质量
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2017-10-25 09:33:41" itemprop="dateCreated datePublished" datetime="2017-10-25T09:33:41+08:00">2017-10-25</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-10-22 12:28:32" itemprop="dateModified" datetime="2019-10-22T12:28:32+08:00">2019-10-22</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2017/10/25/GitLab-CI使用CodeClimate评估代码质量/" class="leancloud_visitors" data-flag-title="GitLab-CI使用CodeClimate评估代码质量">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Code Climate 是一个代码测试工具, 它可以帮助你进行代码冗余检测、质量评估，同时支持多种语言，如PHP, Ruby, JavaScript, CSS, Golang, Python 等。</p>
-<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><h3 id="配置GitLab-Runner"><a href="#配置GitLab-Runner" class="headerlink" title="配置GitLab Runner"></a>配置GitLab Runner</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[[runners]]</span><br><span class="line">  ....</span><br><span class="line">  executor = &quot;docker&quot;</span><br><span class="line">  [runners.docker]</span><br><span class="line">    tls_verify = false</span><br><span class="line">    image = &quot;docker:latest&quot;</span><br><span class="line">    privileged = true</span><br><span class="line">    disable_cache = false</span><br><span class="line">    cache_dir = &quot;cache&quot;</span><br><span class="line">    volumes = [&quot;/cache&quot;, &quot;/var/run/docker.sock:/var/run/docker.sock&quot;, &quot;/tmp/builds:/builds&quot;]</span><br><span class="line">    shm_size = 0</span><br></pre></td></tr></table></figure>
-<p>注意, 需要增加一个 <code>/tmp/builds:/builds</code> , 这里用于映射放代码。否则根据官方文档中的描述，无法正常实现</p>
-<p>为了能使用宿主机的docker 缓存, 加快构建速度, 这里使用 sock 绑定的方式使用docker, 不使用 docker in docker </p>
-<h3 id="配置-gitlab-ci-yml-文件"><a href="#配置-gitlab-ci-yml-文件" class="headerlink" title="配置 .gitlab-ci.yml 文件"></a>配置 .gitlab-ci.yml 文件</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">codeclimate:</span></span><br><span class="line"><span class="attr">  image:</span> <span class="attr">docker:latest</span></span><br><span class="line"><span class="attr">  script:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">docker</span> <span class="string">pull</span> <span class="string">codeclimate/codeclimate</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">VOLUME_PATH=/tmp/builds"$(echo</span> <span class="string">$PWD</span> <span class="string">| sed 's|^/[^/]*||')"</span></span><br><span class="line"><span class="string">    - docker run -v /tmp/cc:/tmp/cc -v $VOLUME_PATH:/code -v /var/run/docker.sock:/var/run/docker.sock codeclimate/codeclimate validate-config</span></span><br><span class="line"><span class="string">    - docker run --env CODECLIMATE_CODE="$VOLUME_PATH" -v /tmp/cc:/tmp/cc -v $VOLUME_PATH:/code -v /var/run/docker.sock:/var/run/docker.sock codeclimate/codeclimate analyze -f text</span></span><br></pre></td></tr></table></figure>
-<h3 id="配置-codeclimate-yml"><a href="#配置-codeclimate-yml" class="headerlink" title="配置 .codeclimate.yml"></a>配置 .codeclimate.yml</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">engines:</span></span><br><span class="line"><span class="attr">  duplication:</span></span><br><span class="line"><span class="attr">    enabled:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">    config:</span></span><br><span class="line"><span class="attr">      languages:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">javascript</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">php</span></span><br><span class="line"><span class="attr">  csslint:</span></span><br><span class="line"><span class="attr">      enabled:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  eslint:</span></span><br><span class="line"><span class="attr">    enabled:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  fixme:</span></span><br><span class="line"><span class="attr">    enabled:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  phpmd:</span></span><br><span class="line"><span class="attr">    enabled:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">ratings:</span></span><br><span class="line"><span class="attr">  paths:</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">"**.js"</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">"**.css"</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">"**.php"</span></span><br><span class="line"><span class="attr">exclude_paths:</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">tests/</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">vendor/</span></span><br></pre></td></tr></table></figure>
-<p>相关配置请参考<a href="https://docs.codeclimate.com/docs" target="_blank" rel="noopener">官方文档</a></p>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
-<li><a href="https://docs.codeclimate.com/docs/list-of-engines" target="_blank" rel="noopener">CodeClimate支持的语言和引擎</a></li>
-<li><a href="https://docs.codeclimate.com/docs/list-of-engines" target="_blank" rel="noopener">GitLab-CI配置CodeClimate</a></li>
-<li><a href="https://blog.buzzell.io/codeclimate-in-gitlab-ci/" target="_blank" rel="noopener">CodeClimate in Gitlab CI</a></li>
-<li><a href="https://docs.codeclimate.com/docs" target="_blank" rel="noopener">CodeClimate官方文档</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2103,7 +2110,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">52</span>
+                    <span class="site-state-item-count">53</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2327,7 +2334,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
