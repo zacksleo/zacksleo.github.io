@@ -25,7 +25,7 @@ script:
   - git reset --hard
   - git subtree add --prefix=source/_posts docs docs --squash
   - npm install --no-optional
-  - curl https://codeload.github.com/theme-next/hexo-theme-next/tar.gz/v6.2.0 -o themes/next.tar.gz && tar zxvf themes/next.tar.gz -C themes/
+  - curl https://codeload.github.com/theme-next/hexo-theme-next/tar.gz/refs/tags/v6.2.0 -o themes/next.tar.gz && tar zxvf themes/next.tar.gz -C themes/
   - mv themes/hexo-theme-next-* themes/next &&  mv themes/_config.yml themes/next/_config.yml && mv themes/gitment.swig themes/next/layout/_third-party/comments/gitment.swig
   - cat themes/next/layout/_third-party/comments/gitment.swig
 after_script:
