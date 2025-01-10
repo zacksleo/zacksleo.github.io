@@ -67,16 +67,16 @@ jobs:
       # 配置 Git 用户信息
       - name: Set up Git user for master deploy
         run: |
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
 
       # 将构建后的文件推送到 master 分支
-      - name: Deploy tomaster
+      - name: Deploy to master
         run: |
           cd hexo-theme-next/public  # Hexo 编译后的静态文件目录
           cp -r * ../../deploy/  # 将文件复制到 deploy 目录
 
-      - name: Commit and push tomaster
+      - name: Commit and push to master
         run: |
           cd deploy
           git add .
