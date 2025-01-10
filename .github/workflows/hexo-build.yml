@@ -33,7 +33,7 @@ jobs:
       - name: Merge markdown files
         run: |
           mkdir -p hexo-theme-next/source/_posts  # 确保 Hexo 的文章目录存在
-          cp -r ./docs/* ./hexo-theme-next/source/_posts/  # 将 docs 分支的 markdown 文件复制到 Hexo 主题的 _posts 目录
+          cp *.md ./hexo-theme-next/source/_posts/  # 将 docs 分支的 markdown 文件复制到 Hexo 主题的 _posts 目录
 
       # 安装 Node.js 和 Hexo
       - name: Set up Node.js
