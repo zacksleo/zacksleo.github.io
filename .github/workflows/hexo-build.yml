@@ -46,6 +46,11 @@ jobs:
           cd hexo-theme-next
           npm install  # 安装 Hexo 依赖
 
+      # 安装 Hexo CLI
+      - name: Install Hexo CLI
+        run: |
+          npm install hexo-cli -g  # 安装 Hexo CLI
+
       # 生成 Hexo 编译文件
       - name: Build Hexo site
         run: |
