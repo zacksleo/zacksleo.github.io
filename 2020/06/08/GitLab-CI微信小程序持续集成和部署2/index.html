@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="HSx2g2b2GklalbFMNOUlf16CH8h8aJMsL6Wa1CvfqSw" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.2.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.2.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="问题缘由在微信小程序开发中，先要在本地使用微信开发者工具进行调试，如果需要在线测试，则需要将编译好的代码上传。目前，只能通过微信开发者工具手动点击上传，而该过程无法与持续集成/持续部署结合在一起，本文就是为了解决能够实现自动化和持续部署的难题 实现原理微信 miniprogram-ci 库，提供了命令行调用方式,其中就包括上传的命令，我们可以通过脚本实现自动化集成 步骤安装并配置 GitLab R">
+<meta name="keywords" content="DevOps,GitLab-CI,小程序,持续部署,微信小程序">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GitLab-CI微信小程序进行持续集成和部署2">
+<meta property="og:url" content="https://zacksleo.github.io/2020/06/08/GitLab-CI微信小程序持续集成和部署2/index.html">
+<meta property="og:site_name" content="zacks&#39;s blog">
+<meta property="og:description" content="问题缘由在微信小程序开发中，先要在本地使用微信开发者工具进行调试，如果需要在线测试，则需要将编译好的代码上传。目前，只能通过微信开发者工具手动点击上传，而该过程无法与持续集成/持续部署结合在一起，本文就是为了解决能够实现自动化和持续部署的难题 实现原理微信 miniprogram-ci 库，提供了命令行调用方式,其中就包括上传的命令，我们可以通过脚本实现自动化集成 步骤安装并配置 GitLab R">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2025-01-10T17:27:41.713Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="GitLab-CI微信小程序进行持续集成和部署2">
+<meta name="twitter:description" content="问题缘由在微信小程序开发中，先要在本地使用微信开发者工具进行调试，如果需要在线测试，则需要将编译好的代码上传。目前，只能通过微信开发者工具手动点击上传，而该过程无法与持续集成/持续部署结合在一起，本文就是为了解决能够实现自动化和持续部署的难题 实现原理微信 miniprogram-ci 库，提供了命令行调用方式,其中就包括上传的命令，我们可以通过脚本实现自动化集成 步骤安装并配置 GitLab R">
+
+
+
+
+
+
+  <link rel="canonical" href="https://zacksleo.github.io/2020/06/08/GitLab-CI微信小程序持续集成和部署2/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>GitLab-CI微信小程序进行持续集成和部署2 | zacks's blog</title>
+  
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-80154310-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-80154310-2');
+</script>
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">zacks's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">清净无为</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2020/06/08/GitLab-CI微信小程序持续集成和部署2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zacksleo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zacks's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">GitLab-CI微信小程序进行持续集成和部署2
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-06-08 08:05:26" itemprop="dateCreated datePublished" datetime="2020-06-08T08:05:26+08:00">2020-06-08</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2025-01-11 01:27:41" itemprop="dateModified" datetime="2025-01-11T01:27:41+08:00">2025-01-11</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/06/08/GitLab-CI微信小程序持续集成和部署2/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count gitment-comments-count" data-xid="/2020/06/08/GitLab-CI微信小程序持续集成和部署2/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2020/06/08/GitLab-CI微信小程序持续集成和部署2/" class="leancloud_visitors" data-flag-title="GitLab-CI微信小程序进行持续集成和部署2">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="问题缘由"><a href="#问题缘由" class="headerlink" title="问题缘由"></a>问题缘由</h2><p>在微信小程序开发中，先要在本地使用微信开发者工具进行调试，如果需要在线测试，则需要将编译好的代码上传。<br>目前，只能通过微信开发者工具手动点击上传，而该过程无法与持续集成/持续部署结合在一起，本文就是为了解决能够实现自动化和持续部署的难题</p>
+<h2 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h2><p>微信 miniprogram-ci 库，提供了命令行调用方式,其中就包括上传的命令，我们可以通过脚本实现自动化集成</p>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><h3 id="安装并配置-GitLab-Runner"><a href="#安装并配置-GitLab-Runner" class="headerlink" title="安装并配置 GitLab Runner"></a>安装并配置 GitLab Runner</h3><p>这部分文档在 <a href="https://docs.gitlab.com/runner/install/osx.html" target="_blank" rel="noopener">Install GitLab Runner on macOS</a></p>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>首先需要在本机上安装 <a href="https://docs.gitlab.com/runner/" target="_blank" rel="noopener">GitLab Runner</a>,  由于微信开发者工具只提供了 mac 和 windows 版本，所以目前只能在这两种系统上实现持续集成，本文讲述在 mac 的具体实现， windows 上的实现与此类似，只是相关命令和路径需要做些变更</p>
+<h4 id="注册-GitLab-Runner"><a href="#注册-GitLab-Runner" class="headerlink" title="注册 GitLab Runner"></a>注册 GitLab Runner</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gitlab-runner register</span><br></pre></td></tr></table></figure>
+<h3 id="编写-gitlab-ci-yml"><a href="#编写-gitlab-ci-yml" class="headerlink" title="编写 .gitlab-ci.yml"></a>编写 <code>.gitlab-ci.yml</code></h3><p>在此之前，你需要对GitLab-CI有一定的掌握，这部分资料参考下方的相关文档</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">image:</span> <span class="attr">node:alpine</span></span><br><span class="line"></span><br><span class="line"><span class="attr">before_script:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">export</span> <span class="string">APP_ENV=testing</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">yarn</span> <span class="string">config</span> <span class="string">set</span> <span class="string">registry</span> <span class="string">'https://registry.npm.taobao.org'</span></span><br><span class="line"><span class="attr">stages:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">build</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">deploy</span></span><br><span class="line"></span><br><span class="line"><span class="attr">variables:</span></span><br><span class="line"><span class="attr">    NPM_CONFIG_CACHE:</span> <span class="string">"/cache/npm"</span></span><br><span class="line"><span class="attr">    YARN_CACHE_FOLDER:</span> <span class="string">"/cache/yarn"</span></span><br><span class="line"><span class="attr">    DOCKER_DRIVER:</span> <span class="string">overlay2</span></span><br><span class="line"><span class="attr">build-package:</span></span><br><span class="line"><span class="attr">    stage:</span> <span class="string">build</span></span><br><span class="line"><span class="attr">    dependencies:</span> <span class="string">[]</span></span><br><span class="line"><span class="attr">    cache:</span></span><br><span class="line"><span class="attr">      key:</span> <span class="string">"$CI_COMMIT_REF_NAME"</span></span><br><span class="line"><span class="attr">      policy:</span> <span class="string">pull</span></span><br><span class="line"><span class="attr">      paths:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">node_modules</span></span><br><span class="line"><span class="attr">    script:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">if</span> <span class="string">[</span> <span class="string">!</span> <span class="bullet">-d</span> <span class="string">"node_modules"</span> <span class="string">];</span> <span class="string">then</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">yarn</span> <span class="string">install</span> <span class="bullet">--cache-folder</span> <span class="string">/cache/yarn</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">fi</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">yarn</span> <span class="string">build</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">cp</span> <span class="string">deploy/project.config.json</span> <span class="string">./dist/project.config.json</span></span><br><span class="line"><span class="attr">    artifacts:</span></span><br><span class="line"><span class="attr">        name:</span> <span class="string">"wxpkg-dlkhgl-$CI_COMMIT_TAG"</span></span><br><span class="line"><span class="attr">        untracked:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">        paths:</span></span><br><span class="line"><span class="bullet">            -</span> <span class="string">dist</span></span><br><span class="line"><span class="attr">    only:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">tags</span></span><br><span class="line"><span class="attr">    tags:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">docker</span></span><br><span class="line"><span class="attr">release:</span></span><br><span class="line"><span class="attr">    stage:</span> <span class="string">deploy</span></span><br><span class="line"><span class="attr">    before_script:</span> <span class="string">[]</span></span><br><span class="line"><span class="attr">    dependencies:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">build-package</span></span><br><span class="line"><span class="attr">    variables:</span></span><br><span class="line"><span class="attr">        GIT_STRATEGY:</span> <span class="string">none</span></span><br><span class="line"><span class="attr">    script:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">yarn</span> <span class="string">global</span> <span class="string">add</span> <span class="string">miniprogram-ci</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">if</span> <span class="string">[[</span> <span class="bullet">-z</span> <span class="string">"$CI_COMMIT_TAG"</span> <span class="string">]];then</span></span><br><span class="line">        <span class="comment">#- CI_COMMIT_TAG=$CI_COMMIT_REF_NAME</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">CI_COMMIT_TAG="测试版:$(date</span> <span class="string">'+%Y-%m-%d'</span><span class="string">)"</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">fi</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">COMMIT_MESSAGE=`cat</span> <span class="string">./dist/release.txt`</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">rm</span> <span class="bullet">-f</span> <span class="string">./dist/release.txt</span></span><br><span class="line">        <span class="comment"># 将单行格式转为多行格式</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">LF=$'\\\x0A'</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">echo</span> <span class="string">$UPLOAD_PRIVATE_KEY</span> <span class="string">| sed -e "s/-----BEGIN RSA PRIVATE KEY-----/&amp;$&#123;LF&#125;/" -e "s/-----END RSA PRIVATE KEY-----/$&#123;LF&#125;&amp;$&#123;LF&#125;/" | sed -e "s/[^[:blank:]]\&#123;64\&#125;/&amp;$&#123;LF&#125;/g" &gt; private.key</span></span><br><span class="line"><span class="string">        - miniprogram-ci upload --project-path=$PWD/dist --appid=$APP_ID --upload-version=$CI_COMMIT_TAG --private-key-path=$PWD/private.key --upload-description="$COMMIT_MESSAGE"</span></span><br><span class="line"><span class="string"></span><span class="attr">    environment:</span></span><br><span class="line"><span class="attr">        name:</span> <span class="string">production</span></span><br><span class="line"><span class="attr">        url:</span> <span class="attr">https://mp.weixin.qq.com/wxamp/wacodepage/getcodepage</span></span><br><span class="line"><span class="attr">    only:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">tags</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
+<p>注意，在设置-CI/CD-变量中，需要添加两个变量：</p>
+<p>APP_ID 小程序 appid</p>
+<p>UPLOAD_PRIVATE_KEY 小程序代码上传密钥, 需要在小程序后台获取</p>
+<p>由于配置的密钥，在运行时过去到是单行文本形式，需要转换为多行原始格式，并输出到文件，以便上传使用</p>
+<p>于是使用一下命令`- LF=$’\\x0A’</p>
+<pre><code>- echo $UPLOAD_PRIVATE_KEY | sed -e &quot;s/-----BEGIN RSA PRIVATE KEY-----/&amp;${LF}/&quot; -e &quot;s/-----END RSA PRIVATE KEY-----/${LF}&amp;${LF}/&quot; | sed -e &quot;s/[^[:blank:]]\{64\}/&amp;${LF}/g&quot; &gt; private.key
+</code></pre><p>` </p>
+<h2 id="相关文档"><a href="#相关文档" class="headerlink" title="相关文档"></a>相关文档</h2><ul>
+<li><a href="https://zacksleo.github.io/2017/04/27/%E5%A6%82%E4%BD%95%E7%BC%96%E5%86%99GitLab-CI%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/">如何编写GitLab-CI配置文件</a></li>
+<li><a href="https://zacksleo.github.io/2017/04/18/GitLab-CI%E4%B8%AD%E7%9A%84artifacts%E4%BD%BF%E7%94%A8%E7%A0%94%E7%A9%B6/">GitLab-CI中的artifacts使用研究</a></li>
+<li><a href="https://zacksleo.github.io/2018/01/26/GitLab-CI%E4%BD%BF%E7%94%A8cache%E5%8A%A0%E9%80%9F%E6%9E%84%E5%BB%BA%E8%BF%87%E7%A8%8B/">GitLab-CI使用cache加速构建过程</a></li>
+<li><a href="https://developers.weixin.qq.com/miniprogram/dev/devtools/http.html" target="_blank" rel="noopener">微信开发者工具HTTP调用</a></li>
+<li><a href="https://docs.gitlab.com/runner/install/" target="_blank" rel="noopener">Install GitLab Runner</a></li>
+<li><a href="https://docs.gitlab.com/runner/register/index.html" target="_blank" rel="noopener">Registering Runners</a></li>
+</ul>
+
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>Thanks for reading.</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="https://ws1.sinaimg.cn/large/675eb504gy1fqguzrumh6j20yi1aun1z.jpg" alt="zacksleo 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/DevOps/" rel="tag"># DevOps</a>
+          
+            <a href="/tags/GitLab-CI/" rel="tag"># GitLab-CI</a>
+          
+            <a href="/tags/小程序/" rel="tag"># 小程序</a>
+          
+            <a href="/tags/持续部署/" rel="tag"># 持续部署</a>
+          
+            <a href="/tags/微信小程序/" rel="tag"># 微信小程序</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/24/使用Gin开发Restful接口/" rel="next" title="使用Gin开发Restful接口并进行自动化测试">
+                <i class="fa fa-chevron-left"></i> 使用Gin开发Restful接口并进行自动化测试
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/08/25/互联网向左，区块链向右/" rel="prev" title="互联网向左，区块链向右">
+                互联网向左，区块链向右 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">zacksleo</p>
+              <p class="site-description motion-element" itemprop="description">Full Stack Web Developer</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">56</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">89</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/zacksleo" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题缘由"><span class="nav-number">1.</span> <span class="nav-text">问题缘由</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现原理"><span class="nav-number">2.</span> <span class="nav-text">实现原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#步骤"><span class="nav-number">3.</span> <span class="nav-text">步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装并配置-GitLab-Runner"><span class="nav-number">3.1.</span> <span class="nav-text">安装并配置 GitLab Runner</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装"><span class="nav-number">3.1.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注册-GitLab-Runner"><span class="nav-number">3.1.2.</span> <span class="nav-text">注册 GitLab Runner</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编写-gitlab-ci-yml"><span class="nav-number">3.2.</span> <span class="nav-text">编写 .gitlab-ci.yml</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相关文档"><span class="nav-number">4.</span> <span class="nav-text">相关文档</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2025</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zacksleo</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.2.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.2.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.2.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.2.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.2.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.2.0"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: '1591574726000',
+            owner: 'zacksleo',
+            repo: 'zacksleo.github.io',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '923e43b826a027e48d5ce4745cb01f25bf9c8585',
+            
+                client_id: 'fcf50191d703c4f37d35'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("6ewRRbjRaYybcLL2fRlMKDtT-gzGzoHsz", "NhhOjGzUPay4gOs6hP0RzgdH");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            
+              var $element = $(document.getElementById(url));
+              $element.find('.leancloud-visitors-count').text(counter.get('time'));
+            
+            counter.save(null, {
+              success: function(counter) {
+                
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            
+              var newcounter = new Counter();
+              /* Set ACL */
+              var acl = new AV.ACL();
+              acl.setPublicReadAccess(true);
+              acl.setPublicWriteAccess(true);
+              newcounter.setACL(acl);
+              /* End Set ACL */
+              newcounter.set("title", title);
+              newcounter.set("url", url);
+              newcounter.set("time", 1);
+              newcounter.save(null, {
+                success: function(newcounter) {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+                },
+                error: function(newcounter, error) {
+                  console.log('Failed to create');
+                }
+              });
+            
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

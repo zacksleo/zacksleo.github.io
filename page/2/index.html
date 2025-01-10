@@ -1,0 +1,2863 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="HSx2g2b2GklalbFMNOUlf16CH8h8aJMsL6Wa1CvfqSw" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.2.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.2.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Full Stack Web Developer">
+<meta name="keywords" content="PHP, Yii, Laravel, Python, Full Stack Web Developer">
+<meta property="og:type" content="website">
+<meta property="og:title" content="zacks&#39;s blog">
+<meta property="og:url" content="https://zacksleo.github.io/page/2/index.html">
+<meta property="og:site_name" content="zacks&#39;s blog">
+<meta property="og:description" content="Full Stack Web Developer">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="zacks&#39;s blog">
+<meta name="twitter:description" content="Full Stack Web Developer">
+
+
+
+
+
+
+  <link rel="canonical" href="https://zacksleo.github.io/page/2/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>zacks's blog</title>
+  
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-80154310-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-80154310-2');
+</script>
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+  page-home">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">zacks's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">清净无为</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2018/12/16/GitLab-CI对ReactNative项目自动打包和部署(安卓篇)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zacksleo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zacks's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/16/GitLab-CI对ReactNative项目自动打包和部署(安卓篇)/" itemprop="url">
+                  GitLab-CI对ReactNative项目自动打包和部署(安卓篇)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-12-16 11:21:26" itemprop="dateCreated datePublished" datetime="2018-12-16T11:21:26+08:00">2018-12-16</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2025-01-11 01:27:41" itemprop="dateModified" datetime="2025-01-11T01:27:41+08:00">2025-01-11</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/12/16/GitLab-CI对ReactNative项目自动打包和部署(安卓篇)/" class="leancloud_visitors" data-flag-title="GitLab-CI对ReactNative项目自动打包和部署(安卓篇)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h2><p>本文讲述了如何使用 GitLab-CI 对 ReactNative 项目，自动打包和部署，由于安卓环境更易于在Docker上搭建环境，所以先实现了安卓应用的打包和部署。</p>
+<h2 id="环境依赖"><a href="#环境依赖" class="headerlink" title="环境依赖"></a>环境依赖</h2><ol>
+<li>Docker环境使用 registry.gitlab.com/wldhx/gitlab-ci-react-native-android:master 镜像, 该镜像包含了 ReactNative 打包安卓应用所需要的所有依赖</li>
+<li>注册一个 <a href="https://fir.im/" target="_blank" rel="noopener">fir.im</a> 账号</li>
+<li>Python3。 部署应用采用的 fir.im 平台发布，因此实现了一段用于自动上传 apk 的 Python 脚本</li>
+<li>Node。 用于安卓依赖和格式化检查</li>
+</ol>
+<h2 id="编写GitLab-CI-脚本"><a href="#编写GitLab-CI-脚本" class="headerlink" title="编写GitLab-CI 脚本"></a>编写GitLab-CI 脚本</h2><p><code>$ cat .gitlab-ci.yml</code></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">image:</span> <span class="string">node</span></span><br><span class="line"></span><br><span class="line"><span class="attr">stages:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">test</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">build</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">deploy</span></span><br><span class="line"></span><br><span class="line"><span class="attr">cache:</span></span><br><span class="line"><span class="attr">  key:</span> <span class="string">$&#123;CI_PROJECT_ID&#125;</span></span><br><span class="line"><span class="attr">  paths:</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">android/.gradle/</span></span><br><span class="line"></span><br><span class="line"><span class="attr">variables:</span></span><br><span class="line"><span class="attr">    NPM_CONFIG_CACHE:</span> <span class="string">"/cache/npm"</span></span><br><span class="line"><span class="attr">    YARN_CACHE_FOLDER:</span> <span class="string">"/cache/yarn"</span></span><br><span class="line"><span class="attr">    DOCKER_DRIVER:</span> <span class="string">overlay2</span></span><br><span class="line"><span class="attr">lint:</span></span><br><span class="line"><span class="attr">    stage:</span> <span class="string">test</span></span><br><span class="line"><span class="attr">    dependencies:</span> <span class="string">[]</span></span><br><span class="line"><span class="attr">    cache:</span></span><br><span class="line"><span class="attr">      key:</span> <span class="string">"$CI_COMMIT_REF_NAME"</span></span><br><span class="line"><span class="attr">      policy:</span> <span class="string">pull</span></span><br><span class="line"><span class="attr">      paths:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">node_modules</span></span><br><span class="line"><span class="attr">    script:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">if</span> <span class="string">[</span> <span class="string">!</span> <span class="bullet">-d</span> <span class="string">"node_modules"</span> <span class="string">];</span> <span class="string">then</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">yarn</span> <span class="string">install</span> <span class="bullet">--cache-folder</span> <span class="string">/cache/yarn</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">fi</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">yarn</span> <span class="string">run</span> <span class="string">lint</span></span><br><span class="line"><span class="attr">    except:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">master</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">tags</span></span><br><span class="line"><span class="attr">    tags:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">docker</span></span><br><span class="line"></span><br><span class="line"><span class="attr">build-package:</span></span><br><span class="line"><span class="attr">    stage:</span> <span class="string">test</span></span><br><span class="line"><span class="attr">    dependencies:</span> <span class="string">[]</span></span><br><span class="line"><span class="attr">    cache:</span></span><br><span class="line"><span class="attr">      key:</span> <span class="string">"$CI_COMMIT_REF_NAME"</span></span><br><span class="line"><span class="attr">      policy:</span> <span class="string">pull</span></span><br><span class="line"><span class="attr">      paths:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">node_modules</span></span><br><span class="line"><span class="attr">    script:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">yarn</span> <span class="string">install</span></span><br><span class="line"><span class="attr">    artifacts:</span></span><br><span class="line"><span class="attr">        name:</span> <span class="string">"node_modules"</span></span><br><span class="line"><span class="attr">        untracked:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">        expire_in:</span> <span class="number">60</span> <span class="string">mins</span></span><br><span class="line"><span class="attr">        paths:</span></span><br><span class="line"><span class="bullet">            -</span> <span class="string">node_modules</span></span><br><span class="line"><span class="attr">    only:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">master</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">tags</span></span><br><span class="line"><span class="attr">    tags:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">docker</span></span><br><span class="line"></span><br><span class="line"><span class="attr">build-android:</span></span><br><span class="line"><span class="attr">    image:</span> <span class="string">registry.gitlab.com/wldhx/gitlab-ci-react-native-android:master</span></span><br><span class="line"><span class="attr">    stage:</span> <span class="string">build</span></span><br><span class="line"><span class="attr">    dependencies:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">build-package</span></span><br><span class="line"><span class="attr">    script:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">cd</span> <span class="string">android</span> <span class="string">&amp;&amp;</span> <span class="string">./gradlew</span> <span class="string">assembleRelease</span> <span class="bullet">--no-daemon</span></span><br><span class="line"><span class="attr">    artifacts:</span></span><br><span class="line"><span class="attr">        expire_in:</span> <span class="number">7</span> <span class="string">days</span></span><br><span class="line"><span class="attr">        paths:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">android/app/build/outputs/apk/</span></span><br><span class="line"><span class="attr">    only:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">master</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">tags</span></span><br><span class="line"></span><br><span class="line"><span class="attr">release-android:</span></span><br><span class="line"><span class="attr">    image:</span> <span class="attr">python:3</span></span><br><span class="line"><span class="attr">    stage:</span> <span class="string">deploy</span></span><br><span class="line"><span class="attr">    cache:</span> <span class="string">&#123;&#125;</span></span><br><span class="line"><span class="attr">    dependencies:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">build-android</span></span><br><span class="line"><span class="attr">    script:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">pip</span> <span class="string">install</span> <span class="bullet">-r</span> <span class="string">requirements.txt</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">if</span> <span class="string">[[</span> <span class="bullet">-z</span> <span class="string">"$CI_COMMIT_TAG"</span> <span class="string">]];then</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">echo</span> <span class="string">$(git</span> <span class="string">log</span> <span class="bullet">-3</span> <span class="bullet">--pretty=%s</span> <span class="string">| tail -1) &gt; ./release.txt</span></span><br><span class="line"><span class="string">        - else</span></span><br><span class="line"><span class="string">        - echo $(git tag -l --format='%(contents)' $CI_COMMIT_TAG) &gt; ./release.txt</span></span><br><span class="line"><span class="string">        - fi</span></span><br><span class="line"><span class="string">        - python ./upload.py</span></span><br><span class="line"><span class="string"></span><span class="attr">    only:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">master</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">tags</span></span><br></pre></td></tr></table></figure>
+<p>该脚本分为三个阶段，第一阶段进行格式化检查，和安装 npm 依赖，第二阶段用于构建 apk, 第三阶段将apk上传到 fir.im 平台上，<br>其中 release.txt 用于存储最近的更新日志，便于在上传 apk 时，加上对应信息。</p>
+<p>requirement.txt 文件中则使用了<code>request</code>库:</p>
+<p><code>$ cat requirement.txt</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">requests</span><br></pre></td></tr></table></figure>
+<p>upload.py 文件则调用fir.im的上传API, 则 apk 上传到改平台，需要注意的时，api_token 需要在 fir.im 平台的右上角个人信息处获取</p>
+<p><code>$ cat upload.py</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">file_get_contents</span><span class="params">(filename)</span>:</span></span><br><span class="line">    <span class="keyword">with</span> open(filename) <span class="keyword">as</span> f:</span><br><span class="line">        <span class="keyword">return</span> f.read()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">r = requests.post(</span><br><span class="line">    <span class="string">'https://api.fir.im/apps'</span>,</span><br><span class="line">    data=&#123;<span class="string">'type'</span>: <span class="string">'android'</span>,</span><br><span class="line">          <span class="string">'bundle_id'</span>: <span class="string">'com.company.package'</span>,</span><br><span class="line">          <span class="string">'api_token'</span>: <span class="string">'个人的API TOKEN'</span></span><br><span class="line">          &#125;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">data = r.json()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> os.environ.get(<span class="string">'CI_COMMIT_TAG'</span>) <span class="keyword">is</span> <span class="keyword">None</span>:</span><br><span class="line">    tag = <span class="string">'latest'</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    tag = os.environ[<span class="string">'CI_COMMIT_TAG'</span>]</span><br><span class="line"></span><br><span class="line">changelog = file_get_contents(<span class="string">'./release.txt'</span>)</span><br><span class="line"></span><br><span class="line">files = &#123;<span class="string">'file'</span>: open(</span><br><span class="line">    <span class="string">'./android/app/build/outputs/apk/release/app-release.apk'</span>, <span class="string">'rb'</span>)&#125;</span><br><span class="line">r2 = requests.post(</span><br><span class="line">    data[<span class="string">'cert'</span>][<span class="string">'binary'</span>][<span class="string">'upload_url'</span>],</span><br><span class="line">    data=&#123;</span><br><span class="line">        <span class="string">'key'</span>: data[<span class="string">'cert'</span>][<span class="string">'binary'</span>][<span class="string">'key'</span>],</span><br><span class="line">        <span class="string">'token'</span>: data[<span class="string">'cert'</span>][<span class="string">'binary'</span>][<span class="string">'token'</span>],</span><br><span class="line">        <span class="string">'x:name'</span>: <span class="string">'应用名称'</span>,</span><br><span class="line">        <span class="string">'x:version'</span>: tag,</span><br><span class="line">        <span class="string">'x:build'</span>: <span class="string">'com.company.package'</span>,</span><br><span class="line">        <span class="string">'x:changelog'</span>: changelog</span><br><span class="line">    &#125;,</span><br><span class="line">    files=files</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">print(r2.json())</span><br></pre></td></tr></table></figure>
+<h2 id="参考内容"><a href="#参考内容" class="headerlink" title="参考内容"></a>参考内容</h2><ul>
+<li><a href="https://gitlab.com/gitlab-com/community-writers/issues/12" target="_blank" rel="noopener">How to build and publish your React Native Android applications using GitLab CI</a></li>
+<li><a href="https://gitlab.com/wldhx/gitlab-ci-react-native-android" target="_blank" rel="noopener">gitlab-ci-react-native-android</a></li>
+<li><a href="https://fir.im/docs" target="_blank" rel="noopener">fir.im 开发文档</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2018/08/16/手机号国际化支持解决方案/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zacksleo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zacks's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/16/手机号国际化支持解决方案/" itemprop="url">
+                  手机号国际化支持解决方案
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-08-16 22:08:26" itemprop="dateCreated datePublished" datetime="2018-08-16T22:08:26+08:00">2018-08-16</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2025-01-11 01:27:41" itemprop="dateModified" datetime="2025-01-11T01:27:41+08:00">2025-01-11</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/08/16/手机号国际化支持解决方案/" class="leancloud_visitors" data-flag-title="手机号国际化支持解决方案">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><ul>
+<li>手机号参数对11位大陆手机号兼容  </li>
+<li>支持国际手机号，请使用形如<code>(加号)(地区编码)(一个空格)(手机号)</code>的手机格式，例如</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>地区</th>
+<th>合法格式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>中国大陆</td>
+<td>18682300424</td>
+</tr>
+<tr>
+<td>中国大陆</td>
+<td>+86 18682300424</td>
+</tr>
+<tr>
+<td>美国</td>
+<td>+1 2067925640</td>
+</tr>
+<tr>
+<td>加拿大</td>
+<td>+1 12042345678</td>
+</tr>
+<tr>
+<td>英国</td>
+<td>+44 7400123456</td>
+</tr>
+<tr>
+<td>澳大利亚</td>
+<td>+61 412345678</td>
+</tr>
+</tbody>
+</table>
+<p>所以手机格式为：以加号开头，前面是地区区号，后面是手机号码，中间保留一个空格</p>
+<ul>
+<li>如果国际手机号出现在URL中，请对手机号进行编码（urlencode）</li>
+</ul>
+<h2 id="存储和处理手机号码"><a href="#存储和处理手机号码" class="headerlink" title="存储和处理手机号码"></a>存储和处理手机号码</h2><ul>
+<li>地区编号和手机号应当分开存储</li>
+<li>增加对原11位手机号的兼容性（例如默认自动添加+86前缀）</li>
+<li>存储用户信息时，需要将<code>phone</code>和<code>country_code</code>两个信息分别存储</li>
+</ul>
+<h2 id="验证和格式化手机号"><a href="#验证和格式化手机号" class="headerlink" title="验证和格式化手机号"></a>验证和格式化手机号</h2><ul>
+<li>使用类库<code>https://github.com/googlei18n/libphonenumber</code> 或者其他语言的实现： <code>https://github.com/googlei18n/libphonenumber#third-party-ports</code></li>
+</ul>
+<h2 id="使用国际手机号测试"><a href="#使用国际手机号测试" class="headerlink" title="使用国际手机号测试"></a>使用国际手机号测试</h2><ul>
+<li>搜索可以在线接收短信验证码的平台</li>
+<li>在线接收短信验证码，进行后续测试</li>
+<li>验证码接收网站参考网址:</li>
+</ul>
+<ul>
+<li><code>http://receive-sms.com/</code></li>
+<li><code>https://tieba.baidu.com/p/3752380669</code></li>
+<li><code>http://uuxn.com/seven-recerve-sms-online-free-phone</code></li>
+<li><code>http://www.mfwu.net/receive-sms.html</code></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2018/07/06/使用API网关Kong配置反向代理和负载均衡/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zacksleo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zacks's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/06/使用API网关Kong配置反向代理和负载均衡/" itemprop="url">
+                  使用API网关Kong配置反向代理和负载均衡
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-07-06 15:02:00" itemprop="dateCreated datePublished" datetime="2018-07-06T15:02:00+08:00">2018-07-06</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2025-01-11 01:27:41" itemprop="dateModified" datetime="2025-01-11T01:27:41+08:00">2025-01-11</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/07/06/使用API网关Kong配置反向代理和负载均衡/" class="leancloud_visitors" data-flag-title="使用API网关Kong配置反向代理和负载均衡">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p><a href="https://github.com/kong/kong" target="_blank" rel="noopener">Kong</a> 是一个微服务API网关。</p>
+<blockquote>
+<p>Kong是一个云原生，快速，可扩展和分布式微服务抽象层（也称为API网关，API中间件或在某些情况下为Service Mesh）。<br>作为2015年的开源项目，其核心价值在于高性能和可扩展性。<br>Kong积极维护，广泛应用于从创业公司到Global 5000以及政府组织等公司的生产。</p>
+</blockquote>
+<p><a href="https://github.com/pantsel/konga" target="_blank" rel="noopener">Konga</a> 是一个用于管理网关Kong的管理端，通过它可以方便的进网关进行管理配置。</p>
+<p>使用网关能解决很多问题：</p>
+<ol>
+<li>解决端口和域名问题，代理后消除端口，将域名映射到端口，将服务映射成目录</li>
+<li>微服务代理，将微服务置于内网，统一由网关代理</li>
+<li>授权，可以配置授权管理，主要用于API授权</li>
+<li>负载均衡，可以增强高访问量下的可用性，解决部署时的服务中断问题</li>
+</ol>
+<p>本文主要讲述使用 Konga 对 Kong 进行网关管理配置</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>安装过程具体请参考官网文档，如果使用docker安装 Kong 和 Konga，可以参考 配置<a href="https://github.com/warnstar/basic-auth-trans/blob/master/docker-compose.yml.dist" target="_blank" rel="noopener">docker-compose</a></p>
+<h2 id="配置反向代理"><a href="#配置反向代理" class="headerlink" title="配置反向代理"></a>配置反向代理</h2><p>在 APIS 一栏，点击 <code>ADD NEW API</code> 按钮，添加一个代理：</p>
+<ul>
+<li>其中，Name 为显示名称，可任意填写；</li>
+<li>Hosts 为所要使用的域名，如果不填写，则使用网关绑定的域名；如果填写，则可通过该域名访问；</li>
+<li>Uris 为访问路径，如果需要将某个服务映射为一个目录，则此处需要配置; </li>
+<li>Upstream URL 为上游地址，即微服务实际地址，另外可将微服务置于内网，此处即为内网地址。</li>
+</ul>
+<p>需要注意的是，如果页面中有301/302跳转，需要将 Preserve Host 勾选，以保证跳转后，header中携带的 Location 中的域名为代理后的域名，否则会出现实际域名/内网域名，造成混乱，甚至暴露微服务地址</p>
+<h3 id="示例一：普通反向代理"><a href="#示例一：普通反向代理" class="headerlink" title="示例一：普通反向代理"></a>示例一：普通反向代理</h3><table>
+<thead>
+<tr>
+<th>配置项</th>
+<th>内容</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name</td>
+<td>dashboard</td>
+<td>只是为了方便识别</td>
+</tr>
+<tr>
+<td>Hosts</td>
+<td>dashboard.xxx.com</td>
+<td>绑定的域名，类似于vhosts</td>
+</tr>
+<tr>
+<td>Uris</td>
+<td>/</td>
+<td>绑定目录</td>
+</tr>
+<tr>
+<td>Methods</td>
+<td></td>
+<td>请求方法，默认不填</td>
+</tr>
+<tr>
+<td>Upstream URL</td>
+<td><a href="http://192.168.0.2:8080" target="_blank" rel="noopener">http://192.168.0.2:8080</a></td>
+<td>实际微服务地址，建议使用内网ip, 并将该服务屏蔽外网访问</td>
+</tr>
+<tr>
+<td>Strip uri</td>
+<td>YES</td>
+<td></td>
+</tr>
+<tr>
+<td>Preserve Host</td>
+<td>YES</td>
+<td>转发时保留域名，处理301问题</td>
+</tr>
+<tr>
+<td>Https only</td>
+<td>YES</td>
+<td>如果不使用https，不勾选</td>
+</tr>
+</tbody>
+</table>
+<h2 id="配置负载均衡"><a href="#配置负载均衡" class="headerlink" title="配置负载均衡"></a>配置负载均衡</h2><p>需要注意的是，如果要使用负载均衡，需要配置 上游 (UPSTREAMS)。</p>
+<p>在 UPSTREAMS 一栏，点击添加，Name 为一个域名形式的上游名称，如 <code>dashboard.upstream.xxx.com</code>, 添加完后，点击详情里面的Targets，添加一个目标，<br>Target 为实际的微服务地址，如 <code>192.168.0.1:8080</code>, 注意这里不写http协议，只写ip或域名。</p>
+<p>一个 UPSTREAMS 可以配置多个 Targets, 针对每个 Targets 设置不同的 Weight，即实现了负载均衡。</p>
+<h3 id="示例二：负载均衡"><a href="#示例二：负载均衡" class="headerlink" title="示例二：负载均衡"></a>示例二：负载均衡</h3><p>UPSTREAMS 配置</p>
+<table>
+<thead>
+<tr>
+<th>配置项</th>
+<th>内容</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name</td>
+<td>coupon.api.foundation.com</td>
+<td>类域名的别名</td>
+</tr>
+</tbody>
+</table>
+<p>Targets 配置</p>
+<table>
+<thead>
+<tr>
+<th>配置项</th>
+<th>内容</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Target</td>
+<td>192.168.0.2:8001</td>
+<td>微服务1的地址（建议使用内网）</td>
+</tr>
+<tr>
+<td>WEIGHT</td>
+<td>100</td>
+<td>权重</td>
+</tr>
+</tbody>
+</table>
+<p>Targets2 配置</p>
+<table>
+<thead>
+<tr>
+<th>配置项</th>
+<th>内容</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Target</td>
+<td>192.168.0.3:8001</td>
+<td>微服务1的地址</td>
+</tr>
+<tr>
+<td>WEIGHT</td>
+<td>100</td>
+<td>权重</td>
+</tr>
+</tbody>
+</table>
+<p>…</p>
+<p>Apis 配置</p>
+<table>
+<thead>
+<tr>
+<th>配置项</th>
+<th>内容</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name</td>
+<td>coupon</td>
+<td>名称，任意</td>
+</tr>
+<tr>
+<td>Hosts</td>
+<td></td>
+<td>留空使用网关默认的域名，如 api.xxx.com</td>
+</tr>
+<tr>
+<td>Uris</td>
+<td>/coupon</td>
+<td>通过 api.xxx.com/coupon 访问该服务</td>
+</tr>
+<tr>
+<td>Methods</td>
+<td></td>
+<td>留空不限制</td>
+</tr>
+<tr>
+<td>Upstream URL</td>
+<td><a href="http://coupon.api.foundation.com/api/" target="_blank" rel="noopener">http://coupon.api.foundation.com/api/</a></td>
+<td>这里为配置的 UPSTREAMS 里的 Name</td>
+</tr>
+<tr>
+<td>Strip uri</td>
+<td>YES</td>
+<td></td>
+</tr>
+<tr>
+<td>Preserve Host</td>
+<td>YES</td>
+<td></td>
+</tr>
+<tr>
+<td>Https only</td>
+<td>YES</td>
+<td>如果不使用https，不勾选</td>
+</tr>
+</tbody>
+</table>
+<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><ul>
+<li><a href="https://github.com/kong/kong" target="_blank" rel="noopener">Kong</a></li>
+<li><a href="https://github.com/pantsel/konga" target="_blank" rel="noopener">Konga</a></li>
+<li><a href="https://github.com/warnstar/basic-auth-trans" target="_blank" rel="noopener">basic-auth-trans</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2018/06/16/使用Taro和Typescript进行小程序开发/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zacksleo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zacks's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/16/使用Taro和Typescript进行小程序开发/" itemprop="url">
+                  使用Taro和Typescript进行小程序开发
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-06-16 22:03:25" itemprop="dateCreated datePublished" datetime="2018-06-16T22:03:25+08:00">2018-06-16</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2025-01-11 01:27:41" itemprop="dateModified" datetime="2025-01-11T01:27:41+08:00">2025-01-11</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/06/16/使用Taro和Typescript进行小程序开发/" class="leancloud_visitors" data-flag-title="使用Taro和Typescript进行小程序开发">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="使用Taro和Typescript进行小程序开发"><a href="#使用Taro和Typescript进行小程序开发" class="headerlink" title="使用Taro和Typescript进行小程序开发"></a>使用Taro和Typescript进行小程序开发</h2><h2 id="使用指南"><a href="#使用指南" class="headerlink" title="使用指南"></a>使用指南</h2><p>在使用 taro 生成 Typescript 模板以后，需要做以下修改：</p>
+<h3 id="配置-eslintrc"><a href="#配置-eslintrc" class="headerlink" title="配置 .eslintrc"></a>配置 .eslintrc</h3><ul>
+<li>加入 <code>&quot;no-undef&quot;: 0,</code> 以解决变量<code>undefined</code>的问题</li>
+<li>加入 <code>&quot;react/jsx-filename-extension&quot;: [1, { &quot;extensions&quot;: [&quot;.js&quot;, &quot;.jsx&quot;] }]</code> 以解决 <code>JSX not allowed in files with extension &#39;.tsx</code></li>
+</ul>
+<h3 id="增加配置文件"><a href="#增加配置文件" class="headerlink" title="增加配置文件"></a>增加配置文件</h3><ul>
+<li>tsconfig.json</li>
+<li>tslint 文件</li>
+</ul>
+<h3 id="增加依赖库"><a href="#增加依赖库" class="headerlink" title="增加依赖库"></a>增加依赖库</h3><ul>
+<li>yarn add –dev tslint</li>
+<li>yarn add –dev tslint-react</li>
+<li>yarn add –dev ptypescript-eslint-parser</li>
+</ul>
+<h2 id="开始使用"><a href="#开始使用" class="headerlink" title="开始使用"></a>开始使用</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">yarn install</span><br></pre></td></tr></table></figure>
+<h2 id="代码静态检查"><a href="#代码静态检查" class="headerlink" title="代码静态检查"></a>代码静态检查</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn run lint</span><br></pre></td></tr></table></figure>
+<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><ul>
+<li><a href="https://taro.aotu.io/" target="_blank" rel="noopener">Taro官方文档</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2018/04/08/GitLab-CI微信小程序进行持续集成和持续部署/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zacksleo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zacks's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/08/GitLab-CI微信小程序进行持续集成和持续部署/" itemprop="url">
+                  GitLab-CI微信小程序进行持续集成和持续部署
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-04-08 11:21:26" itemprop="dateCreated datePublished" datetime="2018-04-08T11:21:26+08:00">2018-04-08</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2025-01-11 01:27:41" itemprop="dateModified" datetime="2025-01-11T01:27:41+08:00">2025-01-11</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/04/08/GitLab-CI微信小程序进行持续集成和持续部署/" class="leancloud_visitors" data-flag-title="GitLab-CI微信小程序进行持续集成和持续部署">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="2020-更新"><a href="#2020-更新" class="headerlink" title="2020 更新"></a>2020 更新</h2><p>微信出了 miniprogram-ci ，可以通过命令行调用，故而改用改方案， 见 ［GitLab-CI微信小程序进行持续集成和持续部署2］</p>
+<h2 id="问题缘由"><a href="#问题缘由" class="headerlink" title="问题缘由"></a>问题缘由</h2><p>在微信小程序开发中，先要在本地使用微信开发者工具进行调试，如果需要在线测试，则需要将编译好的代码上传。<br>目前，只能通过微信开发者工具手动点击上传，而该过程无法与持续集成/持续部署结合在一起，本文就是为了解决能够实现自动化和持续部署的难题</p>
+<h2 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h2><p>微信开发者工具，提供了HTTP调用方式,其中就包括上传和自动化测试的命令，我们可以通过脚本实现自动化集成</p>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><h3 id="安装并配置-GitLab-Runner"><a href="#安装并配置-GitLab-Runner" class="headerlink" title="安装并配置 GitLab Runner"></a>安装并配置 GitLab Runner</h3><p>这部分文档在 <a href="https://docs.gitlab.com/runner/install/osx.html" target="_blank" rel="noopener">Install GitLab Runner on macOS</a></p>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>首先需要在本机上安装 <a href="https://docs.gitlab.com/runner/" target="_blank" rel="noopener">GitLab Runner</a>,  由于微信开发者工具只提供了 mac 和 windows 版本，所以目前只能在这两种系统上实现持续集成，本文讲述在 mac 的具体实现， windows 上的实现与此类似，只是相关命令和路径需要做些变更</p>
+<h4 id="注册-GitLab-Runner"><a href="#注册-GitLab-Runner" class="headerlink" title="注册 GitLab Runner"></a>注册 GitLab Runner</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gitlab-runner register</span><br></pre></td></tr></table></figure>
+<p>注意，注册时没有<code>sudo</code>, 因为需要使用用户模式来使用，而非系统模式</p>
+<p>注册时，将本机添加上了 <code>mac</code> 标签, 运行模式为<code>shell</code>，这样可以在部署时，指定运行环境</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Please enter the gitlab-ci coordinator URL (e.g. https://gitlab.com/):</span><br><span class="line">https://xxxxxx.com/</span><br><span class="line">Please enter the gitlab-ci token for this runner:</span><br><span class="line">xxxxxx</span><br><span class="line">Please enter the gitlab-ci description for this runner:</span><br><span class="line">[xxx.com]: macbook.home</span><br><span class="line">Please enter the gitlab-ci tags for this runner (comma separated):</span><br><span class="line">mac,shell</span><br><span class="line">Whether to run untagged builds [true/false]:</span><br><span class="line">[false]: true</span><br><span class="line">Whether to lock the Runner to current project [true/false]:</span><br><span class="line">[true]: false</span><br><span class="line">Registering runner... succeeded                     runner=Gd3NhK2t</span><br><span class="line">Please enter the executor: docker-ssh, virtualbox, docker+machine, docker-ssh+machine, docker, parallels, shell, ssh, kubernetes:</span><br><span class="line">shell</span><br><span class="line">Runner registered successfully. Feel free to start it, but if it&apos;s running already the config should be automatically reloaded!</span><br></pre></td></tr></table></figure>
+<h4 id="运行服务"><a href="#运行服务" class="headerlink" title="运行服务"></a>运行服务</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line">gitlab-runner install</span><br><span class="line">gitlab-runner start</span><br></pre></td></tr></table></figure>
+<h3 id="编写-gitlab-ci-yml"><a href="#编写-gitlab-ci-yml" class="headerlink" title="编写 .gitlab-ci.yml"></a>编写 <code>.gitlab-ci.yml</code></h3><p>在此之前，你需要对GitLab-CI有一定的掌握，这部分资料参考下方的相关文档</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">image:</span> <span class="attr">node:alpine</span></span><br><span class="line"></span><br><span class="line"><span class="attr">before_script:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">export</span> <span class="string">APP_ENV=testing</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">yarn</span> <span class="string">config</span> <span class="string">set</span> <span class="string">registry</span> <span class="string">'https://registry.npm.taobao.org'</span></span><br><span class="line"><span class="attr">stages:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">build</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">deploy</span></span><br><span class="line"></span><br><span class="line"><span class="attr">variables:</span></span><br><span class="line"><span class="attr">    NPM_CONFIG_CACHE:</span> <span class="string">"/cache/npm"</span></span><br><span class="line"><span class="attr">    YARN_CACHE_FOLDER:</span> <span class="string">"/cache/yarn"</span></span><br><span class="line"><span class="attr">    DOCKER_DRIVER:</span> <span class="string">overlay2</span></span><br><span class="line"><span class="attr">build-package:</span></span><br><span class="line"><span class="attr">    stage:</span> <span class="string">build</span></span><br><span class="line"><span class="attr">    dependencies:</span> <span class="string">[]</span></span><br><span class="line"><span class="attr">    cache:</span></span><br><span class="line"><span class="attr">      key:</span> <span class="string">"$CI_COMMIT_REF_NAME"</span></span><br><span class="line"><span class="attr">      policy:</span> <span class="string">pull</span></span><br><span class="line"><span class="attr">      paths:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">node_modules</span></span><br><span class="line"><span class="attr">    script:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">if</span> <span class="string">[</span> <span class="string">!</span> <span class="bullet">-d</span> <span class="string">"node_modules"</span> <span class="string">];</span> <span class="string">then</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">yarn</span> <span class="string">install</span> <span class="bullet">--cache-folder</span> <span class="string">/cache/yarn</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">fi</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">yarn</span> <span class="string">build</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">cp</span> <span class="string">deploy/project.config.json</span> <span class="string">./dist/project.config.json</span></span><br><span class="line"><span class="attr">    artifacts:</span></span><br><span class="line"><span class="attr">        name:</span> <span class="string">"wxpkg-dlkhgl-$CI_COMMIT_TAG"</span></span><br><span class="line"><span class="attr">        untracked:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">        paths:</span></span><br><span class="line"><span class="bullet">            -</span> <span class="string">dist</span></span><br><span class="line"><span class="attr">    only:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">tags</span></span><br><span class="line"><span class="attr">    tags:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">docker</span></span><br><span class="line"><span class="attr">deploy:</span></span><br><span class="line"><span class="attr">    stage:</span> <span class="string">deploy</span></span><br><span class="line"><span class="attr">    dependencies:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">build-package</span></span><br><span class="line"><span class="attr">    variables:</span></span><br><span class="line"><span class="attr">        GIT_STRATEGY:</span> <span class="string">none</span></span><br><span class="line"><span class="attr">    before_script:</span> <span class="string">[]</span></span><br><span class="line"><span class="attr">    script:</span></span><br><span class="line">        <span class="comment"># 获取HTTP服务的端口, 该端口是不固定的</span></span><br><span class="line">        <span class="comment"># - PORT=`cat ~/Library/Application\ Support/微信web开发者工具/Default/.ide`</span></span><br><span class="line">        <span class="comment"># 调用上传的API</span></span><br><span class="line">        <span class="comment"># - curl http://127.0.0.1:$PORT/upload\?projectpath\=$PWD/dist\&amp;version\=$CI_COMMIT_TAG\&amp;desc\=audo-deploy</span></span><br><span class="line">        <span class="comment"># 以下改用命令行替代旧的 HTTP 调用方式</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">/Applications/wechatwebdevtools.app/Contents/MacOS/cli</span> <span class="bullet">-u</span> <span class="string">$CI_COMMIT_TAG@/$PWD/dist</span> <span class="bullet">--upload-desc</span> <span class="string">"aoto deploy"</span></span><br><span class="line"><span class="attr">    only:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">tags</span></span><br><span class="line"><span class="attr">    tags:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">mac</span></span><br></pre></td></tr></table></figure>
+<p>注意，<code>deploy/project.config.json</code> 文件为 <code>project.config.json</code>的副本，但其他的 <code>projectname</code> 不同，这样做是为了解决 <code>已存在相同 AppID 和 projectname 的项目（路径），请修改后重试</code>的问题，这是因为，同一台电脑上，微信开发者工具不能有两个同名的项目</p>
+<p>另外注意，在运行自动部署时，微信开发者工具必须打开，且为登录状态</p>
+<h2 id="相关文档"><a href="#相关文档" class="headerlink" title="相关文档"></a>相关文档</h2><ul>
+<li><a href="https://zacksleo.github.io/2017/04/27/%E5%A6%82%E4%BD%95%E7%BC%96%E5%86%99GitLab-CI%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/">如何编写GitLab-CI配置文件</a></li>
+<li><a href="https://zacksleo.github.io/2017/04/18/GitLab-CI%E4%B8%AD%E7%9A%84artifacts%E4%BD%BF%E7%94%A8%E7%A0%94%E7%A9%B6/">GitLab-CI中的artifacts使用研究</a></li>
+<li><a href="https://zacksleo.github.io/2018/01/26/GitLab-CI%E4%BD%BF%E7%94%A8cache%E5%8A%A0%E9%80%9F%E6%9E%84%E5%BB%BA%E8%BF%87%E7%A8%8B/">GitLab-CI使用cache加速构建过程</a></li>
+<li><a href="https://developers.weixin.qq.com/miniprogram/dev/devtools/http.html" target="_blank" rel="noopener">微信开发者工具HTTP调用</a></li>
+<li><a href="https://docs.gitlab.com/runner/install/" target="_blank" rel="noopener">Install GitLab Runner</a></li>
+<li><a href="https://docs.gitlab.com/runner/register/index.html" target="_blank" rel="noopener">Registering Runners</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2018/03/31/Python-使用openpyxl操作Excel表格/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zacksleo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zacks's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/31/Python-使用openpyxl操作Excel表格/" itemprop="url">
+                  Python-使用openpyxl操作Excel表格
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-03-31 21:05:25" itemprop="dateCreated datePublished" datetime="2018-03-31T21:05:25+08:00">2018-03-31</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2025-01-11 01:27:41" itemprop="dateModified" datetime="2025-01-11T01:27:41+08:00">2025-01-11</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/03/31/Python-使用openpyxl操作Excel表格/" class="leancloud_visitors" data-flag-title="Python-使用openpyxl操作Excel表格">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p>  前两天收到跨境电商事业部同事发来的一个需求，说有一个表格，里面只有产品ID和其他一些信息，但是没有其他信息，诸如产品中文名和发货地，这些信息需要通过调取API获得。希望我们帮忙导出合并到Excel中</p>
+<h2 id="分析及实现"><a href="#分析及实现" class="headerlink" title="分析及实现"></a>分析及实现</h2><ul>
+<li>首先需要读取Excel中，每个产品的ID</li>
+<li>然后调用产品查询API，该API通过GET+ID参数方式进行查询</li>
+<li>查询到信息后，将需要的信息追加到对应行的后面列中</li>
+</ul>
+<h2 id="openpyxl"><a href="#openpyxl" class="headerlink" title="openpyxl"></a>openpyxl</h2><p>Python 中操作 Excel 的库有许多，例如 xlrd、xlwt、xlsxwriter、openpyxl 等，openpyxl是其中一个，该库主要有几个特点：支持xlsx，支持对现有文档读写，被<a href="http://www.python-excel.org/" target="_blank" rel="noopener">Python-Excel</a>优先推荐。<br>几经对比调研，最终选择 openpyxl。</p>
+<h3 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># 打开excel</span><br><span class="line">wb = load_workbook(&apos;files/file.xlsx&apos;)</span><br><span class="line"># 拿到打开的sheet</span><br><span class="line">sheet = wb.active</span><br><span class="line">for index in range(0, sheet.max_row):</span><br><span class="line">    # load_data 通过requests调用API方法，拿到name和ship_from</span><br><span class="line">    name, ship_from = load_data(sheet[&apos;A&apos; + str(index + 1)].value)</span><br><span class="line">    # 产品中文名称</span><br><span class="line">    sheet[&apos;D&apos; + str(index + 1)] = name</span><br><span class="line">    # 发货地信息</span><br><span class="line">    sheet[&apos;E&apos; + str(index + 1)] = ship_from</span><br><span class="line">    print(&quot;同步第&quot; + str(index + 1) + &quot;行&quot;)</span><br><span class="line"># 将数据保存到另外一表格中，注意也可以保存到原来表格中    </span><br><span class="line">wb.save(&quot;files/file-export.xlsx&quot;)</span><br></pre></td></tr></table></figure>
+<p>在上述代码中，首先加载原始文件<code>files/file.xlsx</code>，然后对默认sheet进行行遍历，每一行第一列A<sub>n</sub>代表产品ID,<br>load_data方法通过调用API, 查询到该产品的中文名称和发货地，然后再写入后面的列中，如D<sub>n</sub>和E<sub>n</sub></p>
+<p>最后全部遍历完后，再保存表格，这样整个需求就实现了</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2018/03/24/PHP7连接访问SqlServer及开发环境搭建/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zacksleo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zacks's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/24/PHP7连接访问SqlServer及开发环境搭建/" itemprop="url">
+                  PHP7连接访问SqlServer及开发环境搭建
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-03-24 11:06:00" itemprop="dateCreated datePublished" datetime="2018-03-24T11:06:00+08:00">2018-03-24</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2025-01-11 01:27:41" itemprop="dateModified" datetime="2025-01-11T01:27:41+08:00">2025-01-11</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/03/24/PHP7连接访问SqlServer及开发环境搭建/" class="leancloud_visitors" data-flag-title="PHP7连接访问SqlServer及开发环境搭建">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="PHP运行环境镜像构建"><a href="#PHP运行环境镜像构建" class="headerlink" title="PHP运行环境镜像构建"></a>PHP运行环境镜像构建</h2><p>PHP7中访问SqlServer需要安装sqlsrv 和 pdo_sqlsrv，在此之前需要安装一此必备依赖，如msodbcsql 和 unixodbc-dev，由于SqlServer暂时不支持alpine,所以选择jessie，尽量使镜像保持最小，构建脚本如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">FROM php:7.1-fpm-jessie</span><br><span class="line"></span><br><span class="line">ENV ACCEPT_EULA=Y</span><br><span class="line"></span><br><span class="line"># Microsoft SQL Server Prerequisites</span><br><span class="line">RUN apt-get update \</span><br><span class="line">    &amp;&amp; curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - \</span><br><span class="line">    &amp;&amp; curl https://packages.microsoft.com/config/debian/8/prod.list \</span><br><span class="line">        &gt; /etc/apt/sources.list.d/mssql-release.list \</span><br><span class="line">    &amp;&amp; apt-get install -y --no-install-recommends \</span><br><span class="line">        locales \</span><br><span class="line">        apt-transport-https \</span><br><span class="line">    &amp;&amp; echo &quot;en_US.UTF-8 UTF-8&quot; &gt; /etc/locale.gen \</span><br><span class="line">    &amp;&amp; locale-gen \</span><br><span class="line">    &amp;&amp; apt-get update \</span><br><span class="line">    &amp;&amp; apt-get -y --no-install-recommends install msodbcsql  unixodbc-dev</span><br><span class="line"></span><br><span class="line">RUN docker-php-ext-install mbstring \</span><br><span class="line">    &amp;&amp; pecl install sqlsrv pdo_sqlsrv \</span><br><span class="line">    &amp;&amp; docker-php-ext-enable sqlsrv pdo_sqlsrv</span><br></pre></td></tr></table></figure>
+<h2 id="启动本地开发需要的SqlServer服务"><a href="#启动本地开发需要的SqlServer服务" class="headerlink" title="启动本地开发需要的SqlServer服务"></a>启动本地开发需要的SqlServer服务</h2><p>由于微软官方提供的SqlServer镜像，无法通过环境变量配置的方便创建数据库，故选择<a href="https://github.com/mcmoe/mssqldocker" target="_blank" rel="noopener">mcmoe/mssqldocker</a>镜像，</p>
+<p>使用docker-compose配置方式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">version: &apos;3.2&apos;</span><br><span class="line"></span><br><span class="line">services:</span><br><span class="line">  db:</span><br><span class="line">    build: .</span><br><span class="line">    image: mcmoe/mssqldocker</span><br><span class="line">    environment:</span><br><span class="line">      ACCEPT_EULA: Y</span><br><span class="line">      SA_PASSWORD: 2astazeY</span><br><span class="line">      MSSQL_DB: dev</span><br><span class="line">      MSSQL_USER: Kobeissi</span><br><span class="line">      MSSQL_PASSWORD: 7ellowEl7akey</span><br><span class="line">    ports:</span><br><span class="line">      - &quot;1433:1433&quot;</span><br><span class="line">    container_name: mssqldev</span><br></pre></td></tr></table></figure>
+<p>需要注意的是，MSSQL密码(即上面的SA_PASSWORD和MSSQL_PASSWORD)必须至少8个字符长，包含大写，小写和数字，否则数据库会创建失败</p>
+<h2 id="连接访问数据库"><a href="#连接访问数据库" class="headerlink" title="连接访问数据库"></a>连接访问数据库</h2><p>在程序中配置数据库的地方，配置DSN如下 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlsrv:Server=mssql;Database=dev</span><br></pre></td></tr></table></figure>
+<p>sqlsrv 为驱动名称</p>
+<p>注：如果是使用Yii2框架，可以使用我构建好的镜像：<a href="https://hub.docker.com/r/zacksleo/php/tags/" target="_blank" rel="noopener">zacksleo/php:7.1-fpm-mssql</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2018/03/13/GitLab-CI对JavaScript项目持续集成或部署/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zacksleo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zacks's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/13/GitLab-CI对JavaScript项目持续集成或部署/" itemprop="url">
+                  GitLab-CI对JavaScript项目持续集成或部署
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-03-13 11:34:00" itemprop="dateCreated datePublished" datetime="2018-03-13T11:34:00+08:00">2018-03-13</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2025-01-11 01:27:41" itemprop="dateModified" datetime="2025-01-11T01:27:41+08:00">2025-01-11</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/03/13/GitLab-CI对JavaScript项目持续集成或部署/" class="leancloud_visitors" data-flag-title="GitLab-CI对JavaScript项目持续集成或部署">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p>团队使用React开发了一套前端页面, 为了方便协作和部署, 使用 EsLint 进行代码格式审查, 同时进行持续集成和部署, 提高开发效率</p>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br></pre></td><td class="code"><pre><span class="line">image: zacksleo/node</span><br><span class="line"></span><br><span class="line">before_script:</span><br><span class="line">    - eval $(ssh-agent -s)</span><br><span class="line">    - echo &quot;$SSH_PRIVATE_KEY&quot; &gt; ~/deploy.key</span><br><span class="line">    - chmod 0600 ~/deploy.key</span><br><span class="line">    - ssh-add ~/deploy.key</span><br><span class="line">    - mkdir -p ~/.ssh</span><br><span class="line">    - &apos;[[ -f /.dockerenv ]] &amp;&amp; echo -e &quot;Host *\n\tStrictHostKeyChecking no\n\n&quot; &gt; ~/.ssh/config&apos;</span><br><span class="line">    - export APP_ENV=testing</span><br><span class="line">    - yarn config set registry &apos;https://registry.npm.taobao.org&apos;</span><br><span class="line">stages:</span><br><span class="line">    - prepare</span><br><span class="line">    - test</span><br><span class="line">    - build</span><br><span class="line">    - deploy</span><br><span class="line"></span><br><span class="line">variables:</span><br><span class="line">    COMPOSER_CACHE_DIR: &quot;/cache/composer&quot;</span><br><span class="line">    DOCKER_DRIVER: overlay2</span><br><span class="line">build-cache:</span><br><span class="line">    stage: prepare</span><br><span class="line">    script:</span><br><span class="line">        - yarn install --cache-folder /cache/yarn</span><br><span class="line">    cache:</span><br><span class="line">      key: &quot;$CI_COMMIT_REF_NAME&quot;</span><br><span class="line">      paths:</span><br><span class="line">        - node_modules</span><br><span class="line">    except:</span><br><span class="line">        - docs</span><br><span class="line">        - tags</span><br><span class="line">    when: manual</span><br><span class="line">eslint:</span><br><span class="line">    stage: test</span><br><span class="line">    dependencies: []</span><br><span class="line">    cache:</span><br><span class="line">      key: &quot;$CI_COMMIT_REF_NAME&quot;</span><br><span class="line">      policy: pull</span><br><span class="line">      paths:</span><br><span class="line">        - node_modules</span><br><span class="line">    script:</span><br><span class="line">        - if [ ! -d &quot;node_modules&quot; ]; then</span><br><span class="line">        - yarn install --cache-folder /cache/yarn</span><br><span class="line">        - fi</span><br><span class="line">        - yarn eslint ./</span><br><span class="line">    except:</span><br><span class="line">        - docs</span><br><span class="line">        - develop</span><br><span class="line">        - master</span><br><span class="line">        - tags</span><br><span class="line">build-check:</span><br><span class="line">    stage: test</span><br><span class="line">    dependencies: []</span><br><span class="line">    cache:</span><br><span class="line">      key: &quot;$CI_COMMIT_REF_NAME&quot;</span><br><span class="line">      policy: pull</span><br><span class="line">      paths:</span><br><span class="line">        - node_modules</span><br><span class="line">    script:</span><br><span class="line">        - if [ ! -d &quot;node_modules&quot; ]; then</span><br><span class="line">        - yarn install --cache-folder /cache/yarn</span><br><span class="line">        - fi</span><br><span class="line">        - yarn build</span><br><span class="line">    except:</span><br><span class="line">        - docs</span><br><span class="line">        - develop</span><br><span class="line">        - master</span><br><span class="line">        - tags</span><br><span class="line">build-package:</span><br><span class="line">    stage: test</span><br><span class="line">    script:</span><br><span class="line">        - if [ ! -d &quot;node_modules&quot; ]; then</span><br><span class="line">        - yarn install --cache-folder /cache/yarn</span><br><span class="line">        - fi</span><br><span class="line">        - if [ $CI_COMMIT_TAG ];then</span><br><span class="line">        - cp deploy/production/.env .env</span><br><span class="line">        - fi</span><br><span class="line">        - yarn build</span><br><span class="line">    dependencies: []</span><br><span class="line">    cache:</span><br><span class="line">      key: &quot;$CI_COMMIT_REF_NAME&quot;</span><br><span class="line">      policy: pull</span><br><span class="line">      paths:</span><br><span class="line">        - node_modules</span><br><span class="line">    artifacts:</span><br><span class="line">        name: &quot;build&quot;</span><br><span class="line">        untracked: false</span><br><span class="line">        expire_in: 60 mins</span><br><span class="line">        paths:</span><br><span class="line">            - build</span><br><span class="line">    except:</span><br><span class="line">        - docs</span><br><span class="line">    only:</span><br><span class="line">        - develop</span><br><span class="line">        - master</span><br><span class="line">        - tags</span><br><span class="line">production-image:</span><br><span class="line">    stage: build</span><br><span class="line">    image: docker:latest</span><br><span class="line">    dependencies:</span><br><span class="line">        - build-package</span><br><span class="line">    before_script: []</span><br><span class="line">    script:</span><br><span class="line">        - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY</span><br><span class="line">        - docker build -t $CI_REGISTRY_IMAGE:$CI_COMMIT_TAG .</span><br><span class="line">        - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_TAG</span><br><span class="line">        - docker rmi $CI_REGISTRY_IMAGE:$CI_COMMIT_TAG</span><br><span class="line">    only:</span><br><span class="line">        - tags</span><br><span class="line">production-server:</span><br><span class="line">    stage: deploy</span><br><span class="line">    dependencies: []</span><br><span class="line">    cache: &#123;&#125;</span><br><span class="line">    script:</span><br><span class="line">        - cd deploy/production</span><br><span class="line">        - rsync -rtvhze ssh . root@$DEPLOY_SERVER:/data/$CI_PROJECT_NAME --stats</span><br><span class="line">        - ssh root@$DEPLOY_SERVER &quot;docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY&quot;</span><br><span class="line">        - ssh root@$DEPLOY_SERVER &quot;export COMPOSE_HTTP_TIMEOUT=120 &amp;&amp; export DOCKER_CLIENT_TIMEOUT=120 &amp;&amp; echo -e &apos;\nTAG=$CI_COMMIT_TAG&apos; &gt;&gt; .env &amp;&amp; cd /data/$CI_PROJECT_NAME &amp;&amp; docker-compose pull web &amp;&amp; docker-compose stop &amp;&amp; docker-compose rm -f &amp;&amp; docker-compose up -d --build&quot;</span><br><span class="line">    only:</span><br><span class="line">        - tags</span><br><span class="line">    environment:</span><br><span class="line">        name: staging</span><br><span class="line">        url: https://xxx.com</span><br></pre></td></tr></table></figure>
+<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>首先使用EsLint进行代码格式检查, 每次合并到主干分支, 进行构建检查, 每次添加Tags, 构建Docker镜像,并进行部署</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2018/01/30/GitHub使用Style-CI进行格式检查/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zacksleo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zacks's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/30/GitHub使用Style-CI进行格式检查/" itemprop="url">
+                  GitHub使用Style-CI进行格式检查
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-01-30 10:55:06" itemprop="dateCreated datePublished" datetime="2018-01-30T10:55:06+08:00">2018-01-30</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2025-01-11 01:27:41" itemprop="dateModified" datetime="2025-01-11T01:27:41+08:00">2025-01-11</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/01/30/GitHub使用Style-CI进行格式检查/" class="leancloud_visitors" data-flag-title="GitHub使用Style-CI进行格式检查">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <!-- GitHub使用Style-CI进行格式检查 -->
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>在项目根目录，新建<code>.styleci.yml</code> 配置文件，并编写配置内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">preset: psr2</span><br></pre></td></tr></table></figure>
+<h2 id="查看"><a href="#查看" class="headerlink" title="查看"></a>查看</h2><p>打开<a href="https://styleci.io/，使用Gitlab账号登录，找到对应的项目，点击右侧的" target="_blank" rel="noopener">https://styleci.io/，使用Gitlab账号登录，找到对应的项目，点击右侧的</a> <code>ENABLE STYLECI</code> 启用按钮，即可使用，</p>
+<p>每次提交代码，都会看到检测结果</p>
+<h2 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h2><p>如果没有找到自己的项目，打开 <code>https://styleci.io/account#repos</code> 点击 <code>Sync With GitHub</code> 同步，就会看到</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2018/01/27/GitLab-CI将项目Wiki自动部署到文档中心/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zacksleo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zacks's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/27/GitLab-CI将项目Wiki自动部署到文档中心/" itemprop="url">
+                  GitLab-CI将项目Wiki自动部署到文档中心
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-01-27 11:48:09" itemprop="dateCreated datePublished" datetime="2018-01-27T11:48:09+08:00">2018-01-27</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2025-01-11 01:27:41" itemprop="dateModified" datetime="2025-01-11T01:27:41+08:00">2025-01-11</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/01/27/GitLab-CI将项目Wiki自动部署到文档中心/" class="leancloud_visitors" data-flag-title="GitLab-CI将项目Wiki自动部署到文档中心">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>公司的GitLab中，有一个存放所有技术文档的Wiki仓库，按照目录分门别类，包括API文档，编码规范，技术专题文档等，通过与<a href="使用Git和Gollum搭建Wiki系统.md">Gollum进行持续部署</a>.</p>
+<p>然而在GitLab中，每个项目都有自己的Wiki库, 所以在将项目文档合并更新到总Wiki仓库时，同步更新比较麻烦，通过充分使用GitLab的持续集成功能, 将项目Wiki与Wiki仓库集成, 从而实现了Wiki的自动部署，</p>
+<p>同步时，自动同步的提交信息和提交人信息</p>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><h3 id="配置SSH"><a href="#配置SSH" class="headerlink" title="配置SSH"></a>配置SSH</h3><ul>
+<li><p>GitLab中在使用SSH的时候, 会生成公钥和私钥对</p>
+</li>
+<li><p>将公钥添加到gitlab上, 以便于该用于可以拉取代码</p>
+</li>
+<li><p>在 <code>CI/CD Piplines</code>中设置 <code>Secret Variables</code>, 这里名为 <code>SSH_PRIVATE_KEY</code></p>
+<p><code>SSH_PRIVATE_KEY</code> 值为私钥.</p>
+</li>
+</ul>
+<h3 id="编写-gitlab-ci-yml-文件-注入私钥-通过ssh执行远程命令"><a href="#编写-gitlab-ci-yml-文件-注入私钥-通过ssh执行远程命令" class="headerlink" title="编写 .gitlab-ci.yml 文件, 注入私钥, 通过ssh执行远程命令"></a>编写 <code>.gitlab-ci.yml</code> 文件, 注入私钥, 通过<code>ssh</code>执行远程命令</h3><p> 创建一个分支, 如<code>docs</code>, 在该分支中添加 <code>gitlab-ci.yml</code>文件, 实现wiki自动提交, 内容形如以下内容:</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">image: zacksleo/docker-composer:develop</span><br><span class="line"></span><br><span class="line">before_script:</span><br><span class="line">    - eval $(ssh-agent -s)</span><br><span class="line">    - echo &quot;$SSH_PRIVATE_KEY&quot; &gt; deploy.key</span><br><span class="line">    - chmod 0600 deploy.key</span><br><span class="line">    - ssh-add deploy.key</span><br><span class="line">    - rm -f deploy.key</span><br><span class="line">    - mkdir -p ~/.ssh</span><br><span class="line">    - &apos;[[ -f /.dockerenv ]] &amp;&amp; echo -e &quot;Host *\n\tStrictHostKeyChecking no\n\n&quot; &gt; ~/.ssh/config&apos;</span><br><span class="line"></span><br><span class="line">build-docs:</span><br><span class="line">    stage: deploy</span><br><span class="line">   variables:</span><br><span class="line">       GIT_STRATEGY: none</span><br><span class="line">   dependencies: []</span><br><span class="line">    script:</span><br><span class="line">       # 定义变量: 项目Wiki的Git地址,项目(目录)别名</span><br><span class="line">       - export WIKI_REPO=git@domain.com:project.wiki.git &amp;&amp; export PROJECT_NAME=$CI_PROJECT_NAME</span><br><span class="line">       # 创建临时目录, 用于存放和合并git文档</span><br><span class="line">       - mkdir ~/tmp &amp;&amp; cd ~/tmp</span><br><span class="line">       # 克隆项目wiki</span><br><span class="line">       - git --git-dir=~/tmp/$PROJECT_NAME.wiki.git clone --depth=1 $WIKI_REPO $PROJECT_NAME</span><br><span class="line">       # 删除.git 只保留纯文档, 获取最近的提交日志,用户邮箱和名称  </span><br><span class="line">       - cd $PROJECT_NAME &amp;&amp; export GIT_LOG=`git log -1 --pretty=%B` &amp;&amp; export GIT_EMAIL=`git log -1 --pretty=%ae` &amp;&amp; export GIT_USERNAME=`git log -1 --pretty=%an` &amp;&amp; rm -rf .git &amp;&amp; cd ..</span><br><span class="line">       # 注册Git账号</span><br><span class="line">       - git config --global user.email $GIT_EMAIL &amp;&amp; git config --global user.name $GIT_USERNAME       </span><br><span class="line">       # 克隆联络Wiki</span><br><span class="line">       - git clone git@domain.com:orgs/wiki.git</span><br><span class="line">       # 删除旧wiki, 增加新wiki</span><br><span class="line">       - rm -rf wiki/api/$PROJECT_NAME &amp;&amp; mv -f $PROJECT_NAME wiki/api</span><br><span class="line">       # 增加提交日志并提交</span><br><span class="line">       - cd wiki &amp;&amp; git add . &amp;&amp; git commit -m &quot;$PROJECT_NAME:$GIT_LOG&quot; &amp;&amp; git push origin master</span><br><span class="line">       # 删除临时目录</span><br><span class="line">       - rm -rf ~/tmp</span><br><span class="line">    only:</span><br><span class="line">        - docs</span><br></pre></td></tr></table></figure>
+<p> 其中, 将<code>WIKI_REPO</code>后面的<a href="mailto:`git@domain.com" target="_blank" rel="noopener">`git@domain.com</a>:project.wiki.git<code>替换为项目wiki的git地址,</code>$CI_PROJECT_NAME`替换为项目英文别名(如不改则使用当前GitLab的项目名), 用于在文档中心的api下面创建相关目录。<br> 其他地方不需要修改。</p>
+<blockquote>
+<p>注意: 项目wiki的git地址与项目的git地址不相同, 请在Wiki右侧中的Clone repository 找到       </p>
+</blockquote>
+<h3 id="创建-Triggers-Token"><a href="#创建-Triggers-Token" class="headerlink" title="创建 Triggers Token"></a>创建 Triggers Token</h3><p>打开项目的 CI/CD Pipelines 选项,  找到 <code>Triggers</code>, 点击添加一个Token, 并从下方的 <code>Use webhook</code> 段落找到触发URL, 如</p>
+<p> <code>https://domain.com/api/v4/projects/74/ref/REF_NAME/trigger/pipeline?token=TOKEN</code></p>
+<p> 将TOKEN替换为上述<code>Triggers</code>中获取的Token, 将 <code>REF_NAME</code> 替换分分支名称 <code>docs</code>, 得到最终URL</p>
+<h3 id="配置-Webhooks"><a href="#配置-Webhooks" class="headerlink" title="配置 Webhooks"></a>配置 Webhooks</h3><p>打开项目的 integrations 选项, 在URL中, 填写上一步中拿到的URL</p>
+<h2 id="相关文档"><a href="#相关文档" class="headerlink" title="相关文档"></a>相关文档</h2><ul>
+<li>[[GitLab-CI使用Docker进行持续部署]]</li>
+<li>[[使用Git和Gollum搭建Wiki系统]]</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">zacksleo</p>
+              <p class="site-description motion-element" itemprop="description">Full Stack Web Developer</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">56</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">89</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/zacksleo" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2025</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zacksleo</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.2.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.2.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.2.0"></script>
+
+
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.2.0"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("6ewRRbjRaYybcLL2fRlMKDtT-gzGzoHsz", "NhhOjGzUPay4gOs6hP0RzgdH");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            
+              var $element = $(document.getElementById(url));
+              $element.find('.leancloud-visitors-count').text(counter.get('time'));
+            
+            counter.save(null, {
+              success: function(counter) {
+                
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            
+              var newcounter = new Counter();
+              /* Set ACL */
+              var acl = new AV.ACL();
+              acl.setPublicReadAccess(true);
+              acl.setPublicWriteAccess(true);
+              newcounter.setACL(acl);
+              /* End Set ACL */
+              newcounter.set("title", title);
+              newcounter.set("url", url);
+              newcounter.set("time", 1);
+              newcounter.save(null, {
+                success: function(newcounter) {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+                },
+                error: function(newcounter, error) {
+                  console.log('Failed to create');
+                }
+              });
+            
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

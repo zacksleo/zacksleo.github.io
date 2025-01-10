@@ -1,0 +1,2712 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="HSx2g2b2GklalbFMNOUlf16CH8h8aJMsL6Wa1CvfqSw" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.2.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.2.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Full Stack Web Developer">
+<meta name="keywords" content="PHP, Yii, Laravel, Python, Full Stack Web Developer">
+<meta property="og:type" content="website">
+<meta property="og:title" content="zacks&#39;s blog">
+<meta property="og:url" content="https://zacksleo.github.io/index.html">
+<meta property="og:site_name" content="zacks&#39;s blog">
+<meta property="og:description" content="Full Stack Web Developer">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="zacks&#39;s blog">
+<meta name="twitter:description" content="Full Stack Web Developer">
+
+
+
+
+
+
+  <link rel="canonical" href="https://zacksleo.github.io/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>zacks's blog</title>
+  
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-80154310-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-80154310-2');
+</script>
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+  page-home">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">zacks's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">清净无为</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home menu-item-active">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2024/01/10/Unversal link 微信唤起问题排查/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zacksleo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zacks's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2024/01/10/Unversal link 微信唤起问题排查/" itemprop="url">
+                  Universal link 微信唤起问题排查
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2024-01-11 07:57:00" itemprop="dateCreated datePublished" datetime="2024-01-11T07:57:00+08:00">2024-01-11</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2025-01-11 01:27:41" itemprop="dateModified" datetime="2025-01-11T01:27:41+08:00">2025-01-11</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2024/01/10/Unversal link 微信唤起问题排查/" class="leancloud_visitors" data-flag-title="Universal link 微信唤起问题排查">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>App主体迁移，没有及时更新 apple-app-site-association 文件，导致唤起微信报错“由于应用unversal link校验不通过”</p>
+<h1 id="Unversal-link"><a href="#Unversal-link" class="headerlink" title="Unversal link"></a>Unversal link</h1><p>Uncersal link 是苹果推出的替代 schema 的一种跨应用跳转方案。<br>需要先生成 app-site-association 文件，然后放在跳转域名的指定目录 <code>/.well-known/apple-app-site-association</code> 文件中。</p>
+<p>如果通过nginx可以使用如下配置</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">location ~ /.well-known/apple-app-site-association &#123;</span><br><span class="line">          charset UTF<span class="number">-8</span>;</span><br><span class="line">          default_type application/json;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<p>上面的配置可以省略，只要返回这个文件就可以，至于反回的头格式（header），苹果并不关心</p>
+<h1 id="验证文件格式"><a href="#验证文件格式" class="headerlink" title="验证文件格式"></a>验证文件格式</h1><ol>
+<li><p>可以使用 <code>https://yurl.chayev.com/ios-results</code>验证配置的文件是否有效。</p>
+</li>
+<li><p>需要注意的是，配置文件一旦发生变更，并不是立即生效，apple CDN有缓存，可能长达1小时以上。</p>
+</li>
+<li><p>经过测试，国内CDN节点要比国外慢，如果需要快速验证唤起微信，可以挂VPN，使用海外节点，从而更快刷新CDN缓存。</p>
+</li>
+<li><p>手动验证CDN是否刷新，访问网址，<a href="https://app-site-association.cdn-apple.com/a/v1/{domain}，将{domain}替换为自己的域名，查看返回内容是否生效。" target="_blank" rel="noopener">https://app-site-association.cdn-apple.com/a/v1/{domain}，将{domain}替换为自己的域名，查看返回内容是否生效。</a></p>
+</li>
+<li><p>App团队发生变化，如迁移Appstore所属开发者主体，需要更新apple-app-site-association 文件。</p>
+</li>
+<li><p>另外，迁移过程中，为了兼容原有应用，app-site-association文件中应该保留原应用的配置信息，追加新应用配置。</p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1></li>
+<li><p><a href="https://juejin.cn/post/7254809601873690681" target="_blank" rel="noopener">https://juejin.cn/post/7254809601873690681</a></p>
+</li>
+<li><a href="https://yurl.chayev.com/ios-results" target="_blank" rel="noopener">https://yurl.chayev.com/ios-results</a></li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2024/01/10/使用Flutter开发ios extension/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zacksleo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zacks's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2024/01/10/使用Flutter开发ios extension/" itemprop="url">
+                  使用Flutter开发ios app extension
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2024-01-10 08:26:06" itemprop="dateCreated datePublished" datetime="2024-01-10T08:26:06+08:00">2024-01-10</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2025-01-11 01:27:41" itemprop="dateModified" datetime="2025-01-11T01:27:41+08:00">2025-01-11</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2024/01/10/使用Flutter开发ios extension/" class="leancloud_visitors" data-flag-title="使用Flutter开发ios app extension">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Flutter-开始支持App扩展"><a href="#Flutter-开始支持App扩展" class="headerlink" title="Flutter 开始支持App扩展"></a>Flutter 开始支持App扩展</h2><p>Flutter从3.16开始，支持在应用扩展中使用Flutter，具体操作可以参考官方文档。</p>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><ol>
+<li>App extension 与原App是两个独立的项目/进程，无法直接相互调用，代码也不共享</li>
+<li>如果需要共享资源，如存储等，需要配置 App Group，否则不需要</li>
+<li><p>开发过程中使用的是debug/profile版的Flutter.xcframework，发布时需要手动更改导入的库，改为导入release版的Flutter.xcframework.<br>profile/release版通过目录 &lt;path_to_flutter_sdk&gt;/bin/cache/artifacts/engine/ios/extension_safe 逐级向上查找，可以找到profile或release相关字样的目录</p>
+</li>
+<li><p>不同类型的extension内存有限制，模拟器中没有限制。Flutter需要比较多的内存，所以文档中指出，只能在“内存限制不低于100M”的扩展类型中使用Flutter，例如 share extensions<br>限制120M,可以使用Flutter；keyboard extension 内存限制为40M，故不可以使用Flutter。</p>
+</li>
+</ol>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
+<li><p><a href="https://flutter.cn/docs/platform-integration/ios/app-extensions" target="_blank" rel="noopener">https://flutter.cn/docs/platform-integration/ios/app-extensions</a></p>
+</li>
+<li><p>[尝试Flutter开发custom keyboard］(<a href="https://github.com/zacksleo/flutter-ios-custom-keyboard-extension" target="_blank" rel="noopener">https://github.com/zacksleo/flutter-ios-custom-keyboard-extension</a>) 仅能在模拟器运行，真机因内存限制无法运行</p>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2021/08/25/互联网向左，区块链向右/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zacksleo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zacks's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/08/25/互联网向左，区块链向右/" itemprop="url">
+                  互联网向左，区块链向右
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2021-08-25 16:21:58" itemprop="dateCreated datePublished" datetime="2021-08-25T16:21:58+08:00">2021-08-25</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2025-01-11 01:27:41" itemprop="dateModified" datetime="2025-01-11T01:27:41+08:00">2025-01-11</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2021/08/25/互联网向左，区块链向右/" class="leancloud_visitors" data-flag-title="互联网向左，区块链向右">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>2008年，中本聪首次提出了比特币的设想，这打开了去中心化的大门。</p>
+<p>比特币白皮书清晰的描述了去中心化支付的解决方案，并分别从以下几个方面阐述了他的理念：</p>
+<p>一、由转账双方点对点的通讯，而不通过中心化的第三方，这彻底了解决了信任危机。通过用户签名，保证了信息的所有权，其他人无法更改。</p>
+<ol>
+<li>互联网经过几十年的飞速发展，我们所使用的服务都倾向于集中化发展。这种中性化在给我们带来便利的同时，也带来了巨大的信任危机，这些巨头在尽其所能的采集用户数据和行为，而用户则表现出越来越抗拒，不信任。用户信息泄露，大数据杀熟，用户隐私被侵犯… 种种问题层出不穷，用户与大企业也在某种程度上站在了对立面。要解决这些问题，单单依靠反垄断或者政府司法机关的强力措施，是远不够的。</li>
+<li>所以，我们需要一种从根本上，保证用户可以亲自掌控自己的数据，控制它如何被合理的使用、读取甚至被销毁的无上权利。</li>
+<li>区块链去中心化和签名的思想，给了普通人这样的权利，我们不再依赖巨头也可以使用互联网服务，而这些服务由区块链上的节点提供，由每一个人提供。</li>
+</ol>
+<p>二、作恶的代价</p>
+<ol>
+<li>在区块链中，作恶的代价是巨大的。在工作量证明中，任何破坏者只能让 CPU白白浪费算力，而失去了获得奖励的机会，这会使得他们支付巨额的电费账单。</li>
+<li>在共识机制中，大家总会承认最长的链，而忽略较短的链。破坏者如果想要篡改账本，需要进行大量的哈希计算，以求得符合条件的 nonce值，在这个漫长过程中，新的合法区块早已产生，最终他篡改的内容会被大家拒绝。</li>
+<li>与其浪费时间篡改，不如按游戏规则挖矿，这样反而带来可观的收益。而这正是比特币先进独到的地方。</li>
+</ol>
+<p>三、双重支付</p>
+<ol>
+<li>比特币通过回溯未花费交易（UTXO）来验证合法性，保证用户花费的财产拥有合法的依据</li>
+<li>同时，在等到第6个区块后再进行链的确认，双重支付的概率也降到了最低</li>
+</ol>
+<p>四、互联网向左，区块链向右</p>
+<ol>
+<li>作为区块链的开山鼻祖，比特币未我们带来了一个崭新的世界。一个点对点的世界， Web 3.0的世界。这个世界更加平等和民主，彼此的联系更加紧密，社区自治理念更加深入人心。</li>
+<li>区块链使得去中心化的理念更加深入人心，互联网过度中化的治理方式也得以矫正，我们迎来一个更加美好的未来…</li>
+</ol>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="https://www.8btc.com/wiki/bitcoin-a-peer-to-peer-electronic-cash-system" target="_blank" rel="noopener">比特币白皮书：一种点对点的电子现金系统|巴比特</a></li>
+<li><a href="https://github.com/tianmingyun/MasterBitcoin2CN" target="_blank" rel="noopener">精通比特币（第二版）</a></li>
+<li><a href="https://book.douban.com/subject/30338899/" target="_blank" rel="noopener">比特币启示录</a></li>
+<li><a href="https://baike.baidu.com/item/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%9D%80%E7%86%9F/22456755" target="_blank" rel="noopener">大数据杀熟</a></li>
+<li><a href="https://zh.wikipedia.org/zh-hans/%E4%B8%AD%E6%9C%AC%E8%81%AA" target="_blank" rel="noopener">中本聪</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2020/06/08/GitLab-CI微信小程序持续集成和部署2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zacksleo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zacks's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/08/GitLab-CI微信小程序持续集成和部署2/" itemprop="url">
+                  GitLab-CI微信小程序进行持续集成和部署2
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-06-08 08:05:26" itemprop="dateCreated datePublished" datetime="2020-06-08T08:05:26+08:00">2020-06-08</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2025-01-11 01:27:41" itemprop="dateModified" datetime="2025-01-11T01:27:41+08:00">2025-01-11</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2020/06/08/GitLab-CI微信小程序持续集成和部署2/" class="leancloud_visitors" data-flag-title="GitLab-CI微信小程序进行持续集成和部署2">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="问题缘由"><a href="#问题缘由" class="headerlink" title="问题缘由"></a>问题缘由</h2><p>在微信小程序开发中，先要在本地使用微信开发者工具进行调试，如果需要在线测试，则需要将编译好的代码上传。<br>目前，只能通过微信开发者工具手动点击上传，而该过程无法与持续集成/持续部署结合在一起，本文就是为了解决能够实现自动化和持续部署的难题</p>
+<h2 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h2><p>微信 miniprogram-ci 库，提供了命令行调用方式,其中就包括上传的命令，我们可以通过脚本实现自动化集成</p>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><h3 id="安装并配置-GitLab-Runner"><a href="#安装并配置-GitLab-Runner" class="headerlink" title="安装并配置 GitLab Runner"></a>安装并配置 GitLab Runner</h3><p>这部分文档在 <a href="https://docs.gitlab.com/runner/install/osx.html" target="_blank" rel="noopener">Install GitLab Runner on macOS</a></p>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>首先需要在本机上安装 <a href="https://docs.gitlab.com/runner/" target="_blank" rel="noopener">GitLab Runner</a>,  由于微信开发者工具只提供了 mac 和 windows 版本，所以目前只能在这两种系统上实现持续集成，本文讲述在 mac 的具体实现， windows 上的实现与此类似，只是相关命令和路径需要做些变更</p>
+<h4 id="注册-GitLab-Runner"><a href="#注册-GitLab-Runner" class="headerlink" title="注册 GitLab Runner"></a>注册 GitLab Runner</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gitlab-runner register</span><br></pre></td></tr></table></figure>
+<h3 id="编写-gitlab-ci-yml"><a href="#编写-gitlab-ci-yml" class="headerlink" title="编写 .gitlab-ci.yml"></a>编写 <code>.gitlab-ci.yml</code></h3><p>在此之前，你需要对GitLab-CI有一定的掌握，这部分资料参考下方的相关文档</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">image:</span> <span class="attr">node:alpine</span></span><br><span class="line"></span><br><span class="line"><span class="attr">before_script:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">export</span> <span class="string">APP_ENV=testing</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">yarn</span> <span class="string">config</span> <span class="string">set</span> <span class="string">registry</span> <span class="string">'https://registry.npm.taobao.org'</span></span><br><span class="line"><span class="attr">stages:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">build</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">deploy</span></span><br><span class="line"></span><br><span class="line"><span class="attr">variables:</span></span><br><span class="line"><span class="attr">    NPM_CONFIG_CACHE:</span> <span class="string">"/cache/npm"</span></span><br><span class="line"><span class="attr">    YARN_CACHE_FOLDER:</span> <span class="string">"/cache/yarn"</span></span><br><span class="line"><span class="attr">    DOCKER_DRIVER:</span> <span class="string">overlay2</span></span><br><span class="line"><span class="attr">build-package:</span></span><br><span class="line"><span class="attr">    stage:</span> <span class="string">build</span></span><br><span class="line"><span class="attr">    dependencies:</span> <span class="string">[]</span></span><br><span class="line"><span class="attr">    cache:</span></span><br><span class="line"><span class="attr">      key:</span> <span class="string">"$CI_COMMIT_REF_NAME"</span></span><br><span class="line"><span class="attr">      policy:</span> <span class="string">pull</span></span><br><span class="line"><span class="attr">      paths:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">node_modules</span></span><br><span class="line"><span class="attr">    script:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">if</span> <span class="string">[</span> <span class="string">!</span> <span class="bullet">-d</span> <span class="string">"node_modules"</span> <span class="string">];</span> <span class="string">then</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">yarn</span> <span class="string">install</span> <span class="bullet">--cache-folder</span> <span class="string">/cache/yarn</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">fi</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">yarn</span> <span class="string">build</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">cp</span> <span class="string">deploy/project.config.json</span> <span class="string">./dist/project.config.json</span></span><br><span class="line"><span class="attr">    artifacts:</span></span><br><span class="line"><span class="attr">        name:</span> <span class="string">"wxpkg-dlkhgl-$CI_COMMIT_TAG"</span></span><br><span class="line"><span class="attr">        untracked:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">        paths:</span></span><br><span class="line"><span class="bullet">            -</span> <span class="string">dist</span></span><br><span class="line"><span class="attr">    only:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">tags</span></span><br><span class="line"><span class="attr">    tags:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">docker</span></span><br><span class="line"><span class="attr">release:</span></span><br><span class="line"><span class="attr">    stage:</span> <span class="string">deploy</span></span><br><span class="line"><span class="attr">    before_script:</span> <span class="string">[]</span></span><br><span class="line"><span class="attr">    dependencies:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">build-package</span></span><br><span class="line"><span class="attr">    variables:</span></span><br><span class="line"><span class="attr">        GIT_STRATEGY:</span> <span class="string">none</span></span><br><span class="line"><span class="attr">    script:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">yarn</span> <span class="string">global</span> <span class="string">add</span> <span class="string">miniprogram-ci</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">if</span> <span class="string">[[</span> <span class="bullet">-z</span> <span class="string">"$CI_COMMIT_TAG"</span> <span class="string">]];then</span></span><br><span class="line">        <span class="comment">#- CI_COMMIT_TAG=$CI_COMMIT_REF_NAME</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">CI_COMMIT_TAG="测试版:$(date</span> <span class="string">'+%Y-%m-%d'</span><span class="string">)"</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">fi</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">COMMIT_MESSAGE=`cat</span> <span class="string">./dist/release.txt`</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">rm</span> <span class="bullet">-f</span> <span class="string">./dist/release.txt</span></span><br><span class="line">        <span class="comment"># 将单行格式转为多行格式</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">LF=$'\\\x0A'</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">echo</span> <span class="string">$UPLOAD_PRIVATE_KEY</span> <span class="string">| sed -e "s/-----BEGIN RSA PRIVATE KEY-----/&amp;$&#123;LF&#125;/" -e "s/-----END RSA PRIVATE KEY-----/$&#123;LF&#125;&amp;$&#123;LF&#125;/" | sed -e "s/[^[:blank:]]\&#123;64\&#125;/&amp;$&#123;LF&#125;/g" &gt; private.key</span></span><br><span class="line"><span class="string">        - miniprogram-ci upload --project-path=$PWD/dist --appid=$APP_ID --upload-version=$CI_COMMIT_TAG --private-key-path=$PWD/private.key --upload-description="$COMMIT_MESSAGE"</span></span><br><span class="line"><span class="string"></span><span class="attr">    environment:</span></span><br><span class="line"><span class="attr">        name:</span> <span class="string">production</span></span><br><span class="line"><span class="attr">        url:</span> <span class="attr">https://mp.weixin.qq.com/wxamp/wacodepage/getcodepage</span></span><br><span class="line"><span class="attr">    only:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">tags</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
+<p>注意，在设置-CI/CD-变量中，需要添加两个变量：</p>
+<p>APP_ID 小程序 appid</p>
+<p>UPLOAD_PRIVATE_KEY 小程序代码上传密钥, 需要在小程序后台获取</p>
+<p>由于配置的密钥，在运行时过去到是单行文本形式，需要转换为多行原始格式，并输出到文件，以便上传使用</p>
+<p>于是使用一下命令`- LF=$’\\x0A’</p>
+<pre><code>- echo $UPLOAD_PRIVATE_KEY | sed -e &quot;s/-----BEGIN RSA PRIVATE KEY-----/&amp;${LF}/&quot; -e &quot;s/-----END RSA PRIVATE KEY-----/${LF}&amp;${LF}/&quot; | sed -e &quot;s/[^[:blank:]]\{64\}/&amp;${LF}/g&quot; &gt; private.key
+</code></pre><p>` </p>
+<h2 id="相关文档"><a href="#相关文档" class="headerlink" title="相关文档"></a>相关文档</h2><ul>
+<li><a href="https://zacksleo.github.io/2017/04/27/%E5%A6%82%E4%BD%95%E7%BC%96%E5%86%99GitLab-CI%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/">如何编写GitLab-CI配置文件</a></li>
+<li><a href="https://zacksleo.github.io/2017/04/18/GitLab-CI%E4%B8%AD%E7%9A%84artifacts%E4%BD%BF%E7%94%A8%E7%A0%94%E7%A9%B6/">GitLab-CI中的artifacts使用研究</a></li>
+<li><a href="https://zacksleo.github.io/2018/01/26/GitLab-CI%E4%BD%BF%E7%94%A8cache%E5%8A%A0%E9%80%9F%E6%9E%84%E5%BB%BA%E8%BF%87%E7%A8%8B/">GitLab-CI使用cache加速构建过程</a></li>
+<li><a href="https://developers.weixin.qq.com/miniprogram/dev/devtools/http.html" target="_blank" rel="noopener">微信开发者工具HTTP调用</a></li>
+<li><a href="https://docs.gitlab.com/runner/install/" target="_blank" rel="noopener">Install GitLab Runner</a></li>
+<li><a href="https://docs.gitlab.com/runner/register/index.html" target="_blank" rel="noopener">Registering Runners</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2019/04/24/使用Gin开发Restful接口/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zacksleo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zacks's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/24/使用Gin开发Restful接口/" itemprop="url">
+                  使用Gin开发Restful接口并进行自动化测试
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-24 23:11:00" itemprop="dateCreated datePublished" datetime="2019-04-24T23:11:00+08:00">2019-04-24</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2025-01-11 01:27:41" itemprop="dateModified" datetime="2025-01-11T01:27:41+08:00">2025-01-11</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/04/24/使用Gin开发Restful接口/" class="leancloud_visitors" data-flag-title="使用Gin开发Restful接口并进行自动化测试">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>在之前的文章<a href="https://zacksleo.github.io/2019/04/22/Golang%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%E4%B8%8E%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E5%92%8C%E9%83%A8%E7%BD%B2/">Golang持续集成与自动化测试和部署</a>中<br>简要介绍了如何快速搭建Api 微服务, 并进行DevOps集成。本文将进一步深入介绍，如果使用Gin实现Restful规范并进行自动化测试。</p>
+<h2 id="Restful"><a href="#Restful" class="headerlink" title="Restful"></a>Restful</h2><p>在<a href="https://zacksleo.github.io/2017/03/07/RESTful%E6%8E%A5%E5%8F%A3%E8%A7%84%E8%8C%83/">RESTful接口规范</a>一文中，介绍了 Restful 及其规范。</p>
+<p>Gin 是一个性能优异的微服务框架，对于Restful有着良好的支持。因为基于此实现Restful并不困难。</p>
+<p>Restful 中的核心在于对于资源的定义和使用，和对 HTTP 动词（GET, PUT, DELETE, POST, DELETE, OPTIONS）的充分使用，通过 HTTP 动词，免去了繁冗的接口方法定义。<br>例如，传统方式如果实现删除文章功能，则需要实现一个类似 <code>post/delete?id=6</code> 的方法， 如果使用 Restful, 则使用 <code>DELETE post/1</code> 形式，其中 DELETE是动词，代表删除操作，<br><code>post/1</code> 代表单个文章资源。 </p>
+<p>Restful 中的另一大规法是对于状态码的充分使用，不再使用响应内容表明状态。如200代表成功，404代表资源不存在，204代表删除成功，201代表创建成功。<br>有了状态码，响应内容中不再需要使用单独的字段来标记结果的状态（如 {result: “success”} ）。</p>
+<p>这样的一大好处是实现方式更规范、统一和直观。只要知道资源定义（posts）, 就可以猜测出该如何进行增删改查的操作，不再需要知道方法名。<br>如此一来，可以很轻松的封装出一套同意的方法和操作。</p>
+<h3 id="路由定义"><a href="#路由定义" class="headerlink" title="路由定义"></a>路由定义</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">package</span> router</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"os"</span></span><br><span class="line">	<span class="string">"gitlab.com/zacksleo/project/controllers"</span></span><br><span class="line">	<span class="string">"github.com/gin-gonic/gin"</span>	</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">		api.GET(<span class="string">"/customers"</span>, controllers.GetCustomers)</span><br><span class="line">		api.GET(<span class="string">"/customers/:id"</span>, controllers.GetCustomer)</span><br><span class="line">		api.POST(<span class="string">"/customers"</span>, controllers.CreateCustomer)</span><br><span class="line">		api.PUT(<span class="string">"/customers/:id"</span>, controllers.UpdateCustomer)</span><br><span class="line">		api.DELETE(<span class="string">"/customers/:id"</span>, controllers.DeleteCustomer)</span><br></pre></td></tr></table></figure>
+<p>下面一个较为完整的案例 <code>controllers/customer.go</code></p>
+<script src="https://gist.github.com/zacksleo/14abb79d52e32c6ef89d9db207fabb4f.js"></script>
+
+<h2 id="自动化测试"><a href="#自动化测试" class="headerlink" title="自动化测试"></a>自动化测试</h2><p>当实现了接口发后，为了验证接口运行正常，确保接口可靠和可用性，建议你对接口进行HTTP测试。<br>这里使用 httpexpect 对api进行测试，该库对响应的数据类型和结构验证有着较好的支持。</p>
+<script src="https://gist.github.com/zacksleo/555ae102e87af209593c5303f441cbfc.js"></script>
+
+
+
+
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2019/04/22/使用Gin搭建Oauth2服务并对进行授权和测试/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zacksleo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zacks's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/22/使用Gin搭建Oauth2服务并对进行授权和测试/" itemprop="url">
+                  使用Gin搭建Oauth2服务并对进行授权和测试
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-22 23:29:00" itemprop="dateCreated datePublished" datetime="2019-04-22T23:29:00+08:00">2019-04-22</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2025-01-11 01:27:41" itemprop="dateModified" datetime="2025-01-11T01:27:41+08:00">2025-01-11</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/04/22/使用Gin搭建Oauth2服务并对进行授权和测试/" class="leancloud_visitors" data-flag-title="使用Gin搭建Oauth2服务并对进行授权和测试">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>前面分别介绍了 <a href="https://zacksleo.github.io/2019/04/22/Golang%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%E4%B8%8E%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E5%92%8C%E9%83%A8%E7%BD%B2/">Golang 持续集成与自动化测试和部署</a>和<a href="https://zacksleo.github.io/2019/04/24/%E4%BD%BF%E7%94%A8Gin%E5%BC%80%E5%8F%91Restful%E6%8E%A5%E5%8F%A3/">使用Gin开发Restful接口并进行自动化测试</a><br>那么Restful接口搭建好了以后，如何进行接口授权验证，本文将讲述这些内容。</p>
+<h2 id="go-oauth2"><a href="#go-oauth2" class="headerlink" title="go-oauth2"></a>go-oauth2</h2><p>Oauth2 是一种验证授权机制，通过下发令牌，来实现接口的认证。</p>
+<p><a href="https://github.com/go-oauth2/oauth2" target="_blank" rel="noopener">go-oauth2</a></p>
+<h2 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">auth := r.Group(<span class="string">"/api/v1/oauth2"</span>)</span><br><span class="line">&#123;</span><br><span class="line">	auth.POST(<span class="string">"/tokens"</span>, controllers.CreateToken)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="控制器实现"><a href="#控制器实现" class="headerlink" title="控制器实现"></a>控制器实现</h2><script src="https://gist.github.com/zacksleo/0607c81ff5a427ed16683c479e2d97e3.js"></script>
+
+<h2 id="获取Token的测试"><a href="#获取Token的测试" class="headerlink" title="获取Token的测试"></a>获取Token的测试</h2><p>这里为了方便在其他接口测试案例中调用获取token的方法，特意进行了拆分</p>
+<script src="https://gist.github.com/zacksleo/4f52efceb3e2b3206de35f7e034f48fe.js"></script>
+<script src="https://gist.github.com/zacksleo/916a4421de368a66036ab19731424d0b.js"></script>
+
+<h2 id="其他接口的测试"><a href="#其他接口的测试" class="headerlink" title="其他接口的测试"></a>其他接口的测试</h2><script src="https://gist.github.com/zacksleo/bf09d04c5120f1a9c8f06cbeeb86cb6e.js"></script>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2019/04/22/Golang持续集成与自动化测试和部署/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zacksleo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zacks's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/22/Golang持续集成与自动化测试和部署/" itemprop="url">
+                  Golang持续集成与自动化测试和部署
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-22 11:20:00" itemprop="dateCreated datePublished" datetime="2019-04-22T11:20:00+08:00">2019-04-22</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2025-01-11 01:27:41" itemprop="dateModified" datetime="2025-01-11T01:27:41+08:00">2025-01-11</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/04/22/Golang持续集成与自动化测试和部署/" class="leancloud_visitors" data-flag-title="Golang持续集成与自动化测试和部署">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>Golang是一门性能优异的静态类型语言，但因其奇快的编译速度，结合DevOps, 使得它也非常适合快速开发和迭代。</p>
+<p>本文讲述如何使用Golang, 进行持续集成与自动化测试和部署。主要使用了以下相关技术：</p>
+<ul>
+<li><a href="https://github.com/golang/dep" target="_blank" rel="noopener">dep</a>： 进行包的依赖管理</li>
+<li><a href="https://github.com/gin-gonic/gin" target="_blank" rel="noopener">gin</a>： 搭建 api 服务</li>
+<li><a href="https://github.com/jinzhu/gorm" target="_blank" rel="noopener">gorm</a>：ORM, 数据CRUD</li>
+<li><a href="http://github.com/go-sql-driver/mysql" target="_blank" rel="noopener">mysql</a>: 存储数据</li>
+<li><a href="https://github.com/go-testfixtures/testfixtures" target="_blank" rel="noopener">testfixtures</a>： 测试夹具，在自动化测试时，自动向数据库填充用于测试的数据</li>
+<li><a href="https://github.com/gavv/httpexpect" target="_blank" rel="noopener">httpexpect</a>: HTTP 测试包，用于API测试</li>
+<li><a href="https://github.com/joho/godotenv" target="_blank" rel="noopener">GoDotEnv</a>: 环境变量处理</li>
+<li>go test: 使用test命令进行单元测试, 基准测试和 HTTP 测试</li>
+<li>GitLabCI: DevOps 工具</li>
+<li><a href="https://github.com/golang/lint" target="_blank" rel="noopener">golint</a>: Golang 静态检查工具</li>
+<li><a href="https://github.com/golang-migrate/migrate/" target="_blank" rel="noopener">migrate</a>: 数据库迁移工具</li>
+<li>Docker: 使用 <a href="https://github.com/zacksleo/golang" target="_blank" rel="noopener">zacksleo/golang</a> 镜像, 该镜像默认安装了 curl,git,build-base,dep 和 golint</li>
+<li><a href="https://github.com/Shelnutt2/db2struct" target="_blank" rel="noopener">db2struct</a>: 将数据库表结构一键生成为 struct(gorm的model)</li>
+<li><a href="https://github.com/cweagans/apig/tree/dep-conversion" target="_blank" rel="noopener">apig</a>: 基于 gorm 和 gin 一键生成 CRUD API</li>
+</ul>
+<h2 id="开发流程"><a href="#开发流程" class="headerlink" title="开发流程"></a>开发流程</h2><ul>
+<li>使用 apig 脚手架工具初始化项目结构和目录</li>
+<li>使用 dep 安装相关依赖</li>
+<li>使用 migrate 编写数据库迁移方法，并执行迁移创建数据表</li>
+<li>使用 db2struct 生成 models</li>
+<li>使用 apig 生成 crud 代码</li>
+<li>使用 httpexpect 编写 api 测试代码，并通过 testfixtures 实现数据的自动填充</li>
+<li>编写 GitLabCI 脚本进行持续集成</li>
+</ul>
+<p>在上述过程中，如需连接数据库时，可通过 GoDotEnv 来实现环境变量的使用</p>
+<h2 id="相关CI脚本"><a href="#相关CI脚本" class="headerlink" title="相关CI脚本"></a>相关CI脚本</h2><script src="https://gist.github.com/zacksleo/6b86c61fff51939de7dbd6af531de9f3.js"></script>
+
+<h2 id="集成测试"><a href="#集成测试" class="headerlink" title="集成测试"></a>集成测试</h2><script src="https://gist.github.com/zacksleo/a80e81fb4e7b8a8bd8289060c8190a60.js"></script>
+
+
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><p>在测试中，如果需要区分单元测试和集成测试，可以使用 build tags 实现，如在文件头部中添加 <code>// +build integration</code>, 运行测试使用 <code>- go test -tags=integration $(go list ./tests/... | grep -v /vendor/) -v</code> 可以只执行集成测试</p>
+<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><ul>
+<li><a href="https://golang.org/pkg/testing/" target="_blank" rel="noopener">Go Test</a></li>
+<li><a href="https://dave.cheney.net/2013/06/30/how-to-write-benchmarks-in-go" target="_blank" rel="noopener">How to write benchmarks in Go</a></li>
+<li><a href="https://segmentfault.com/a/1190000016354758" target="_blank" rel="noopener">Go 性能调优之 —— 基准测试</a></li>
+<li><a href="https://yar999.gitbooks.io/gopl-zh/content/" target="_blank" rel="noopener">Go语言圣经（中文版）</a></li>
+<li><a href="https://stackoverflow.com/questions/25965584/separating-unit-tests-and-integration-tests-in-go" target="_blank" rel="noopener">使用tags区隔单元测试和集成测试</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2019/04/16/REST接口文档编写规范/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zacksleo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zacks's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/16/REST接口文档编写规范/" itemprop="url">
+                  REST接口文档编写规范
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-16 15:41:26" itemprop="dateCreated datePublished" datetime="2019-04-16T15:41:26+08:00">2019-04-16</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2025-01-11 01:27:41" itemprop="dateModified" datetime="2025-01-11T01:27:41+08:00">2025-01-11</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/04/16/REST接口文档编写规范/" class="leancloud_visitors" data-flag-title="REST接口文档编写规范">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>REST接口文档遵循 <a href="https://apiblueprint.org/" target="_blank" rel="noopener">API Blueprint 编码规范</a></p>
+<p>中文说明需要遵循 <a href="https://github.com/mzlogin/chinese-copywriting-guidelines" target="_blank" rel="noopener">中文文案排版指北</a></p>
+<p>按照该格式书写的文档, 可以被 GitLab 及 Gollum 完美解析</p>
+<h2 id="主要内容"><a href="#主要内容" class="headerlink" title="主要内容"></a>主要内容</h2><ol>
+<li>使用 Markdown 编写</li>
+<li>请求和响应主体, 使用8个字符缩进</li>
+<li>不使用` 包裹json代码</li>
+</ol>
+<h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## 用户密码 [/users/password]</span><br><span class="line"></span><br><span class="line">### 重置密码 [PATCH]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">+ Attributes</span><br><span class="line">    + phone (number, required) - 手机号码</span><br><span class="line">    + password (string, required) - 密码</span><br><span class="line">    + verify_code (string, required) - 短信验证码</span><br><span class="line"></span><br><span class="line">+ Header </span><br><span class="line">    + Authorization Bearer: &#123;clientToken&#125; - 访问令牌, 通过客户端模式获得</span><br><span class="line">    + Content-Type: application/json</span><br><span class="line"></span><br><span class="line">+ Request (application/json)</span><br><span class="line"></span><br><span class="line">        &#123;</span><br><span class="line">            &quot;phone&quot;:&quot;17083300514&quot;,</span><br><span class="line">            &quot;password&quot;:&quot;pa66w0rd&quot;,</span><br><span class="line">            &quot;verify_code&quot;:&quot;312338&quot;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">+ Response 201 (application/json)      </span><br><span class="line"></span><br><span class="line">        &#123;</span><br><span class="line">            &quot;phone&quot;:&quot;17083300514&quot;,</span><br><span class="line">            &quot;password&quot;:&quot;pa66w0rd&quot;,</span><br><span class="line">            &quot;verify_code&quot;:&quot;312338&quot;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">+ Response 422 (application/json)</span><br><span class="line"></span><br><span class="line">        [</span><br><span class="line">          &#123;</span><br><span class="line">            &quot;field&quot;: &quot;verify_code&quot;,</span><br><span class="line">            &quot;message&quot;: &quot;短信验证码错误&quot;</span><br><span class="line">          &#125;,</span><br><span class="line">          &#123;</span><br><span class="line">            &quot;field&quot;: &quot;phone&quot;,</span><br><span class="line">            &quot;message&quot;: &quot;手机号不存在&quot;</span><br><span class="line">          &#125;,</span><br><span class="line">         &#123;</span><br><span class="line">            &quot;field&quot;: &quot;password&quot;,</span><br><span class="line">            &quot;message&quot;: &quot;密码至少包含一位数字&quot;</span><br><span class="line">          &#125;</span><br><span class="line">        ]</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">## 扫描二维码 [/qrcode-tokens/&#123;ticket&#125;]</span><br><span class="line"></span><br><span class="line">### 更新状态 [PUT]</span><br><span class="line"></span><br><span class="line">+ Attributes</span><br><span class="line">    + action (string, required) - 动作, 值为SCANNED或LOGGED_IN</span><br><span class="line">    + ticket (string, required) - ticket 二维码中链接中后面的字符串</span><br><span class="line"></span><br><span class="line">+ Header </span><br><span class="line">    + Authorization: Bearer &#123;clientToken&#125;</span><br><span class="line">    + Content-Type: application/json</span><br><span class="line"></span><br><span class="line">+ Request (application/json)</span><br><span class="line"></span><br><span class="line">        &#123;</span><br><span class="line">            &quot;action&quot;:&quot;SCANNED&quot;</span><br><span class="line">        &#125;</span><br><span class="line">  </span><br><span class="line">+ Response 201 (application/json)      </span><br><span class="line"></span><br><span class="line">        &#123;</span><br><span class="line">            &quot;action&quot;:&quot;SCANNED&quot;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ul>
+<li><a href="https://apiblueprint.org/" target="_blank" rel="noopener">API Blueprint官网</a></li>
+<li><a href="https://github.com/apiaryio/api-blueprint" target="_blank" rel="noopener">GitHub</a></li>
+<li><a href="https://blog.callmewhy.com/2014/06/05/blueprint-tutorial/" target="_blank" rel="noopener">API Blueprint 指导手册</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2019/04/16/DevOps软件开发流程规范/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zacksleo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zacks's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/16/DevOps软件开发流程规范/" itemprop="url">
+                  DevOps 软件开发流程规范
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-16 15:34:00" itemprop="dateCreated datePublished" datetime="2019-04-16T15:34:00+08:00">2019-04-16</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2025-01-11 01:27:41" itemprop="dateModified" datetime="2025-01-11T01:27:41+08:00">2025-01-11</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/04/16/DevOps软件开发流程规范/" class="leancloud_visitors" data-flag-title="DevOps 软件开发流程规范">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="流程概要"><a href="#流程概要" class="headerlink" title="流程概要"></a>流程概要</h2><p>持续集成和持续交付是 DevOps 最核心的两个部分。</p>
+<p>持续集成通过即时将最新的代码，集成到主干分支，并进行相关的测试（单元测试、集成测试等）和静态检查（代码格式，代码质量等），以期提早发现问题。</p>
+<p>持续交付，在持续集成完成之后，即时生成生产环境可用的产物（如二进制文件、包、或者 Docker镜像），并准备随时部署，如果伴随着部署过程，则称为持续部署。</p>
+<h2 id="开发流程"><a href="#开发流程" class="headerlink" title="开发流程"></a>开发流程</h2><ul>
+<li>系统分析与设计：需求分析，架构设计，数据库设计等</li>
+<li>相关文档编写, 文档应与代码仓库一起</li>
+<li><p>系统开发</p>
+<ul>
+<li>持续集成 (gitlab-ci)</li>
+<li>格式检查和静态检查 (vscode, linter)</li>
+<li>数据库迁移 (migration)</li>
+<li>使用 Docker 搭建开发、测试和生产环境，docker-compose</li>
+<li>Git开发流程 (git cz, master, branch )</li>
+<li>自动化测试：单元测试，HTTP测试（api测试），功能测试，基准测试 (ab)</li>
+<li>自动化部署（主备）(ngixn back)</li>
+<li>更新日志 (angular changelog)</li>
+<li>crontab supervisord</li>
+</ul>
+</li>
+<li><p>测试与验收</p>
+</li>
+</ul>
+<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><ul>
+<li><a href="https://zacksleo.github.io/2017/03/07/RESTful%E6%8E%A5%E5%8F%A3%E8%A7%84%E8%8C%83/">RESTful接口规范</a></li>
+<li>接口文档编写规范</li>
+<li><a href="https://zacksleo.github.io/2017/03/07/PHP%E7%BC%96%E7%A0%81%E8%A7%84%E8%8C%83/">PHP编码规范</a></li>
+<li><a href="https://zacksleo.github.io/2017/03/07/Git%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%A7%84%E8%8C%83/">Git工作流程及使用规范</a></li>
+<li><a href="https://semver.org/lang/zh-CN/" target="_blank" rel="noopener">语义化版本 2.0.0</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2018/12/27/CentOS安装Docker并设置开机启动/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zacksleo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zacks's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/27/CentOS安装Docker并设置开机启动/" itemprop="url">
+                  CentOS安装Docker并设置开机启动
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-12-27 16:31:06" itemprop="dateCreated datePublished" datetime="2018-12-27T16:31:06+08:00">2018-12-27</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2025-01-11 01:27:41" itemprop="dateModified" datetime="2025-01-11T01:27:41+08:00">2025-01-11</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/12/27/CentOS安装Docker并设置开机启动/" class="leancloud_visitors" data-flag-title="CentOS安装Docker并设置开机启动">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li><p>删除旧版 </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum remove docker docker-common  docker-selinux  docker-engine</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装库</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install -y yum-utils  device-mapper-persistent-data  lvm2</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置stable repo</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum-config-manager --add-repo  https://download.docker.com/linux/centos/docker-ce.repo</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install docker-ce</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl start docker</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>开机启动</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl <span class="built_in">enable</span> docker</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>7 . hello world<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run hello-world</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">zacksleo</p>
+              <p class="site-description motion-element" itemprop="description">Full Stack Web Developer</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">56</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">89</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/zacksleo" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2025</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zacksleo</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.2.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.2.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.2.0"></script>
+
+
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.2.0"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("6ewRRbjRaYybcLL2fRlMKDtT-gzGzoHsz", "NhhOjGzUPay4gOs6hP0RzgdH");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            
+              var $element = $(document.getElementById(url));
+              $element.find('.leancloud-visitors-count').text(counter.get('time'));
+            
+            counter.save(null, {
+              success: function(counter) {
+                
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            
+              var newcounter = new Counter();
+              /* Set ACL */
+              var acl = new AV.ACL();
+              acl.setPublicReadAccess(true);
+              acl.setPublicWriteAccess(true);
+              newcounter.setACL(acl);
+              /* End Set ACL */
+              newcounter.set("title", title);
+              newcounter.set("url", url);
+              newcounter.set("time", 1);
+              newcounter.save(null, {
+                success: function(newcounter) {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+                },
+                error: function(newcounter, error) {
+                  console.log('Failed to create');
+                }
+              });
+            
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,2842 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="HSx2g2b2GklalbFMNOUlf16CH8h8aJMsL6Wa1CvfqSw" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.2.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.2.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Full Stack Web Developer">
+<meta name="keywords" content="PHP, Yii, Laravel, Python, Full Stack Web Developer">
+<meta property="og:type" content="website">
+<meta property="og:title" content="zacks&#39;s blog">
+<meta property="og:url" content="https://zacksleo.github.io/page/4/index.html">
+<meta property="og:site_name" content="zacks&#39;s blog">
+<meta property="og:description" content="Full Stack Web Developer">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="zacks&#39;s blog">
+<meta name="twitter:description" content="Full Stack Web Developer">
+
+
+
+
+
+
+  <link rel="canonical" href="https://zacksleo.github.io/page/4/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>zacks's blog</title>
+  
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-80154310-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-80154310-2');
+</script>
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+  page-home">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">zacks's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">清净无为</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2017/05/30/GitLab-CI实现自动化测试/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zacksleo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zacks's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/05/30/GitLab-CI实现自动化测试/" itemprop="url">
+                  GitLab-CI实现自动化测试
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-05-30 10:37:33" itemprop="dateCreated datePublished" datetime="2017-05-30T10:37:33+08:00">2017-05-30</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2025-01-11 01:27:41" itemprop="dateModified" datetime="2025-01-11T01:27:41+08:00">2025-01-11</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/05/30/GitLab-CI实现自动化测试/" class="leancloud_visitors" data-flag-title="GitLab-CI实现自动化测试">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="GitLab-Ci实现自动化测试"><a href="#GitLab-Ci实现自动化测试" class="headerlink" title="GitLab-Ci实现自动化测试"></a>GitLab-Ci实现自动化测试</h1><blockquote>
+<p>持续集成的目的，就是让产品可以快速迭代，同时还能保持高质量。它的核心措施是，代码集成到主干之前，必须通过自动化测试。只要有一个测试用例失败，就不能集成。</p>
+</blockquote>
+<p>使用自动化测试, 可以提高软件的质量和可靠性, 今早发现其中的缺陷和问题, 以便即时改正.</p>
+<h2 id="配置环境"><a href="#配置环境" class="headerlink" title="配置环境"></a>配置环境</h2><p>首先需要一个满足运行自动化测试的Docker镜像, 以便后面运行测试代码, 例如:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">image: zacksleo/docker-composer:develop</span><br></pre></td></tr></table></figure>
+<h2 id="配置服务"><a href="#配置服务" class="headerlink" title="配置服务"></a>配置服务</h2><p>某些测试需要使用额外的服务, 如数据库、缓存服务器等等, 并通过<code>variables</code>配置服务中的一些变量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">services:</span><br><span class="line">    - mysql:5.6</span><br><span class="line">    - redis:latest</span><br><span class="line">variables:</span><br><span class="line">    MYSQL_ROOT_PASSWORD: root</span><br><span class="line">    MYSQL_DATABASE: web</span><br><span class="line">    MYSQL_USER: web</span><br><span class="line">    MYSQL_PASSWORD: web</span><br></pre></td></tr></table></figure>
+<h2 id="声明依赖工件"><a href="#声明依赖工件" class="headerlink" title="声明依赖工件"></a>声明依赖工件</h2><p>一般在测试前要进行准备过程, 如安装依赖库或者编译等, 可将上述过程生成的的文件, 通过依赖声明, 传递过来, 这样可以比避免重复执行相关过程.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">installing-dependencies:</span><br><span class="line">    stage: prepare</span><br><span class="line">    script:</span><br><span class="line">        - composer install --prefer-dist --optimize-autoloader -n --no-interaction -v --no-suggest</span><br><span class="line">        - composer dump-autoload --optimize</span><br><span class="line">    artifacts:</span><br><span class="line">        name: &quot;vendor&quot;</span><br><span class="line">        untracked: true</span><br><span class="line">        expire_in: 60 mins</span><br><span class="line">        paths:</span><br><span class="line">            - $CI_PROJECT_DIR/vendor</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dependencies:</span><br><span class="line">    - installing-dependencies</span><br></pre></td></tr></table></figure>
+<h2 id="配置测试脚本"><a href="#配置测试脚本" class="headerlink" title="配置测试脚本"></a>配置测试脚本</h2><p>  假定你已经在本地编写好了测试代码, 并且可以本地运行, 那么就可以通过调整和适配, 让测试可以在GitLab-CI中自动化执行, 在下面的例子中,</p>
+<p>  测试代码位于<code>tests</code>目录,并且<code>.env</code>中配置了一些环境变量, 该文件的作用是为了让不同环境使用不同的一组变量, 如数据库、接口地址、账号等等，<br>  这样做的目录可以尽量少的变更代码，保持核心代码的稳定性和适应能力， 通过<code>php -S</code> 启动了一个本地接口服务, 最后调用api测试, 对所有接口<br>  进行测试</p>
+<p>  在下面的例子中, 还声明了<code>coverage</code>, 这个用来说明代码测试覆盖率的取得方法, 因为在测试中会将覆盖率输出(<code>--coverage --no-colors</code>),<br>  GitLab-CI 通过正则匹配输出内容, 读取到覆盖率, 从而显示在项目徽标处  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">dependencies:</span><br><span class="line">    - installing-dependencies</span><br><span class="line">script:</span><br><span class="line">    - cp tests/.env .env</span><br><span class="line">    - ./yii migrate/up --interactive=0</span><br><span class="line">    - php -S localhost:80 --docroot api/tests &amp;&gt;/dev/null&amp;</span><br><span class="line">    - ./vendor/bin/codecept run api -c tests --coverage --no-colors</span><br><span class="line"></span><br><span class="line">    coverage: &apos;/^\s*Lines:\s*\d+.\d+\%/&apos;</span><br></pre></td></tr></table></figure>
+<h2 id="测试失败如何处理"><a href="#测试失败如何处理" class="headerlink" title="测试失败如何处理"></a>测试失败如何处理</h2><p>  当测试失败后, 除了查看<code>Pipline</code>中的任务输出, 我们还应当详细查看测试中的相关日志, 下面这里, 将需要查看的文件生成工件, 在GitLab中下载,<br>  然后可以在本地详细查看, <code>when</code>说明了仅在测试失败时, 才生成工件</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">artifacts:</span><br><span class="line">    name: &quot;debug&quot;</span><br><span class="line">    when: on_failure</span><br><span class="line">    untracked: true</span><br><span class="line">    expire_in: 60 mins</span><br><span class="line">    paths:</span><br><span class="line">        - $CI_PROJECT_DIR/api/runtime</span><br><span class="line">        - $CI_PROJECT_DIR/tests/_output</span><br></pre></td></tr></table></figure>
+<h2 id="完整的例子"><a href="#完整的例子" class="headerlink" title="完整的例子"></a>完整的例子</h2><p>下面是一个完整的API自动化测试的盒子</p>
+<pre><code>api-test:
+    stage: testing
+    services:
+        - mysql:5.6
+        - redis:latest
+    variables:
+        MYSQL_ROOT_PASSWORD: root
+        MYSQL_DATABASE: web
+        MYSQL_USER: web
+        MYSQL_PASSWORD: web
+    dependencies:
+        - installing-dependencies
+    script:
+        - cp tests/.env .env
+        - ./yii migrate/up --interactive=0
+        - php -S localhost:80 --docroot api/tests &amp;&gt;/dev/null&amp;
+        - ./vendor/bin/codecept run api -c tests
+    artifacts:
+        name: &quot;debug&quot;
+        when: on_failure
+        untracked: true
+        expire_in: 60 mins
+        paths:
+            - $CI_PROJECT_DIR/api/runtime
+            - $CI_PROJECT_DIR/tests/_output
+    only:
+        - develop
+        - master
+</code></pre><p>关于持续集成完整的项目, 请查看 <a href="https://github.com/zacksleo/yii2-app-advanced" target="_blank" rel="noopener">zacksleo/yii2-app-advanced</a> 项目</p>
+<p>  <a href="https://docs.gitlab.com/ce/ci/docker/using_docker_images.html" target="_blank" rel="noopener">使用Docker镜像</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2017/05/21/从PHP到Python-两种编程语言的异同/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zacksleo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zacks's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/05/21/从PHP到Python-两种编程语言的异同/" itemprop="url">
+                  从PHP到Python-两种编程语言的异同
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-05-21 22:08:21" itemprop="dateCreated datePublished" datetime="2017-05-21T22:08:21+08:00">2017-05-21</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2025-01-11 01:27:41" itemprop="dateModified" datetime="2025-01-11T01:27:41+08:00">2025-01-11</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/05/21/从PHP到Python-两种编程语言的异同/" class="leancloud_visitors" data-flag-title="从PHP到Python-两种编程语言的异同">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="语言"><a href="#语言" class="headerlink" title="语言"></a>语言</h2><ol>
+<li>两者都是胶水语言, 不需要编译, 逐行运行, 因此报错时可以追中到行</li>
+<li>主流都是用C实现的, 因此底层仍然是C</li>
+</ol>
+<h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><ol>
+<li>PHP与Python在代码格式上有非常大的不同, 首先最明显的一个区别就是, 没有大括号包裹函数和类库.</li>
+<li>Python使用缩进来替代大括号的功能, 开始的时候可能会让你不太习惯, 不过时间长了, 也就慢慢接受了</li>
+</ol>
+<h2 id="依赖管理"><a href="#依赖管理" class="headerlink" title="依赖管理"></a>依赖管理</h2><ol>
+<li>PHP使用composer进行依赖管理，既可以全局安装，也可以安装到当前项目</li>
+<li>Python使用Pip进行依赖管理，只能全局安装</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2017/04/27/如何编写GitLab-CI配置文件/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zacksleo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zacks's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/04/27/如何编写GitLab-CI配置文件/" itemprop="url">
+                  如何编写GitLab-CI配置文件
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-04-27 15:45:00" itemprop="dateCreated datePublished" datetime="2017-04-27T15:45:00+08:00">2017-04-27</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2025-01-11 01:27:41" itemprop="dateModified" datetime="2025-01-11T01:27:41+08:00">2025-01-11</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/04/27/如何编写GitLab-CI配置文件/" class="leancloud_visitors" data-flag-title="如何编写GitLab-CI配置文件">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="创建文件"><a href="#创建文件" class="headerlink" title="创建文件"></a>创建文件</h2><p>在根目录新建<code>.gitlab-ci.yml</code>文件.</p>
+<p>该文件与项目其他文件一样, 同样受到版本控制, 所以可以在不同的分支下, 配置不同的持续集成脚本</p>
+<h2 id="YAML语法"><a href="#YAML语法" class="headerlink" title="YAML语法"></a>YAML语法</h2><p>配置文件遵循YAML语法, 关于该语法的内容, 自行搜索</p>
+<p>参考 <a href="http://www.ruanyifeng.com/blog/2016/07/yaml.html" target="_blank" rel="noopener">YAML 语言教程</a></p>
+<h2 id="关键词"><a href="#关键词" class="headerlink" title="关键词"></a>关键词</h2><h3 id="根主要关键词一览"><a href="#根主要关键词一览" class="headerlink" title="根主要关键词一览"></a>根主要关键词一览</h3><table>
+<thead>
+<tr>
+<th>关键词</th>
+<th>含义</th>
+<th>可选</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>image</td>
+<td>声明使用的Docker镜像</td>
+<td>为空时使用默认镜像</td>
+<td>该镜像应当满足脚本执行的环境依赖</td>
+</tr>
+<tr>
+<td>services</td>
+<td>Docker镜像使用的服务, 通过链接的方式来调用所需服务</td>
+<td>可空</td>
+<td>常用于链接数据库</td>
+</tr>
+<tr>
+<td>stages</td>
+<td>定义构建阶段</td>
+<td>为空时, 单纯定义jobs</td>
+<td>项目的构建分为多个阶段, 例如: 安装依赖/准备, 编译, 测试, 发布等, 同时每个阶段包含若干任务</td>
+</tr>
+<tr>
+<td>before_script</td>
+<td>定义每个job之前执行的脚本</td>
+<td>可空</td>
+<td>每个job启动时会先执行该脚本</td>
+</tr>
+<tr>
+<td>after_script</td>
+<td>定义每个job之后执行的脚本</td>
+<td>可空</td>
+<td>同上</td>
+</tr>
+<tr>
+<td>variables</td>
+<td>定义变量</td>
+<td>可空</td>
+<td>同上</td>
+</tr>
+<tr>
+<td>cache</td>
+<td>定义与后续job之间应缓存的文件</td>
+<td>可空</td>
+<td>同上</td>
+</tr>
+</tbody>
+</table>
+<p>Demo:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">image: aipline</span><br><span class="line">services:</span><br><span class="line">    - mysql</span><br><span class="line">    - redis</span><br><span class="line">stages:</span><br><span class="line">    - build</span><br><span class="line">    - test</span><br><span class="line">    - deploy</span><br><span class="line">before_script:</span><br><span class="line">    - bundle install  </span><br><span class="line">after_script:</span><br><span class="line">    - rm secrets</span><br><span class="line">cache:</span><br><span class="line">    paths:</span><br><span class="line">    - binaries/</span><br><span class="line">    - .config</span><br></pre></td></tr></table></figure>
+<h3 id="Jobs中的关键词"><a href="#Jobs中的关键词" class="headerlink" title="Jobs中的关键词"></a>Jobs中的关键词</h3><p>jobs中存在一些与根中相同的关键词, 这些一旦定义, 则会向前覆盖, 即根中定义的则不会在该job执行</p>
+<p>job 这里译为<strong>任务</strong></p>
+<table>
+<thead>
+<tr>
+<th>关键词</th>
+<th>含义</th>
+<th>可选</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>image</td>
+<td>声明任务使用的Docker镜像</td>
+<td>为空时使用根中的定义</td>
+<td>该镜像应当满足脚本执行的环境依赖</td>
+</tr>
+<tr>
+<td>services</td>
+<td>任务中Docker镜像使用的服务, 通过链接的方式来调用所需服务</td>
+<td>可空</td>
+<td>常用于链接数据库</td>
+</tr>
+<tr>
+<td>stage</td>
+<td>所属构建阶段</td>
+<td>为空时则不使用stages</td>
+<td>一个任务属于一个构建阶段</td>
+</tr>
+<tr>
+<td>before_script</td>
+<td>定义每个job之前执行的脚本</td>
+<td>可选</td>
+<td>如果在job中定义则会覆盖根中的内容</td>
+</tr>
+<tr>
+<td>script</td>
+<td>定义每个job执行的脚本</td>
+<td>必须</td>
+<td></td>
+</tr>
+<tr>
+<td>after_script</td>
+<td>定义每个job之后执行的脚本</td>
+<td>可选</td>
+<td>同上</td>
+</tr>
+<tr>
+<td>variables</td>
+<td>定义任务中使用的变量</td>
+<td>可选</td>
+<td>同上</td>
+</tr>
+<tr>
+<td>cache</td>
+<td>定义与后续job之间应缓存的文件</td>
+<td>可选</td>
+<td>同上</td>
+</tr>
+<tr>
+<td>only</td>
+<td>指定应用的Git分支</td>
+<td>可选</td>
+<td>可以是分支名称, 可用正则匹配分支, 也可是tags来指定打过标签的分支</td>
+</tr>
+<tr>
+<td>except</td>
+<td>排除应用的Git分支</td>
+<td>可选</td>
+<td>同上</td>
+</tr>
+<tr>
+<td>tags</td>
+<td>指定执行的GitLab-Runners</td>
+<td>可选</td>
+<td>通过匹配Runners的标签选定</td>
+</tr>
+<tr>
+<td>allow_failure</td>
+<td>允许失败</td>
+<td>默认为false</td>
+<td>如果允许失败, 本次任务不会影响整个构建的结果</td>
+</tr>
+<tr>
+<td>when</td>
+<td>定义合适执行任务</td>
+<td>默认为always</td>
+<td>有<code>on_success</code>, <code>on_failure</code>, <code>always</code> or <code>manual</code>可选</td>
+</tr>
+<tr>
+<td>dependencies</td>
+<td>定义合任务所需要的工件</td>
+<td>可空</td>
+<td>需要首先定义工件</td>
+</tr>
+<tr>
+<td>artifacts</td>
+<td>定义工件</td>
+<td>可空</td>
+<td>工件中指定的目录会在任务执行成功后压缩传到GitLab, 后面需要该工件的任务执行时, 再自行下载解压</td>
+</tr>
+<tr>
+<td>environment</td>
+<td>定义环境</td>
+<td>可空</td>
+<td>在部署任务中, 定义该任务所属的环境</td>
+</tr>
+</tbody>
+</table>
+<p>Demo:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">installing-dependencies:</span><br><span class="line">    script:</span><br><span class="line">        - composer install --prefer-dist --optimize-autoloader -n --no-interaction -v --no-suggest</span><br><span class="line">        - composer dump-autoload --optimize</span><br><span class="line">    artifacts:</span><br><span class="line">        name: &quot;vendor&quot;</span><br><span class="line">        untracked: true</span><br><span class="line">        expire_in: 60 mins</span><br><span class="line">        paths:</span><br><span class="line">            - vendor/    </span><br><span class="line">docker-build-image:    </span><br><span class="line">    stage: test</span><br><span class="line">    only:</span><br><span class="line">        - master</span><br><span class="line">    except:</span><br><span class="line">        - develop</span><br><span class="line">    tags:</span><br><span class="line">        - ruby</span><br><span class="line">        - postgres</span><br><span class="line">    allow_failure: true</span><br><span class="line">    dependencies:</span><br><span class="line">        - installing-dependencies</span><br><span class="line">    script:        </span><br><span class="line">        - docker build -t registry.com/mops/image:latest .</span><br><span class="line">        - docker push registry.com/mops/image:latest</span><br></pre></td></tr></table></figure>
+<p>注意:</p>
+<ol>
+<li>jobs的名称不能重名</li>
+<li>同一阶段中的任务, 是并行执行的</li>
+<li>上一阶段所有任务执行完后, 才会进入下一阶段</li>
+<li>定义工件时, 务必定义工件的过期时间, 否则工件会一直寸在GitLab上, 占用空间</li>
+<li>如果需要在任务中传递文件, 优先选择使用 <code>dependencies</code> (结合<code>artifacts</code>)</li>
+</ol>
+<h2 id="验证配置文件合法性"><a href="#验证配置文件合法性" class="headerlink" title="验证配置文件合法性"></a>验证配置文件合法性</h2><p>在GitLab中, 打开 <code>/ci/lint</code>网址, 将配置文件粘贴在些, 进行验证</p>
+<h3 id="相关文档"><a href="#相关文档" class="headerlink" title="相关文档"></a>相关文档</h3><ul>
+<li><a href="https://docs.gitlab.com.cn/ce/ci/yaml/README.html" target="_blank" rel="noopener">配置构建任务</a></li>
+<li><a href="https://docs.gitlab.com/ce/ci/yaml/README.html" target="_blank" rel="noopener">Configuration of your jobs with .gitlab-ci.yml</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2017/04/26/GitLab-CI快速开始/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zacksleo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zacks's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/04/26/GitLab-CI快速开始/" itemprop="url">
+                  GitLab-CI快速开始
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-04-26 09:58:09" itemprop="dateCreated datePublished" datetime="2017-04-26T09:58:09+08:00">2017-04-26</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2025-01-11 01:27:41" itemprop="dateModified" datetime="2025-01-11T01:27:41+08:00">2025-01-11</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/04/26/GitLab-CI快速开始/" class="leancloud_visitors" data-flag-title="GitLab-CI快速开始">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>假定已经安装好了<code>GitLab-Runners</code></p>
+</blockquote>
+<h2 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World !"></a>Hello World !</h2><h3 id="在仓库根目录创建-gitlab-ci-yml-文件-内容如下"><a href="#在仓库根目录创建-gitlab-ci-yml-文件-内容如下" class="headerlink" title="在仓库根目录创建 .gitlab-ci.yml 文件, 内容如下"></a>在仓库根目录创建 <code>.gitlab-ci.yml</code> 文件, 内容如下</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">job-1:</span><br><span class="line">  script:</span><br><span class="line">    - echo &quot;Hello World&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="这样-在每次提交代码后-都会自动执行以上脚本-其中job-1是任务名称-可以定义多个任务"><a href="#这样-在每次提交代码后-都会自动执行以上脚本-其中job-1是任务名称-可以定义多个任务" class="headerlink" title="这样, 在每次提交代码后, 都会自动执行以上脚本. 其中job-1是任务名称, 可以定义多个任务,"></a>这样, 在每次提交代码后, 都会自动执行以上脚本. 其中<code>job-1</code>是任务名称, 可以定义多个任务,</h3><p><code>script</code>下面是 shell 命令, 只要命令执行成功, 就代表本次构建通过(出现passed标记)</p>
+<p>如图</p>
+<p><img src="http://ww1.sinaimg.cn/large/675eb504gy1fezux5o1v6j21200dejur.jpg" alt=""></p>
+<h3 id="这样-一次简单的持续集成已经搞定了"><a href="#这样-一次简单的持续集成已经搞定了" class="headerlink" title="这样, 一次简单的持续集成已经搞定了."></a>这样, 一次简单的持续集成已经搞定了.</h3><h2 id="远程拉取代码"><a href="#远程拉取代码" class="headerlink" title="远程拉取代码"></a>远程拉取代码</h2><h3 id="使用ssh远程登录服务器-然后执行git-pull-拉取代码-实现代码热更新"><a href="#使用ssh远程登录服务器-然后执行git-pull-拉取代码-实现代码热更新" class="headerlink" title="使用ssh远程登录服务器, 然后执行git pull 拉取代码, 实现代码热更新"></a>使用ssh远程登录服务器, 然后执行<code>git pull</code> 拉取代码, 实现代码热更新</h3><p>由于ssh无密码登录需要用到密钥, 所以首先需要注入私钥</p>
+<p>如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">release-doc:</span><br><span class="line">    stage: deploy</span><br><span class="line">    script:</span><br><span class="line">        - ssh root@$DEPLOY_SERVER &quot;cd /mnt/data/docker-gollum/wiki &amp;&amp; git pull origin master&quot;</span><br><span class="line"></span><br><span class="line">`</span><br></pre></td></tr></table></figure>
+<p>一个更详细的例子 [[通过gitlab-ci实现文件的自动部署]]</p>
+<h2 id="通过Docker镜像实现自动部署"><a href="#通过Docker镜像实现自动部署" class="headerlink" title="通过Docker镜像实现自动部署"></a>通过Docker镜像实现自动部署</h2><p>见文章 [[GitLab-CI使用Docker进行持续部署]]</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="https://docs.gitlab.com.cn/ce/ci/quick_start/README.html" target="_blank" rel="noopener">GitLab-CI快速开始-中文</a></li>
+<li><a href="https://docs.gitlab.com/ce/ci/quick_start/README.html" target="_blank" rel="noopener">GitLab-CI快速开始-官方</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2017/04/26/GitLab-CI简介/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zacksleo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zacks's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/04/26/GitLab-CI简介/" itemprop="url">
+                  GitLab-CI简介
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-04-26 09:27:52" itemprop="dateCreated datePublished" datetime="2017-04-26T09:27:52+08:00">2017-04-26</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2025-01-11 01:27:41" itemprop="dateModified" datetime="2025-01-11T01:27:41+08:00">2025-01-11</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/04/26/GitLab-CI简介/" class="leancloud_visitors" data-flag-title="GitLab-CI简介">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>持续集成（CI）和 持续交付(CD) 是一种流行的软件开发实践，每次提交都通过自动化的构建（测试、编译、发布）来验证，从而尽早的发现错误。</p>
+<p>持续集成实现了DevOps, 使开发人员和运维人员从繁琐的工作中解放出来。另外，这种形式极大地提高了开发者的开发效率和开发质量。<br>持续集成有多种工具，如Jenkins. GitLab内置了GitLab-CI，通过配置一段<code>YAML</code>脚本来实现持续集成.</p>
+<h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><p>持续集成可以实现的功能:</p>
+<ul>
+<li>代码审核: 自动化代码规范审查, 甚至代码质量检查</li>
+<li>自动化测试: 单元测试, 功能测试和验收测试</li>
+<li>编译发布: 将源代码编译成可执行程序, 并将程序上传到托管发布平台实现自动发布</li>
+<li>构建部署: 通过构建Docker镜像, 或登录远程服务器执行相关部署命令和脚本, 实现自动化部署</li>
+</ul>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>GitLab-CI 检测每次代码变动, 通过<code>.gitlab-ci.yml</code>脚本执行构建命令, 将命令发布到<code>GitLab-Runners(运行机)</code>上, 进而执行命令.</p>
+<p><code>GitLab-Runners</code> 基于Docker执行持续集成的每项任务, 这样就解决了环境依赖问题.</p>
+<p><code>GitLab-Runners</code>把实时将执行结果输出到GitLab网页上, 任务执行完后, 通过徽章标记和邮箱告知执行结果.</p>
+<p>下一章: [[GitLab 快速开始]]</p>
+<ul>
+<li><a href="http://www.ruanyifeng.com/blog/2015/09/continuous-integration.html" target="_blank" rel="noopener">持续集成是什么</a></li>
+<li><a href="https://about.gitlab.com/2015/12/14/getting-started-with-gitlab-and-gitlab-ci/" target="_blank" rel="noopener">Getting started with GitLab and GitLab CI</a></li>
+<li><a href="https://about.gitlab.com/2016/08/05/continuous-integration-delivery-and-deployment-with-gitlab/" target="_blank" rel="noopener">Continuous Integration, Delivery, and Deployment with GitLab</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2017/04/22/GitLab-CI使用Docker进行持续部署/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zacksleo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zacks's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/04/22/GitLab-CI使用Docker进行持续部署/" itemprop="url">
+                  GitLab-CI使用Docker进行持续部署
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-04-22 22:33:31" itemprop="dateCreated datePublished" datetime="2017-04-22T22:33:31+08:00">2017-04-22</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2025-01-11 01:27:41" itemprop="dateModified" datetime="2025-01-11T01:27:41+08:00">2025-01-11</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/04/22/GitLab-CI使用Docker进行持续部署/" class="leancloud_visitors" data-flag-title="GitLab-CI使用Docker进行持续部署">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Docker镜像通过私有仓库进行发布(如阿里云), 发布命令为:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker login -u username -p password registry.demo.com</span><br><span class="line">docker build -t registry.demo.com/repos/$CI_PROJECT_NAME:latest .</span><br><span class="line">docker push registry.demo.com/repos/$CI_PROJECT_NAME:latest</span><br></pre></td></tr></table></figure>
+<p>其中 <code>username</code>是用户名, <code>password</code>是密码, <code>registry.demo.com</code>是私有镜像库地址,</p>
+<p><code>$CI_PROJECT_NAME</code> 是GitLab-CI内置变量, 会自动替换为项目的名称, 这里也可以直接写死, 如</p>
+<p><code>docker build -t registry.demo.com/repos/image-name:latest .</code></p>
+<p><code>image-name</code>, 就是要构建的镜像名称, <code>latest</code>是TAG标签, <code>repos</code>是仓库的空间名称</p>
+<p>在下面的例子中, 首先通过composer安装依赖库, 然后通过artifacts传递给构建任务, 构建完镜像将镜像发布到私有库,<br>部署时通过拉取最新的镜像库, 进行部署</p>
+<blockquote>
+<p>项目的deploy目录中, 放置一些配置文件, 如<code>Dockerfile</code>, <code>docker-compose.yml</code>等, 通过<code>rsync</code>同步到部署服务器上, 用于部署所需</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">image: zacksleo/docker-composer:1.1</span><br><span class="line"></span><br><span class="line">before_script:</span><br><span class="line">    - &apos;which ssh-agent || ( apk update &amp;&amp; apk add openssh-client)&apos;</span><br><span class="line">    - apk add rsync</span><br><span class="line">    - eval $(ssh-agent -s)</span><br><span class="line">    - echo &quot;$SSH_PRIVATE_KEY&quot; &gt; ~/deploy.key</span><br><span class="line">    - chmod 0600 ~/deploy.key</span><br><span class="line">    - ssh-add ~/deploy.key</span><br><span class="line">    - mkdir -p ~/.ssh</span><br><span class="line">    - &apos;[[ -f /.dockerenv ]] &amp;&amp; echo -e &quot;Host *\n\tStrictHostKeyChecking no\n\n&quot; &gt; ~/.ssh/config&apos;</span><br><span class="line">    - export APP_ENV=testing</span><br><span class="line"></span><br><span class="line">stages:</span><br><span class="line">    - prepare    </span><br><span class="line">    - build</span><br><span class="line">    - deploy</span><br><span class="line"></span><br><span class="line">variables:</span><br><span class="line">    COMPOSER_CACHE_DIR: &quot;/cache/composer&quot;</span><br><span class="line">    DOCKER_DRIVER: overlay</span><br><span class="line"></span><br><span class="line">installing-dependencies:</span><br><span class="line">    stage: prepare</span><br><span class="line">    script:</span><br><span class="line">        - composer install --prefer-dist -n --no-interaction -v --no-suggest</span><br><span class="line">    artifacts:</span><br><span class="line">        name: &quot;vendor&quot;</span><br><span class="line">        untracked: true</span><br><span class="line">        expire_in: 60 mins</span><br><span class="line">        paths:</span><br><span class="line">            - $CI_PROJECT_DIR/vendor    </span><br><span class="line">test-image:</span><br><span class="line">    stage: build</span><br><span class="line">    image: docker:latest</span><br><span class="line">    services:</span><br><span class="line">        - docker:dind</span><br><span class="line">    dependencies:</span><br><span class="line">        - installing-dependencies</span><br><span class="line">    script:</span><br><span class="line">        - docker login -u username -p password registry.demo.com</span><br><span class="line">        - docker build -t registry.demo.com/repos/$CI_PROJECT_NAME:latest .</span><br><span class="line">        - docker push registry.demo.com/repos/$CI_PROJECT_NAME:latest</span><br><span class="line">testing-server:</span><br><span class="line">    stage: deploy</span><br><span class="line">    image: alpine</span><br><span class="line">    variables:</span><br><span class="line">        DEPLOY_SERVER: &quot;server-host&quot;</span><br><span class="line">    script:</span><br><span class="line">        - cd deploy</span><br><span class="line">        - rsync -rtvhze ssh . root@$DEPLOY_SERVER:/data/$CI_PROJECT_NAME --stats        </span><br><span class="line">        - ssh root@$DEPLOY_SERVER &quot;docker login -u username -p password registry.demo.com&quot;</span><br><span class="line">        - ssh root@$DEPLOY_SERVER &quot;cd /data/$CI_PROJECT_NAME &amp;&amp; docker-compose stop &amp;&amp; docker-compose rm -f &amp;&amp; docker-compose pull &amp;&amp; docker-compose up -d&quot;</span><br><span class="line">        - ssh root@$DEPLOY_SERVER &quot;docker exec -i $CI_PROJECT_NAME chown www-data:www-data web/assets&quot;</span><br><span class="line">        - ssh root@$DEPLOY_SERVER &quot;docker exec -i $CI_PROJECT_NAME ./yii migrate/up --interactive=0&quot;</span><br></pre></td></tr></table></figure>
+<p><img src="http://ww1.sinaimg.cn/large/675eb504ly1fezvjdberyj20w30axdh2.jpg" alt=""></p>
+<h2 id="相关文档"><a href="#相关文档" class="headerlink" title="相关文档"></a>相关文档</h2><p><a href="https://docs.gitlab.com/ce/ci/docker/using_docker_build.html" target="_blank" rel="noopener">Using Docker Build</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2017/04/18/GitLab-CI中的artifacts使用研究/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zacksleo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zacks's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/04/18/GitLab-CI中的artifacts使用研究/" itemprop="url">
+                  GitLab-CI中的artifacts使用研究
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-04-18 23:56:44" itemprop="dateCreated datePublished" datetime="2017-04-18T23:56:44+08:00">2017-04-18</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2025-01-11 01:27:41" itemprop="dateModified" datetime="2025-01-11T01:27:41+08:00">2025-01-11</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/04/18/GitLab-CI中的artifacts使用研究/" class="leancloud_visitors" data-flag-title="GitLab-CI中的artifacts使用研究">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在GitLab-CI中, <code>cache</code>与<code>artifacts</code>比较容易混淆.</p>
+<p>其中 <code>cache</code> 指的是缓存, 常用于依赖安装中, 如几个<code>jobs</code>都需要安装相同的依赖, 可以使用<code>依赖</code>, 此时可以加快依赖的安装进度;<br>对于<code>artifacts</code>则是将某个<code>工件</code>上传到GitLab提供下载或后续操作使用, 由于每个<code>job</code>启动时, 都会自动删除<code>.gitignore</code>中指定的文件, 因此对于依赖安装目录, 即可以使用<code>cache</code>, 也可以使用<code>artifacts</code>.</p>
+<p>两个主要有以下几个区别:</p>
+<ol>
+<li><code>cache</code>不一定命中，<code>artifacts</code>肯定命中, 能否使用<code>cache</code>取决当当前机器是否生成过cache, artifacts则每次都会从GitLab下载</li>
+<li>重新安装时因为使用的是缓存, 所以很有可能不是最新的</li>
+<li>特别是开发环境, 如果每次都希望使用最新的更新, 应当删除<code>cache</code>, 使用<code>artifacts</code>, 这样可以保证确定的更新<br>4.<code>artifacts</code>中定义的部分, 会自动生成, 并可以传到下面的<code>job</code>中解压使用, 避免了重复依赖安装等工作</li>
+<li>如果使用Docker运行Gitlab-Runner, <code>cache</code>会生成一些临时容器, 不容易清理</li>
+<li><code>artifacts</code>可以设置自动过期时间, 过期自动删除，<code>cache</code>不会自动清理</li>
+<li><code>artifacts</code>会先传到GitLab服务器, 然后需要时再重新下载, 所以这部分也可以在GitLab下载和浏览</li>
+</ol>
+<h2 id="artifacts-的依赖使用"><a href="#artifacts-的依赖使用" class="headerlink" title="artifacts 的依赖使用"></a><code>artifacts</code> 的依赖使用</h2><p>下面是一个使用<code>artifacts</code>的例子, 首先有一个安装依赖的工作, 然后工作完成后, 会将安装文件转移到后续的工作时</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">installing-dependencies:</span><br><span class="line">    stage: prepare</span><br><span class="line">    script:</span><br><span class="line">        - composer install --prefer-dist --optimize-autoloader -n --no-interaction -v --no-suggest</span><br><span class="line">        - composer dump-autoload --optimize</span><br><span class="line">    artifacts:</span><br><span class="line">        name: &quot;vendor&quot;</span><br><span class="line">        untracked: true</span><br><span class="line">        expire_in: 60 mins</span><br><span class="line">        paths:</span><br><span class="line">            - $CI_PROJECT_DIR/vendor    </span><br><span class="line">code-review:</span><br><span class="line">    stage: testing</span><br><span class="line">    dependencies:</span><br><span class="line">        - installing-dependencies</span><br><span class="line">    script:</span><br><span class="line">        - php vendor/bin/phpcs --config-set ignore_warnings_on_exit 1</span><br><span class="line">        - php vendor/bin/phpcs --standard=PSR2 -w --colors ./</span><br><span class="line">test-image:</span><br><span class="line">    stage: build</span><br><span class="line">    image: docker:latest</span><br><span class="line">    services:</span><br><span class="line">        - docker:dind</span><br><span class="line">    dependencies:</span><br><span class="line">        - installing-dependencies</span><br><span class="line">    script:        </span><br><span class="line">        - docker build -t $CI_PROJECT_NAME:latest .</span><br><span class="line">        - docker push domain.com/repos/$CI_PROJECT_NAME:latest</span><br><span class="line">    only:</span><br><span class="line">        - develop</span><br></pre></td></tr></table></figure>
+<p>如果上述过程使用<code>cache</code>, 则会变成下面这样子, 注意, 此时每次都要执行<code>composer install</code>这样的依赖安装工作, 即<code>before_script</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">cache:</span><br><span class="line">    paths:</span><br><span class="line">        - vendor</span><br><span class="line">before_scritp:    </span><br><span class="line">    - composer install --prefer-dist --optimize-autoloader -n --no-interaction -v --no-suggest</span><br><span class="line">    - composer dump-autoload --optimize    </span><br><span class="line">code-review:</span><br><span class="line">    stage: testing    </span><br><span class="line">    script:</span><br><span class="line">        - php vendor/bin/phpcs --config-set ignore_warnings_on_exit 1</span><br><span class="line">        - php vendor/bin/phpcs --standard=PSR2 -w --colors ./</span><br><span class="line">test-image:</span><br><span class="line">    stage: build</span><br><span class="line">    image: docker:latest</span><br><span class="line">    services:</span><br><span class="line">        - docker:dind    </span><br><span class="line">    script:        </span><br><span class="line">        - docker build -t $CI_PROJECT_NAME:latest .</span><br><span class="line">        - docker push domain.com/repos/$CI_PROJECT_NAME:latest</span><br><span class="line">    only:</span><br><span class="line">        - develop</span><br></pre></td></tr></table></figure>
+<p>或</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">cache:</span><br><span class="line">    paths:</span><br><span class="line">        - vendor</span><br><span class="line">code-review:</span><br><span class="line">    stage: testing    </span><br><span class="line">    script:    </span><br><span class="line">        - composer install --prefer-dist --optimize-autoloader -n --no-interaction -v --no-suggest</span><br><span class="line">        - composer dump-autoload --optimize     </span><br><span class="line">        - php vendor/bin/phpcs --config-set ignore_warnings_on_exit 1</span><br><span class="line">        - php vendor/bin/phpcs --standard=PSR2 -w --colors ./</span><br><span class="line">test-image:</span><br><span class="line">    stage: build</span><br><span class="line">    image: docker:latest</span><br><span class="line">    services:</span><br><span class="line">        - docker:dind    </span><br><span class="line">    script:        </span><br><span class="line">        - composer install --prefer-dist --optimize-autoloader -n --no-interaction -v --no-suggest</span><br><span class="line">        - composer dump-autoload --optimize      </span><br><span class="line">        - docker build -t $CI_PROJECT_NAME:latest .</span><br><span class="line">        - docker push domain.com/repos/$CI_PROJECT_NAME:latest</span><br><span class="line">    only:</span><br><span class="line">        - develop</span><br></pre></td></tr></table></figure>
+<p>否则, 会出现类似 <code>vendor not found</code>的问题</p>
+<h2 id="禁用artifacts"><a href="#禁用artifacts" class="headerlink" title="禁用artifacts"></a>禁用artifacts</h2><p>  默认artifacts会自动在不同的stage中传输, 如果该stage中的job不需要artifacts, 则可以禁用artifacts, 以加速构建速度</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dependencies: []</span><br></pre></td></tr></table></figure>
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><blockquote>
+<blockquote>
+<p>使用<code>cache</code>会出现一个问题, 就是缓存有可能使用上次执行该<code>job</code>时的缓存, 不能保证某些文件最新</p>
+</blockquote>
+</blockquote>
+<h2 id="相关文档"><a href="#相关文档" class="headerlink" title="相关文档"></a>相关文档</h2><p><a href="https://docs.gitlab.com/ce/user/project/pipelines/job_artifacts.html" target="_blank" rel="noopener">Introduction to job artifacts</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2017/04/14/GitLab-CI通过ssh进行自动部署/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zacksleo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zacks's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/04/14/GitLab-CI通过ssh进行自动部署/" itemprop="url">
+                  GitLab-CI通过ssh进行自动部署
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-04-14 14:39:50" itemprop="dateCreated datePublished" datetime="2017-04-14T14:39:50+08:00">2017-04-14</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2025-01-11 01:27:41" itemprop="dateModified" datetime="2025-01-11T01:27:41+08:00">2025-01-11</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/04/14/GitLab-CI通过ssh进行自动部署/" class="leancloud_visitors" data-flag-title="GitLab-CI通过ssh进行自动部署">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p>通过gitlab-ci实现文件的自动部署</p>
+<h2 id="实现过程"><a href="#实现过程" class="headerlink" title="实现过程"></a>实现过程</h2><p>文档托管在gitlab上, 每次代码更新, 会自动出发gitlab-ci构建<br>在构建脚本中, 通过ssh 登录远程服务器执行git拉取文档的命令</p>
+<h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><h3 id="首先需要在服务器上生成ssh证书"><a href="#首先需要在服务器上生成ssh证书" class="headerlink" title="首先需要在服务器上生成ssh证书"></a>首先需要在服务器上生成ssh证书</h3><blockquote>
+<p>注意该证书的用户必须与ssh远程登录的用户一样, 例如我们的用户名是root</p>
+</blockquote>
+<h3 id="将公钥添加到gitlab上-以便于该用于可以拉取代码"><a href="#将公钥添加到gitlab上-以便于该用于可以拉取代码" class="headerlink" title="将公钥添加到gitlab上, 以便于该用于可以拉取代码"></a>将公钥添加到gitlab上, 以便于该用于可以拉取代码</h3><h3 id="在-CI-CD-Piplines中设置-Secret-Variables-包括-DEPLOY-SERVER-和-SSH-PRIVATE-KEY"><a href="#在-CI-CD-Piplines中设置-Secret-Variables-包括-DEPLOY-SERVER-和-SSH-PRIVATE-KEY" class="headerlink" title="在 CI/CD Piplines中设置 Secret Variables, 包括 DEPLOY_SERVER 和 SSH_PRIVATE_KEY"></a>在 <code>CI/CD Piplines</code>中设置 <code>Secret Variables</code>, 包括 <code>DEPLOY_SERVER</code> 和 <code>SSH_PRIVATE_KEY</code></h3><p>其中 <code>SSH_PRIVATE_KEY</code> 的内容是服务器上的私钥, <code>DEPLOY_SERVER</code> 是服务器地址</p>
+<h3 id="编写-gitlab-ci-yml-文件-注入密钥-通过ssh执行远程命令"><a href="#编写-gitlab-ci-yml-文件-注入密钥-通过ssh执行远程命令" class="headerlink" title="编写 .gitlab-ci.yml 文件, 注入密钥, 通过ssh执行远程命令"></a>编写 <code>.gitlab-ci.yml</code> 文件, 注入密钥, 通过<code>ssh</code>执行远程命令</h3><h2 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h2> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"># 使用alpine镜像, 该镜像很少,只有几兆</span><br><span class="line">image: alpine</span><br><span class="line">stages:</span><br><span class="line">    - deploy</span><br><span class="line">before_script:</span><br><span class="line">    # 预先装 ssh-agent</span><br><span class="line">    - &apos;which ssh-agent || ( apk update &amp;&amp; apk add openssh-client)&apos;</span><br><span class="line">    # 启动服务</span><br><span class="line">    - eval $(ssh-agent -s)</span><br><span class="line">    # 将私钥写入deploy.key 文件</span><br><span class="line">    - echo &quot;$SSH_PRIVATE_KEY&quot; &gt; deploy.key</span><br><span class="line">    # 配置较低权限</span><br><span class="line">    - chmod 0600 deploy.key</span><br><span class="line">    # 注入密钥</span><br><span class="line">    - ssh-add deploy.key</span><br><span class="line">    - mkdir -p ~/.ssh    </span><br><span class="line">    - &apos;[[ -f /.dockerenv ]] &amp;&amp; echo -e &quot;Host *\n\tStrictHostKeyChecking no\n\n&quot; &gt; ~/.ssh/config&apos;</span><br><span class="line"> </span><br><span class="line">release-doc:</span><br><span class="line">    stage: deploy</span><br><span class="line">    script:</span><br><span class="line">        # 连接远程服务器并执行拉取代码的命令</span><br><span class="line">        - ssh root@$DEPLOY_SERVER &quot;cd /path/to/wiki &amp;&amp; git pull origin master&quot;</span><br><span class="line">    only:</span><br><span class="line">        - master</span><br><span class="line">    environment:</span><br><span class="line">        name: production</span><br><span class="line">        url: http://$DEPLOY_SERVER</span><br></pre></td></tr></table></figure>
+<h2 id="相关文档"><a href="#相关文档" class="headerlink" title="相关文档"></a>相关文档</h2><p><a href="https://docs.gitlab.com/ce/ci/ssh_keys/README.html" target="_blank" rel="noopener">Using SSH keys</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2017/03/12/使用Git和Gollum搭建Wiki系统/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zacksleo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zacks's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/03/12/使用Git和Gollum搭建Wiki系统/" itemprop="url">
+                  使用Git和Gollum搭建Wiki系统
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-03-13 01:22:09" itemprop="dateCreated datePublished" datetime="2017-03-13T01:22:09+08:00">2017-03-13</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2025-01-11 01:27:41" itemprop="dateModified" datetime="2025-01-11T01:27:41+08:00">2025-01-11</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/03/12/使用Git和Gollum搭建Wiki系统/" class="leancloud_visitors" data-flag-title="使用Git和Gollum搭建Wiki系统">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://github.com/gollum/gollum" target="_blank" rel="noopener">Gollum</a>是一个开源的Wiki系统, 该系统基于Git, 支持 Markdown, RDoc 等多种排版格式.</p>
+<p>下面是在搭建的过程中经常会遇到一些问题</p>
+<h2 id="UTF-8-问题"><a href="#UTF-8-问题" class="headerlink" title="UTF-8 问题"></a>UTF-8 问题</h2><ul>
+<li>安装 <code>gollum-rugged_adapter</code></li>
+<li>通过参数 <code>--adapter rugged</code> 启动gollum</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install cmake</span><br><span class="line">sudo gem install gollum-rugged_adapter</span><br><span class="line">gollum --adapter rugged</span><br></pre></td></tr></table></figure>
+<h2 id="如何设置只读"><a href="#如何设置只读" class="headerlink" title="如何设置只读"></a>如何设置只读</h2><p>启动Gollum时, 设置 <code>--no-edit</code> 来禁止编辑</p>
+<h2 id="使用-Docker"><a href="#使用-Docker" class="headerlink" title="使用 Docker"></a>使用 Docker</h2><p>使用Docker 安装gullum的内容见 <a href="http://zacksleo.github.io/2017/03/11/gollum/">gollum</a></p>
+<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><ul>
+<li><a href="https://github.com/zacksleo/gollum" target="_blank" rel="noopener">Docker Goolum</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2017/03/11/gollum/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zacksleo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zacks's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/03/11/gollum/" itemprop="url">
+                  gollum
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-03-11 15:12:15" itemprop="dateCreated datePublished" datetime="2017-03-11T15:12:15+08:00">2017-03-11</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2025-01-11 01:27:41" itemprop="dateModified" datetime="2025-01-11T01:27:41+08:00">2025-01-11</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/03/11/gollum/" class="leancloud_visitors" data-flag-title="gollum">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>incompatible character encodings: UTF-8 and ASCII-8BIT</p>
+</blockquote>
+<p>When use gollum , you may be got this error, below can helps you solves the problem.</p>
+<ul>
+<li>install <code>gollum-rugged_adapter</code></li>
+<li>start gullom with <code>--adapter rugged</code></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install cmake</span><br><span class="line">sudo gem install gollum-rugged_adapter</span><br><span class="line">gollum --adapter rugged</span><br></pre></td></tr></table></figure>
+<p>Here is a detailed demo for Dockerfile</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">FROM ruby</span><br><span class="line">RUN apt-get -y update &amp;&amp; apt-get -y install libicu-dev</span><br><span class="line">RUN gem install gollum</span><br><span class="line">RUN gem install github-markdown org-ruby </span><br><span class="line"># RUN gem install --pre gollum-rugged_adapter</span><br><span class="line">RUN apt-get -y install cmake</span><br><span class="line">RUN gem install gollum-rugged_adapter</span><br><span class="line">VOLUME /docs</span><br><span class="line">WORKDIR /docs</span><br><span class="line">CMD [&quot;gollum&quot;, &quot;--port&quot;, &quot;80&quot;, &quot;--adapter&quot;, &quot;rugged&quot;]</span><br><span class="line">#CMD [&quot;gollum&quot;, &quot;--port&quot;, &quot;80&quot;]</span><br><span class="line"></span><br><span class="line">EXPOSE 80</span><br></pre></td></tr></table></figure>
+<h2 id="More-Infomation"><a href="#More-Infomation" class="headerlink" title="More Infomation"></a>More Infomation</h2><ul>
+<li><a href="https://github.com/zacksleo/gollum" target="_blank" rel="noopener">Docker Goolum</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">zacksleo</p>
+              <p class="site-description motion-element" itemprop="description">Full Stack Web Developer</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">56</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">89</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/zacksleo" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2025</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zacksleo</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.2.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.2.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.2.0"></script>
+
+
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.2.0"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("6ewRRbjRaYybcLL2fRlMKDtT-gzGzoHsz", "NhhOjGzUPay4gOs6hP0RzgdH");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            
+              var $element = $(document.getElementById(url));
+              $element.find('.leancloud-visitors-count').text(counter.get('time'));
+            
+            counter.save(null, {
+              success: function(counter) {
+                
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            
+              var newcounter = new Counter();
+              /* Set ACL */
+              var acl = new AV.ACL();
+              acl.setPublicReadAccess(true);
+              acl.setPublicWriteAccess(true);
+              newcounter.setACL(acl);
+              /* End Set ACL */
+              newcounter.set("title", title);
+              newcounter.set("url", url);
+              newcounter.set("time", 1);
+              newcounter.save(null, {
+                success: function(newcounter) {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+                },
+                error: function(newcounter, error) {
+                  console.log('Failed to create');
+                }
+              });
+            
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

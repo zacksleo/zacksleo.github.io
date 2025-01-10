@@ -1,0 +1,2058 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="HSx2g2b2GklalbFMNOUlf16CH8h8aJMsL6Wa1CvfqSw" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.2.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.2.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Full Stack Web Developer">
+<meta name="keywords" content="PHP, Yii, Laravel, Python, Full Stack Web Developer">
+<meta property="og:type" content="website">
+<meta property="og:title" content="zacks&#39;s blog">
+<meta property="og:url" content="https://zacksleo.github.io/page/6/index.html">
+<meta property="og:site_name" content="zacks&#39;s blog">
+<meta property="og:description" content="Full Stack Web Developer">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="zacks&#39;s blog">
+<meta name="twitter:description" content="Full Stack Web Developer">
+
+
+
+
+
+
+  <link rel="canonical" href="https://zacksleo.github.io/page/6/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>zacks's blog</title>
+  
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-80154310-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-80154310-2');
+</script>
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+  page-home">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">zacks's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">清净无为</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2016/10/12/CodeIgniter项目自动向GitLab上报Bug/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zacksleo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zacks's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/10/12/CodeIgniter项目自动向GitLab上报Bug/" itemprop="url">
+                  CodeIgniter项目自动向GitLab上报Bug
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-10-12 17:48:25" itemprop="dateCreated datePublished" datetime="2016-10-12T17:48:25+08:00">2016-10-12</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2025-01-11 01:27:41" itemprop="dateModified" datetime="2025-01-11T01:27:41+08:00">2025-01-11</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2016/10/12/CodeIgniter项目自动向GitLab上报Bug/" class="leancloud_visitors" data-flag-title="CodeIgniter项目自动向GitLab上报Bug">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="CI项目自动上报Bug"><a href="#CI项目自动上报Bug" class="headerlink" title="CI项目自动上报Bug"></a>CI项目自动上报Bug</h2><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>通过重写CI_Exceptions, 当程序出错时, 通过调用GitLab中提交issue的API, 将相关信息自动提交</p>
+<p>如果是Yii2项目,见 <a href="https://zacksleo.github.io/2016/10/12/Yii2%E9%A1%B9%E7%9B%AE%E8%87%AA%E5%8A%A8%E5%90%91GitLab%E4%B8%8A%E6%8A%A5Bug/">Yii自动上报Bug</a></p>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ul>
+<li>获取项目id和自己的id<br>可以通过GitLab的project接口, 从中拿到project_id和assignee_id</li>
+</ul>
+<p>在此提供一个方法, 给自己提交一个issue, 提交时审查HTML, 可以找到 issue_assignee_id和 data-project-id </p>
+<p><img src="http://ww3.sinaimg.cn/large/675eb504gw1fbtdv1gcjcj20oq0d543f.jpg" alt=""></p>
+<ul>
+<li>创建配置文件 config/gitlab.php</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// to enable, set this to true</span><br><span class="line">$config[&apos;gitlab&apos;] = true;</span><br><span class="line">$config[&apos;gitlab_project_id&apos;] =xx; //找到项目的id</span><br><span class="line">$config[&apos;gitlab_assignee_id&apos;] = xx; //找到自己的id</span><br><span class="line">$config[&apos;gitlab_api&apos;] = &apos;http://demo.com/api/v3/projects/&apos;.$config[&apos;gitlab_project_id&apos;].&apos;/issues&apos;;</span><br><span class="line">$config[&apos;gitlab_private_token&apos;] = &apos;xxx&apos;;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在项目中添加core/MY_Exceptions</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php if (!defined(&apos;BASEPATH&apos;)) &#123;</span><br><span class="line">    exit(&apos;No direct script access allowed&apos;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * Extend exceptions to email me on exception</span><br><span class="line"> *</span><br><span class="line"> * @author Mike Funk</span><br><span class="line"> * @email mfunk@christianpublishing.com</span><br><span class="line"> *</span><br><span class="line"> * @file MY_Exceptions.php</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * MY_Exceptions class.</span><br><span class="line"> *</span><br><span class="line"> * @extends CI_Exceptions</span><br><span class="line"> */</span><br><span class="line">class MY_Exceptions extends CI_Exceptions</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    // --------------------------------------------------------------------------</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * extend log_exception to add emailing of php errors.</span><br><span class="line">     *</span><br><span class="line">     * @access public</span><br><span class="line">     * @param string $severity</span><br><span class="line">     * @param string $message</span><br><span class="line">     * @param string $filepath</span><br><span class="line">     * @param int $line</span><br><span class="line">     * @return void</span><br><span class="line">     */</span><br><span class="line">    function log_exception($severity, $message, $filepath, $line)</span><br><span class="line">    &#123;</span><br><span class="line">        $ci =&amp; get_instance();</span><br><span class="line">        $ci-&gt;config-&gt;load(&apos;gitlab&apos;);</span><br><span class="line">        if (config_item(&apos;gitlab&apos;)) &#123;</span><br><span class="line">            $ch = curl_init();</span><br><span class="line">            curl_setopt($ch, CURLOPT_URL, config_item(&apos;gitlab_api&apos;));</span><br><span class="line">            curl_setopt($ch, CURLOPT_HTTPHEADER, array(</span><br><span class="line">                &apos;PRIVATE-TOKEN: &apos; . config_item(&apos;gitlab_private_token&apos;),</span><br><span class="line">            ));</span><br><span class="line">            curl_setopt($ch, CURLOPT_POSTFIELDS, [</span><br><span class="line">                &apos;title&apos; =&gt; $message,</span><br><span class="line">                &apos;description&apos; =&gt; &apos;&lt;pre&gt;&apos; . $message . &apos;&lt;/pre&gt;&apos;,</span><br><span class="line">                &apos;assignee_id&apos; =&gt; config_item(&apos;gitlab_assignee_id&apos;),</span><br><span class="line">                &apos;labels&apos; =&gt; &apos;捕虫器,错误&apos;,</span><br><span class="line">            ]);</span><br><span class="line">            curl_setopt($ch, CURLOPT_HEADER, false);</span><br><span class="line">            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);</span><br><span class="line">            curl_setopt($ch, CURLOPT_VERBOSE, false);</span><br><span class="line">            $response = curl_exec($ch);</span><br><span class="line">            curl_close($ch);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        // do the rest of the codeigniter stuff</span><br><span class="line">        parent::log_exception($severity, $message, $filepath, $line);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // --------------------------------------------------------------------------</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * replace short tags with values.</span><br><span class="line">     *</span><br><span class="line">     * @access private</span><br><span class="line">     * @param string $content</span><br><span class="line">     * @param string $severity</span><br><span class="line">     * @param string $message</span><br><span class="line">     * @param string $filepath</span><br><span class="line">     * @param int $line</span><br><span class="line">     * @return string</span><br><span class="line">     */</span><br><span class="line">    private function _replace_short_tags($content, $severity, $message, $filepath, $line)</span><br><span class="line">    &#123;</span><br><span class="line">        $content = str_replace(&apos;&#123;&#123;severity&#125;&#125;&apos;, $severity, $content);</span><br><span class="line">        $content = str_replace(&apos;&#123;&#123;message&#125;&#125;&apos;, $message, $content);</span><br><span class="line">        $content = str_replace(&apos;&#123;&#123;filepath&#125;&#125;&apos;, $filepath, $content);</span><br><span class="line">        $content = str_replace(&apos;&#123;&#123;line&#125;&#125;&apos;, $line, $content);</span><br><span class="line"></span><br><span class="line">        return $content;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // --------------------------------------------------------------------------</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2016/10/12/Yii2项目自动向GitLab上报Bug/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zacksleo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zacks's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/10/12/Yii2项目自动向GitLab上报Bug/" itemprop="url">
+                  Yii2项目自动向GitLab上报Bug
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-10-12 17:47:20" itemprop="dateCreated datePublished" datetime="2016-10-12T17:47:20+08:00">2016-10-12</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2025-01-11 01:27:41" itemprop="dateModified" datetime="2025-01-11T01:27:41+08:00">2025-01-11</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2016/10/12/Yii2项目自动向GitLab上报Bug/" class="leancloud_visitors" data-flag-title="Yii2项目自动向GitLab上报Bug">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Yii2-项目自动上报Bug"><a href="#Yii2-项目自动上报Bug" class="headerlink" title="Yii2 项目自动上报Bug"></a>Yii2 项目自动上报Bug</h1><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>  yii2在程序报错时, 会执行指定action, 通过重写ErrorAction, 实现Bug自动提交至GitLab的issue</p>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ul>
+<li>配置SiteController中的actions方法</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public function actions()</span><br><span class="line">&#123;</span><br><span class="line">    return [</span><br><span class="line">        &apos;error&apos; =&gt; [</span><br><span class="line">            &apos;class&apos; =&gt; &apos;app\helpers\web\ErrorAction&apos;,</span><br><span class="line">        ],</span><br><span class="line">    ];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>重写ErrorAction, 位于app\helpers\web\ErrorAction, 并修改常量URL,PRIVATE_TOKEN和ASSIGNEE_ID</li>
+</ul>
+<p>如何获取project_id和assignee_id见 <a href="https://zacksleo.github.io/2017/10/12/CI%E9%A1%B9%E7%9B%AE%E8%87%AA%E5%8A%A8%E5%90%91GitLab%E4%B8%8A%E6%8A%A5Bug/">WIKI</a> </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line">namespace app\helpers\web;</span><br><span class="line"></span><br><span class="line">use yii;</span><br><span class="line">use yii\base\Action;</span><br><span class="line">use yii\base\Exception;</span><br><span class="line">use yii\base\UserException;</span><br><span class="line">use yii\web\HttpException;</span><br><span class="line"></span><br><span class="line">class ErrorAction extends \yii\web\ErrorAction</span><br><span class="line">&#123;</span><br><span class="line">    const URL = &apos;&#123;host&#125;/api/v3/projects/&#123;project_id&#125;/issues&apos;; // host替换为主机地址, project_id为项目id</span><br><span class="line">    const PRIVATE_TOKEN = &apos;tD3Te-ctECeGwEHH7-ec&apos;;</span><br><span class="line">    const ASSIGNEE_ID = 21;</span><br><span class="line"></span><br><span class="line">    public function run()</span><br><span class="line">    &#123;</span><br><span class="line">        if (($exception = Yii::$app-&gt;getErrorHandler()-&gt;exception) === null) &#123;</span><br><span class="line">            $exception = new HttpException(404, Yii::t(&apos;yii&apos;, &apos;Page not found.&apos;));</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        if ($exception instanceof HttpException) &#123;</span><br><span class="line">            $code = $exception-&gt;statusCode;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            $code = $exception-&gt;getCode();</span><br><span class="line">        &#125;</span><br><span class="line">        if ($exception instanceof Exception) &#123;</span><br><span class="line">            $name = $exception-&gt;getName();</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            $name = $this-&gt;defaultName ?: Yii::t(&apos;yii&apos;, &apos;Error&apos;);</span><br><span class="line">        &#125;</span><br><span class="line">        $preCode = $code;</span><br><span class="line">        if ($code) &#123;</span><br><span class="line">            $name .= &quot; (#$code)&quot;;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        if ($exception instanceof UserException) &#123;</span><br><span class="line">            $message = $exception-&gt;getMessage();</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            $message = $this-&gt;defaultMessage ?: Yii::t(&apos;yii&apos;, &apos;An internal server error occurred.&apos;);</span><br><span class="line">        &#125;</span><br><span class="line">        if ($code != &apos;404&apos;) &#123;</span><br><span class="line">            //自动向GitLab提交Bug</span><br><span class="line">            $url = self::URL;</span><br><span class="line">            $ch = curl_init();</span><br><span class="line">            curl_setopt($ch, CURLOPT_URL, $url);</span><br><span class="line">            curl_setopt($ch, CURLOPT_HTTPHEADER, array(</span><br><span class="line">                &apos;PRIVATE-TOKEN: &apos;.self::PRIVATE_TOKEN,</span><br><span class="line">            ));</span><br><span class="line"></span><br><span class="line">            curl_setopt($ch, CURLOPT_POSTFIELDS, [</span><br><span class="line">                &apos;title&apos; =&gt; $message,</span><br><span class="line">                &apos;description&apos; =&gt; &apos;&lt;blockquote&gt;&apos;.Yii::$app-&gt;request-&gt;getReferrer().&apos;&lt;/blockquote&gt;&apos;. &apos;&lt;blockquote&gt;&apos; . Yii::$app-&gt;request-&gt;absoluteUrl . &apos;&lt;/blockquote&gt;&lt;br/&gt;&lt;pre&gt;&apos; . $exception . &apos;&lt;/pre&gt;&apos;,</span><br><span class="line">                &apos;assignee_id&apos; =&gt; self::ASSIGNEE_ID,</span><br><span class="line">                &apos;labels&apos; =&gt; &apos;捕虫器,&apos; . $name,</span><br><span class="line">            ]);</span><br><span class="line">            curl_setopt($ch, CURLOPT_HEADER, false);</span><br><span class="line">            // Pass TRUE or 1 if you want to wait for and catch the response against the request made</span><br><span class="line">            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);</span><br><span class="line">            // For Debug mode; shows up any error encountered during the operation</span><br><span class="line">            curl_setopt($ch, CURLOPT_VERBOSE, false);</span><br><span class="line">            $response = curl_exec($ch);</span><br><span class="line">            curl_close($ch);</span><br><span class="line">        &#125;</span><br><span class="line">        if (Yii::$app-&gt;getRequest()-&gt;getIsAjax() || strpos($_SERVER[&apos;REQUEST_URI&apos;], &apos;/api/&apos;) &gt; -1) &#123;</span><br><span class="line">            \Yii::$app-&gt;response-&gt;format = \yii\web\Response::FORMAT_JSON;</span><br><span class="line">            return [</span><br><span class="line">                &apos;message&apos; =&gt; $message</span><br><span class="line">            ];</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            return $this-&gt;controller-&gt;render($this-&gt;view ?: $this-&gt;id, [</span><br><span class="line">                &apos;name&apos; =&gt; $name,</span><br><span class="line">                &apos;message&apos; =&gt; $message,</span><br><span class="line">                &apos;exception&apos; =&gt; $exception,</span><br><span class="line">            ]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2016/10/12/PHP解析提取Markdown中的标题来生成TOC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zacksleo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zacks's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/10/12/PHP解析提取Markdown中的标题来生成TOC/" itemprop="url">
+                  PHP解析提取Markdown中的标题来生成TOC
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-10-12 16:46:48" itemprop="dateCreated datePublished" datetime="2016-10-12T16:46:48+08:00">2016-10-12</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2025-01-11 01:27:41" itemprop="dateModified" datetime="2025-01-11T01:27:41+08:00">2025-01-11</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2016/10/12/PHP解析提取Markdown中的标题来生成TOC/" class="leancloud_visitors" data-flag-title="PHP解析提取Markdown中的标题来生成TOC">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>先解析markdown为HTML, 然后解析出h1-h10标签, 根据h标签的前后大小, 决定ul的层级, 以此生成ul序列的嵌套</p>
+<ul>
+<li>如果当前H标签和前面H标签相同, 则生成<code>&lt;li&gt;&lt;/li&gt;</code>,</li>
+<li>如果比前面的大, 则生成<code>&lt;ul&gt;</code><ul>
+<li>如果比前面的小, 生成<code>&lt;/ul&gt;&lt;ul&gt;&lt;li&gt;&lt;/li&gt;</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="上手"><a href="#上手" class="headerlink" title="上手"></a>上手</h2><ul>
+<li>选择一个markdown Parser库, 将markdown解析</li>
+</ul>
+<p>$file为文件路径, $docs为解析后的html字串</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$content = file_get_contents($file);</span><br><span class="line"> require_once(&apos;/var/www/html/vendor/erusev/parsedown/Parsedown.php&apos;);</span><br><span class="line"> $parsedown = new \Parsedown();</span><br><span class="line"> $docs = $parsedown-&gt;text($content);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>解析DOM, 根据H标签的前后顺序, 生成TOC</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">$dom = new \DOMDocument();</span><br><span class="line"> $docs = mb_convert_encoding($docs, &apos;HTML-ENTITIES&apos;, &quot;UTF-8&quot;);</span><br><span class="line"> $dom-&gt;loadHTML($docs);</span><br><span class="line"></span><br><span class="line"> // The toc being generated.</span><br><span class="line"> $toc = &apos;&apos;;</span><br><span class="line"> $curr = $last = 0;</span><br><span class="line"> $type = &quot;ul&quot;;</span><br><span class="line"> $xpath = new \DomXPath($dom);</span><br><span class="line"> $t = $xpath-&gt;query(&apos;//h1|//h2|//h3|//h4|//h5|//h6&apos;);</span><br><span class="line"> foreach ($t as $key =&gt; $item) &#123;</span><br><span class="line">     $level = ltrim($item-&gt;nodeName, &apos;h&apos;);</span><br><span class="line">     sscanf($item-&gt;nodeName, &apos;h%u&apos;, $curr);</span><br><span class="line">     // If the current level is greater than the last level indent one level</span><br><span class="line">     if ($curr &gt; $last) &#123;</span><br><span class="line">         if ($last == 0) &#123;</span><br><span class="line">             $toc .= &apos;&lt;&apos; . $type . &quot; class=&apos;nav doc-menu affix-top&apos; id=&apos;doc-menu&apos; data-spy=&apos;affix&apos;&gt;\n&quot;;</span><br><span class="line">         &#125; else &#123;</span><br><span class="line">             $toc .= &apos;&lt;&apos; . $type . &quot; class=&apos;nav doc-sub-menu&apos;&gt;\n&quot;;</span><br><span class="line">         &#125;</span><br><span class="line">     &#125; // If the current level is less than the last level go up appropriate amount.</span><br><span class="line">     elseif ($curr &lt; $last) &#123;</span><br><span class="line">         $toc .= str_repeat(&apos;&lt;/li&gt;&lt;/&apos; . $type . &quot;&gt;\n&quot;, $last - $curr) . &quot;&lt;/li&gt;\n&quot;;</span><br><span class="line">     &#125; // If the current level is equal to the last.</span><br><span class="line">     else &#123;</span><br><span class="line">         $toc .= &quot;&lt;/li&gt;\n&quot;;</span><br><span class="line">     &#125;</span><br><span class="line">     // Get and/or set an id</span><br><span class="line">     if ($item-&gt;hasAttribute(&apos;id&apos;)) &#123;</span><br><span class="line">         $id = $item-&gt;getAttribute(&apos;id&apos;);</span><br><span class="line">     &#125; else &#123;</span><br><span class="line">        //auto generate id for the tag</span><br><span class="line">         $id = uniqid();</span><br><span class="line">         $t[$key]-&gt;setAttribute(&apos;id&apos;, $id);</span><br><span class="line">     &#125;</span><br><span class="line">     if ($last == 0) &#123;</span><br><span class="line">         $toc .= &apos;&lt;li class=&quot;active&quot;&gt;&lt;a class=&quot;scrollto&quot; href=&quot;#&apos; . $id . &apos;&quot;&gt;&apos; . $item-&gt;nodeValue . &quot;&lt;/a&gt;\n&quot;;</span><br><span class="line">     &#125; else &#123;</span><br><span class="line">         $toc .= &apos;&lt;li&gt;&lt;a class=&quot;scrollto&quot; href=&quot;#&apos; . $id . &apos;&quot;&gt;&apos; . $item-&gt;nodeValue . &quot;&lt;/a&gt;\n&quot;;</span><br><span class="line">     &#125;</span><br><span class="line">     $last = $curr;</span><br><span class="line"> &#125;</span><br><span class="line">// 将修改后的DOM 赋值为docs</span><br><span class="line"> $docs = $dom-&gt;saveHTML();</span><br></pre></td></tr></table></figure>
+<ul>
+<li>渲染页面<br>$docs为html主体内容<br>$toc为生成的目录, 形如<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul&gt;</span><br><span class="line">  &lt;li&gt;&lt;/li&gt;</span><br><span class="line">    &lt;ul&gt;</span><br><span class="line">      &lt;li&gt;&lt;/li&gt;</span><br><span class="line">      &lt;li&gt;&lt;/li&gt;</span><br><span class="line">    &lt;/ul&gt;</span><br><span class="line">  &lt;li&gt;&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;&lt;/li&gt;</span><br><span class="line"> &lt;/ul&gt;</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2016/08/23/使用Docker安装Redmine/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zacksleo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zacks's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/08/23/使用Docker安装Redmine/" itemprop="url">
+                  使用Docker安装Redmine
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-08-23 18:43:38" itemprop="dateCreated datePublished" datetime="2016-08-23T18:43:38+08:00">2016-08-23</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2025-01-11 01:27:41" itemprop="dateModified" datetime="2025-01-11T01:27:41+08:00">2025-01-11</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2016/08/23/使用Docker安装Redmine/" class="leancloud_visitors" data-flag-title="使用Docker安装Redmine">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h3><ul>
+<li><ol>
+<li>安装部署Docker<blockquote>
+</blockquote>
+因为docker对内核版本有要求，所有要先升级系统（linux内核3.0+），这里用的CentOS 7</li>
+</ol>
+</li>
+<li><p>2.拉取镜像  <code>docker pull sameersbn/redmine:latest</code></p>
+</li>
+</ul>
+<p><a href="https://www.daocloud.io/mirror.html#accelerator-doc" target="_blank" rel="noopener">docker镜像加速</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://0835afe2.m.daocloud.io</span><br></pre></td></tr></table></figure>
+<ul>
+<li><ol start="3">
+<li>安装docker-compose, <strong>“由于网络原因，该步骤可能会下载失败，请尝试多下载几次，或者外挂代理”</strong></li>
+</ol>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -L https://github.com/docker/compose/releases/download/1.8.0/docker-compose-`uname -s`-`uname -m` &gt; /usr/local/bin/docker-compose</span><br></pre></td></tr></table></figure>
+<p>修改权限<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x /usr/local/bin/docker-compose</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><ol start="4">
+<li>使用compose快速启动 <strong>可以需要外挂</strong><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://raw.githubusercontent.com/sameersbn/docker-redmine/master/docker-compose.yml</span><br><span class="line">docker-compose up</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><ol start="5">
+<li>映射数据目录</li>
+</ol>
+</li>
+</ul>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ul>
+<li>linux内核要最新 3.0+</li>
+<li>redmine默认使用的端口是10083，如果启动成功后，无法打开，使用telnet 远程检测端口访问性，如果不能访问，检查两个方面：1.本机防火墙是否禁用端口（用telnet 检测）；2.运营商/云端是否禁用</li>
+<li>注意使用volumn命令映射数据存储命令</li>
+</ul>
+<h3 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h3><ul>
+<li><a href="https://docs.docker.com/compose/install/" target="_blank" rel="noopener">Docker Compose安装</a></li>
+<li><a href="https://github.com/sameersbn/docker-redmine" target="_blank" rel="noopener">Docker安装redmine</a></li>
+<li><a href="http://dockone.io/article/133" target="_blank" rel="noopener">Docker终极指南</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2016/05/29/PHP常见面试材料/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zacksleo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zacks's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/05/29/PHP常见面试材料/" itemprop="url">
+                  PHP常见面试材料
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-05-29 17:34:37" itemprop="dateCreated datePublished" datetime="2016-05-29T17:34:37+08:00">2016-05-29</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2025-01-11 01:27:41" itemprop="dateModified" datetime="2025-01-11T01:27:41+08:00">2025-01-11</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2016/05/29/PHP常见面试材料/" class="leancloud_visitors" data-flag-title="PHP常见面试材料">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="常见面试内容"><a href="#常见面试内容" class="headerlink" title="常见面试内容"></a>常见面试内容</h2><h3 id="技术线（偏深度）："><a href="#技术线（偏深度）：" class="headerlink" title="技术线（偏深度）："></a>技术线（偏深度）：</h3><ul>
+<li><ol>
+<li>基础知识，比如数据结构，多线程，I/O，Http协议等</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>语言深度，比如PHP的运行机制，性能优化，APC（以及其原理等）</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>源码阅读，比如看过哪些框</li>
+</ol>
+</li>
+</ul>
+<hr>
+<h3 id="写出一下各段代码的输出结果："><a href="#写出一下各段代码的输出结果：" class="headerlink" title="写出一下各段代码的输出结果："></a>写出一下各段代码的输出结果：</h3><ul>
+<li><p>1.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$a = (1 &lt; &lt; 0);</span><br><span class="line">$b = (1 &lt; &lt; $a);</span><br><span class="line">$c = (1 &lt; &lt; $b);</span><br><span class="line">echo ($c</span><br><span class="line"></span><br><span class="line">$b) &lt; &lt; 2 * $a</span><br><span class="line">$a;</span><br></pre></td></tr></table></figure>
+</li>
+<li><ol start="2">
+<li><code>echo &#39;1&#39;.print(2)+3;</code></li>
+</ol>
+</li>
+<li><p>3</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$a = 0x01;</span><br><span class="line">$b = 0x02;</span><br><span class="line">echo $a===$b &gt; &gt; $a;</span><br><span class="line"></span><br><span class="line">$foo = 5 + &apos;10 things&apos;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><ol start="4">
+<li><code>print (196*100) !== (double)1960;</code></li>
+</ol>
+</li>
+<li><ol start="5">
+<li><code>echo 0500</code></li>
+</ol>
+</li>
+<li><ol start="6">
+<li><code>$a = 0; echo ~$a;</code></li>
+</ol>
+</li>
+</ul>
+<hr>
+<h3 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h3><ul>
+<li><ol>
+<li>解释一下SQL注入的原理及危害，假设这里有一个不严谨的登陆程序，如何利用SQL注入进入。</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>解释一下跨站脚本的原理及危害，假设这里有一个不严谨的留言板，请构造跨站脚本范例。</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>解释一下数据索引为什么能提高效率。<br>场景 <code>SQL select * from user where area=&#39;广州‘ and sex=&#39;女‘ order by lastlogin desc limit 30;</code></li>
+</ol>
+</li>
+<li>4.如何设计索引？</li>
+<li>5.现在有10万条 IP地址对应区间表，格式为 <code>startip, endip, area</code><br>要求每个用户访问时都能快速分析出对方地区，请设计实现。数据库或不用数据库，要求每秒钟实现超过千次的查询。<br>基本上到这些对我而言就已经足够了，如果上面题目特别满意的，再附加</li>
+<li><ol start="6">
+<li>现在有一个屏蔽词列表，大约几千个词；假设有一个繁忙的论坛社区，发帖量巨大，要求用户每发一篇文章就要快速分析是否包含屏蔽词，请给出程序设计。</li>
+</ol>
+</li>
+<li><ol start="7">
+<li>一个游戏网站，有数千个小游戏，每个游戏要做积分排行，数据结构如下<br><code>gameid,userid,gamescore</code></li>
+</ol>
+</li>
+<li>8.每天数百万积分提交，数据量巨大，目前要求分库处理。<br>要求，可以基于每个游戏id可以查询积分排行榜。 可以基于用户id查询，比如自己或好友的历史游戏积分记录。请问如何处理分库。</li>
+</ul>
+<hr>
+<p>专业程度体现在对PHP的基本功的掌握和一些进阶知识的了解，比如对常见性能点、不同版本特性等，session的实现机制、include/require的差异，进一步的主流框架掌握程度、常见的性能优化策略、其作为脚本语言所具备的一些特性、如何规避PHP的性能劣势打造高并发的系统、如何保证高并发下的可用性和数据完整性等等。</p>
+<p>周边知识主要会包括MySQL性能优化、Memcache使用、Nginx/Apache的配合、对于PV/Click等数据收集和观察的方法等。 同样的，利用curl/socket操作http/tcp/udp，进一步的RPC调用（Web Service/JSONP/Thrift等）的前后端实现，进一步的包括更多的Cache策略（远近、一致性哈希、数据一致性）、对Sharding即分库分表之类操作的了解、更多NoSQL产品知识、各类常见协议细节、安全性（注入和旁注、跨站和CC）等。</p>
+<hr>
+<ul>
+<li>0.简单做一下自我介绍,? 然后谈一下近三年来你的得意之作?</li>
+<li>1.看看简历，会问一些过去做的项目的用户量、pv、吞吐量、相关难点和解决方法等</li>
+<li>2.数据库设计经验,为什么进行分表? 分库?<br>一般多少数据量开始分表? 分库? 分库分表的目的? 什么是数据库垂直拆分? 水平拆分? 分区等等？可以举例说明</li>
+<li>3.数据库优化有哪些? 分别需要注意什么?</li>
+<li>4.web开发方面会遇到哪些缓存? 分别如何优化?</li>
+<li>5.给你256M的内存,对10G的文件进行排序(文件每行1个数字),如何实现？<br>对10G的文件进行查找如何实现？<br>统计10G文件每个关键字出现的次数如何实现？</li>
+<li>6.假如你现在是12306火车订票的设计师,你该如何设计满足全国人民订票?</li>
+<li>7.假如有1亿用户的访问量,你的服务器架构是怎样的? 用户信息的存储方案如何设计?</li>
+<li>8.如果你是技术组长,所带团队任务进度无法完成你该如何解决?<br>如果在进度排满的前提下插入任务,你该如何保证总进度不延期?<br>如果有的工程师今天预定任务没有完成,你该如何解决?</li>
+<li>9.从你的经验方面谈一下如何构建高性能web站点? 需要哪些环节? 步骤? 每个步骤需要注意什么如何优化等?</li>
+<li>10.为什么要对数据库进行主从分离?</li>
+<li>11.如何处理多服务器共享session?</li>
+<li>12.一个10G的表,你用php程序统计某个字段出现的次数,思路是?</li>
+<li>13.会告诉你一个nginx日志例子,用你认为最佳的编程语言统计一下http响应时间超过1秒的前10个url?</li>
+<li>14.给你一个mysql配置文件,用你认为最佳的编程语言解析该文件?</li>
+<li>15.给你两个路径a和b,写一个算法或思路计算a和b差距几层并显示a和b的交集?</li>
+<li>16.给你一个url,在nginx配置一下rewrite指定到某个具体路径?</li>
+<li>17.一个php文件的解释过程是? 一般加速php有哪些? 提高php整体性能会用到哪些技术?</li>
+<li>18.session和cookie生存周期区别? 存储位置区别?</li>
+<li>19.require、include、require_once、include_once区别? 加载区别? 如果程序按需加载某个php文件你如何实现?</li>
+<li>20.chrome号称为多线程的,所以多线程和多进程的区别为?</li>
+<li>21.php在2011年底出现hash碰撞,hash碰撞原理为? 如何进行修复?</li>
+<li>22.web不安全因素有哪些? 分别如何防范?</li>
+<li>23.假如两个单链表相交,写一个最优算法计算交点位置,说思路也可以?</li>
+<li>24.假如你是技术组长? 如何提高团队效率?</li>
+<li>25.nginx负载均衡有哪些? 如果其中一台服务器挂掉,报警机制如何实现?</li>
+<li>26.不优化前提下,apache一般最大连接数为? nginx一般最大连接数为? mysql 每秒insert ? select ? update ? delete?</li>
+<li>27.mysql 数据类型有哪些 ? 分别占用多少存储空间 ?</li>
+<li>28.nginx设置缓存js、css、图片等信息,缓存的实现原理是?</li>
+<li>29.如何提高缓存命中率? 如何对缓存进行颗粒化?</li>
+<li>30.php的内存回收机制是?</li>
+<li><p>31.我的所有问题都问完了,你有什么问题问我没有？</p>
+</li>
+<li><p>32.请使用shell命令获取a文件的前10行与后10行的数据，将其放进b文件中。</p>
+</li>
+<li>33.如何设计安全的php程序，可以防止SQL攻击。</li>
+<li>34.这里有一个sql语句，select id from table where a=? order by b，请你就句子判断，建立索引，使其能够在innodb和myisam引擎下，查询效果都可以加快。</li>
+<li>35.有一天，突然有一个用户投诉，说网页打不开，你该如何进行排查？</li>
+<li>36.何对一个亿级数据的表按照一个没有索引的字段进行统计</li>
+</ul>
+<hr>
+<p>php实现扩展的机制</p>
+<p>全站消息系统</p>
+<p>消息队列</p>
+<p>PHP的数组为什么不按照索引遍历</p>
+<p><a href="http://blog.sina.com.cn/s/blog_60d07c3101010m2h.html" target="_blank" rel="noopener">http://blog.sina.com.cn/s/blog_60d07c3101010m2h.html</a></p>
+<p><a href="http://www.php-note.com/article/detail/546" target="_blank" rel="noopener">http://www.php-note.com/article/detail/546</a></p>
+<p><a href="http://my.oschina.net/u/574366/blog/64814" target="_blank" rel="noopener">http://my.oschina.net/u/574366/blog/64814</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zacksleo.github.io/2013/12/16/ThinkPHP结合使用PHPConsole向Chrome 控制台输出SQL/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zacksleo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zacks's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2013/12/16/ThinkPHP结合使用PHPConsole向Chrome 控制台输出SQL/" itemprop="url">
+                  ThinkPHP结合使用PHP Console向Chrome 控制台输出SQL
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2013-12-16 15:16:39" itemprop="dateCreated datePublished" datetime="2013-12-16T15:16:39+08:00">2013-12-16</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2025-01-11 01:27:41" itemprop="dateModified" datetime="2025-01-11T01:27:41+08:00">2025-01-11</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2013/12/16/ThinkPHP结合使用PHPConsole向Chrome 控制台输出SQL/" class="leancloud_visitors" data-flag-title="ThinkPHP结合使用PHP Console向Chrome 控制台输出SQL">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li>在Chrome中安装PHP Console 插件</li>
+<li><p>下载PHP Console 服务器端程序包到ThinkPHP的Vendor目录下<br>例如 <code>/ThinkPHP/Extend/Vendor/PhpConsole</code></p>
+</li>
+<li><p>编写Behaviour行为类PhpConsoleBehavior.class</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;?php</span><br><span class="line">/*</span><br><span class="line"> * 程序初始化时，在DEBUG模式下自动导入PHP Console类并进行实例化</span><br><span class="line"> * PHP console for chrome degug tools</span><br><span class="line"> * @author zacksleo</span><br><span class="line"> */</span><br><span class="line">class PhpConsoleBehavior extends Behavior&#123;</span><br><span class="line"></span><br><span class="line">  protected $options = array(</span><br><span class="line">      &apos;PHP_CONSOLE&apos; =&gt; false,</span><br><span class="line">  );</span><br><span class="line"></span><br><span class="line">  public function run(&amp;$params)&#123;</span><br><span class="line">    if(C(&apos;PHP_CONSOLE&apos;))&#123;</span><br><span class="line">      if(APP_DEBUG)&#123;</span><br><span class="line">        vendor(&apos;PhpConsole.__autoload&apos;);  //导入文件</span><br><span class="line">        PhpConsole\Helper::register();  //注册，自动实例化</span><br><span class="line">        $connector = PhpConsole\Connector::getInstance();</span><br><span class="line">        $connector-&gt;setPassword(&apos;password&apos;);</span><br><span class="line">        $handler = PhpConsole\Handler::getInstance();</span><br><span class="line">        // 输出PHP错误和异常            </span><br><span class="line">        $handler-&gt;start(); </span><br><span class="line">        // 配置 eval provider（在Chrome中远程执行PHP），如果不使用，则不配置</span><br><span class="line">        $evalProvider = $connector-&gt;getEvalDispatcher()-&gt;getEvalProvider();</span><br><span class="line">        $evalProvider-&gt;setOpenBaseDirs(array(__DIR__)); </span><br><span class="line">        // 必须最后调用</span><br><span class="line">        $connector-&gt;startEvalRequestsListener(); </span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在/App/Conf/tags.php 中配置标签位:’app_init’ =&gt; array(‘PhpConsole’),</li>
+<li>在config.php文件中定义标签’PHP_CONSOLE’ =&gt; true,</li>
+<li>修改ThinkPHP的Log.class文件（位于/ThinkPHP/Lib/Core/Log.class.php）中的recode方法如下</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">static function record($message, $level = self::ERR, $record = false)&#123;</span><br><span class="line">  //zacksleo   </span><br><span class="line">  if($level == self::SQL)&#123;</span><br><span class="line">    PC::debug($message, &apos;SQL&apos;);</span><br><span class="line">  &#125;</span><br><span class="line">  //zacksleo</span><br><span class="line">  if($record || false !== strpos(C(&apos;LOG_LEVEL&apos;), $level))&#123;</span><br><span class="line">    self::$log[] = &quot;&#123;$level&#125;: &#123;$message&#125;\r\n&quot;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span>
+  </nav>
+
+
+
+          </div>
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">zacksleo</p>
+              <p class="site-description motion-element" itemprop="description">Full Stack Web Developer</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">56</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">89</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/zacksleo" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2025</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zacksleo</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.2.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.2.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.2.0"></script>
+
+
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.2.0"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("6ewRRbjRaYybcLL2fRlMKDtT-gzGzoHsz", "NhhOjGzUPay4gOs6hP0RzgdH");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            
+              var $element = $(document.getElementById(url));
+              $element.find('.leancloud-visitors-count').text(counter.get('time'));
+            
+            counter.save(null, {
+              success: function(counter) {
+                
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            
+              var newcounter = new Counter();
+              /* Set ACL */
+              var acl = new AV.ACL();
+              acl.setPublicReadAccess(true);
+              acl.setPublicWriteAccess(true);
+              newcounter.setACL(acl);
+              /* End Set ACL */
+              newcounter.set("title", title);
+              newcounter.set("url", url);
+              newcounter.set("time", 1);
+              newcounter.save(null, {
+                success: function(newcounter) {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+                },
+                error: function(newcounter, error) {
+                  console.log('Failed to create');
+                }
+              });
+            
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
