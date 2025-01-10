@@ -64,6 +64,12 @@ jobs:
           ref: master  # 目标分支是master
           path: deploy  # 将 master 分支内容放在 deploy 目录
 
+      # 配置 Git 用户信息
+      - name: Set up Git user for master deploy
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+
       # 将构建后的文件推送到 master 分支
       - name: Deploy tomaster
         run: |
