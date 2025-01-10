@@ -1,0 +1,75 @@
+name: Hexo Build and Deploy
+
+on:
+  push:
+    branches:
+      - docs  # 监听 docs 分支的推送
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # 使用 GitHub 提供的最新 Ubuntu 镜像
+
+    steps:
+      # Checkout 代码
+      - name: Checkout docs branch
+        uses: actions/checkout@v3
+        with:
+          ref: docs  # 拉取 docs 分支
+
+      # 配置 Git 用户
+      - name: Set up Git
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+
+      # Checkout hexo-theme-next 分支
+      - name: Checkout hexo-theme-next branch
+        uses: actions/checkout@v3
+        with:
+          ref: hexo-theme-next
+          path: hexo-theme-next  # 将 hexo-theme-next 分支拉取到 hexo-theme-next 目录
+
+      # 将 docs 分支的文章合并到 hexo-theme-next 目录
+      - name: Merge markdown files
+        run: |
+          mkdir -p hexo-theme-next/source/_posts  # 确保 Hexo 的文章目录存在
+          cp -r ./docs/* ./hexo-theme-next/source/_posts/  # 将 docs 分支的 markdown 文件复制到 Hexo 主题的 _posts 目录
+
+      # 安装 Node.js 和 Hexo
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'  # 设置 Node.js 版本
+
+      - name: Install dependencies
+        run: |
+          cd hexo-theme-next
+          npm install  # 安装 Hexo 依赖
+
+      # 生成 Hexo 编译文件
+      - name: Build Hexo site
+        run: |
+          cd hexo-theme-next
+          hexo clean && hexo generate  # 清理和生成网站文件
+
+      # Checkout master 分支，推送编译后的内容
+      - name: Checkout master branch
+        uses: actions/checkout@v3
+        with:
+          ref: master  # 目标分支是master
+          path: deploy  # 将 master 分支内容放在 deploy 目录
+
+      # 将构建后的文件推送到 master 分支
+      - name: Deploy tomaster
+        run: |
+          cd hexo-theme-next/public  # Hexo 编译后的静态文件目录
+          cp -r * ../../deploy/  # 将文件复制到 deploy 目录
+
+      - name: Commit and push tomaster
+        run: |
+          cd deploy
+          git add .
+          git commit -m "Deploy updated site"
+          git push origin master  # 推送到 master 分支
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # 使用 GitHub 提供的 token 进行认证
