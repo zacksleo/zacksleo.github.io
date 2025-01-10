@@ -39,7 +39,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '16'  # 设置 Node.js 版本
+          node-version: '8'  # 设置 Node.js 版本
 
       - name: Install dependencies
         run: |
