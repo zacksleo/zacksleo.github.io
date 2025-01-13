@@ -57,30 +57,50 @@ jobs:
           cd hexo-theme-next
           hexo clean && hexo generate  # 清理和生成网站文件
 
-      # Checkout master 分支，推送编译后的内容
-      - name: Checkout master branch
-        uses: actions/checkout@v3
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          ref: master  # 目标分支是master
-          path: deploy  # 将 master 分支内容放在 deploy 目录
+          path: ./hexo-theme-next/public
 
-      # 配置 Git 用户信息
-      - name: Set up Git user for master deploy
-        run: |
-          git config --global user.name "github-actions"
-          git config --global user.email "github-actions@github.com"
+  deploy:
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
 
-      # 将构建后的文件推送到 master 分支
-      - name: Deploy to master
-        run: |
-          cd hexo-theme-next/public  # Hexo 编译后的静态文件目录
-          cp -r * ../../deploy/  # 将文件复制到 deploy 目录
 
-      - name: Commit and push to master
-        run: |
-          cd deploy
-          git add .
-          git commit -m "Deploy updated site"
-          git push origin master  # 推送到 master 分支
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # 使用 GitHub 提供的 token 进行认证
+      # Checkout master 分支，推送编译后的内容
+      # - name: Checkout master branch
+      #   uses: actions/checkout@v3
+      #   with:
+      #     ref: master  # 目标分支是master
+      #     path: deploy  # 将 master 分支内容放在 deploy 目录
+
+      # # 配置 Git 用户信息
+      # - name: Set up Git user for master deploy
+      #   run: |
+      #     git config --global user.name "github-actions"
+      #     git config --global user.email "github-actions@github.com"
+
+      # # 将构建后的文件推送到 master 分支
+      # - name: Deploy to master
+      #   run: |
+      #     cd hexo-theme-next/public  # Hexo 编译后的静态文件目录
+      #     cp -r * ../../deploy/  # 将文件复制到 deploy 目录
+
+      # - name: Commit and push to master
+      #   run: |
+      #     cd deploy
+      #     git add .
+      #     git commit -m "Deploy updated site"
+      #     git push origin master  # 推送到 master 分支
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # 使用 GitHub 提供的 token 进行认证
