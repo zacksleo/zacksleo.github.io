@@ -3,17 +3,17 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: zacks's blog
-subtitle: 清净无为
-description: Full Stack Web Developer
+title: 少湖说
+subtitle: 互联网，科技，数码，鸿蒙
+description: 公众号《少湖说》
 keywords: PHP, Yii, Laravel, Python, Full Stack Web Developer
-author: zacksleo
+author: 少湖
 language: zh-CN
 timezone: Asia/Chongqing
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://zacksleo.github.io
+url: https://blog.shaohushuo.com
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
