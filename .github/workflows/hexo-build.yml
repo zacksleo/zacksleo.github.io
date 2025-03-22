@@ -33,6 +33,7 @@ jobs:
       - name: Merge markdown files
         run: |
           cp hexo-theme-next/package.json package.json
+          cp hexo-theme-next/_config.yaml _config.yaml
           shopt -s nullglob
           mkdir -p hexo-theme-next/source/_posts  # 确保 Hexo 的文章目录存在
           cp *.md ./hexo-theme-next/source/_posts/  # 将 docs 分支的 markdown 文件复制到 Hexo 主题的 _posts 目录
