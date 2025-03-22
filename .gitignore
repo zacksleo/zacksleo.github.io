@@ -1,3 +1,6 @@
 .idea/
 *.bak
 node_modules/
+public
+hexo-theme-next
+db.json
