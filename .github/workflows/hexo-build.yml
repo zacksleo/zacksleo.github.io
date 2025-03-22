@@ -45,7 +45,6 @@ jobs:
 
       - name: Install dependencies
         run: |
-          # cd hexo-theme-next
           npm install  # 安装 Hexo 依赖
 
       # 安装 Hexo CLI
@@ -56,7 +55,6 @@ jobs:
       # 生成 Hexo 编译文件
       - name: Build Hexo site
         run: |
-          # cd hexo-theme-next
           hexo clean && hexo generate  # 清理和生成网站文件
 
       - name: Upload Pages artifact
