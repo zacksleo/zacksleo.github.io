@@ -4,7 +4,5 @@ node_modules/
 public
 hexo-theme-next
 db.json
-package.json
-_config.yml
 package-lock.json
 source/
