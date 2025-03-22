@@ -24,11 +24,11 @@ tags: [阿里云, ECS, WindowsServer, IIS, ASP.NET]
 
 > 注意虽然我们安装的是 ASP.NET 3.5, 但整体核心架构是基于.NET2.0, 所以 IIS 中没有3.5的选项, 所以这里配置 .NetCLR 版本 2.0。
 
-![选择应用程序池](./figures/2025/03/22/选择应用程序池.png)
+![选择应用程序池](./images/2025/03/22/选择应用程序池.png)
 
 3. 启动应用程序池
 
-![启动应用程序池](./figures/2025/03/22/启动应用程序池.png)
+![启动应用程序池](./images/2025/03/22/启动应用程序池.png)
 
 4. 安装 URL Rewrite 模块
 
@@ -67,7 +67,7 @@ tags: [阿里云, ECS, WindowsServer, IIS, ASP.NET]
 
 解决方案：修改应用程序池配置，修改“加载用户配置文件”为 True。
 
-![加载用户配置文件](./figures/2025/03/22/load-user-profile.png)
+![加载用户配置文件](./images/2025/03/22/load-user-profile.png)
 
 
 ## 参考资料
