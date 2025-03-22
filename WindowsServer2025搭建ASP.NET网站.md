@@ -22,6 +22,8 @@ tags: [阿里云, ECS, WindowsServer, IIS, ASP.NET]
 
 2. 打开IIS，在新建的网站处右键，配置网站使用的应用程序池，选择 .NetCLR 版本 2.0
 
+> 注意虽然我们安装的是 ASP.NET 3.5, 但整体核心架构是基于.NET2.0, 所以 IIS 中没有3.5的选项, 所以这里配置 .NetCLR 版本 2.0。
+
 ![选择应用程序池](./figures/2025/03/22/选择应用程序池.png)
 
 3. 启动应用程序池
@@ -70,4 +72,8 @@ tags: [阿里云, ECS, WindowsServer, IIS, ASP.NET]
 
 ## 参考资料
 
+- [Windows server开启远程桌面教程](https://blog.csdn.net/xuqingda/article/details/136473232)
+- [Windows Server 2012安装 .NET Framework 3.5](https://developer.aliyun.com/article/540898)
+- [Windows Server 2012上安装.NET Framework 3.5](https://blog.csdn.net/lz17267861157/article/details/134960359)
+- [IIS安装和使用URL重写工具-URL Rewrite](https://blog.csdn.net/suxuelian/article/details/80103514)
 - [ASP.NET “System.Security.SecurityException”异常的解决办法](https://blog.bossma.cn/dotnet/asp-net-application-attempted-to-perform-an-operation-not-allowed-security-policy/)
