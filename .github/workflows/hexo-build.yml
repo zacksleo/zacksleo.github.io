@@ -41,7 +41,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '8'  # 设置 Node.js 版本
+          node-version: '20'  # 设置 Node.js 版本
 
       - name: Install dependencies
         run: |
@@ -51,7 +51,7 @@ jobs:
       # 安装 Hexo CLI
       - name: Install Hexo CLI
         run: |
-          npm install hexo-cli@1.1.0 -g  # 安装 Hexo CLI
+          npm install hexo-cli@4.3.2 -g  # 安装 Hexo CLI
 
       # 生成 Hexo 编译文件
       - name: Build Hexo site
