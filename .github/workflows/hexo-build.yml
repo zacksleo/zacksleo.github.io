@@ -29,13 +29,13 @@ jobs:
       #     ref: hexo-theme-next
       #     path: hexo-theme-next  # 将 hexo-theme-next 分支拉取到 hexo-theme-next 目录
 
-      # # 将 docs 分支的文章合并到 hexo-theme-next 目录
-      # - name: Merge markdown files
-      #   run: |
-      #     shopt -s nullglob
-      #     mkdir -p hexo-theme-next/source/_posts  # 确保 Hexo 的文章目录存在
-      #     cp *.md ./hexo-theme-next/source/_posts/  # 将 docs 分支的 markdown 文件复制到 Hexo 主题的 _posts 目录
-      #     cp -r ./figures ./hexo-theme-next/source/img/  # 将 docs 分支的 markdown 文件复制到 Hexo 主题的 img 目录
+      # 将 docs 分支的文章合并到 hexo-theme-next 目录
+      - name: Merge markdown files
+        run: |
+          shopt -s nullglob
+          mkdir -p source/_posts  # 确保 Hexo 的文章目录存在
+          cp *.md ./source/_posts/  # 将 docs 分支的 markdown 文件复制到 Hexo 主题的 _posts 目录
+      # cp -r ./figures ./source/img/  # 将 docs 分支的 markdown 文件复制到 Hexo 主题的 img 目录
 
       # 安装 Node.js 和 Hexo
       - name: Set up Node.js
