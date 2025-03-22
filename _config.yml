@@ -6,7 +6,7 @@
 title: 少湖说
 subtitle: 互联网，科技，数码，鸿蒙
 description: 公众号《少湖说》
-keywords: PHP, Yii, Laravel, Python, Full Stack Web Developer
+keywords: 少湖说，互联网，科技，数码，鸿蒙
 author: 少湖
 language: zh-CN
 timezone: Asia/Chongqing
@@ -84,3 +84,7 @@ deploy:
   - type: git
   - repo: git@github.com:zacksleo/zacksleo.github.io.git
   - branch: master
+
+favicon:
+  small: /images/avatar.png
+  medium: /images/avatar.png
