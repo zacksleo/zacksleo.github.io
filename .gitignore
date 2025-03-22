@@ -9,5 +9,6 @@ public/
 .travis/ssh_key.pub
 source/zh-cn/
 source/en/docs/*
+source/_posts/
 .idea/
 hexo-theme-next/
