@@ -88,3 +88,9 @@ deploy:
 favicon:
   small: /images/avatar.png
   medium: /images/avatar.png
+
+sitemap:
+  path: sitemap.xml
+  rel: false
+  tags: true
+  categories: true
