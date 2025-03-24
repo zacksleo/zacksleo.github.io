@@ -22,45 +22,45 @@ jobs:
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
 
-      # Checkout hexo-theme-next 分支
-      - name: Checkout hexo-theme-next branch
-        uses: actions/checkout@v3
-        with:
-          ref: hexo-theme-next
-          path: hexo-theme-next  # 将 hexo-theme-next 分支拉取到 hexo-theme-next 目录
+      # # Checkout hexo-theme-next 分支
+      # - name: Checkout hexo-theme-next branch
+      #   uses: actions/checkout@v3
+      #   with:
+      #     ref: hexo-theme-next
+      #     path: hexo-theme-next  # 将 hexo-theme-next 分支拉取到 hexo-theme-next 目录
 
       # 将 docs 分支的文章合并到 hexo-theme-next 目录
       - name: Merge markdown files
         run: |
-          mkdir -p hexo-theme-next/source/_posts  # 确保 Hexo 的文章目录存在
-          cp *.md ./hexo-theme-next/source/_posts/  # 将 docs 分支的 markdown 文件复制到 Hexo 主题的 _posts 目录
+          shopt -s nullglob
+          mkdir -p source/_posts  # 确保 Hexo 的文章目录存在
+          cp *.md ./source/_posts/  # 将 docs 分支的 markdown 文件复制到 Hexo 主题的 _posts 目录
+      # cp -r ./figures ./source/img/  # 将 docs 分支的 markdown 文件复制到 Hexo 主题的 img 目录
 
       # 安装 Node.js 和 Hexo
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '8'  # 设置 Node.js 版本
+          node-version: '20'  # 设置 Node.js 版本
 
       - name: Install dependencies
         run: |
-          cd hexo-theme-next
           npm install  # 安装 Hexo 依赖
 
       # 安装 Hexo CLI
       - name: Install Hexo CLI
         run: |
-          npm install hexo-cli@1.1.0 -g  # 安装 Hexo CLI
+          npm install hexo-cli@4.3.2 -g  # 安装 Hexo CLI
 
       # 生成 Hexo 编译文件
       - name: Build Hexo site
         run: |
-          cd hexo-theme-next
           hexo clean && hexo generate  # 清理和生成网站文件
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./hexo-theme-next/public
+          path: ./public
 
   deploy:
     needs: build

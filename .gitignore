@@ -1,2 +1,8 @@
 .idea/
 *.bak
+node_modules/
+public
+hexo-theme-next
+db.json
+package-lock.json
+source/_posts
