@@ -67,7 +67,7 @@ Team 选择自己或者加入的团队，勾选  Automatically manage signing。
 
 Targets 下的其他几个，如 WebDriverAgetLib, 也执行同样操作。
 
-![alt text](images/25/06/04/image-1.png)
+![alt text](images/2025/06/04/image-1.png)
 
 ### 运行
 
