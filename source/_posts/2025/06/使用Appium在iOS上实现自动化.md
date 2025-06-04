@@ -71,7 +71,11 @@ Targets 下的其他几个，如 WebDriverAgetLib, 也执行同样操作。
 
 ### 运行
 
-在 Xcode 中，中间顶部，左侧选择 WebDriverAgentRunner， 右侧选择运行的设备，点击 Run，此时将在手机上安装 WebDriverAgentRunner App，然后进入手机“设置”，打开 “通用”，找到“VPN与设备管理”，最下方找到 “开发者APP”，点开后选择允许。
+在 Xcode 中，中间顶部，左侧选择 WebDriverAgentRunner，右侧选择运行的设备，然后点击 Products -> Test。
+
+![alt text](images/2025/06/04/image-4.png)
+
+此时将在手机上安装 WebDriverAgentRunner App，然后进入手机“设置”，打开 “通用”，找到“VPN与设备管理”，最下方找到 “开发者APP”，点开后选择允许。
 
 打开 刚安装的这个 App，运行 Appium
 
