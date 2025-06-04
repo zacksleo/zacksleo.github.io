@@ -75,9 +75,19 @@ Targets 下的其他几个，如 WebDriverAgetLib, 也执行同样操作。
 
 ![alt text](images/2025/06/04/image-4.png)
 
-此时将在手机上安装 WebDriverAgentRunner App，然后进入手机“设置”，打开 “通用”，找到“VPN与设备管理”，最下方找到 “开发者APP”，点开后选择允许。
+此时将在手机上安装 WebDriverAgentRunner App，
 
-打开 刚安装的这个 App，运行 Appium
+首次运行会出现以下错误提示：
+
+`Unable to launch com.facebook.WebDriverAgentRunner.zacksleo.xctrunner`, 如图所示
+
+![alt text](images/2025/06/04/image-5.png)
+
+
+
+这是因为私有证书需要在手机上勾选允许，然后进入手机“设置”，打开 “通用”，找到“VPN与设备管理”，最下方找到 “开发者APP” 下面的证书，点开后选择信任 Apple Development:...，弹窗选择信任。
+
+打开刚安装的这个名为 WebDriverAgentRunner 的 App，启动客户端代理，然后在电脑命令行中运行 Appium，启动 Appium 服务。
 
 ```bash
 appium
