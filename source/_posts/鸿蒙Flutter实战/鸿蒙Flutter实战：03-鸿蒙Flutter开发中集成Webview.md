@@ -1,4 +1,8 @@
-# 鸿蒙 Flutter 开发中集成 Webview
+---
+title: 鸿蒙Flutter实战：03-鸿蒙Flutter开发中集成Webview
+date: 2025-06-06 00:00:29
+tags: [HarmonyOS,Flutter,鸿蒙Flutter实战]
+---
 
 ## 主要有两种方案
 

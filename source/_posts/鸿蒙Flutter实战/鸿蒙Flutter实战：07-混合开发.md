@@ -1,4 +1,9 @@
-# 鸿蒙Flutter实战：混合开发
+---
+title: 鸿蒙Flutter实战：07-混合开发
+date: 2025-06-06 00:00:29
+tags: [HarmonyOS,Flutter,鸿蒙Flutter实战]
+---
+
 
 鸿蒙Flutter混合开发主要有两种形式。
 

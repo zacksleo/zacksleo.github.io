@@ -1,4 +1,9 @@
-# 鸿蒙Flutter 实战：使用第三方插件
+---
+title: 鸿蒙Flutter实战：05-使用第三方插件
+date: 2025-06-06 00:00:29
+tags: [HarmonyOS,Flutter,鸿蒙Flutter实战]
+---
+
 
 在鸿蒙Flutter开发中，如果涉及到使用原生功能，就要使用插件。使用插件有两种方式，一种是自己编写原生ArkTS代码，在Dart侧调用。另外一种是使用第三方代码。
 

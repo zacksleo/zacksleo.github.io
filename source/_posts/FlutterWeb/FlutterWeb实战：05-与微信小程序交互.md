@@ -1,3 +1,9 @@
+---
+title: FlutterWeb实战：05-与微信小程序交互
+date: 2025-06-05 23:55:52
+tags: [Flutter,FlutterWeb实战,Web]
+---
+
 ## 准备工作
 
 在前面的文章《FlutterWeb实战：04-集成微信JS-SDK提供丰富体验》中，我们介绍了如何集成微信 JS-SDK，实现与微信 H5 交互。

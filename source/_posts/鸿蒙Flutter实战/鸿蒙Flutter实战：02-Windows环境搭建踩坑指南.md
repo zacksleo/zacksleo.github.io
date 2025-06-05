@@ -1,4 +1,8 @@
-# 鸿蒙Flutter实战：02-Windows环境搭建踩坑指南
+---
+title: 鸿蒙Flutter实战：02-Windows环境搭建踩坑指南
+date: 2025-06-06 00:00:29
+tags: [HarmonyOS,Flutter,鸿蒙Flutter实战]
+---
 
 ## 环境搭建
 

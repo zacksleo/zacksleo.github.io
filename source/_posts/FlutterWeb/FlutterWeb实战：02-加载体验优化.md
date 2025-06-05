@@ -1,3 +1,9 @@
+---
+title: FlutterWeb实战：02-加载体验优化
+date: 2025-06-05 23:55:52
+tags: [Flutter,FlutterWeb实战,Web]
+---
+
 ## 背景
 
 默认情况下，Flutter 打包 web 以后，首次打开页面需要加载大量的资源，这就需要做首屏加载优化。

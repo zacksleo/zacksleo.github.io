@@ -1,4 +1,9 @@
-# 鸿蒙 Flutter 如何使用 DevTools 调试 Webview
+---
+title: 鸿蒙Flutter实战：04-如何使用DevTools调试Webview
+date: 2025-06-06 00:00:29
+tags: [HarmonyOS,Flutter,鸿蒙Flutter实战]
+---
+
 
 在《鸿蒙 Flutter 开发中集成 Webview》，介绍了如果在 Flutter 中集成 Webview. 本文则为 Webview 的调试方法。
 

@@ -1,3 +1,9 @@
+---
+title: FlutterWeb实战：07-自动化部署
+date: 2025-06-05 23:55:52
+tags: [Flutter,FlutterWeb实战,Web]
+---
+
 > Flutter Web 开发打包后，可以手动发布到服务器上，通过 nginx 来托管静态页面。本文将介绍如何将这一过程自动化。
 
 ## 整体思路

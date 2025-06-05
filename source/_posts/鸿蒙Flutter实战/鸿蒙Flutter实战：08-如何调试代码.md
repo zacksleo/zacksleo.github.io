@@ -1,4 +1,10 @@
-# 鸿蒙Flutter实战：如何调试代码
+
+---
+title: 鸿蒙Flutter实战：08-如何调试代码
+date: 2025-06-06 00:00:29
+tags: [HarmonyOS,Flutter,鸿蒙Flutter实战]
+---
+
 
 ## 1.环境搭建
 

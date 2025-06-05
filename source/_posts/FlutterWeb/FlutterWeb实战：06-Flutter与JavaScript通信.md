@@ -1,3 +1,9 @@
+---
+title: FlutterWeb实战：06-Flutter与JavaScript通信
+date: 2025-06-05 23:55:52
+tags: [Flutter,FlutterWeb实战,Web]
+---
+
 ## 准备工作
 
 ### Dart 调用 JS

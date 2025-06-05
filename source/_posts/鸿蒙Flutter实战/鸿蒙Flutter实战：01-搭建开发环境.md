@@ -1,4 +1,9 @@
-# 鸿蒙Flutter实战：01-搭建开发环境
+---
+title: 鸿蒙Flutter实战：01-搭建开发环境
+date: 2025-06-06 00:00:29
+tags: [HarmonyOS,Flutter,鸿蒙Flutter实战]
+---
+
 
 ## 准备工作
 

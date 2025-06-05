@@ -1,4 +1,9 @@
-# 使用 ArkTs 开发 Flutter 鸿蒙平台插件
+---
+title: 鸿蒙Flutter实战：06-使用ArkTs开发Flutter鸿蒙插件
+date: 2025-06-06 00:00:29
+tags: [HarmonyOS,Flutter,鸿蒙Flutter实战]
+---
+
 
 本文讲述如何开发一个 Flutter 鸿蒙插件，如何实现 Flutter 与鸿蒙的混合开发，以及双端消息通信。
 

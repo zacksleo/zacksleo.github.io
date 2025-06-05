@@ -1,3 +1,9 @@
+---
+title: FlutterWeb实战：04-集成微信JS-SDK提供丰富体验
+date: 2025-06-05 23:55:52
+tags: [Flutter,FlutterWeb实战,Web]
+---
+
 >微信的 JS-SDK 提供了很多调用微信能力的 API，H5 页面也经常用到。本文以文件上传为为例，介绍了如何在 Flutter Web 项目集成微信 JS-SDK。
 
 ## 配置 JS-SDK
