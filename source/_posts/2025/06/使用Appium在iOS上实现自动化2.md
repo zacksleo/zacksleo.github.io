@@ -96,6 +96,12 @@ appium
 node index.js
 ```
 
+## 更多问题
+
+非iOS原生应用，如何解决复制粘贴问题？
+
+这种情况下无法直接复制或者发送文本，一个思路是使用微信输入法的剪贴板/常用语，通过模拟点击操作，间接实现输入功能。
+
 ## 参考资料
 
 - [appium-inspector](https://appium.github.io/appium-inspector/latest/quickstart/installation/)
