@@ -1,4 +1,9 @@
-# 鸿蒙Flutter实战：现有Flutter项目支持鸿蒙
+---
+title: 鸿蒙Flutter实战：09-现有Flutter项目支持鸿蒙
+date: 2025-06-06 00:00:29
+tags: [HarmonyOS,Flutter,鸿蒙Flutter实战]
+---
+
 
 ## 背景
 

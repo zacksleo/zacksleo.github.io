@@ -1,3 +1,9 @@
+---
+title: 鸿蒙Flutter实战：20. Flutter集成高德地图，同层渲染
+date: 2025-06-06 00:00:29
+tags: [HarmonyOS,Flutter,鸿蒙Flutter实战]
+---
+
 ## 本文以同层渲染为例，介绍如何集成高德地图
 
 完整代码见 [Flutter 鸿蒙版 Demo](https://gitee.com/zacks/flutter-ohos-demo/commit/2b16c6f34abd4c61eea89805bc314a10874c305f)

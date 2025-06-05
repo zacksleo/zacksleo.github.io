@@ -1,4 +1,9 @@
-# 以 Har 包的方式加载到 HarmonyOS 工程
+---
+title: 鸿蒙Flutter实战：22-混合开发详解-2-Har包模式引入
+date: 2025-06-06 00:00:29
+tags: [HarmonyOS,Flutter,鸿蒙Flutter实战]
+---
+
 
 ## 创建工作
 

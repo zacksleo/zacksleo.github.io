@@ -1,4 +1,9 @@
-# 鸿蒙应用打包上架流程
+---
+title: 鸿蒙Flutter实战：13-鸿蒙应用打包上架流程
+date: 2025-06-06 00:00:29
+tags: [HarmonyOS,Flutter,鸿蒙Flutter实战]
+---
+
 
 ## 创建应用
 

@@ -1,3 +1,9 @@
+---
+title: 鸿蒙Flutter实战：24-混合开发详解-4-初始化Flutter
+date: 2025-06-06 00:00:29
+tags: [HarmonyOS,Flutter,鸿蒙Flutter实战]
+---
+
 ## 概述
 
 将 Flutter 模块添加至宿主鸿蒙项目中后，接下需要实现页面跳转、消息通信等功能，本文重点介绍如何初始化 Flutter。

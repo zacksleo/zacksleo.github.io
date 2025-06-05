@@ -1,3 +1,9 @@
+---
+title: 鸿蒙Flutter实战：19-Flutter集成高德地图，跳转页面方式
+date: 2025-06-06 00:00:29
+tags: [HarmonyOS,Flutter,鸿蒙Flutter实战]
+---
+
 ## 前言
 
 在之前的文章[现有Flutter项目支持鸿蒙II](https://gitee.com/zacks/flutter-ohos-demo)中，介绍了如果使何第三方插件，同时给出了非常多的使用案例，如

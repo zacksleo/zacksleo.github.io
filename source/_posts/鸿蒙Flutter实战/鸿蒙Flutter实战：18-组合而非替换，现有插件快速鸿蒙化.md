@@ -1,3 +1,9 @@
+---
+title: 鸿蒙Flutter实战：18-组合而非替换，现有插件快速鸿蒙化
+date: 2025-06-06 00:00:29
+tags: [HarmonyOS,Flutter,鸿蒙Flutter实战]
+---
+
 ## 引言
 
 在对插件鸿蒙化时，除了往期文章[现有Flutter项目支持鸿蒙II](https://gitee.com/zacks/flutter-ohos-demo)中讲到的使用 dependency_overrides 来配置鸿蒙适配库的两种方式以外，如果三方插件本身使用了联合插件的形式，也可以通过下面这种方式来添加鸿蒙平台的实现：

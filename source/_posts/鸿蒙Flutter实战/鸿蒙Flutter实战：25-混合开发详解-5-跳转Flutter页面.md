@@ -1,3 +1,9 @@
+---
+title: 鸿蒙Flutter实战：25-混合开发详解-5-跳转Flutter页面
+date: 2025-06-06 00:00:29
+tags: [HarmonyOS,Flutter,鸿蒙Flutter实战]
+---
+
 ## 概述
 
 在上一章中，我们介绍了如何初始化 Flutter 引擎，本文重点介绍如何添加并跳转至 Flutter 页面。

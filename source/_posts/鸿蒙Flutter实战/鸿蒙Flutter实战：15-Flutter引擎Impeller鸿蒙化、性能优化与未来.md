@@ -1,3 +1,9 @@
+---
+title: 鸿蒙Flutter实战：15-Flutter引擎Impeller鸿蒙化、性能优化与未来
+date: 2025-06-06 00:00:29
+tags: [HarmonyOS,Flutter,鸿蒙Flutter实战]
+---
+
 ##  Flutter 技术原理
 
 Flutter 是一个主流的跨平台应用开发框架，基于 Dart 语言开发 UI 界面，它将描述界面的 Dart 代码直接编译成机器码，并使用渲染引擎调用 GPU/CPU 渲染。

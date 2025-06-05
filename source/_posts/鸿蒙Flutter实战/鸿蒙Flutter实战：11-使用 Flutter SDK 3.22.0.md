@@ -1,4 +1,8 @@
-# 使用 Flutter SDK 3.22.0
+---
+title: 鸿蒙Flutter实战：11-使用 Flutter SDK 3.22.0
+date: 2025-06-06 00:00:29
+tags: [HarmonyOS,Flutter,鸿蒙Flutter实战]
+---
 
 ## SDK 安装
 

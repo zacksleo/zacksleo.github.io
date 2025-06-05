@@ -1,3 +1,9 @@
+---
+title: 鸿蒙Flutter实战：17-无痛上架审核指南
+date: 2025-06-06 00:00:29
+tags: [HarmonyOS,Flutter,鸿蒙Flutter实战]
+---
+
 > 在上期文章中，我们体验了无痛使用 Flutter 快速启动开发的过程，本期重点聚焦上架审核流程。
 
 ![alt text](./(images/鸿蒙Flutter实战/figures/17-1.PNG)
