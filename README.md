@@ -4,6 +4,7 @@ date: 2099-09-09 09:09:09
 tags:
 ---
 
+<img src="images/erhai.jpg" width="800">
 
 # 个人介绍
 
