@@ -10,7 +10,7 @@ tags: [阿里云,阿里云服务迁移实战]
 
 ## 修改解析
 
-![alt text](images/阿里云服务迁移实战/image-15.png)
+![alt text](/images/阿里云服务迁移实战/image-15.png)
 
 在域名解析处，修改域名的解析地址即可。
 
@@ -28,7 +28,7 @@ tags: [阿里云,阿里云服务迁移实战]
 
 1. 使用 [网络拨测工具](https://boce.aliyun.com/detect/http) 检查 DNS 解析生效情况。
 
-![alt text](images/阿里云服务迁移实战/image-14.png)
+![alt text](/images/阿里云服务迁移实战/image-14.png)
 
 2. 通过查询原账号服务器中的 Nginx 等访问日志，检查是否仍有流量存在。
 

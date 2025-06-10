@@ -14,27 +14,27 @@ tags: [鸿蒙, Flutter, 鸿蒙开发故事]
 
 小天说安装好 flutter_flutter 以后，运行 app 出错，出错内容如下：
 
-![alt text](images/2025/03/04/image.png)
+![alt text](/images/2025/03/04/image.png)
 
 
 看起来一头雾水，于是我让他检查下环境，使用
 `flutter doctor` 查看出现如下错误:
 
-![alt text](images/2025/03/04/image-1.png)
+![alt text](/images/2025/03/04/image-1.png)
 
 看起来像是在 Dart 版本不对，经过询问发现，小天发现了 dart-sdk 是空的，于是手动复制了一份，查看错误输出，初步判断 dart-sdk 不匹配导致出错。那么问题来了，为什么目录为空？
 
-![alt text](images/2025/03/04/image-2.png)
+![alt text](/images/2025/03/04/image-2.png)
 
 
 我们按照[环境配置指南](https://gitee.com/zacks/awesome-harmonyos-flutter/blob/master/%E9%B8%BF%E8%92%99%20Flutter%20%E5%AE%9E%E6%88%98/%E9%B8%BF%E8%92%99Flutter%E5%AE%9E%E6%88%98%EF%BC%9A01-%E6%90%AD%E5%BB%BA%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83.md "环境配置指南")重新安装 sdk，使用 git 克隆 Flutter 的 dev 分支之后，运行时 `flutter --version` 命令，起初，输出朝着期望的方式进行，但经过短暂 Flutter engine 下载之后，出现一堆红色错误，仔细查看错误原因，dart-sdk 竟然是空的？！
 
-![alt text](images/2025/03/04/image-3.png)
+![alt text](/images/2025/03/04/image-3.png)
 
 
 此时退出命令，再次运行 `flutter doctor`，这次的输出不一样了
 
-![alt text](images/2025/03/04/image-4.png)
+![alt text](/images/2025/03/04/image-4.png)
 
 
 按照[网上的提示](https://blog.csdn.net/weixin_44692055/article/details/109774822 "Error: Unable to ‘pub upgrade‘ flutter tool")，这时需要手动清理 cache，打开 Flutter 安装目录，删除 `bin/cache` 目录，重新运行，发现，又回到了第一次的情形。
@@ -42,14 +42,14 @@ tags: [鸿蒙, Flutter, 鸿蒙开发故事]
 经多几分钟的摸索和分析，我决定尝试手动处理缺失的 dart-sdk，按照命令输出的 url，手动下载解压，复制到 Flutter 目录下的 cache/dart-sdk，现在看看是否能用呢？
 
 
-![alt text](images/2025/03/04/image-5.png)
+![alt text](/images/2025/03/04/image-5.png)
 
 
 Bingo！已经开始下载编译套件，成功近在咫尺了。
 
 `flutter doctor` 检查通过，接下来按照正常流程运行，不过又有新的问题出现:
 
-![alt text](images/2025/03/04/image-6.png)
+![alt text](/images/2025/03/04/image-6.png)
 
 在这个过程中，杀毒软件频频弹窗，好家伙，竟然是你小子！
 
@@ -57,7 +57,7 @@ Flutter 在安装初始化和编译时会下载和生成大量文件，这就导
 
 第一次在鸿蒙设备上运行 Flutter，会下载鸿蒙相关的依赖套件，控制台输出 `downloading ohos-x64/arm64...`，需要耐心等待。
 
-![alt text](images/2025/03/04/image-7.png)
+![alt text](/images/2025/03/04/image-7.png)
 
 
 最终，经过比较漫长的编译等待，熟悉的画面在真机上出现了，完美收官。
@@ -65,7 +65,7 @@ Flutter 在安装初始化和编译时会下载和生成大量文件，这就导
 
 本来以为故事到这就结束了，第二天，小天又传来消息，事态升级，发来一张截图，打开一看直接无语了
 
-![alt text](images/2025/03/04/image-8.png)
+![alt text](/images/2025/03/04/image-8.png)
 
 
 这回杀毒软件直接把 Dart SDK 当成病毒清理了，好吧，这回除了卸载软件，也没啥好办法了。

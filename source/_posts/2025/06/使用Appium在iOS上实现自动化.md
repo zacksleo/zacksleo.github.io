@@ -67,13 +67,13 @@ Team 选择自己或者加入的团队，勾选  Automatically manage signing。
 
 Targets 下的其他几个，如 WebDriverAgetLib, 也执行同样操作。
 
-![alt text](images/2025/06/04/image-1.png)
+![alt text](/images/2025/06/04/image-1.png)
 
 ### 运行
 
 在 Xcode 中，中间顶部，左侧选择 WebDriverAgentRunner，右侧选择运行的设备，然后点击 Products -> Test。
 
-![alt text](images/2025/06/04/image-4.png)
+![alt text](/images/2025/06/04/image-4.png)
 
 此时将在手机上安装 WebDriverAgentRunner App，
 
@@ -81,7 +81,7 @@ Targets 下的其他几个，如 WebDriverAgetLib, 也执行同样操作。
 
 `Unable to launch com.facebook.WebDriverAgentRunner.zacksleo.xctrunner`, 如图所示
 
-![alt text](images/2025/06/04/image-5.png)
+![alt text](/images/2025/06/04/image-5.png)
 
 
 

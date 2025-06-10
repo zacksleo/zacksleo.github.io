@@ -12,7 +12,7 @@ Bucket 复制分为两种，同区域复制和跨区域复制
 
 ## 同区域复制
 
-![alt text](images/阿里云服务迁移实战/image-7.png)
+![alt text](/images/阿里云服务迁移实战/image-7.png)
 
 授权角色选择 “AliyunOSSRole”, 创建方法见 “跨区域复制”。然后点击确定即可。
 
@@ -24,7 +24,7 @@ Bucket 复制分为两种，同区域复制和跨区域复制
 
 跨账号复制时，需要首先在原账号添加授权角色，打开 [RAM 访问控制/角色](https://ram.console.aliyun.com/roles/detail?roleName=AliyunOSSRole), 添加一个名为 AliyunOSSRole 的角色，增加授权 AliyunOSSFullAccess
 
-![alt text](images/阿里云服务迁移实战/image-9.png)
+![alt text](/images/阿里云服务迁移实战/image-9.png)
 
 添加成功后，在角色详情中，找到 ARM，点击复制，复制的内容将在后面新账号处用到。
 
@@ -32,29 +32,29 @@ Bucket 复制分为两种，同区域复制和跨区域复制
 
 打开新账号中的目标 Bucket，进入管理界面，在左侧菜单栏中，依次找到 “文件管理/权限控制/Bucket授权策略”，点击“接收复制对象”，
 
-![alt text](images/阿里云服务迁移实战/image-10.png)
+![alt text](/images/阿里云服务迁移实战/image-10.png)
 
 在右侧弹窗中，使用默认配置 “从源端复制RAM角色ARN获取”，下方的 “源端复制RAM角色ARN”，粘贴前面复制好的 ARM，之后点击生成 Policy, 点击保存。
 
 成功后显示如下：
 
-![alt text](images/阿里云服务迁移实战/image-11.png)
+![alt text](/images/阿里云服务迁移实战/image-11.png)
 
 
 ### 开启复制
 
-![alt text](images/阿里云服务迁移实战/image-8.png)
+![alt text](/images/阿里云服务迁移实战/image-8.png)
 
 建议使用默认配置，即勾选 “全部文件进行同步”以及“增/改 同步”，“复制历史数据”。这意思是说，首次同步时会进行一次全量复制，之后会将增加/修改的文件，增量同步新的 Bucket。
 
-![alt text](images/阿里云服务迁移实战/image-12.png)
+![alt text](/images/阿里云服务迁移实战/image-12.png)
 
 点击“确定”，之后点击 “确认开启”，等待数据复制开启。
 
 
 稍等片刻，可以看到状态为运行中。
 
-![alt text](images/阿里云服务迁移实战/image-13.png)
+![alt text](/images/阿里云服务迁移实战/image-13.png)
 
 
 等到 OSS 迁移完成之后，可以再关闭复制。

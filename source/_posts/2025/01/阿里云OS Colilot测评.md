@@ -38,10 +38,10 @@ sudo yum install -y os-copilot
 点击用户名称，在标签栏处，点击权限管理，`新增授权`，在权限策略处，搜索 “AliyunSysOMOSCopilotAccess”，然后勾选，点击 “确认新增授权”
 
 
-![权限管理](images/2025/01/20/image.png)
+![权限管理](/images/2025/01/20/image.png)
 
 
-![新增授权](images/2025/01/20/image-1.png)
+![新增授权](/images/2025/01/20/image-1.png)
 
 这样，RAM 用户就拥有了 os-copilot 的权限。
 

@@ -56,7 +56,7 @@ this.addPlugin(new OhosPlugin())
 
 添加原生页面，回到 DevEco，在 pages 目录右键，创建一个空页面, 命名为 Amap
 
-![alt text](images/鸿蒙Flutter实战/(images/鸿蒙Flutter实战/figures/19-new-page.png)
+![alt text](/images/鸿蒙Flutter实战/(images/鸿蒙Flutter实战/figures/19-new-page.png)
 
 
 在 `ohos/entry/oh-package.json` 文件中引入高德地图SDK：
