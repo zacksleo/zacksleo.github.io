@@ -274,17 +274,17 @@ dependencies:
 
 | 首页 | 我的 | 帮助 | 播放器 |
 | ----------- | ----------- | ----------- | ----------- |
-| <img src="images/鸿蒙Flutter实战/flutter-ohos-demo/image.jpeg" width="200"> | <img src="images/鸿蒙Flutter实战/flutter-ohos-demo/image-1.jpeg" width="200"> | <img src="images/鸿蒙Flutter实战/flutter-ohos-demo/image-2.jpeg" width="200"> | <img src="images/鸿蒙Flutter实战/flutter-ohos-demo/image-3.jpeg" width="200"> |
+| <img src="/images/鸿蒙Flutter实战/flutter-ohos-demo/image.jpeg" width="200"> | <img src="/images/鸿蒙Flutter实战/flutter-ohos-demo/image-1.jpeg" width="200"> | <img src="/images/鸿蒙Flutter实战/flutter-ohos-demo/image-2.jpeg" width="200"> | <img src="/images/鸿蒙Flutter实战/flutter-ohos-demo/image-3.jpeg" width="200"> |
 
 
 ## 插件使用示例
 
 | 插件名 | 截图 | 使用示例 |
 | ----------- | ----------- | ----------- |
-| flutter_inappwebview | <img src="images/鸿蒙 Flutter/image.jpeg" width="200"> |[查看代码](./packages/modules/plugins/README.md#flutter_inappwebview) |
-| video_player |  <img src="images/鸿蒙Flutter实战/flutter/image-3.jpeg" width="200"> |[查看代码](./packages/modules/plugins/README.md#video_player) |
-| cached_network_image |  <img src="images/鸿蒙Flutter实战/flutter-ohos-demo/image-4.png" width="200"> |[查看代码](./packages/modules/plugins/README.md#cached_network_image) |
-|image_picker| <img src="images/鸿蒙Flutter实战/flutter-ohos-demo/image-5.jpg" width="200">  | [查看代码](./packages/modules/plugins/README.md#image_picker) |
+| flutter_inappwebview | <img src="/images/鸿蒙 Flutter/image.jpeg" width="200"> |[查看代码](./packages/modules/plugins/README.md#flutter_inappwebview) |
+| video_player |  <img src="/images/鸿蒙Flutter实战/flutter/image-3.jpeg" width="200"> |[查看代码](./packages/modules/plugins/README.md#video_player) |
+| cached_network_image |  <img src="/images/鸿蒙Flutter实战/flutter-ohos-demo/image-4.png" width="200"> |[查看代码](./packages/modules/plugins/README.md#cached_network_image) |
+|image_picker| <img src="/images/鸿蒙Flutter实战/flutter-ohos-demo/image-5.jpg" width="200">  | [查看代码](./packages/modules/plugins/README.md#image_picker) |
 
 
 ## 总结
@@ -298,7 +298,7 @@ dependencies:
 
 > 少湖说：少胡说，多观察。
 
-<img src="images/qrcode.png" width="300">
+<img src="/images/qrcode.png" width="300">
 
 `关注公众号，加入交流群。`
 

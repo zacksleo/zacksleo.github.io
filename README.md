@@ -4,7 +4,7 @@ date: 2099-09-09 09:09:09
 tags:
 ---
 
-<img src="images/erhai.jpg" width="400">
+<img src="/images/erhai.jpg" width="400">
 
 # 个人介绍
 
@@ -23,6 +23,6 @@ tags:
 
 > 少湖说：少胡说，多观察。
 
-<img src="images/qrcode.png" width="300">
+<img src="/images/qrcode.png" width="300">
 
 `关注公众号，加入交流群。`
