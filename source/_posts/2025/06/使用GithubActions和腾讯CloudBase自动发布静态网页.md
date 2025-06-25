@@ -1,7 +1,7 @@
 ---
 title: 使用GithubActions和腾讯CloudBase自动发布静态网页
-date: 2025-06-04 17:46:31
-tags: [appium, ios]
+date: 2025-06-25 15:57:20
+tags: [github-actions, cloudbase]
 ---
 
 腾讯 CloudBase 可以用于托管静态网站，服务开通之后，使用 CloudBase CLI 可以将本地静态网站上传到 CloudBase，并生成相应的访问域名。
