@@ -1,5 +1,5 @@
 ---
-title: 华为云主机安装宝塔面板并快速搭建使用DeepSeek
+title: 华为云主机安装宝塔面板并快速搭建使用DeepSeek助力网站运维
 date: 2025-07-06 19:52:31
 tags: [云主机, 宝塔面板, DeepSeek]
 ---
@@ -154,7 +154,7 @@ tags: [云主机, 宝塔面板, DeepSeek]
 ![alt text](/images/iShot_2025-07-07_00.33.22.png)
 
 
-最好，我们可以愉快的使用 DeepSeek 了！
+最好，我们可以愉快的使用 DeepSeek 了！任何关于网站系统运维的问题，都可以帮你解答。
 
 ![alt text](/images/iShot_2025-07-07_00.35.13.png)
 
