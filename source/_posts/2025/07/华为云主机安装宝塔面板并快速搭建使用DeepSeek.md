@@ -140,23 +140,23 @@ tags: [云主机, 宝塔面板, DeepSeek]
 
 经过漫长的等待，安装成功
 
-![alt text](/images/iShot_2025-07-07_00.24.28.png)
+![alt text](/images/2025/07/06/iShot_2025-07-07_00.24.28.png)
 
 接下来，我们在火狐浏览器中打开Open WebUI，输入 http://localhost:18480
 
 
-![alt text](/images/iShot_2025-07-07_00.32.43.png)
+![alt text](/images/2025/07/06/iShot_2025-07-07_00.32.43.png)
 
 点击开始使用
 
 接下来输入管理员账号和密码
 
-![alt text](/images/iShot_2025-07-07_00.33.22.png)
+![alt text](/images/2025/07/06/iShot_2025-07-07_00.33.22.png)
 
 
 最好，我们可以愉快的使用 DeepSeek 了！任何关于网站系统运维的问题，都可以帮你解答。
 
-![alt text](/images/iShot_2025-07-07_00.35.13.png)
+![alt text](/images/2025/07/06/iShot_2025-07-07_00.35.13.png)
 
 ## 参考资料
 
