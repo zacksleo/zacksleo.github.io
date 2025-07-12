@@ -36,7 +36,7 @@ tags: [Python, 阿里云, OSS]
 
 创建一个角色，创建成功后，记录角色的 ARN，后面代码中会用到，为了方便演示，这里将角色命名为：`ramossuploadonly`
 
-![alt text](image-1.png/images/2025/07/13/oss-upload-1.png)
+![alt text](/images/2025/07/13/oss-upload-1.png)
 
 
 ### 添加权限策略
