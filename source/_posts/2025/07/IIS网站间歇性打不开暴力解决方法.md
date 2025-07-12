@@ -23,7 +23,7 @@ tags: [IIS, 运维实战]
 
 日志格式选择 W3C， 日志事件目标选择日志文件和 ETW 事件，计划选择每天
 
-![alt text]((/images/2025/07/13/image-1.png)
+![alt text](/images/2025/07/13/image-1.png)
 
 
 ### 分析错误日志
@@ -33,7 +33,7 @@ tags: [IIS, 运维实战]
 查询 HTTP 错误日志 `C:\Windows\System32\LogFiles\HTTPERR` ，查看错误日志，出现大量 `Connection_Dropped` 错误, 说明请求被IIS 关闭，以及 `Timer_ConnectionIdle`, 说明因连接超时，客户端主动断开
 
 
-![alt text]((/images/2025/07/13/image-2.png)
+![alt text](/images/2025/07/13/image-2.png)
 
 
 ## 暴力解决方案
@@ -45,12 +45,12 @@ tags: [IIS, 运维实战]
 
 打开 IIS/应用程序池，找到网站的进程池，点击高级设置
 
-![alt text]((/images/2025/07/13/iis-pool.png)
+![alt text](/images/2025/07/13/iis-pool.png)
 
 固定时间间隔，改成 60 分钟，或者更短的时间
 
-![alt text]((/images/2025/07/13/iis-pool-1.png)
+![alt text](/images/2025/07/13/iis-pool-1.png)
 
 点击完成
 
-![alt text]((/images/2025/07/13/iis-pool-3.png)
+![alt text](/images/2025/07/13/iis-pool-3.png)
