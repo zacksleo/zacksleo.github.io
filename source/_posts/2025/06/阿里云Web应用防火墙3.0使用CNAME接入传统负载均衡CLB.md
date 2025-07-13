@@ -1,7 +1,7 @@
 ---
 title: 阿里云 Web应用防火墙 3.0 使用 CNAME 接入传统负载均衡 CLB
 date: 2025-06-25 17:54:30
-tags: [阿里云,WAF,Web应用防火墙,]
+tags: [阿里云,WAF,Web应用防火墙,运维实战]
 ---
 
 ## 开通 WAF
@@ -14,28 +14,28 @@ tags: [阿里云,WAF,Web应用防火墙,]
 
 > 本文章中的示例域名为 api.baidu.com，不代表实际域名，请自行替换。
 
-![alt text](image.png)
+![alt text](/images/2025/06/25/image.png)
 
 接下来输入需要接入的域名
 
-![alt text](image-1.png)
+![alt text](/images/2025/06/25/image-1.png)
 
 回到域名解析管理中，按照提示添加 TXT 记录
 
-![alt text](image-2.png)
+![alt text](/images/2025/06/25/image-2.png)
 
 
 接下来，添加服务器地址，这里的地址就是防护的服务器/负载均衡的公网 IP地址
 
-![alt text](image-3.png)
+![alt text](/images/2025/06/25/image-3.png)
 
 点击提交后，同样根据页面提示，添加 CNAME 记录
 
-![alt text](image-4.png)
+![alt text](/images/2025/06/25/image-4.png)
 
 回到域名解析控制台，添加 CNAME 记录
 
-![alt text](image-5.png)
+![alt text](/images/2025/06/25/image-5.png)
 
 ## 检测 CNAME 是否生效
 
