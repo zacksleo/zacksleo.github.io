@@ -94,3 +94,8 @@ sitemap:
   rel: false
   tags: true
   categories: true
+
+# Google Analytics
+google_analytics:
+  tracking_id: G-CLM3JB8WQ3
+  only_pageview: false
