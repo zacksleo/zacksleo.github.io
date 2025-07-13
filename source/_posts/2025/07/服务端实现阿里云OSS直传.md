@@ -128,7 +128,7 @@ bucket 为自己创建的 bucket 名称，本示例中为 oss-upload-demo
 region_id 为 bucket 所在的区域，本示例中为 cn-beijing
 host 为 bucket 的访问地址，本示例中为 http://oss-upload-demo.oss-cn-beijing.aliyuncs.com, 根据不同的区域，访问地址不同，可以通过[OSS地域和访问域名](https://help.aliyun.com/zh/oss/user-guide/regions-and-endpoints), 找到 bucket 对应地域的访问域名，选择外网 Endpoint
 
-![alt text](imag/images/2025/07/13/oss-upload-2.png)
+![alt text](/images/2025/07/13/oss-upload-2.png)
 
 
 > 需要注意的是，官方 demo 中，需要全搜索 cn-hangzhou, 替换掉 bucket 地域的 ID
