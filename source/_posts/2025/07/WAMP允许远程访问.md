@@ -16,7 +16,7 @@ WAMP 是 Windows Apache MySQL PHP 的简称，是 Windows 下最常用的 LAMP �
 
 如果网站配置完成后，通过外网 IP，或者局域网 IP 访问，会提示：
 
-![alt text](image.png)
+![alt text](/images/2025/07/13/apache-fobidden.png)
 
 
 ## 解决方法
