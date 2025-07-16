@@ -7,7 +7,14 @@ tags: [Java, SpringBoot, 优雅的Java]
 编者按：如何写出更优雅的代码？这是一个恒久的问题，
 
 在 Java 的世界里，SpringBoot 框架最为流程，几乎已经成为事实标准。本系列将围绕 SpringBoot 实战案例进行，介绍如何写出更优雅的 Java 代码。
+
+
 笔者试图通过一个个的实际案例，抽丝剥茧，探讨 Spring 的设计哲学，探讨 Java 美学。
+
+> 如何实现优雅的数据更新，最终我们呈现的美学将是这个样子：
+
+![alt text](/images/2025/07/10/image.png)
+
 
 ## 数据更新案例
 
@@ -26,8 +33,8 @@ public function updateInvoice(UpdateInvoiceForm form) {
         updateInvoice.setTaxAmount(form.getTaxAmount());
     }
     //  税前金额
-    if(form.getTotalAmountPreTax() != null) {
-        updateInvoice.setTotalAmountPreTax(form.getTotalAmountPreTax());
+    if(form.getDrawDate() != null) {
+        updateInvoice.setDrawDate(form.getDrawDate());
     }
 
     invoiceMapper.updateByPrimaryKeySelective(updateInvoice);
@@ -160,12 +167,12 @@ public class OptionalUtil<T> {
 public function updateInvoice(UpdateInvoiceForm form) {
     Invoice updateInvoice = new Invoice();
     updateInvoice.setId(form.getId());
-    // 更新发票号
+
     OptionalUtil.valueOf(form.getInvoiceTaxNumber()).ifNotBlank(updateInvoice::setInvoiceTaxNumber);
-    // 税额
-    OptionalUtil.valueOf(form.getTaxPreAmount()).ifNotBlank(updateInvoice::setTaxPreAmount);
-    //  税前金额
-    OptionalUtil.valueOf(form.getTotalAmountPreTax()).ifNotBlank(updateInvoice::setTotalAmountPreTax);
+
+    OptionalUtil.valueOf(form.getTaxPreAmount()).ifNotNull(updateInvoice::setTaxPreAmount);
+
+    OptionalUtil.valueOf(form.getDrawDate()).ifNotZero(updateInvoice::setDrawDate);
 
     invoiceMapper.updateByPrimaryKeySelective(updateInvoice);
 }
