@@ -53,4 +53,4 @@ tags: [IIS, 运维实战, 阿里云]
 
 点击完成
 
-![alt text](/images/2025/07/13/iis-pool-3.png)
+![alt text](/images/2025/07/13/iis-pool-2.png)
