@@ -110,8 +110,6 @@ CcHdON46VjzosQQoMMAZHw==
 
 将上面复制的内容粘贴到这个文件中。
 
-2. 在本地计算机上创建一个 `client.ovpn` 文件，将内容粘贴进去。
-
 ## 导入配置文件到 OpenVPN 客户端
 
 1. 将这个 `client.ovpn` 文件导入（拖拽）到 OpenVPN 客户端中
