@@ -88,6 +88,28 @@ CcHdON46VjzosQQoMMAZHw==
 
 结束。
 
+2. 创建 `client.ovpn` 文件
+
+使用记事本或其他文本编辑器，在本地计算机上创建一个新的文本文件，命名为 `client.ovpn`，注意文件扩展名必须是 `.ovpn`。
+
+首先需要显示文件扩展名，在资源管理器，查看/显示中，勾选“文件扩展名”。
+
+![alt text](/images/2025/07/24/image-4.png)
+
+右键，新建文本文件，命名为 `client.ovpn`。
+
+![alt text](/images/2025/07/24/image-1.png)
+
+点击确认
+
+![alt text](/images/2025/07/24/image-2.png)
+
+随后右键，选择编辑，使用文本编辑器打开文件。
+
+![alt text](/images/2025/07/24/image-3.png)
+
+将上面复制的内容粘贴到这个文件中。
+
 2. 在本地计算机上创建一个 `client.ovpn` 文件，将内容粘贴进去。
 
 ## 导入配置文件到 OpenVPN 客户端
