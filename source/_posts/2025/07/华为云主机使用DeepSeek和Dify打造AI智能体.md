@@ -1,6 +1,6 @@
 ---
 title: 华为云主机使用DeepSeek和Dify打造AI智能体
-date: 2025-07-25 00:02:31
+date: 2025-07-31 00:02:31
 tags: [云主机, 宝塔面板, DeepSeek, 华为云, 智能体]
 ---
 
@@ -62,15 +62,15 @@ Dify 是一个开源的生成式 AI 应用开发平台，旨在简化和加速 A
 打开宝塔的 Docker 菜单，搜索 Dify，找到第一个，点击安装。
 
 
-![alt text](iShot_2025-07-24_23.58.39.png)
+![alt text](/image/2025/07/31/iShot_2025-07-24_23.58.39.png)
 
 这里按默认的选项即可，点击确定开发安装。
 
-![alt text](image.png)
+![alt text](/image/2025/07/31/image.png)
 
 等待安装
 
-![alt text](image-1.png)
+![alt text](/image/2025/07/31/image-1.png)
 
 ## 参考资料
 
