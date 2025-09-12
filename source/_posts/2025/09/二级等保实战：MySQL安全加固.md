@@ -47,6 +47,14 @@ PASSWORD_LOCK_TIME 1;
 ALTER USER 'test_user'@'%' PASSWORD EXPIRE INTERVAL 90 DAY;
 ```
 
+验证是否生效：
+
+```sql
+SELECT user, host, password_expired, password_lifetime, password_last_changed
+FROM mysql.user
+WHERE user = 'test_user';
+```
+
 ### 限制默认账户远程
 
 打开 RDS 控制台，进入实例详情页面，点击数据库连接，点击“关闭外网地址”。
