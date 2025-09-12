@@ -37,6 +37,16 @@ PASSWORD_LOCK_TIME 1;
 
 >解除锁定命令：ALTER USER 'test_user'@'%' ACCOUNT UNLOCK;
 
+### 限制口令期限
+
+> 口令限制至多90天
+
+使用 高权限账号/root 账号，登录 MySQL，执行以下 SQL 语句：
+
+```sql
+ALTER USER 'test_user'@'%' PASSWORD EXPIRE INTERVAL 90 DAY;
+```
+
 ### 限制默认账户远程
 
 打开 RDS 控制台，进入实例详情页面，点击数据库连接，点击“关闭外网地址”。
