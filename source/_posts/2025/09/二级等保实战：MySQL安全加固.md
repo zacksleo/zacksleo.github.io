@@ -35,6 +35,18 @@ PASSWORD_LOCK_TIME 1;
 需要注意的时，PASSWORD_LOCK_TIME 单位是天，不是分钟，且只能为整数。
 
 
+使用下面的命令验证设置是否生效：
+
+```sql
+SELECT
+   User, User_attributes
+FROM mysql.user
+WHERE user = 'test_user';
+```
+
+![alt text](/images/2025/09/08/image-7.png)
+
+
 >解除锁定命令：ALTER USER 'test_user'@'%' ACCOUNT UNLOCK;
 
 ### 限制口令期限
