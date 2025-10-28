@@ -12,7 +12,7 @@ tags: [阿里云, 轻量应用服务器, 3IP, 3X-UI]
 
 首先在阿里云轻量应用服务器控制台，查看 3 个 IP 地址对应的内网 IP 地址：
 
-![alt text](/image/2025/10/29/image-4.png)
+![alt text](/images/2025/10/29/image-4.png)
 
 3IP 绑定的 IP 内网地址是 172.21.0.42，172.21.0.48，172.21.0.73。
 
@@ -37,15 +37,15 @@ bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.
 
 添加前确保先在防火墙处把端口打开，可以选择全开，也可以按需添加
 
-![alt text](/image/2025/10/29/image.png)
+![alt text](/images/2025/10/29/image.png)
 
 添加时需要注意，监听需要输入内网 IP 地址，不能使用外网 IP
 
-![alt text](/image/2025/10/29/image-1.png)
+![alt text](/images/2025/10/29/image-1.png)
 
 按照上面的方式，添加 3 个入站规则，每个规则都使用不同的内网 IP 地址，这里的配置规则如下
 
-![alt text](/image/2025/10/29/image-2.png)
+![alt text](/images/2025/10/29/image-2.png)
 
 备注即每个IP对应的内网 IP 地址
 
@@ -53,22 +53,22 @@ bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.
 
 打开 Xray 设置中的出站规则
 
-![alt text](/image/2025/10/29/image-3.png)
+![alt text](/images/2025/10/29/image-3.png)
 
 
 选择出站规则，添加三个出站规则，分别按下图所示添加，注意，发送通过中需要使用自己服务器实际的三个内网 IP 地址
 
 出站规则 1：
 
-![alt text](/image/2025/10/29/image-5.png)
+![alt text](/images/2025/10/29/image-5.png)
 
 出站规则 2：
 
-![alt text](/image/2025/10/29/image-6.png)
+![alt text](/images/2025/10/29/image-6.png)
 
 出站规则 3：
 
-![alt text](/image/2025/10/29/image-7.png)
+![alt text](/images/2025/10/29/image-7.png)
 
 ## 配置路由规则
 
@@ -78,19 +78,19 @@ bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.
 
 路由规则 1：
 
-![alt text](/image/2025/10/29/image-8.png)
+![alt text](/images/2025/10/29/image-8.png)
 
 InBoundTags 填写入站规则的Tag,本例中为 inbound-172.21.0.42:27762, Outbound Tag 为上面出站规则则设置的 Tag，本文这里面为 ip1
 
 路由规则 2：
 
-![alt text](/image/2025/10/29/image-9.png)
+![alt text](/images/2025/10/29/image-9.png)
 
 InBoundTags 填写入站规则的Tag,本例中为 inbound-172.21.0.48:44061, Outbound Tag 为上面出站规则则设置的 Tag，本文这里面为 ip2
 
 路由规则 3：
 
-![alt text](/image/2025/10/29/image-10.png)
+![alt text](/images/2025/10/29/image-10.png)
 
 InBoundTags 填写入站规则的Tag,本例中为 inbound-172.21.0.73:36274, Outbound Tag 为上面出站规则则设置的 Tag，本文这里面为 ip3
 
@@ -103,12 +103,12 @@ InBoundTags 填写入站规则的Tag,本例中为 inbound-172.21.0.73:36274, Out
 
 在入站列表处，点击菜单中的导出链接，复制，然后粘贴导入客户端
 
-![alt text](/image/2025/10/29/image-11.png)
+![alt text](/images/2025/10/29/image-11.png)
 
 
 打开客户端中的服务器设置，进入修改页面，将内网 IP 地址，改成对应的公网 IP 地址：
 
-![alt text](/image/2025/10/29/image-12.png)
+![alt text](/images/2025/10/29/image-12.png)
 
 
 ## 参考资料
