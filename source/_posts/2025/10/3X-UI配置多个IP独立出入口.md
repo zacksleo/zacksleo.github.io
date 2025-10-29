@@ -115,6 +115,48 @@ InBoundTags 填写入站规则的Tag,本例中为 inbound-172.21.0.73:36274, Out
 ![alt text](/images/2025/10/29/image-13.png)
 
 
+## 特殊问题
+
+上面配置全部完成后，发现仍然连不上，首页查看 XRAY日志，发现有如下错误：
+
+> 2025/10/29 09:46:10 ERROR - XRAY: transport/internet/tcp: failed to accepted raw connections > accept tcp 127.0.0.1:62789: accept4: too many open files
+
+解决方法：
+
+1. 登录服务器，执行以下命令：
+
+```bash
+ulimit -n
+```
+查看输出是否为 65536，如果是，则执行以下操作：
+
+```bash
+cat /proc/$(pidof x-ui)/limits | grep "open files"
+```
+输出结果为：
+
+```
+Max open files            4095                 4096                 files
+```
+
+```bash
+sudo systemctl edit x-ui.service
+```
+添加以下内容：
+
+```bash
+[Service]
+LimitNOFILE=65535
+```
+保存并退出
+然后重启 x-ui 服务：
+
+```bash
+sudo systemctl daemon-reexec
+sudo systemctl daemon-reload
+sudo systemctl restart x-ui
+```
+
 ## 参考资料
 
 - [3x-ui](https://github.com/MHSanaei/3x-ui/blob/main/README.zh_CN.md)
