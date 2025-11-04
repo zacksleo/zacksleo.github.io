@@ -44,7 +44,19 @@ tags: [Keepalived, Windows, 磁盘扩容]
 
 ## 三、Keepalived 配置示例
 
-```bash
+首先需要确认使用的网卡及 内网IP地址, 使用 ifconfig 或 ip addr 命令查看网卡信息。
+
+![alt text](80e53973be83328198fb90b9d9a917ea.png)
+
+可以看到，使用的网卡是 ens5, 两台主机的 IP 地址分另是 10.42.7.7 和 10.42.7.8。
+
+使用 ip a 命令查看 IP 网段为 10.42.7.0/24：
+
+![alt text](9bbdb93a1bac3f319486af2d84162920.png)
+
+主节点配置，主节点的优先级是 101, preempt_delay 设置成 0，表示主节点可立即抢回 VIP。
+
+```lua
 global_defs {
     router_id keepalived01
     script_user root
@@ -79,15 +91,66 @@ vrrp_instance vip_instance {
 }
 ```
 
+备节点配置：
+
+```lua
+global_defs {
+    router_id keepalived02
+    script_user root
+    enable_script_security
+}
+
+vrrp_script check_nginx {
+    script "/etc/keepalived/service_check.sh"
+    interval 2
+    weight -5
+    fall 2
+    rise 1
+}
+
+vrrp_instance keepalived_service {
+    state BACKUP
+    interface ens5
+    virtual_router_id 51
+    priority 100    # 次节点优先级要低
+    advert_int 1
+    authentication {
+        auth_type PASS
+        auth_pass 1111
+    }
+    virtual_ipaddress {
+        10.42.7.10/24
+    }
+    track_script {
+        check_nginx
+    }
+}
+```
+
+修改完主备服务器配置后，重启 keepalived 服务：
+
+```bash
+systemctl restart keepalived
+```
+
+![alt text](6535f9980aa71d5b6609d4bd1c03db08.png)
+
 ### 健康检查脚本示例 `/etc/keepalived/service_check.sh`
 
 ```bash
 #!/bin/bash
-# 检查关键服务是否运行
-if ! pgrep nginx >/dev/null; then
-    exit 1  # 服务异常，降低节点权重
+# 检查 nginx 是否运行
+counter=$(ps -C nginx --no-header | wc -l)
+if [ $counter -eq 0 ]; then
+    # 尝试重启一次
+    /usr/local/nginx/sbin/nginx
+    sleep 3
+    counter=$(ps -C nginx --no-header | wc -l)
+    if [ $counter -eq 0 ]; then
+        exit 1 # 服务异常，降低节点权重
+    fi
 fi
-exit 0      # 服务正常
+exit 0 # 服务正常
 ```
 
 给脚本赋予可执行权限：
@@ -112,11 +175,21 @@ chmod +x /etc/keepalived/service_check.sh
    ```bash
    systemctl stop nginx
    ```
+
+   如图所示，已经停止了 nginx
+
+   ![alt text](cbc6989f3de7bc2e900210cc6f438540.png)
+
+   在主节点查看，确认没有绑定 VIP：
+
+   ![alt text](4db0991c54cedadf3443caccae525496.png)
+
    - 检查备节点 VIP 是否接管：
    ```bash
    ip addr show ens5 | grep 10.42.7.10
    ```
-   - 外部 ping 测试：
+
+   - 也可使用外部 ping 测试：
    ```bash
    ping -c 4 10.42.7.10
    ```
@@ -127,6 +200,14 @@ chmod +x /etc/keepalived/service_check.sh
    systemctl start nginx
    ```
    - VIP 自动回切到主节点（确保 `preempt_delay=0` 且健康检查脚本返回 0）。
+
+   - 检查主节点 VIP 是否绑定：
+   ```bash
+   ip addr show ens5 | grep 10.42.7.10
+   ```
+   如果有显示内容，代表 VIP 已回切成功。
+
+   ![alt text](9aebb6ac7d715d3ae2c5b37c2964efd7.png)
 
 ---
 
