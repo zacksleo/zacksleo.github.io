@@ -1,9 +1,15 @@
 
+---
+title: DockerSwarm部署容器服务
+date: 2026-01-27 16:39:04
+tags: [docker, dockerswarm, 容器]
+---
+
 ## 环境准备
 
 开通服务器后，安装 Docker CE。如果使用阿里云，可以在购买下单时，选择预装 Docker社区版，如下图所示：
 
-![alt text](image.png)
+![alt text](/images/2026/01/docker-ce.png)
 
 确认 Docker CE 安装成功
 
