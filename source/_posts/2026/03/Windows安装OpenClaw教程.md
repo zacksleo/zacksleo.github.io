@@ -76,7 +76,7 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 ### 安装成功
 
 
-![alt text](image.png)
+![alt text](/images/2026/03/openclaw-install-success.png)
 
 
 ## 运行 OpenClaw
