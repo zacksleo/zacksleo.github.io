@@ -1,3 +1,8 @@
+---
+title: Windows安装OpenClaw常见问题
+date: 2026-03-12 11:27:08
+tags: [OpenClaw, 龙虾, AI]
+---
 
 ## 命令行权限不够
 
@@ -276,3 +281,38 @@ t.com/fwlink/?LinkID=135170 中的 about_Execution_Policies。
 ```PowerShell
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
 ```
+
+## 错误信息
+
+```
+node.exe : npm error code 128
+所在位置 行:1 字符: 1
++ & "C:\Program Files\nodejs/node.exe" "C:\Program Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (npm error code 128:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+```
+
+### 解决方法
+
+
+npm 错误可能是由于缓存问题导致的。你可以清理缓存后重试, 打开 PowerShell 并运行以下命令, ：
+
+```
+ npm cache clean --force
+```
+
+确保以下命令已经安装：
+
+```
+git --version
+node -v
+npm -v
+```
+
+再次重新运行安装命令
+
+## 参考资料
+
+- [OpenClaw](https://openclaw.ai/)
+- [OpenClaw 中文社区](https://openclaws.io/zh/)
