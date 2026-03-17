@@ -1,10 +1,10 @@
 ---
-title: 大疆司空平台接入实战指南
+title: 大疆司空平台接入实战：Java SDK 开发指南
 date: 2026-03-17 13:47:27
-tags: [大疆司空, 无人机, Java, OpenAPI]
+tags: [大疆司空, 大疆机场, 无人机, Java, OpenAPI]
 ---
 
-# 大疆司空平台接入实战指南
+# 大疆司空平台接入实战：Java SDK 开发指南
 
 ## 前言
 
@@ -12,7 +12,7 @@ tags: [大疆司空, 无人机, Java, OpenAPI]
 
 在电力巡检、光伏巡检、智慧城市测绘等场景中，企业通常需要将大疆司空的能力与自有业务系统深度整合，实现自动化作业流程。本文将基于实际项目开发经验，详细介绍如何通过 Java 接入大疆司空 2 平台，涵盖认证方式、核心 API 调用、Webhook 事件处理等关键内容。
 
-> 如果你在接入过程中遇到 **403 无权限异常**，可以先阅读姊妹篇：[大疆OpenAPI 403无权限异常排查指南](/2026/03/大疆openapi-403无权限异常排查指南.html)
+> 如果你在接入过程中遇到 **403 无权限异常**，可以先阅读姊妹篇：[大疆司空平台接入实战：OpenAPI 403无权限异常排查](/2026/03/大疆司空平台接入实战：OpenAPI无权限异常排查.html)
 
 ## 一、开发环境准备
 
@@ -525,4 +525,4 @@ connectionPool(new ConnectionPool(10, 5, TimeUnit.MINUTES))
 - [大疆开发者平台](https://developer.dji.com/)
 - [大疆司空官网](https://www.dji.com/cn/flighthub-2)
 - [全新司空 2 OpenAPI V1.0 文档](https://s.apifox.cn/6b4ca90b-233f-48ac-818c-d694acb0663a)
-- [大疆OpenAPI 403无权限异常排查指南](/2026/03/大疆openapi-403无权限异常排查指南.html)
+- [大疆司空平台接入实战：OpenAPI 403无权限异常排查](/2026/03/大疆司空OpenAPI无权限异常排查指南.html)
