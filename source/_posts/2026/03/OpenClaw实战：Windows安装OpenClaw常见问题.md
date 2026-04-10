@@ -1,7 +1,7 @@
 ---
-title: Windows安装OpenClaw常见问题
+title: OpenClaw实战：Windows安装OpenClaw常见问题
 date: 2026-03-12 11:27:08
-tags: [OpenClaw, 龙虾, AI]
+tags: [OpenClaw实战, OpenClaw, 龙虾, AI]
 ---
 
 ## 命令行权限不够

@@ -1,8 +1,8 @@
 
 ---
-title: Windows安装OpenClaw教程
+title: OpenClaw实战：Windows安装OpenClaw教程
 date: 2026-03-12 11:00:08
-tags: [OpenClaw, 龙虾, AI]
+tags: [OpenClaw实战, OpenClaw, 龙虾, AI]
 categories: [AI, 开发工具]
 ---
 
