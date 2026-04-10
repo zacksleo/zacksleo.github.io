@@ -1,6 +1,6 @@
 ---
 title: OpenClaw实战：国内极速安装
-date: 2026-04-11 01:31:08
+date: 2026-04-10 23:31:08
 tags: [OpenClaw实战, OpenClaw, 龙虾, AI]
 ---
 
@@ -48,7 +48,7 @@ npm install -g pnpm --registry=https://registry.npmmirror.com
 
 ```
 
-![alt text](https://blog.shaohushuo.com/images/2026/04/11/image-2.png)
+![alt text](https://blog.shaohushuo.com/images/2026/04/10/image-2.png)
 
 
 2. 接着配置环境
@@ -59,7 +59,7 @@ pnpm setup
 source /root/.bashrc
 ```
 
-![alt text](https://blog.shaohushuo.com/images/2026/04/11/image-3.png)
+![alt text](https://blog.shaohushuo.com/images/2026/04/10/image-3.png)
 
 注意，如果不配置环境，使用命令时会出现这样的错误：
 
@@ -78,7 +78,7 @@ pnpm install -g openclaw@latest --registry=https://registry.npmmirror.com
 此时可以看到，OpenClaw快速安装完成
 
 
-![alt text](https://blog.shaohushuo.com/images/2026/04/11/image.png)
+![alt text](https://blog.shaohushuo.com/images/2026/04/10/image.png)
 
 
 
@@ -90,7 +90,7 @@ openclaw onboard --install-daemon
 
 其中 --install-daemon 表示安装守护进程，这时候就进入的熟悉的龙虾配置界面了。
 
-![alt text](https://blog.shaohushuo.com/images/2026/04/11/image-1.png)
+![alt text](https://blog.shaohushuo.com/images/2026/04/10/image-1.png)
 
 
 ## 参考资料
