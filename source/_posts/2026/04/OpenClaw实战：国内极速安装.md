@@ -1,4 +1,8 @@
-
+---
+title: OpenClaw实战：国内极速安装
+date: 2026-04-11 01:31:08
+tags: [OpenClaw, 龙虾, AI]
+---
 
 ## 背景
 
