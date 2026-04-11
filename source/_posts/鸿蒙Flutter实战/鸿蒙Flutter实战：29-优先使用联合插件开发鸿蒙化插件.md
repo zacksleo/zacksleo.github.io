@@ -1,3 +1,9 @@
+---
+title: 鸿蒙Flutter实战：优先使用联合插件开发鸿蒙化插件
+date: 2026-04-11 22:58:08
+tags: [HarmonyOS,Flutter,鸿蒙Flutter实战]
+---
+
 ## 背景
 
 现有插件鸿蒙化，目前主要有两种思路，一种是需要复刻源代码，然后在自我仓库二次开发，使用时使用 git 方式引入 pubspeck.
@@ -176,7 +182,7 @@ flutter run
 ## 截图
 
 
-![alt text](https://blog.shaohuoshuo.com/2026/04/11/ohos-screenshot.png)
+![alt text](https://blog.shaohuoshuo.com/鸿蒙Flutter实战/ohos-screenshot.png)
 
 
 ## 插件地址
