@@ -182,7 +182,7 @@ flutter run
 ## 截图
 
 
-![alt text](https://blog.shaohuoshuo.com/鸿蒙Flutter实战/ohos-screenshot.png)
+![alt text](https://blog.shaohushuo.com/images/鸿蒙Flutter实战/ohos-screenshot.png)
 
 
 ## 插件地址
