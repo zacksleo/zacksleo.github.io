@@ -65,6 +65,13 @@ openclaw config set channels.feishu.footer.status true  # 开启状态展示
 openclaw config set channels.feishu.threadSession true
 ```
 
+3. 重启网关
+
+配置修改后，需要重启网关服务才能生效
+
+```bash
+openclaw gateway restart
+```
 
 ## 参考文档
 
