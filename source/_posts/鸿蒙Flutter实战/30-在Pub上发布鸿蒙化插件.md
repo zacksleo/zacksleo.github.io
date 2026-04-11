@@ -1,5 +1,5 @@
 ---
-title: 鸿蒙Flutter实战：3在Pub上发布鸿蒙化插件
+title: 鸿蒙Flutter实战：30.在Pub上发布鸿蒙化插件
 date: 2026-04-12 01:06:08
 tags: [HarmonyOS,Flutter,鸿蒙Flutter实战]
 ---
