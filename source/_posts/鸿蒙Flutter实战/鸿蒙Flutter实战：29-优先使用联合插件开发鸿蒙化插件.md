@@ -187,7 +187,7 @@ flutter run
 
 ## 插件地址
 
-- [Pub.Dev](https://pub-web.flutter-io.cn/packages/app_set_id_ohos)
+- [app_set_id_ohos](https://pub-web.flutter-io.cn/packages/app_set_id_ohos)
 
 ## 插件源码
 
