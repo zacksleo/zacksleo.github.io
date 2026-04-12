@@ -2,6 +2,8 @@
 title: 鸿蒙Flutter实战：30.在Pub上发布鸿蒙化插件
 date: 2026-04-12 01:06:08
 tags: [HarmonyOS,Flutter,鸿蒙Flutter实战]
+author: 少湖
+cover: https://blog.shaohushuo.com/images/flutter-ohos.jpg
 ---
 
 ## 背景
