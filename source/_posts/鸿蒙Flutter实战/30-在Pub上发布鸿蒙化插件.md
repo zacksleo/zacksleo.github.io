@@ -4,7 +4,7 @@ date: 2026-04-12 01:06:08
 tags: [HarmonyOS,Flutter,鸿蒙Flutter实战]
 author: 少湖
 cover: https://blog.shaohushuo.com/images/flutter-ohos.jpg
-source_url: https://blog.shaohushuo.com/2026/04/11/鸿蒙Flutter实战/30-在Pub上发布鸿蒙化插件/
+source_url: https://blog.shaohushuo.com/2026/04/11/%E9%B8%BF%E8%92%99Flutter%E5%AE%9E%E6%88%98/30-%E5%9C%A8Pub%E4%B8%8A%E5%8F%91%E5%B8%83%E9%B8%BF%E8%92%99%E5%8C%96%E6%8F%92%E4%BB%B6/
 ---
 
 ## 背景
