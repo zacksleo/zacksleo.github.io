@@ -71,7 +71,9 @@ Authorization received, processing...
 
 ## 进阶内容
 
-很多插件会在名称旁边显示一个发布者的网站，这样的发布者也被称为“已验证发布者”。那么如何添加一个已验证发布者呢？
+很多插件会在名称旁边显示一个发布者的网站，这样的发布者也被称为“已验证发布者”。那么如何添加一个已验证发布者呢？为了方便理解，这里我们称之为组织。
+
+### 创建组织
 
 1.首选需要在 [Google Search Console](https://search.google.com/search-console/) 中验证域名的所有权。
 
@@ -122,7 +124,21 @@ Authorization received, processing...
 ![alt text](https://blog.shaohushuo.com/images/鸿蒙Flutter实战/pub/image-14.png)
 
 
-## 将发布的插件转移至已验证身份发布者
+### 添加成员
+
+1. 进入 [Publisher](https://pub.dev/my-publishers) 页面，点击其中一个发布者, 点击 `Admin` 标签，点击 `Add Member` 邀请新成员。
+
+![alt text](image.png)
+
+> 需要注意的是，邀请时填写的邮箱是被邀请人在 pub.dev 注册的邮箱账号，也就是 Google 账号的邮箱
+
+2. 发送邀请后，会收到邮件，打开邮箱，点击邮件中的链接，完成添加
+
+
+![alt text](image-1.png)
+
+
+### 将发布的插件转移至已验证身份发布者
 
 插件的第一次发布只能以普通身份发布，发布之后可以在 Package的详情页面，点击 `Admin` 标签，将插件转移至已验证身份发布者
 
