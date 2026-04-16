@@ -1,0 +1,101 @@
+---
+title: 鸿蒙Flutter插件精选：app_set_id_ohos
+date: 2026-04-17 00:21:00
+tags:
+  - Flutter
+  - HarmonyOS
+  - 鸿蒙
+  - 插件
+categories:
+  - Flutter
+---
+
+# 鸿蒙Flutter插件精选：app_set_id_ohos —— 一行代码获取设备 OAID
+
+大家好！从今天开始，我会带来一个全新系列——**「鸿蒙 Flutter 插件精选」**。每期介绍一个适配鸿蒙的 Flutter 插件，帮你快速搞定鸿蒙适配，少走弯路。第一期，先从高频刚需场景说起：**获取设备 OAID**。
+
+---
+
+## 什么是 OAID？
+
+**OAID**（开放匿名设备标识符）是华为提供的一种非永久性设备标识符，主要用于：
+
+- 🎯 **个性化广告**：在保护隐私的前提下精准投放
+- 📊 **转化归因**：三方监测平台进行广告效果分析
+- 🔒 **隐私友好**：用户可随时重置，兼顾可用性与安全
+
+想接入华为广告 Kit、做设备识别或数据分析？获取 OAID 几乎是必选项。
+
+---
+
+## 痛点
+
+Flutter 社区流行的 [`app_set_id`](https://pub.dev/packages/app_set_id) 插件**不支持鸿蒙平台**。手动实现需要写 ArkTS 原生代码、处理权限、配置 module.json5……门槛不低。
+
+现在，你只需要 `app_set_id_ohos` ✨
+
+---
+
+## 核心特性
+
+- ✅ 一行代码获取鸿蒙设备 OAID
+- ✅ **自动申请权限**，无需手动处理
+- ✅ 与 `app_set_id` 主包无缝集成
+- ✅ 完整的错误处理
+
+---
+
+## 快速上手
+
+### 1. 添加依赖
+
+```yaml
+dependencies:
+  app_set_id: ^1.4.0       # 主包，提供统一 API
+  app_set_id_ohos: ^1.4.0  # 鸿蒙平台实现
+```
+
+```bash
+flutter pub get
+```
+
+### 2. 一行代码获取 OAID
+
+```dart
+import 'package:app_set_id/app_set_id.dart';
+
+final oaid = await AppSetId.getIdentifier();
+```
+
+权限申请已自动处理，调用即弹授权弹窗，成功后直接返回 OAID 字符串，失败返回 `null`。
+
+### 3. 权限配置（可选）
+
+插件已自动配置权限。如需自定义权限说明文案，在 `ohos/src/main/resources/base/element/string.json` 中添加：
+
+```json
+{
+  "string": [
+    {
+      "name": "app_tracking_permission_reason",
+      "value": "获取 OAID 设备标识符"
+    }
+  ]
+}
+```
+
+---
+
+## 环境要求
+
+- Flutter SDK >= 2.5.0
+- HarmonyOS SDK（需支持 Ads Kit）
+- 需要 `@kit.AdsKit` 依赖
+
+---
+
+> 📢 欢迎提交 Issue 和 Pull Request，一起让鸿蒙生态更好！
+>
+> 觉得好用别忘了给个 ⭐ Star 支持～
+>
+> **下一期**介绍哪个插件呢？敬请期待！🦊
