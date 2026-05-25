@@ -19,6 +19,12 @@ tags:
 - [X](https://x.com/shaohushuo)
 - [YouTube](https://www.youtube.com/@shaohushuo)
 
+## 《鸿蒙Flutter开发实战》
+
+《鸿蒙Flutter开发实战》图书已上架京东图书等各大商店，内容涵盖基础知识、鸿蒙化原理及适配、混合开发、插件开发、高级特性优化、性能分析、三方库适配、开发实战、鸿蒙PC等等，基于 Flutter 3.35 版本，是第一手Flutter鸿蒙化适配工具书和实战案例，欢迎大家选购 🎉🎉🎉 扫码购买图书：
+
+<img src="/images/ohos-flutter-in-action-book.jpg" width="300">
+
 ## 公众号
 
 > 少湖说：少胡说，多观察。
