@@ -4,11 +4,15 @@ date: 2099-09-09 09:09:09
 tags:
 ---
 
-<img src="/images/westlake.jpg" style="width: 100%;
-    position: absolute;
+<img src="/images/westlake.jpg" style="position: fixed;
     left: 0;
     top: 0;
-    opacity: 0.5;">
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.2;
+    filter: blur(2px);
+    z-index: -1;">
 
 # 个人介绍
 
