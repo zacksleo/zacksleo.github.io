@@ -1,5 +1,5 @@
 ---
-title: 关于
+title: 关于我
 date: 2099-09-09 09:09:09
 tags:
 ---
@@ -20,12 +20,14 @@ tags:
 
 ## 社交媒体
 
-- [CSDN](https://blog.csdn.net/zackslee)
-- [Bilibili](https://space.bilibili.com/50859832)
-- [掘金](https://juejin.cn/user/4125023356596126)
-- [微博](https://weibo.com/shaohushuo)
-- [X](https://x.com/shaohushuo)
-- [YouTube](https://www.youtube.com/@shaohushuo)
+<div style="display: flex; gap: 20px; flex-wrap: wrap;">
+  <a href="https://blog.csdn.net/zackslee">CSDN</a>
+  <a href="https://space.bilibili.com/50859832">Bilibili</a>
+  <a href="https://juejin.cn/user/4125023356596126">掘金</a>
+  <a href="https://weibo.com/shaohushuo">微博</a>
+  <a href="https://x.com/shaohushuo">X</a>
+  <a href="https://www.youtube.com/@shaohushuo">YouTube</a>
+</div>
 
 ## 《鸿蒙Flutter开发实战》
 
