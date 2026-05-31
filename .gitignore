@@ -6,3 +6,4 @@ hexo-theme-next
 db.json
 package-lock.json
 .DS_Store
+/tmp
