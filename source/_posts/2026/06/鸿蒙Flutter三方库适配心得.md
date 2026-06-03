@@ -86,6 +86,33 @@ flutter:
     └─ 是 → 继续看其他思路
 ```
 
+### 开发者视角
+
+**现有项目（Android+iOS）要加鸿蒙支持，这个方案意味着什么？**
+
+- **代码侵入度：高 🔴**
+
+```dart
+// 必须在业务代码中加入平台判断
+if (Platform.isAndroid) {
+  final result = await OldPlugin.doSomething();
+} else if (Platform.isOHOS) {
+  final result = await NewPlugin.doSomething();
+}
+```
+
+新插件的 Dart API 与原插件不同。项目中每一个调用原插件的地方都要修改 import 和调用方式，插件越多，改造量越大。
+
+- **跨平台兼容性：低 🔴**
+
+Android/iOS 依赖原插件（pub.dev 标准依赖），HarmonyOS 依赖新插件。同一份代码无法一套 API 跑三端，需要条件编译或运行时判断。
+
+- **开发者友好度：极低 🔴**
+
+每个开发者需同时了解两套 API，条件分支越多代码可读性越差。新功能需要改两套调用，新成员入职成本高。
+
+**结论：不推荐用于已有应用的鸿蒙适配**。此方案仅适合鸿蒙独有的新功能（如握持手感知），不需要考虑三端统一。
+
 ---
 
 ## 思路二：Fork 原仓库，添加 ohos 目录
@@ -147,13 +174,125 @@ dependencies:
 
 Fork 分支与上游存在长期同步压力。原插件发布新版本时，Fork 分支需要手动合并，期间可能产生冲突，维护成本随时间递增。
 
+### 优化方案：壳工程模式
+
+纯 Fork 的思路面临一个实际问题：**你的主项目既要在 Android/iOS 上使用原插件（pub.dev），又要在 HarmonyOS 上使用 Fork 版插件（git 依赖），pubspec.yaml 中的依赖管理会变得混乱。**
+
+一种成熟的优化方案是**壳工程模式**，即把鸿蒙适配做成一个独立的应用工程，与主工程解耦。
+
+```
+monorepo/
+├── packages/
+│   ├── apps/
+│   │   ├── app/          ← 主工程（Android + iOS，原封不动）
+│   │   │   ├── lib/
+│   │   │   ├── android/
+│   │   │   ├── ios/
+│   │   │   └── pubspec.yaml  ← 依赖原版插件（pub.dev）
+│   │   │
+│   │   └── ohos_app/     ← 壳工程（鸿蒙适配，独立打包）
+│   │       ├── lib/      ← 只是入口，业务代码复用下面的公共模块
+│   │       ├── ohos/     ← 鸿蒙原生代码
+│   │       └── pubspec.yaml  ← 依赖 Fork 版插件
+│   │
+│   ├── common/
+│   │   ├── domains/      ← 公共领域模型
+│   │   ├── services/     ← 公共服务
+│   │   └── widgets/      ← 公共组件
+│   │
+│   └── modules/          ← 业务模块
+│       ├── home/
+│       ├── me/
+│       └── ...
+```
+
+壳工程 `ohos_app` 的核心设计：
+
+0. **使用 `flutter_ohos` SDK 单独编译**，打包为 `.hap` 格式
+1. **不包含业务代码**，全部通过 `path:` 依赖引用公共模块
+2. **通过 `pubspec_overrides.yaml` 替换 Fork 版插件**，无需改动主工程的依赖
+
+```yaml
+# ohos_app/pubspec_overrides.yaml
+# 这个文件会被 flutter pub get 自动读取，优先级高于 pubspec.yaml 中的依赖声明
+# 在 ohos 平台上，将这些插件的依赖指向 Fork 仓库的 ohos 适配版本
+path_provider:
+  git:
+    url: "https://gitee.com/openharmony-sig/flutter_packages.git"
+    path: "packages/path_provider/path_provider"
+
+path_provider_android:
+  git:
+    url: "https://gitee.com/openharmony-sig/flutter_packages.git"
+    path: "packages/path_provider/path_provider_android"
+
+path_provider_foundation:
+  git:
+    url: "https://gitee.com/openharmony-sig/flutter_packages.git"
+    path: "packages/path_provider/path_provider_foundation"
+```
+
+**关键机制**：`pubspec_overrides.yaml` 是 Dart/Flutter 内置支持的覆盖机制。当执行 `flutter pub get` 时，pub 会自动读取该文件，将其中的依赖声明提升到最高优先级，覆盖 `pubspec.yaml` 中的同名依赖。这样做的优势：
+
+- **`pubspec.yaml` 保持干净**，不需要加 `dependency_overrides` 字段
+- **文件可以独立管理**，甚至可以通过 `.gitignore` 控制不同开发者的本地覆盖
+- **只对壳工程生效**，主工程的 `pubspec.yaml` 完全不受影响
+
+> 💡 `pubspec_overrides.yaml` 和 `dependency_overrides` 的区别：前者是 pub 在 `pub get` 阶段自动应用的覆盖规则，优先级最高；后者是在 `pubspec.yaml` 中声明的覆盖。推荐用 `pubspec_overrides.yaml` 做壳工程的插件替换，因为它不侵入 `pubspec.yaml` 的结构。
+
+这种模式的优势：
+
+| 维度 | 直接 Fork | 壳工程模式 |
+|------|----------|-----------|
+| **主工程代码** | 可能需要改依赖 | 不受任何影响 |
+| **Android/iOS 构建** | 不受影响 | 完全隔离 |
+| **鸿蒙构建** | 可能污染 lock 文件 | 独立 lock 文件 |
+| **版本管理** | 两套版本混在一起 | 独立版本号、独立打包 |
+| **团队协作** | 所有开发者需处理 Fork | 鸿蒙团队维护壳工程即可 |
+
+壳工程让"思路二"从"改主工程依赖"变成了"新建一个专门的项目"，隔离性更好，也更适合团队并行开发。
+
 ### 决策逻辑
 
 ```
 是否有能力长期维护 Fork 分支与上游的同步？
     ├─ 是，且有多个插件需要一次性适配 → 思路二
+    │      └─ 进一步：是否需要隔离主工程？ → 壳工程模式
     └─ 否，或只适配少数插件 → 思路三或四
 ```
+
+### 开发者视角
+
+**现有项目（Android+iOS）要加鸿蒙支持，这个方案意味着什么？**
+
+- **代码侵入度：低 🟢**
+
+```yaml
+# 只需修改 pubspec.yaml 中的依赖地址
+dependencies:
+  shared_preferences:
+    git:
+      url: https://gitcode.com/openharmony-tpc/flutter_packages.git
+      path: packages/shared_preferences
+```
+
+Dart 代码零修改。原插件的 API 完全保留，调用方式不变。
+
+- **跨平台兼容性：中 🟡**
+
+Android/iOS 用原插件（pub.dev），HarmonyOS 用 Fork 版（git 依赖）。同一插件在不同平台来源不同，`pubspec.lock` 中的版本一致性需要手动维护。如果采用壳工程模式，隔离性会好很多。
+
+- **开发者友好度：中 🟡**
+
+| 阶段 | 体验 |
+|------|------|
+| **初始配置** | 简单，只改依赖地址 |
+| **日常开发** | 良好，API 不变 |
+| **原插件升级** | ⚠️ 需手动合并上游变更，可能冲突 |
+| **团队协作** | ⚠️ 需共享 Fork 仓库权限 |
+| **CI/CD** | git 依赖在网络受限环境可能不稳定 |
+
+**结论：适合短期验证或原型开发**。如果只是验证鸿蒙适配是否可行，Fork 改依赖是最快的方式。壳工程模式可以缓解长期维护压力，但涉及 FFI 等非标准通信的插件仍然需要此方案。
 
 ---
 
@@ -266,6 +405,42 @@ dependencies:
 
 对于未整合的情况，开发者如果能将 ohos 实现合入主包，是最佳路径；如果暂时无法合入，只要在文档中清晰说明依赖方式，用户也能正常使用。
 
+### 开发者视角
+
+**现有项目（Android+iOS）要加鸿蒙支持，这个方案意味着什么？**
+
+- **代码侵入度：零 🟢**
+
+```yaml
+# 已整合：只需一行
+dependencies:
+  screen_brightness: ^2.1.9  # 自动包含 ohos 实现
+
+# 未整合：多写一行
+dependencies:
+  wakelock_plus: ^1.6.1
+  wakelock_plus_ohos: ^0.0.3
+```
+
+Dart 业务代码零修改。import 路径不变，API 调用不变，不需要平台判断。
+
+- **跨平台兼容性：高 🟢**
+
+```
+同一代码库，同一套 import，同一套 API 调用
+    ├── 编译 Android → 自动使用 android 实现
+    ├── 编译 iOS     → 自动使用 ios 实现
+    └── 编译 OHOS    → 自动使用 ohos 实现
+```
+
+ohos 包只在鸿蒙编译时生效，不会影响 Android 和 iOS 的构建。
+
+- **开发者友好度：高 🟢**
+
+业务开发者**无感知**，不需要了解底层实现。平台实现的更新由插件维护者负责。团队协作只需在 `pubspec.yaml` 中加一行依赖。
+
+**结论：最高优先级的方案**。如果原插件已是联合架构，这是唯一正确的选择，对现有代码的侵入为零。
+
 ---
 
 ## 思路四：基于联合插件理念（普通插件改造）
@@ -336,6 +511,39 @@ final id = await AppSetId.identifier;  // 调用原插件 API
 // 底层自动路由到 app_set_id_ohos 的 ArkTS 实现
 ```
 
+### 开发者视角
+
+**现有项目（Android+iOS）要加鸿蒙支持，这个方案意味着什么？**
+
+- **代码侵入度：零 🟢**
+
+```yaml
+dependencies:
+  app_set_id: ^1.4.0      # 原插件
+  app_set_id_ohos: ^1.4.0 # 鸿蒙实现（只需在yaml声明，不用import）
+```
+
+Dart 代码零修改，无需平台判断，无需条件编译，不需要 import 任何新东西。
+
+- **跨平台兼容性：高 🟢**
+
+```dart
+// 一行代码跑三端
+final id = await AppSetId.identifier;
+```
+
+ohos 实现包只在鸿蒙编译时激活，Android 和 iOS 的构建完全不受影响。
+
+- **开发者友好度：高 🟢**
+
+与思路三几乎相同的使用体验。ohos 包可发布到 pub.dev，使用标准依赖管理，比思路二的 git 依赖更稳定。唯一的额外成本是：需要知道"哪些插件需要额外添加 ohos 包"。
+
+**但有一个前置条件：**
+
+> 使用此方案前，必须在原插件 Dart 代码中确认它使用 `MethodChannel` 通信。如果原插件使用 FFI 调用 C 库（如 `sqflite`），此方案不适用，需要回退到思路二。
+
+**结论：实际项目中最常用的方案**。大部分插件是普通插件而非联合插件，思路四完美填补了这个缺口。
+
 ### 前置条件
 
 **原插件必须使用 MethodChannel 通信**。如果原插件使用了 FFI、PlatformView 或其他非标准通信方式，此方案不适用。
@@ -352,6 +560,35 @@ final id = await AppSetId.identifier;  // 调用原插件 API
 | **API 兼容** | ❌ 不兼容 | ✅ 兼容 | ✅ 兼容 | ✅ 兼容 | ✅ 兼容 |
 | **维护耦合** | 低 | 高（同步上游） | 低 | 中（待整合） | 低 |
 | **典型案例** | holding | OpenHarmony fork | screen_brightness_ohos | wakelock_plus_ohos | app_set_id_ohos |
+
+---
+
+## 四方案综合评估对比
+
+| 评估维度 | 思路一 | 思路二 | 思路三 | 思路四 |
+|---------|--------|--------|--------|--------|
+| **Dart 代码侵入** | 高（改业务代码） | 无 | 无 | 无 |
+| **pubspec.yaml 修改** | 全量替换 | 改为 git 依赖 | 加一行（或零行） | 加一行 |
+| **跨平台代码复用** | ❌ 需加条件分支 | ✅ 完全复用 | ✅ 完全复用 | ✅ 完全复用 |
+| **原插件升级影响** | 手动同步 | 需合并 Fork | 自动跟随主包 | 更新依赖版本 |
+| **本地开发配置** | 复杂（双依赖源） | 中等（git 依赖） | 简单（pub.dev） | 简单（pub.dev） |
+| **CI/CD 适配** | 需双构建脚本 | git 依赖需鉴权 | 标准构建 | 标准构建 |
+| **团队学习成本** | 高 | 中 | 低 | 低 |
+| **综合推荐度** | ⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
+
+### 实际项目中的组合策略
+
+在真实项目中，这四种思路不是互斥的，而是**可以组合使用**的：
+
+```
+项目引用了 15 个插件：
+    ├─ 3 个是联合插件 → 思路三（直接加 ohos 实现包）
+    ├─ 10 个是普通 MethodChannel 插件 → 思路四（开发 ohos 实现包）
+    ├─ 1 个是鸿蒙独有功能 → 思路一（独立开发）
+    └─ 1 个使用了 FFI → 思路二（Fork 添加 ohos 目录）
+```
+
+一个鸿蒙应用通常需要同时使用多种思路来解决项目中所有插件的适配问题。
 
 ---
 
