@@ -81,9 +81,9 @@ theme: next
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  - type: git
-  - repo: git@github.com:zacksleo/zacksleo.github.io.git
-  - branch: master
+  type: git
+  repo: git@github.com:zacksleo/zacksleo.github.io.git
+  branch: master
 
 favicon:
   small: /images/avatar.png
