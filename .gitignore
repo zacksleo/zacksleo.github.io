@@ -8,3 +8,5 @@ package-lock.json
 .DS_Store
 /tmp
 .deploy_git/
+.references-docs
+.qoder/
