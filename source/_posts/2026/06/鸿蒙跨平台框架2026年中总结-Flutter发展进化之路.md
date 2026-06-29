@@ -156,13 +156,15 @@ Flutter Embedder API 正在成为全球行业趋势，多家科技巨头积极�
 
 ## 七、三阶段路线图：从可行性验证到生产就绪
 
-Flutter on OpenHarmony 的 Embedder 路线已制定清晰的三阶段路线图：
+Flutter on OpenHarmony 的 Embedder 路线已制定清晰的三阶段路线图[^1]：
 
 | 阶段 | 时间 | 重点 | 状态 |
 |------|------|------|------|
 | Phase 1 | 2025年4月 | 可行性研究 | ✅ 已完成 |
 | Phase 2 | 2026年Q2 | 与 Flutter 社区共同开发 | 🔄 进行中 |
 | Phase 3 | 2027年Q3 | 生产就绪特性 | 📋 规划中 |
+
+[^1]: 此为蓝图规划阶段，具体时间节点和内容可能根据社区进展和上下游依赖情况调整，不代表最终交付承诺。
 
 ![Flutter on OpenHarmony 三阶段路线图](/images/harmonyos-flutter-2026/10_roadmap_gantt.svg)
 
