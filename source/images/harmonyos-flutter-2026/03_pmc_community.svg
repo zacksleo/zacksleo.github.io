@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#0d1b3e"/>
+    <stop offset="100%" stop-color="#1a3a6b"/>
+  </linearGradient>
+  <filter id="shadow"><feDropShadow dx="2" dy="2" stdDeviation="3" flood-opacity="0.3"/></filter>
+  <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+    <polygon points="0 0, 10 3.5, 0 7" fill="#42a5f5"/>
+  </marker>
+  <marker id="arroww" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+    <polygon points="0 0, 10 3.5, 0 7" fill="#ffffff"/>
+  </marker>
+</defs>
+<rect width="800" height="500" fill="url(#bg)"/>
+<text x="400" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#ffffff">PMC 社区基础设施与 Flutter SIG</text>
+<rect x="280" y="55" width="240" height="50" rx="8" fill="#1a237e" filter="url(#shadow)"/>
+<text x="400" y="85" text-anchor="middle" font-size="16" fill="#ffffff" font-family="sans-serif"><tspan x="400" dy="0">PMC 30 位成员</tspan></text><rect x="80" y="140" width="160" height="45" rx="8" fill="#1565c0" filter="url(#shadow)"/>
+<text x="160" y="166" text-anchor="middle" font-size="14" fill="#ffffff" font-family="sans-serif"><tspan x="160" dy="0">9 个 SIG</tspan></text><rect x="310" y="140" width="180" height="45" rx="8" fill="#1565c0" filter="url(#shadow)"/>
+<text x="400" y="166" text-anchor="middle" font-size="14" fill="#ffffff" font-family="sans-serif"><tspan x="400" dy="0">52 位 Committer</tspan></text><rect x="560" y="140" width="200" height="45" rx="8" fill="#1565c0" filter="url(#shadow)"/>
+<text x="660" y="166" text-anchor="middle" font-size="13" fill="#ffffff" font-family="sans-serif"><tspan x="660" dy="0">4 专项: CICD·安全·合规·运营</tspan></text><line x1="400" y1="105" x2="160" y2="140" stroke="#42a5f5" stroke-width="2" marker-end="url(#arrow)"/><line x1="400" y1="105" x2="400" y2="140" stroke="#42a5f5" stroke-width="2" marker-end="url(#arrow)"/><line x1="400" y1="105" x2="660" y2="140" stroke="#42a5f5" stroke-width="2" marker-end="url(#arrow)"/><rect x="60" y="220" width="180" height="40" rx="8" fill="#00897b" filter="url(#shadow)"/>
+<text x="150" y="244" text-anchor="middle" font-size="14" fill="#ffffff" font-family="sans-serif"><tspan x="150" dy="0">Flutter SIG</tspan></text><rect x="280" y="220" width="180" height="40" rx="8" fill="#00897b" filter="url(#shadow)"/>
+<text x="370" y="244" text-anchor="middle" font-size="14" fill="#ffffff" font-family="sans-serif"><tspan x="370" dy="0">RN SIG</tspan></text><rect x="500" y="220" width="180" height="40" rx="8" fill="#00897b" filter="url(#shadow)"/>
+<text x="590" y="244" text-anchor="middle" font-size="14" fill="#ffffff" font-family="sans-serif"><tspan x="590" dy="0">KMP/CMP SIG</tspan></text><line x1="160" y1="185" x2="150" y2="220" stroke="#42a5f5" stroke-width="2" marker-end="url(#arrow)"/><rect x="60" y="295" width="180" height="38" rx="8" fill="#0d47a1" filter="url(#shadow)"/>
+<text x="150" y="318" text-anchor="middle" font-size="13" fill="#90caf9" font-family="sans-serif"><tspan x="150" dy="0">底层架构演进</tspan></text><rect x="260" y="295" width="180" height="38" rx="8" fill="#0d47a1" filter="url(#shadow)"/>
+<text x="350" y="318" text-anchor="middle" font-size="13" fill="#90caf9" font-family="sans-serif"><tspan x="350" dy="0">混合渲染适配</tspan></text><rect x="460" y="295" width="180" height="38" rx="8" fill="#0d47a1" filter="url(#shadow)"/>
+<text x="550" y="318" text-anchor="middle" font-size="13" fill="#90caf9" font-family="sans-serif"><tspan x="550" dy="0">社区版本联合打样</tspan></text><line x1="150" y1="260" x2="150" y2="295" stroke="#42a5f5" stroke-width="2" marker-end="url(#arrow)"/><line x1="150" y1="260" x2="350" y2="295" stroke="#42a5f5" stroke-width="2" marker-end="url(#arrow)"/><line x1="150" y1="260" x2="550" y2="295" stroke="#42a5f5" stroke-width="2" marker-end="url(#arrow)"/><text x="400" y="370" text-anchor="middle" font-size="13" fill="#90caf9" font-family="sans-serif">社区成员涵盖 30+ 组织：腾讯、快手、美团、携程、百度、小红书、哔哩哔哩、阿里巴巴…</text>
+</svg>

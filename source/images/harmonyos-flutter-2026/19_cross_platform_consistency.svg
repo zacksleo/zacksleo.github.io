@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="780" height="340" viewBox="0 0 780 340">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#0d1b3e"/>
+    <stop offset="100%" stop-color="#1a3a6b"/>
+  </linearGradient>
+  <filter id="shadow"><feDropShadow dx="2" dy="2" stdDeviation="3" flood-opacity="0.3"/></filter>
+  <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+    <polygon points="0 0, 10 3.5, 0 7" fill="#42a5f5"/>
+  </marker>
+  <marker id="arroww" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+    <polygon points="0 0, 10 3.5, 0 7" fill="#ffffff"/>
+  </marker>
+</defs>
+<rect width="780" height="340" fill="url(#bg)"/>
+<text x="390" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#ffffff">Embedder API 跨平台一致性</text>
+<rect x="30" y="55" width="120" height="38" rx="4" fill="#37474f" filter="url(#shadow)"/>
+<text x="90" y="78" text-anchor="middle" font-size="13" fill="#ffffff" font-family="sans-serif"><tspan x="90" dy="0">平台</tspan></text><rect x="155" y="55" width="220" height="38" rx="4" fill="#37474f" filter="url(#shadow)"/>
+<text x="265" y="78" text-anchor="middle" font-size="13" fill="#ffffff" font-family="sans-serif"><tspan x="265" dy="0">Embedder</tspan></text><rect x="380" y="55" width="200" height="38" rx="4" fill="#37474f" filter="url(#shadow)"/>
+<text x="480" y="78" text-anchor="middle" font-size="13" fill="#ffffff" font-family="sans-serif"><tspan x="480" dy="0">渲染表面</tspan></text><rect x="585" y="55" width="180" height="38" rx="4" fill="#37474f" filter="url(#shadow)"/>
+<text x="675" y="78" text-anchor="middle" font-size="13" fill="#ffffff" font-family="sans-serif"><tspan x="675" dy="0">输入系统</tspan></text><rect x="30" y="105" width="120" height="38" rx="4" fill="#1a237e" filter="url(#shadow)"/>
+<text x="90" y="127" text-anchor="middle" font-size="11" fill="#ffffff" font-family="sans-serif"><tspan x="90" dy="0">Android</tspan></text><rect x="155" y="105" width="220" height="38" rx="4" fill="#1a237e" filter="url(#shadow)"/>
+<text x="265" y="127" text-anchor="middle" font-size="11" fill="#ffffff" font-family="sans-serif"><tspan x="265" dy="0">JNI Embedder</tspan></text><rect x="380" y="105" width="200" height="38" rx="4" fill="#1a237e" filter="url(#shadow)"/>
+<text x="480" y="127" text-anchor="middle" font-size="11" fill="#ffffff" font-family="sans-serif"><tspan x="480" dy="0">SurfaceTexture</tspan></text><rect x="585" y="105" width="180" height="38" rx="4" fill="#1a237e" filter="url(#shadow)"/>
+<text x="675" y="127" text-anchor="middle" font-size="11" fill="#ffffff" font-family="sans-serif"><tspan x="675" dy="0">MotionEvent</tspan></text><rect x="30" y="155" width="120" height="38" rx="4" fill="#1a237e" filter="url(#shadow)"/>
+<text x="90" y="177" text-anchor="middle" font-size="11" fill="#ffffff" font-family="sans-serif"><tspan x="90" dy="0">Linux</tspan></text><rect x="155" y="155" width="220" height="38" rx="4" fill="#1a237e" filter="url(#shadow)"/>
+<text x="265" y="177" text-anchor="middle" font-size="11" fill="#ffffff" font-family="sans-serif"><tspan x="265" dy="0">flutter-embedded-linux</tspan></text><rect x="380" y="155" width="200" height="38" rx="4" fill="#1a237e" filter="url(#shadow)"/>
+<text x="480" y="177" text-anchor="middle" font-size="11" fill="#ffffff" font-family="sans-serif"><tspan x="480" dy="0">EGL / Wayland</tspan></text><rect x="585" y="155" width="180" height="38" rx="4" fill="#1a237e" filter="url(#shadow)"/>
+<text x="675" y="177" text-anchor="middle" font-size="11" fill="#ffffff" font-family="sans-serif"><tspan x="675" dy="0">libinput</tspan></text><rect x="30" y="205" width="120" height="38" rx="4" fill="#1a237e" filter="url(#shadow)"/>
+<text x="90" y="227" text-anchor="middle" font-size="11" fill="#ffffff" font-family="sans-serif"><tspan x="90" dy="0">iOS</tspan></text><rect x="155" y="205" width="220" height="38" rx="4" fill="#1a237e" filter="url(#shadow)"/>
+<text x="265" y="227" text-anchor="middle" font-size="11" fill="#ffffff" font-family="sans-serif"><tspan x="265" dy="0">UIKit Embedder</tspan></text><rect x="380" y="205" width="200" height="38" rx="4" fill="#1a237e" filter="url(#shadow)"/>
+<text x="480" y="227" text-anchor="middle" font-size="11" fill="#ffffff" font-family="sans-serif"><tspan x="480" dy="0">Metal CAMetalLayer</tspan></text><rect x="585" y="205" width="180" height="38" rx="4" fill="#1a237e" filter="url(#shadow)"/>
+<text x="675" y="227" text-anchor="middle" font-size="11" fill="#ffffff" font-family="sans-serif"><tspan x="675" dy="0">UIEvent</tspan></text><rect x="30" y="255" width="120" height="38" rx="4" fill="#4caf50" filter="url(#shadow)"/>
+<text x="90" y="277" text-anchor="middle" font-size="11" fill="#ffffff" font-family="sans-serif"><tspan x="90" dy="0">OpenHarmony</tspan></text><rect x="155" y="255" width="220" height="38" rx="4" fill="#4caf50" filter="url(#shadow)"/>
+<text x="265" y="277" text-anchor="middle" font-size="11" fill="#ffffff" font-family="sans-serif"><tspan x="265" dy="0">OpenHarmony Embedder</tspan></text><rect x="380" y="255" width="200" height="38" rx="4" fill="#4caf50" filter="url(#shadow)"/>
+<text x="480" y="277" text-anchor="middle" font-size="11" fill="#ffffff" font-family="sans-serif"><tspan x="480" dy="0">ArkUI Surface</tspan></text><rect x="585" y="255" width="180" height="38" rx="4" fill="#4caf50" filter="url(#shadow)"/>
+<text x="675" y="277" text-anchor="middle" font-size="11" fill="#ffffff" font-family="sans-serif"><tspan x="675" dy="0">OHOS Input Handler</tspan></text><text x="390" y="320" text-anchor="middle" font-size="14" fill="#fdd835" font-family="sans-serif">Embedder API 接口在所有平台完全一致，仅平台特定实现不同</text>
+</svg>

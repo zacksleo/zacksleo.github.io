@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="320" viewBox="0 0 800 320">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#0d1b3e"/>
+    <stop offset="100%" stop-color="#1a3a6b"/>
+  </linearGradient>
+  <filter id="shadow"><feDropShadow dx="2" dy="2" stdDeviation="3" flood-opacity="0.3"/></filter>
+  <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+    <polygon points="0 0, 10 3.5, 0 7" fill="#42a5f5"/>
+  </marker>
+  <marker id="arroww" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+    <polygon points="0 0, 10 3.5, 0 7" fill="#ffffff"/>
+  </marker>
+</defs>
+<rect width="800" height="320" fill="url(#bg)"/>
+<text x="400" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#ffffff">Flutter on OpenHarmony 三阶段路线图</text>
+<line x1="120" y1="100" x2="120" y2="270" stroke="#ffffff" stroke-width="0.3" stroke-dasharray="3,3"/><text x="120" y="285" text-anchor="middle" font-size="9" fill="#90caf9" font-family="sans-serif">2025-04</text><line x1="180" y1="100" x2="180" y2="270" stroke="#ffffff" stroke-width="0.3" stroke-dasharray="3,3"/><text x="180" y="285" text-anchor="middle" font-size="9" fill="#90caf9" font-family="sans-serif">2025-07</text><line x1="240" y1="100" x2="240" y2="270" stroke="#ffffff" stroke-width="0.3" stroke-dasharray="3,3"/><text x="240" y="285" text-anchor="middle" font-size="9" fill="#90caf9" font-family="sans-serif">2025-10</text><line x1="300" y1="100" x2="300" y2="270" stroke="#ffffff" stroke-width="0.3" stroke-dasharray="3,3"/><text x="300" y="285" text-anchor="middle" font-size="9" fill="#90caf9" font-family="sans-serif">2026-01</text><line x1="360" y1="100" x2="360" y2="270" stroke="#ffffff" stroke-width="0.3" stroke-dasharray="3,3"/><text x="360" y="285" text-anchor="middle" font-size="9" fill="#90caf9" font-family="sans-serif">2026-04</text><line x1="420" y1="100" x2="420" y2="270" stroke="#ffffff" stroke-width="0.3" stroke-dasharray="3,3"/><text x="420" y="285" text-anchor="middle" font-size="9" fill="#90caf9" font-family="sans-serif">2026-07</text><line x1="480" y1="100" x2="480" y2="270" stroke="#ffffff" stroke-width="0.3" stroke-dasharray="3,3"/><text x="480" y="285" text-anchor="middle" font-size="9" fill="#90caf9" font-family="sans-serif">2026-10</text><line x1="540" y1="100" x2="540" y2="270" stroke="#ffffff" stroke-width="0.3" stroke-dasharray="3,3"/><text x="540" y="285" text-anchor="middle" font-size="9" fill="#90caf9" font-family="sans-serif">2027-01</text><line x1="600" y1="100" x2="600" y2="270" stroke="#ffffff" stroke-width="0.3" stroke-dasharray="3,3"/><text x="600" y="285" text-anchor="middle" font-size="9" fill="#90caf9" font-family="sans-serif">2027-04</text><line x1="660" y1="100" x2="660" y2="270" stroke="#ffffff" stroke-width="0.3" stroke-dasharray="3,3"/><text x="660" y="285" text-anchor="middle" font-size="9" fill="#90caf9" font-family="sans-serif">2027-07</text><text x="50" y="120" text-anchor="start" font-size="13" fill="#ffffff" font-family="sans-serif">Phase 1</text><rect x="120" y="105" width="180" height="30" rx="6" fill="#7c4dff" opacity="0.8"/><text x="210" y="125" text-anchor="middle" font-size="12" fill="#ffffff" font-family="sans-serif">可行性研究 ✅</text><text x="50" y="175" text-anchor="start" font-size="13" fill="#ffffff" font-family="sans-serif">Phase 2</text><rect x="360" y="155" width="240" height="30" rx="6" fill="#4caf50" opacity="0.8"/><text x="480" y="175" text-anchor="middle" font-size="12" fill="#ffffff" font-family="sans-serif">社区联合开发 🔄</text><text x="50" y="230" text-anchor="start" font-size="13" fill="#ffffff" font-family="sans-serif">Phase 3</text><rect x="600" y="205" width="120" height="30" rx="6" fill="#fdd835" opacity="0.7"/><text x="660" y="225" text-anchor="middle" font-size="12" fill="#212121" font-family="sans-serif">生产就绪 📋</text>
+</svg>

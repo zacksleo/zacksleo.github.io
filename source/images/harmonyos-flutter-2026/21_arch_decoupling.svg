@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="750" height="400" viewBox="0 0 750 400">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#0d1b3e"/>
+    <stop offset="100%" stop-color="#1a3a6b"/>
+  </linearGradient>
+  <filter id="shadow"><feDropShadow dx="2" dy="2" stdDeviation="3" flood-opacity="0.3"/></filter>
+  <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+    <polygon points="0 0, 10 3.5, 0 7" fill="#42a5f5"/>
+  </marker>
+</defs>
+<rect width="750" height="400" fill="url(#bg)"/>
+<text x="375" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#ffffff">Flutter / Native 核心业务解耦架构</text>
+<rect x="50" y="55" width="650" height="45" rx="8" fill="#7c4dff" filter="url(#shadow)"/>
+<text x="375" y="81" text-anchor="middle" font-size="14" fill="#ffffff" font-family="sans-serif"><tspan x="375" dy="0">Business Package Layer（顶层业务逻辑）</tspan></text><rect x="50" y="120" width="310" height="45" rx="8" fill="#00897b" filter="url(#shadow)"/>
+<text x="205" y="146" text-anchor="middle" font-size="14" fill="#ffffff" font-family="sans-serif"><tspan x="205" dy="0">Flutter Plugin X</tspan></text><rect x="390" y="120" width="310" height="45" rx="8" fill="#00897b" filter="url(#shadow)"/>
+<text x="545" y="146" text-anchor="middle" font-size="14" fill="#ffffff" font-family="sans-serif"><tspan x="545" dy="0">Pigeon Component</tspan></text><line x1="205" y1="100" x2="205" y2="120" stroke="#42a5f5" stroke-width="2" marker-end="url(#arrow)"/><line x1="545" y1="100" x2="545" y2="120" stroke="#42a5f5" stroke-width="2" marker-end="url(#arrow)"/><rect x="50" y="195" width="200" height="45" rx="8" fill="#37474f" filter="url(#shadow)"/>
+<text x="150" y="221" text-anchor="middle" font-size="13" fill="#ffffff" font-family="sans-serif"><tspan x="150" dy="0">System API</tspan></text><rect x="275" y="195" width="200" height="45" rx="8" fill="#37474f" filter="url(#shadow)"/>
+<text x="375" y="215" text-anchor="middle" font-size="12" fill="#ffffff" font-family="sans-serif"><tspan x="375" dy="0">CarSDK</tspan><tspan x="375" dy="12">iOS / Android</tspan></text><rect x="500" y="195" width="200" height="45" rx="8" fill="#4caf50" filter="url(#shadow)"/>
+<text x="600" y="215" text-anchor="middle" font-size="12" fill="#ffffff" font-family="sans-serif"><tspan x="600" dy="0">CarSDK</tspan><tspan x="600" dy="12">OpenHarmony</tspan></text><line x1="205" y1="165" x2="150" y2="195" stroke="#42a5f5" stroke-width="2" marker-end="url(#arrow)"/><line x1="205" y1="165" x2="375" y2="195" stroke="#42a5f5" stroke-width="2" marker-end="url(#arrow)"/><line x1="205" y1="165" x2="600" y2="195" stroke="#42a5f5" stroke-width="2" marker-end="url(#arrow)"/><line x1="545" y1="165" x2="150" y2="195" stroke="#42a5f5" stroke-width="2" marker-end="url(#arrow)"/><text x="600" y="265" text-anchor="middle" font-size="14" fill="#fdd835" font-family="sans-serif">鸿蒙原生组件</text><rect x="400" y="280" width="120" height="40" rx="8" fill="#37474f" filter="url(#shadow)"/>
+<text x="460" y="298" text-anchor="middle" font-size="11" fill="#ffffff" font-family="sans-serif"><tspan x="460" dy="0">BlueTooth/Wifi</tspan><tspan x="460" dy="11">系统</tspan></text><rect x="540" y="280" width="100" height="40" rx="8" fill="#37474f" filter="url(#shadow)"/>
+<text x="590" y="298" text-anchor="middle" font-size="11" fill="#ffffff" font-family="sans-serif"><tspan x="590" dy="0">grpc/etch</tspan><tspan x="590" dy="11">第三方</tspan></text><rect x="660" y="280" width="80" height="40" rx="8" fill="#37474f" filter="url(#shadow)"/>
+<text x="700" y="298" text-anchor="middle" font-size="11" fill="#ffffff" font-family="sans-serif"><tspan x="700" dy="0">DriveStream</tspan><tspan x="700" dy="11">自研</tspan></text><line x1="600" y1="240" x2="460" y2="280" stroke="#42a5f5" stroke-width="2" marker-end="url(#arrow)"/><line x1="600" y1="240" x2="590" y2="280" stroke="#42a5f5" stroke-width="2" marker-end="url(#arrow)"/><line x1="600" y1="240" x2="700" y2="280" stroke="#42a5f5" stroke-width="2" marker-end="url(#arrow)"/><text x="375" y="370" text-anchor="middle" font-size="13" fill="#90caf9" font-family="sans-serif">通过 Pigeon 插件实现 Flutter 代码与原生层接口的三端解耦</text>
+</svg>

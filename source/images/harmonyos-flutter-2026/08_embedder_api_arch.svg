@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="480" viewBox="0 0 700 480">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#0d1b3e"/>
+    <stop offset="100%" stop-color="#1a3a6b"/>
+  </linearGradient>
+  <filter id="shadow"><feDropShadow dx="2" dy="2" stdDeviation="3" flood-opacity="0.3"/></filter>
+  <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+    <polygon points="0 0, 10 3.5, 0 7" fill="#42a5f5"/>
+  </marker>
+  <marker id="arroww" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+    <polygon points="0 0, 10 3.5, 0 7" fill="#ffffff"/>
+  </marker>
+</defs>
+<rect width="700" height="480" fill="url(#bg)"/>
+<text x="350" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#ffffff">Flutter Embedder API 推荐架构</text>
+<rect x="50" y="55" width="600" height="22" rx="4" fill="#7c4dff" filter="url(#shadow)"/>
+<text x="350" y="70" text-anchor="middle" font-size="12" fill="#ffffff" font-family="sans-serif"><tspan x="350" dy="0">Layer 1: Flutter Engine (C++)</tspan></text><rect x="55" y="83" width="193" height="37" rx="8" fill="#263238" filter="url(#shadow)"/>
+<text x="151" y="104" text-anchor="middle" font-size="11" fill="#ffffff" font-family="sans-serif"><tspan x="151" dy="0">Dart Runtime</tspan></text><rect x="253" y="83" width="193" height="37" rx="8" fill="#263238" filter="url(#shadow)"/>
+<text x="349" y="104" text-anchor="middle" font-size="11" fill="#ffffff" font-family="sans-serif"><tspan x="349" dy="0">Platform Channels</tspan></text><rect x="451" y="83" width="193" height="37" rx="8" fill="#263238" filter="url(#shadow)"/>
+<text x="547" y="99" text-anchor="middle" font-size="11" fill="#ffffff" font-family="sans-serif"><tspan x="547" dy="0">Renderer</tspan><tspan x="547" dy="11">Skia/Impeller</tspan></text><rect x="50" y="150" width="600" height="22" rx="4" fill="#fdd835" filter="url(#shadow)"/>
+<text x="350" y="165" text-anchor="middle" font-size="12" fill="#212121" font-family="sans-serif"><tspan x="350" dy="0">Layer 2: Embedder API Boundary</tspan></text><rect x="55" y="178" width="143" height="37" rx="8" fill="#263238" filter="url(#shadow)"/>
+<text x="126" y="199" text-anchor="middle" font-size="11" fill="#ffffff" font-family="sans-serif"><tspan x="126" dy="0">FlutterEngineRun()</tspan></text><rect x="203" y="178" width="143" height="37" rx="8" fill="#263238" filter="url(#shadow)"/>
+<text x="274" y="199" text-anchor="middle" font-size="11" fill="#ffffff" font-family="sans-serif"><tspan x="274" dy="0">EngineSendMessage()</tspan></text><rect x="351" y="178" width="143" height="37" rx="8" fill="#263238" filter="url(#shadow)"/>
+<text x="422" y="199" text-anchor="middle" font-size="11" fill="#ffffff" font-family="sans-serif"><tspan x="422" dy="0">RegisterExternalTexture()</tspan></text><rect x="499" y="178" width="143" height="37" rx="8" fill="#263238" filter="url(#shadow)"/>
+<text x="570" y="199" text-anchor="middle" font-size="11" fill="#ffffff" font-family="sans-serif"><tspan x="570" dy="0">DispatchPointerData()</tspan></text><rect x="50" y="245" width="600" height="22" rx="4" fill="#00897b" filter="url(#shadow)"/>
+<text x="350" y="260" text-anchor="middle" font-size="12" fill="#ffffff" font-family="sans-serif"><tspan x="350" dy="0">Layer 3: OpenHarmony Embedder</tspan></text><rect x="55" y="273" width="193" height="37" rx="8" fill="#263238" filter="url(#shadow)"/>
+<text x="151" y="294" text-anchor="middle" font-size="11" fill="#ffffff" font-family="sans-serif"><tspan x="151" dy="0">Native API Bridge</tspan></text><rect x="253" y="273" width="193" height="37" rx="8" fill="#263238" filter="url(#shadow)"/>
+<text x="349" y="294" text-anchor="middle" font-size="11" fill="#ffffff" font-family="sans-serif"><tspan x="349" dy="0">ArkUI Render Surface</tspan></text><rect x="451" y="273" width="193" height="37" rx="8" fill="#263238" filter="url(#shadow)"/>
+<text x="547" y="294" text-anchor="middle" font-size="11" fill="#ffffff" font-family="sans-serif"><tspan x="547" dy="0">OHOS Input Handler</tspan></text><rect x="50" y="340" width="600" height="22" rx="4" fill="#c62828" filter="url(#shadow)"/>
+<text x="350" y="355" text-anchor="middle" font-size="12" fill="#ffffff" font-family="sans-serif"><tspan x="350" dy="0">Layer 4: OHOS Platform</tspan></text><rect x="55" y="368" width="590" height="22" rx="8" fill="#263238" filter="url(#shadow)"/>
+<text x="350" y="382" text-anchor="middle" font-size="11" fill="#ffffff" font-family="sans-serif"><tspan x="350" dy="0">OHOS System APIs</tspan></text><line x1="350" y1="125" x2="350" y2="150" stroke="#42a5f5" stroke-width="2" marker-end="url(#arrow)"/><line x1="350" y1="220" x2="350" y2="245" stroke="#42a5f5" stroke-width="2" marker-end="url(#arrow)"/><line x1="350" y1="315" x2="350" y2="340" stroke="#42a5f5" stroke-width="2" marker-end="url(#arrow)"/>
+</svg>

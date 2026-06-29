@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="750" height="300" viewBox="0 0 750 300">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#0d1b3e"/>
+    <stop offset="100%" stop-color="#1a3a6b"/>
+  </linearGradient>
+  <filter id="shadow"><feDropShadow dx="2" dy="2" stdDeviation="3" flood-opacity="0.3"/></filter>
+  <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+    <polygon points="0 0, 10 3.5, 0 7" fill="#42a5f5"/>
+  </marker>
+  <marker id="arroww" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+    <polygon points="0 0, 10 3.5, 0 7" fill="#ffffff"/>
+  </marker>
+</defs>
+<rect width="750" height="300" fill="url(#bg)"/>
+<text x="375" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#ffffff">关键技术揭榜：性能与渲染双突破</text>
+<rect x="30" y="60" width="320" height="50" rx="8" fill="#1565c0" filter="url(#shadow)"/>
+<text x="190" y="89" text-anchor="middle" font-size="14" fill="#ffffff" font-family="sans-serif"><tspan x="190" dy="0">方向一：性能负载内存优化</tspan></text><rect x="30" y="130" width="110" height="40" rx="8" fill="#0d47a1" filter="url(#shadow)"/>
+<text x="85" y="154" text-anchor="middle" font-size="12" fill="#ffffff" font-family="sans-serif"><tspan x="85" dy="0">引擎初始化</tspan></text><rect x="160" y="130" width="110" height="40" rx="8" fill="#0d47a1" filter="url(#shadow)"/>
+<text x="215" y="154" text-anchor="middle" font-size="12" fill="#ffffff" font-family="sans-serif"><tspan x="215" dy="0">布局测量</tspan></text><rect x="290" y="130" width="110" height="40" rx="8" fill="#0d47a1" filter="url(#shadow)"/>
+<text x="345" y="154" text-anchor="middle" font-size="12" fill="#ffffff" font-family="sans-serif"><tspan x="345" dy="0">渲染全流程</tspan></text><line x1="140" y1="150" x2="160" y2="150" stroke="#42a5f5" stroke-width="2" marker-end="url(#arrow)"/><line x1="270" y1="150" x2="290" y2="150" stroke="#42a5f5" stroke-width="2" marker-end="url(#arrow)"/><rect x="100" y="190" width="200" height="40" rx="8" fill="#4caf50" filter="url(#shadow)"/>
+<text x="200" y="214" text-anchor="middle" font-size="14" fill="#ffffff" font-family="sans-serif"><tspan x="200" dy="0">达成 30% 优化目标 ✅</tspan></text><rect x="410" y="60" width="320" height="50" rx="8" fill="#1565c0" filter="url(#shadow)"/>
+<text x="570" y="89" text-anchor="middle" font-size="14" fill="#ffffff" font-family="sans-serif"><tspan x="570" dy="0">方向二：HCPP 混合渲染</tspan></text><rect x="410" y="130" width="140" height="40" rx="8" fill="#0d47a1" filter="url(#shadow)"/>
+<text x="480" y="154" text-anchor="middle" font-size="12" fill="#ffffff" font-family="sans-serif"><tspan x="480" dy="0">原生视图</tspan></text><rect x="565" y="130" width="160" height="40" rx="8" fill="#0d47a1" filter="url(#shadow)"/>
+<text x="645" y="154" text-anchor="middle" font-size="12" fill="#ffffff" font-family="sans-serif"><tspan x="645" dy="0">Flutter 内容</tspan></text><line x1="550" y1="150" x2="565" y2="150" stroke="#42a5f5" stroke-width="2" marker-end="url(#arrow)"/><rect x="460" y="190" width="220" height="40" rx="8" fill="#4caf50" filter="url(#shadow)"/>
+<text x="570" y="208" text-anchor="middle" font-size="12" fill="#ffffff" font-family="sans-serif"><tspan x="570" dy="0">正确层级混合 ✅</tspan><tspan x="570" dy="12">HCPP 模式达成</tspan></text>
+</svg>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="300" viewBox="0 0 700 300">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#0d1b3e"/>
+    <stop offset="100%" stop-color="#1a3a6b"/>
+  </linearGradient>
+  <filter id="shadow"><feDropShadow dx="2" dy="2" stdDeviation="3" flood-opacity="0.3"/></filter>
+  <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+    <polygon points="0 0, 10 3.5, 0 7" fill="#42a5f5"/>
+  </marker>
+  <marker id="arroww" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+    <polygon points="0 0, 10 3.5, 0 7" fill="#ffffff"/>
+  </marker>
+</defs>
+<rect width="700" height="300" fill="url(#bg)"/>
+<text x="350" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#ffffff">跨平台框架增长趋势</text>
+<rect x="30" y="50" width="160" height="40" rx="8" fill="#37474f" filter="url(#shadow)"/>
+<text x="110" y="74" text-anchor="middle" font-size="14" fill="#ffffff" font-family="sans-serif"><tspan x="110" dy="0">框架</tspan></text><rect x="200" y="50" width="120" height="40" rx="8" fill="#37474f" filter="url(#shadow)"/>
+<text x="260" y="74" text-anchor="middle" font-size="14" fill="#ffffff" font-family="sans-serif"><tspan x="260" dy="0">2025年</tspan></text><rect x="330" y="50" width="120" height="40" rx="8" fill="#37474f" filter="url(#shadow)"/>
+<text x="390" y="74" text-anchor="middle" font-size="14" fill="#ffffff" font-family="sans-serif"><tspan x="390" dy="0">预测</tspan></text><rect x="460" y="50" width="120" height="40" rx="8" fill="#37474f" filter="url(#shadow)"/>
+<text x="520" y="74" text-anchor="middle" font-size="14" fill="#ffffff" font-family="sans-serif"><tspan x="520" dy="0">增长趋势</tspan></text><rect x="30" y="100" width="160" height="40" rx="8" fill="#42a5f5" filter="url(#shadow)"/>
+<text x="110" y="124" text-anchor="middle" font-size="14" fill="#ffffff" font-family="sans-serif"><tspan x="110" dy="0">Flutter</tspan></text><rect x="200" y="100" width="120" height="40" rx="8" fill="#263238" filter="url(#shadow)"/>
+<text x="260" y="124" text-anchor="middle" font-size="14" fill="#ffffff" font-family="sans-serif"><tspan x="260" dy="0">2627</tspan></text><rect x="330" y="100" width="120" height="40" rx="8" fill="#263238" filter="url(#shadow)"/>
+<text x="390" y="124" text-anchor="middle" font-size="14" fill="#ffffff" font-family="sans-serif"><tspan x="390" dy="0">3921</tspan></text><rect x="460" y="100" width="120" height="40" rx="8" fill="#1b5e20" filter="url(#shadow)"/>
+<text x="520" y="124" text-anchor="middle" font-size="14" fill="#ffffff" font-family="sans-serif"><tspan x="520" dy="0">⬆ +49%</tspan></text><rect x="30" y="155" width="160" height="40" rx="8" fill="#4caf50" filter="url(#shadow)"/>
+<text x="110" y="179" text-anchor="middle" font-size="14" fill="#ffffff" font-family="sans-serif"><tspan x="110" dy="0">React Native</tspan></text><rect x="200" y="155" width="120" height="40" rx="8" fill="#263238" filter="url(#shadow)"/>
+<text x="260" y="179" text-anchor="middle" font-size="14" fill="#ffffff" font-family="sans-serif"><tspan x="260" dy="0">250</tspan></text><rect x="330" y="155" width="120" height="40" rx="8" fill="#263238" filter="url(#shadow)"/>
+<text x="390" y="179" text-anchor="middle" font-size="14" fill="#ffffff" font-family="sans-serif"><tspan x="390" dy="0">400</tspan></text><rect x="460" y="155" width="120" height="40" rx="8" fill="#1b5e20" filter="url(#shadow)"/>
+<text x="520" y="179" text-anchor="middle" font-size="14" fill="#ffffff" font-family="sans-serif"><tspan x="520" dy="0">⬆ +60%</tspan></text><rect x="30" y="210" width="160" height="40" rx="8" fill="#ff9800" filter="url(#shadow)"/>
+<text x="110" y="234" text-anchor="middle" font-size="14" fill="#ffffff" font-family="sans-serif"><tspan x="110" dy="0">KMP</tspan></text><rect x="200" y="210" width="120" height="40" rx="8" fill="#263238" filter="url(#shadow)"/>
+<text x="260" y="234" text-anchor="middle" font-size="14" fill="#ffffff" font-family="sans-serif"><tspan x="260" dy="0">11</tspan></text><rect x="330" y="210" width="120" height="40" rx="8" fill="#263238" filter="url(#shadow)"/>
+<text x="390" y="234" text-anchor="middle" font-size="14" fill="#ffffff" font-family="sans-serif"><tspan x="390" dy="0">50+</tspan></text><rect x="460" y="210" width="120" height="40" rx="8" fill="#1b5e20" filter="url(#shadow)"/>
+<text x="520" y="234" text-anchor="middle" font-size="14" fill="#ffffff" font-family="sans-serif"><tspan x="520" dy="0">⬆ +354%</tspan></text>
+</svg>

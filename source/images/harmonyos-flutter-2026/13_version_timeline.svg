@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="400" viewBox="0 0 800 400">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#0d1b3e"/>
+    <stop offset="100%" stop-color="#1a3a6b"/>
+  </linearGradient>
+  <filter id="shadow"><feDropShadow dx="2" dy="2" stdDeviation="3" flood-opacity="0.3"/></filter>
+  <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+    <polygon points="0 0, 10 3.5, 0 7" fill="#42a5f5"/>
+  </marker>
+  <marker id="arroww" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+    <polygon points="0 0, 10 3.5, 0 7" fill="#ffffff"/>
+  </marker>
+</defs>
+<rect width="800" height="400" fill="url(#bg)"/>
+<text x="400" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#ffffff">Flutter OpenHarmony 2026 版本发布计划</text>
+<line x1="150" y1="60" x2="150" y2="370" stroke="#4caf50" stroke-width="3"/><circle cx="150" cy="80" r="10" fill="#42a5f5" stroke="#ffffff" stroke-width="2"/><text x="100" y="85" text-anchor="end" font-size="12" fill="#90caf9" font-family="sans-serif">2026.3</text><rect x="175" y="60" width="80" height="40" rx="8" fill="#42a5f5" filter="url(#shadow)"/>
+<text x="215" y="84" text-anchor="middle" font-size="14" fill="#ffffff" font-family="sans-serif"><tspan x="215" dy="0">3.35</tspan></text><rect x="270" y="55" width="450" height="50" rx="8" fill="#1a237e" filter="url(#shadow)"/>
+<text x="495" y="78" text-anchor="middle" font-size="12" fill="#ffffff" font-family="sans-serif"><tspan x="495" dy="0">State-preserving Hot Reload</tspan><tspan x="495" dy="12">Widget Previews (实验性)</tspan></text><circle cx="150" cy="155" r="10" fill="#37474f" stroke="#ffffff" stroke-width="2"/><text x="100" y="160" text-anchor="end" font-size="12" fill="#90caf9" font-family="sans-serif">2026.6</text><rect x="175" y="135" width="80" height="40" rx="8" fill="#37474f" filter="url(#shadow)"/>
+<text x="215" y="159" text-anchor="middle" font-size="14" fill="#ffffff" font-family="sans-serif"><tspan x="215" dy="0">3.41</tspan></text><rect x="270" y="130" width="450" height="50" rx="8" fill="#1a237e" filter="url(#shadow)"/>
+<text x="495" y="159" text-anchor="middle" font-size="12" fill="#ffffff" font-family="sans-serif"><tspan x="495" dy="0">持续优化与稳定性改进</tspan></text><circle cx="150" cy="230" r="10" fill="#4caf50" stroke="#ffffff" stroke-width="2"/><text x="100" y="235" text-anchor="end" font-size="12" fill="#90caf9" font-family="sans-serif">2026.9</text><rect x="175" y="210" width="80" height="40" rx="8" fill="#4caf50" filter="url(#shadow)"/>
+<text x="215" y="234" text-anchor="middle" font-size="14" fill="#ffffff" font-family="sans-serif"><tspan x="215" dy="0">3.44</tspan></text><rect x="270" y="205" width="450" height="50" rx="8" fill="#1a237e" filter="url(#shadow)"/>
+<text x="495" y="228" text-anchor="middle" font-size="12" fill="#ffffff" font-family="sans-serif"><tspan x="495" dy="0">⭐ HCPP 能力发布</tspan><tspan x="495" dy="12">Material/Cupertino 独立解耦</tspan></text><circle cx="150" cy="305" r="10" fill="#37474f" stroke="#ffffff" stroke-width="2"/><text x="100" y="310" text-anchor="end" font-size="12" fill="#90caf9" font-family="sans-serif">2026.12</text><rect x="175" y="285" width="80" height="40" rx="8" fill="#37474f" filter="url(#shadow)"/>
+<text x="215" y="309" text-anchor="middle" font-size="14" fill="#ffffff" font-family="sans-serif"><tspan x="215" dy="0">3.47</tspan></text><rect x="270" y="280" width="450" height="50" rx="8" fill="#1a237e" filter="url(#shadow)"/>
+<text x="495" y="309" text-anchor="middle" font-size="12" fill="#ffffff" font-family="sans-serif"><tspan x="495" dy="0">年度收官版本</tspan></text><text x="400" y="380" text-anchor="middle" font-size="13" fill="#fdd835" font-family="sans-serif">与 Flutter SIG 共同催熟 Release 版本，为新特性提供经验反馈</text>
+</svg>

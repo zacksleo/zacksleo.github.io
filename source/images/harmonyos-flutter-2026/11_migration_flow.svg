@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="750" height="350" viewBox="0 0 750 350">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#0d1b3e"/>
+    <stop offset="100%" stop-color="#1a3a6b"/>
+  </linearGradient>
+  <filter id="shadow"><feDropShadow dx="2" dy="2" stdDeviation="3" flood-opacity="0.3"/></filter>
+  <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+    <polygon points="0 0, 10 3.5, 0 7" fill="#42a5f5"/>
+  </marker>
+  <marker id="arroww" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+    <polygon points="0 0, 10 3.5, 0 7" fill="#ffffff"/>
+  </marker>
+</defs>
+<rect width="750" height="350" fill="url(#bg)"/>
+<text x="375" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#ffffff">应用迁移策略与流程</text>
+<rect x="30" y="80" width="140" height="50" rx="8" fill="#7c4dff" filter="url(#shadow)"/>
+<text x="100" y="109" text-anchor="middle" font-size="14" fill="#ffffff" font-family="sans-serif"><tspan x="100" dy="0">新应用</tspan></text><rect x="30" y="180" width="140" height="50" rx="8" fill="#7c4dff" filter="url(#shadow)"/>
+<text x="100" y="209" text-anchor="middle" font-size="14" fill="#ffffff" font-family="sans-serif"><tspan x="100" dy="0">现有应用</tspan></text><rect x="300" y="150" width="160" height="50" rx="8" fill="#1565c0" filter="url(#shadow)"/>
+<text x="380" y="179" text-anchor="middle" font-size="14" fill="#ffffff" font-family="sans-serif"><tspan x="380" dy="0">迁移流程</tspan></text><rect x="500" y="150" width="170" height="50" rx="8" fill="#ff9800" filter="url(#shadow)"/>
+<text x="585" y="173" text-anchor="middle" font-size="13" fill="#ffffff" font-family="sans-serif"><tspan x="585" dy="0">基准测试</tspan><tspan x="585" dy="13">现有应用</tspan></text><rect x="680" y="110" width="60" height="120" rx="8" fill="#00897b" filter="url(#shadow)"/>
+<text x="710" y="175" text-anchor="middle" font-size="15" fill="#ffffff" font-family="sans-serif"><tspan x="710" dy="0">新架构</tspan></text><line x1="170" y1="105" x2="680" y2="150" stroke="#42a5f5" stroke-width="2" marker-end="url(#arrow)"/><text x="420" y="90" text-anchor="middle" font-size="12" fill="#90caf9" font-family="sans-serif">直接开发</text><line x1="170" y1="205" x2="300" y2="175" stroke="#42a5f5" stroke-width="2" marker-end="url(#arrow)"/><text x="230" y="215" text-anchor="middle" font-size="12" fill="#90caf9" font-family="sans-serif">渐进迁移</text><line x1="460" y1="175" x2="500" y2="175" stroke="#42a5f5" stroke-width="2" marker-end="url(#arrow)"/><line x1="670" y1="175" x2="680" y2="170" stroke="#42a5f5" stroke-width="2" marker-end="url(#arrow)"/>
+</svg>

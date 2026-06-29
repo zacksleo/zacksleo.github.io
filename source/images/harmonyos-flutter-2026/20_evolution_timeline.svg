@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="250" viewBox="0 0 900 250">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#0d1b3e"/>
+    <stop offset="100%" stop-color="#1a3a6b"/>
+  </linearGradient>
+  <filter id="shadow"><feDropShadow dx="2" dy="2" stdDeviation="3" flood-opacity="0.3"/></filter>
+  <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+    <polygon points="0 0, 10 3.5, 0 7" fill="#42a5f5"/>
+  </marker>
+  <marker id="arroww" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+    <polygon points="0 0, 10 3.5, 0 7" fill="#ffffff"/>
+  </marker>
+</defs>
+<rect width="900" height="250" fill="url(#bg)"/>
+<text x="450" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#ffffff">Flutter on OpenHarmony 技术进化路线</text>
+<line x1="50" y1="130" x2="850" y2="130" stroke="#4caf50" stroke-width="3"/><circle cx="80" cy="130" r="10" fill="#42a5f5" stroke="#ffffff" stroke-width="2"/><text x="80" y="165" text-anchor="middle" font-size="11" fill="#90caf9" font-family="sans-serif">2024.12</text><text x="80" y="100" text-anchor="middle" font-size="11" fill="#ffffff" font-family="sans-serif">MVP
+首发</text><circle cx="210" cy="130" r="10" fill="#7c4dff" stroke="#ffffff" stroke-width="2"/><text x="210" y="165" text-anchor="middle" font-size="11" fill="#90caf9" font-family="sans-serif">2025.04</text><text x="210" y="100" text-anchor="middle" font-size="11" fill="#ffffff" font-family="sans-serif">可行性
+研究完成</text><circle cx="340" cy="130" r="10" fill="#00897b" stroke="#ffffff" stroke-width="2"/><text x="340" y="165" text-anchor="middle" font-size="11" fill="#90caf9" font-family="sans-serif">2026.Q1</text><text x="340" y="100" text-anchor="middle" font-size="11" fill="#ffffff" font-family="sans-serif">3.35
+联合打样</text><circle cx="470" cy="130" r="10" fill="#4caf50" stroke="#ffffff" stroke-width="2"/><text x="470" y="165" text-anchor="middle" font-size="11" fill="#90caf9" font-family="sans-serif">2026.Q2</text><text x="470" y="100" text-anchor="middle" font-size="11" fill="#ffffff" font-family="sans-serif">Embedder
+社区联合开发</text><circle cx="600" cy="130" r="10" fill="#ff9800" stroke="#ffffff" stroke-width="2"/><text x="600" y="165" text-anchor="middle" font-size="11" fill="#90caf9" font-family="sans-serif">2026.Q3</text><text x="600" y="100" text-anchor="middle" font-size="11" fill="#ffffff" font-family="sans-serif">3.44
+HCPP发布</text><circle cx="750" cy="130" r="10" fill="#fdd835" stroke="#ffffff" stroke-width="2"/><text x="750" y="165" text-anchor="middle" font-size="11" fill="#90caf9" font-family="sans-serif">2027.Q3</text><text x="750" y="100" text-anchor="middle" font-size="11" fill="#ffffff" font-family="sans-serif">生产就绪
+特性</text>
+</svg>
