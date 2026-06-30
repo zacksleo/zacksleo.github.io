@@ -85,7 +85,7 @@ Flutter 当前的嵌入层（Embedding Layer）API 主要为移动端设计，�
 
 **方向二：Material UI 与 Cupertino UI 独立解耦**，减少引擎核心对特定设计语言的依赖，使得各平台能够灵活选择或替换 UI 组件集。这一方向的推进意味着 Flutter 在非 Android/iOS 平台（包括鸿蒙）上的 UI 层定制将更加灵活。
 
-> 📌 参考来源：[Flutter 架构演进分析](https://zhuanlan.zhihu.com/p/1986399159603991382)、[Embedder 解耦与 Embedded-ohos 方案](https://zhuanlan.zhihu.com/p/2009657387510952563)
+> 📌 参考来源：[Flutter UI 设计库解耦重构进度](https://zhuanlan.zhihu.com/p/1986399159603991382)、[Flutter 2026 Roadmap](https://zhuanlan.zhihu.com/p/2009657387510952563)
 
 ![Flutter 架构重构：As-Is → To-Be](/images/harmonyos-flutter-2026/05_arch_evolution.svg)
 
@@ -315,3 +315,5 @@ Flutter 在鸿蒙生态中的生产可行性已通过真实商业应用得到全
 2. [Flutter on OpenHarmony Embedder 方案与 Embedded-ohos 适配路径](https://zhuanlan.zhihu.com/p/2009657387510952563)
 3. [Flutter Architectural Overview](https://docs.flutter.dev/resources/architectural-overview)
 4. [OpenHarmony 跨平台框架社区白皮书](https://atomgit.com/OpenHarmony-CrossPlatformFramework/community)
+5. [HDC 2026 Flutter on OpenHarmony Presentation](https://github.com/davidinux/pub/blob/main/conferences/hdc26/README.md)
+6. [Flutter 正在推进全新 PlatformView 实现 HCPP](https://zhuanlan.zhihu.com/p/24176997869)
