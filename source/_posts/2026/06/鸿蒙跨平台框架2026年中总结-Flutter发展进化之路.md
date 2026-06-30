@@ -317,3 +317,4 @@ Flutter 在鸿蒙生态中的生产可行性已通过真实商业应用得到全
 4. [OpenHarmony 跨平台框架社区白皮书](https://atomgit.com/OpenHarmony-CrossPlatformFramework/community)
 5. [HDC 2026 Flutter on OpenHarmony Presentation](https://github.com/davidinux/pub/blob/main/conferences/hdc26/README.md)
 6. [Flutter 正在推进全新 PlatformView 实现 HCPP](https://zhuanlan.zhihu.com/p/24176997869)
+7. [开源鸿蒙跨平台框架社区](https://gitcode.com/OpenHarmony-CrossPlatformFramework/community)
