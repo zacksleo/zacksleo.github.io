@@ -15,15 +15,22 @@
 </defs>
 <rect width="800" height="420" fill="url(#bg)"/>
 <text x="400" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#ffffff">代码结构演变：从 334 模型到 235 模型</text>
-<path d="M220,220 L220.0,100.0 A120,120 0 0,1 334.1,257.1 Z" fill="#fdd835" stroke="#0d1b3e" stroke-width="2"/>
-<path d="M220,220 L334.1,257.1 A120,120 0 0,1 149.5,317.1 Z" fill="#42a5f5" stroke="#0d1b3e" stroke-width="2"/>
-<path d="M220,220 L149.5,317.1 A120,120 0 0,1 220.0,100.0 Z" fill="#ff9800" stroke="#0d1b3e" stroke-width="2"/>
-<text x="337.3074641843674" y="134.7711384175914" text-anchor="middle" font-size="12" fill="#ffffff" font-family="sans-serif">原生代码 30%</text>
-<text x="264.8074641843674" y="357.90319486279725" text-anchor="middle" font-size="12" fill="#ffffff" font-family="sans-serif">跨平台代码 30%</text>
-<text x="82.09680513720272" y="175.19253581563265" text-anchor="middle" font-size="12" fill="#ffffff" font-family="sans-serif">C/C++代码 40%</text><text x="220" y="85" text-anchor="middle" font-size="16" fill="#ffffff" font-family="sans-serif">As-Is: 334 模型</text><path d="M580,220 L580.0,100.0 A120,120 0 0,1 694.1,182.9 Z" fill="#fdd835" stroke="#0d1b3e" stroke-width="2"/>
-<path d="M580,220 L694.1,182.9 A120,120 0 0,1 580.0,340.0 Z" fill="#42a5f5" stroke="#0d1b3e" stroke-width="2"/>
-<path d="M580,220 L580.0,340.0 A120,120 0 0,1 580.0,100.0 Z" fill="#ff9800" stroke="#0d1b3e" stroke-width="2"/>
-<text x="665.2288615824086" y="102.69253581563264" text-anchor="middle" font-size="12" fill="#ffffff" font-family="sans-serif">原生代码 20%</text>
-<text x="697.3074641843674" y="305.2288615824086" text-anchor="middle" font-size="12" fill="#ffffff" font-family="sans-serif">跨平台代码 30%</text>
-<text x="435.0" y="220.00000000000003" text-anchor="middle" font-size="12" fill="#ffffff" font-family="sans-serif">C/C++代码 50%</text><text x="580" y="85" text-anchor="middle" font-size="16" fill="#ffffff" font-family="sans-serif">To-Be: 235 模型</text><line x1="380" y1="100" x2="380" y2="380" stroke="#ffffff" stroke-width="1" stroke-dasharray="5,5"/><text x="400" y="400" text-anchor="middle" font-size="13" fill="#90caf9" font-family="sans-serif">→ 跨平台代码占比持续上升，头部伙伴跨平台代码占比越来越高</text>
+<!-- 334 模型：原生30%、C/C++代码30%、跨平台代码40% -->
+<path d="M220,220 L220,100 A120,120 0 0,1 334.13,257.08 Z" fill="#fdd835" stroke="#0d1b3e" stroke-width="2"/>
+<path d="M220,220 L334.13,257.08 A120,120 0 0,1 149.47,317.08 Z" fill="#ff9800" stroke="#0d1b3e" stroke-width="2"/>
+<path d="M220,220 L149.47,317.08 A120,120 0 0,1 220,100 Z" fill="#42a5f5" stroke="#0d1b3e" stroke-width="2"/>
+<text x="280.68" y="175.92" text-anchor="middle" font-size="12" fill="#ffffff" font-family="sans-serif">原生代码 30%</text>
+<text x="243.18" y="291.33" text-anchor="middle" font-size="12" fill="#ffffff" font-family="sans-serif">C/C++代码 30%</text>
+<text x="148.67" y="196.82" text-anchor="middle" font-size="12" fill="#ffffff" font-family="sans-serif">跨平台代码 40%</text>
+<text x="220" y="85" text-anchor="middle" font-size="16" fill="#ffffff" font-family="sans-serif">As-Is: 334 模型</text>
+<!-- 235 模型：C/C++代码20%、原生30%、跨平台代码50% -->
+<path d="M580,220 L580,100 A120,120 0 0,1 694.13,182.92 Z" fill="#ff9800" stroke="#0d1b3e" stroke-width="2"/>
+<path d="M580,220 L694.13,182.92 A120,120 0 0,1 580,340 Z" fill="#fdd835" stroke="#0d1b3e" stroke-width="2"/>
+<path d="M580,220 L580,340 A120,120 0 1,1 580,100 Z" fill="#42a5f5" stroke="#0d1b3e" stroke-width="2"/>
+<text x="624.08" y="159.32" text-anchor="middle" font-size="12" fill="#ffffff" font-family="sans-serif">C/C++代码 20%</text>
+<text x="640.68" y="264.08" text-anchor="middle" font-size="12" fill="#ffffff" font-family="sans-serif">原生代码 30%</text>
+<text x="505" y="220" text-anchor="middle" font-size="12" fill="#ffffff" font-family="sans-serif">跨平台代码 50%</text>
+<text x="580" y="85" text-anchor="middle" font-size="16" fill="#ffffff" font-family="sans-serif">To-Be: 235 模型</text>
+<line x1="380" y1="100" x2="380" y2="380" stroke="#ffffff" stroke-width="1" stroke-dasharray="5,5"/>
+<text x="400" y="400" text-anchor="middle" font-size="13" fill="#90caf9" font-family="sans-serif">→ 跨平台代码占比持续上升，头部伙伴跨平台代码占比越来越高</text>
 </svg>
