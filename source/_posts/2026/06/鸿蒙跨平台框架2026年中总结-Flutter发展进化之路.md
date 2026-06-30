@@ -1,6 +1,6 @@
 ---
 title: 鸿蒙跨平台框架2026年中总结：Flutter 发展进化之路
-date: 2026-06-25 10:00:00
+date: 2026-06-30 10:00:00
 tags:
   - 鸿蒙
   - HarmonyOS
@@ -9,11 +9,13 @@ tags:
   - OpenHarmony
   - Embedder API
   - HCPP
+  - React Native
+  - KMP
+  - CMP
 categories:
   - 技术分享
 author: 少湖
 ---
-
 
 <div align="center">
   <img src="https://storage.googleapis.com/cms-storage-bucket/6e19fee6b47b36ca613f.png" alt="Flutter Logo" width="120" />
@@ -21,23 +23,39 @@ author: 少湖
   <img src="https://commons.wikimedia.org/wiki/Special:FilePath/OpenHarmony_logo.png" alt="OpenHarmony Logo" width="200" />
 </div>
 
-> 2026年，Flutter在OpenHarmony生态中迎来了从“可用”迈向“好用”的关键转折点。底层架构重构方案确定、Hybrid Composition++混合渲染技术落地、社区版本快速迭代、性能优化持续突破——Flutter on OpenHarmony正在一条清晰的技术进化之路上加速前行。
+> 2026年，鸿蒙跨平台生态迎来爆发式增长，Flutter 在 OpenHarmony 生态中从"可用"迈向"好用"的关键转折点，React Native 鸿蒙适配走向成熟，KMP/CMP 进入野蛮生长期。底层架构重构方案确定、Hybrid Composition++混合渲染技术落地、社区版本快速迭代、性能优化持续突破——HarmonyOS 跨平台技术栈正在一条清晰的技术进化之路上加速前行。
 
 ---
 
-## 一、跨平台开发的黄金时代：Flutter 的机遇与挑战
+## 一、跨平台开发的黄金时代：鸿蒙生态全景
 
-万物智联时代，终端设备形态日益多样，跨平台框架作为连接多端生态的核心中间件，正迎来前所未有的发展机遇。数据显示，Flutter 生态规模从2025年的2627增长至预测的3921，在主流跨平台框架中保持领先地位。抖音、快手、小红书、哔哩哔哩、支付宝、淘宝、百度、腾讯视频等头部应用已广泛采用跨平台框架进行多端开发，其中 Flutter、KMP、React Native 各自占据重要份额。
+### 头部应用跨平台化加速
+
+万物智联时代，终端设备形态日益多样，跨平台框架作为连接多端生态的核心中间件，正迎来前所未有的发展机遇。头部应用在鸿蒙上的跨平台代码占比越来越高——**快手、腾讯视频、小红书、携程、美团**等一线应用正在加速将其业务迁移到跨平台框架上，以降低多端维护成本。
+
+从数据来看，Flutter 生态规模从2025年的2627款应用增长至2026年预测的3921款，在主流跨平台框架中继续保持领先优势；**React Native 鸿蒙应用从250款飙升至400款，近乎翻倍**，标志着 RN-ohos 已逐渐走向成熟；**KMP/CMP 应用由11款扩张到50款以上**，在应用大厂和 Jetbrains 的带领下，进入野蛮生长期。
+
+抖音、快手、小红书、哔哩哔哩、支付宝、淘宝、百度、腾讯视频等头部应用已广泛采用跨平台框架进行多端开发，其中 Flutter、KMP、React Native 各自占据重要份额。
 
 更值得关注的是，AI 驱动的代码结构正在发生深刻变化——传统"334模型"（原创代码30%、跨平台代码30%、C/C++代码40%）正逐步转变为"235模型"（原创代码20%、跨平台代码30%、C/C++代码50%），跨平台开发的战略地位持续上升。
-
-在这一背景下，Flutter 如何深度融入 OpenHarmony 生态，成为2026年社区技术攻关的核心议题。
 
 ![Flutter on OpenHarmony 2026 技术进化路线](/images/harmonyos-flutter-2026/20_evolution_timeline.svg)
 
 ![代码结构演变：从 334 模型到 235 模型](/images/harmonyos-flutter-2026/01_code_structure_evolution.svg)
 
 ![跨平台框架增长趋势](/images/harmonyos-flutter-2026/02_framework_growth.svg)
+
+### 鸿蒙跨平台框架全景
+
+目前，支持鸿蒙的开源跨平台 UI 框架已形成丰富的生态矩阵，根据其驱动模式可分为三类：
+
+| 分类 | 框架 | 说明 |
+|------|------|------|
+| **社区驱动** | Flutter、Kuikly、Electron、KMP&CMP、Cordova、Tauri、Ionic | 由开源社区主导适配和迭代 |
+| **上游社区参与** | React Native | 上游社区直接参与鸿蒙适配工作，而非仅由第三方维护 |
+| **创建者亲自下场** | Taro、QT、CJMP（仓颉）、Uniapp | 框架原团队／公司直接支持鸿蒙版本 |
+
+这种"三层驱动"的生态格局，反映了鸿蒙跨平台的广度和深度——不仅吸引了成熟框架的社区自发适配，也获得了上游原团队的官方支持，甚至催生了华为自研的 CJMP 这一全新方案。
 
 ---
 
@@ -61,21 +79,25 @@ Flutter 当前的嵌入层（Embedding Layer）API 主要为移动端设计，�
 
 每一次 Flutter 版本发布都需要大量返工，新特性的采纳速度大幅降低，维护负担随时间累积。
 
-### 演进方向：统一的 Embedder API
+### 演进方向：统一的 Embedder API 与材质解耦
 
-面向未来的架构重构方案已日趋明显——目标是真正实现"Write Once, Run Anywhere"。核心思路是引入统一的 **Flutter Embedder API（C API）**，将平台特定代码隔离在 Embedder 层，使 Framework 和 Engine 保持干净，便于上游贡献。
+面向未来的架构重构方案已日趋明显——目标是真正实现"Write Once, Run Anywhere"。核心思路有两大方向：
+
+**方向一：统一的 Flutter Embedder API（C API）**，将平台特定代码隔离在 Embedder 层，使 Framework 和 Engine 保持干净，便于上游贡献。随着嵌入层（Embedder）的不断完善，Framework、Engine、Embedder 三层有望进一步解耦。对于鸿蒙 Flutter 适配而言，未来可通过 **Embedded-ohos** 的方式实现——届时适配成本将大大降低，兼容性显著提升。
+
+**方向二：Material UI 与 Cupertino UI 独立解耦**，减少引擎核心对特定设计语言的依赖，使得各平台能够灵活选择或替换 UI 组件集。这一方向的推进意味着 Flutter 在非 Android/iOS 平台（包括鸿蒙）上的 UI 层定制将更加灵活。
+
+> 📌 参考来源：[Flutter 架构演进分析](https://zhuanlan.zhihu.com/p/1986399159603991382)、[Embedder 解耦与 Embedded-ohos 方案](https://zhuanlan.zhihu.com/p/2009657387510952563)
 
 ![Flutter 架构重构：As-Is → To-Be](/images/harmonyos-flutter-2026/05_arch_evolution.svg)
 
-新架构下，所有平台共享相同的 Embedder API 接口，仅实现层因平台而异。这一方向已获得 Flutter 上游社区的认可与推动。
-
-> 💡 上方架构图直观展示了 As-Is 与 To-Be 的对比：当前各平台各自维护独立的 Embedding 层，平台代码与非平台代码交织；未来通过统一的 Embedder API（C API），所有平台共享同一接口，仅实现因平台而异。
+新架构下，所有平台共享相同的 Embedder API 接口，仅实现层因平台而异，加上 Material/Cupertino 的解耦，Flutter 的架构将更加模块化、平台无关化。这一方向已获得 Flutter 上游社区的认可与推动。
 
 ---
 
 ## 四、Flutter 分层架构与 Embedder 定位
 
-Flutter 的架构由三个清晰的层次组成，Embedder 在其中扮演着“平台桥梁”的关键角色：
+Flutter 的架构由三个清晰的层次组成，Embedder 在其中扮演着"平台桥梁"的关键角色：
 
 | 层级 | 语言 | 核心职责 |
 |------|------|--------|
@@ -109,8 +131,6 @@ Flutter 的架构由三个清晰的层次组成，Embedder 在其中扮演着“
 - **生产就绪**：范围可控的生产级路径
 - **尊重 OpenHarmony 架构**：遵循 OpenHarmony 的系统设计
 
-![三种方案评估](/images/harmonyos-flutter-2026/07_three_approaches.svg)
-
 ### Embedder API 架构详解
 
 Embedder API 定义了 Flutter Engine 与平台代码之间的稳定 C 接口，核心 API 函数签名包括：
@@ -120,22 +140,11 @@ Embedder API 定义了 Flutter Engine 与平台代码之间的稳定 C 接口，
 - `FlutterEngineRegisterExternalTexture(engine id)` — 外部纹理注册
 - `FlutterEngineDispatchPointerDataPacket()` — 触摸事件分发
 
-分层架构如下：
-
-1. **Flutter Engine (C++)**：Dart Runtime、Platform Channels、Renderer Skia/Impeller
-2. **Embedder API Boundary**：上述四个 API 函数
-3. **OpenHarmony Embedder**：Native API Bridge、ArkUI Render Surface、OHOS Input Handler
-4. **OHOS Platform**：OHOS System APIs
-
-![Flutter Embedder API 推荐架构](/images/harmonyos-flutter-2026/08_embedder_api_arch.svg)
-
 ### 跨平台一致性验证
 
-Embedder API 接口在所有平台完全一致，仅平台特定实现不同：
+Embedder API 接口在所有平台完全一致，仅平台特定实现不同。OpenHarmony 遵循与 Android、iOS、Linux 完全相同的 Embedder 模式——接口一致，仅底层实现不同。如果未来通过 Embedded-ohos 方式实现，意味着 HarmonyOS 开发者只需关注 Embedder 层的实现，而无需触碰 Engine 和 Framework 核心，极大降低了维护成本。
 
 ![Embedder API 跨平台一致性](/images/harmonyos-flutter-2026/19_cross_platform_consistency.svg)
-
-OpenHarmony 遵循与 Android、iOS、Linux 完全相同的 Embedder 模式——接口一致，仅底层实现不同。
 
 ---
 
@@ -149,8 +158,6 @@ Flutter Embedder API 正在成为全球行业趋势，多家科技巨头积极�
 - **Samsung**：基于 Tizen 的 Flutter 项目，面向 IoT 和可穿戴设备
 
 这意味着 OpenHarmony 的 Embedder 路线与国际主流完全接轨，未来可复用全球社区的技术积累。
-
-![全球 Embedder 生态趋势](/images/harmonyos-flutter-2026/09_global_ecosystem.svg)
 
 ---
 
@@ -166,26 +173,6 @@ Flutter on OpenHarmony 的 Embedder 路线已制定清晰的三阶段路线图[^
 
 [^1]: 此为蓝图规划阶段，具体时间节点和内容可能根据社区进展和上下游依赖情况调整，不代表最终交付承诺。
 
-![Flutter on OpenHarmony 三阶段路线图](/images/harmonyos-flutter-2026/10_roadmap_gantt.svg)
-
-### Phase 2 关键活动
-
-- **性能评估**：新架构 vs 当前实现的对比基准测试
-- **迁移成本分析**：识别并最小化现有应用的迁移成本
-- **工具开发**：构建迁移工具和策略
-- **新应用开发**：基于新架构直接开发新应用
-- **迁移基准**：以现有应用为基准验证迁移效果
-
-### 迁移策略
-
-- **新应用** → 直接采用新架构（避免未来迁移成本）
-- **现有应用** → 以基准方式渐进式迁移
-- **风险缓解** → 通过早期挑战识别降低风险
-
-### 迁移流程
-
-![应用迁移策略与流程](/images/harmonyos-flutter-2026/11_migration_flow.svg)
-
 ---
 
 ## 八、Hybrid Composition++：混合渲染的质变
@@ -194,26 +181,7 @@ Flutter on OpenHarmony 的 Embedder 路线已制定清晰的三阶段路线图[^
 
 Hybrid Composition 的核心理念是将 PlatformView 从"Flutter 内部纹理合成"搬到"系统合成器（DPU）原生合成"。
 
-**架构流程**：Flutter Surface（PV 区透明）→ 系统合成器（DPU）→ 屏幕（HDR 支持）
-
 **核心优势**：零拷贝、HDR/宽色域直通、高刷新率
-
-### 当前现状与痛点
-
-目前 Flutter-OpenHarmony 采用 **TextureLayer（纹理回灌）** 方式，Flutter 把 PlatformView 当成"图片"画进自己的合成树：
-
-**流程**：PV (XComp) → GPU 采样 SurfaceTex → Flutter 引擎合成 → 屏幕
-
-**代价**：CPU/GPU 拷贝开销、8bit 色深限制、HDR 丢失
-
-### Hybrid Composition 实现方案
-
-采用分层渲染，通过 z-index 管理：
-
-- **z=0**：原生 PV（HDR视频）— 原生 XComponent，HDR YUV 帧，零拷贝，直送 DPU
-- **z=1**：Flutter 主 Surface（透明洞）
-
-**原理**：Flutter 主 Surface 在 PV 区域绘制透明洞，PV 由 ArkUI DISPLAY 直显，系统合成器将两层叠加到屏幕。
 
 ### Hybrid Composition++ 实现方案
 
@@ -226,11 +194,7 @@ HC++ 在 HC 基础上增加了 Overlay 层，支持更复杂的混合场景：
 | z=1 | PV2 layer（XComp DISPLAY） | 多 PV 支持 |
 | z=0 | PV1 layer（XComp DISPLAY） | HDR 直通 |
 
-**原理**：在 HC 基础上，引擎额外创建/池化"Overlay XComponent"承载 PV 上层 Flutter UI，由 RSTransaction 将多层原子提交给 DPU。
-
 **源社区进展**：HC++ 已在 Flutter 3.44 版本（2026年5月发布）中支持，但尚未默认开启。
-
-![Hybrid Composition++ 渲染方案对比](/images/harmonyos-flutter-2026/12_hcpp_comparison.svg)
 
 ### 预计收益
 
@@ -244,7 +208,21 @@ HC++ 在 HC 基础上增加了 Overlay 层，支持更复杂的混合场景：
 
 ---
 
-## 九、社区版本联合适配：加速迭代节奏
+## 九、跨平台框架趋势：KMP/CMP 异军突起
+
+### KMP/CMP 发布 Beta 版本
+
+2026年上半年，**KMP/CMP 发布 Beta 版本**，至此 KMP 在鸿蒙上初具完整能力。Kotlin Multiplatform 的"共享业务逻辑 + 灵活选择 UI 框架"架构理念，与鸿蒙生态初期需要快速适配大量应用的需求高度契合。在 Jetbrains 的持续投入和百度、快手、抖音、腾讯等头部应用大厂的推动下，KMP/CMP 进入了高速增长通道——从2025年的11款应用增长至50款以上。
+
+KMP 并非要替代 Flutter 或 React Native，而是填补了"逻辑共享 + 原生 UI"这一特定场景的空白。对于追求极致原生体验、同时需要多端共享核心业务逻辑的应用而言，KMP 正在成为不可忽视的选择。
+
+### React Native 鸿蒙适配走向成熟
+
+React Native 鸿蒙应用从250款增长至400款，近乎翻倍。美团、华为商城等头部应用的深度实践，以及上游社区的正式参与，标志着 RN-ohos 从"跑得通"迈向"跑得好"。React Native 新架构在鸿蒙上的落地，使得 Web 技术栈团队能够以更低的迁移成本进入鸿蒙生态。
+
+---
+
+## 十、社区版本联合适配：加速迭代节奏
 
 Flutter OpenHarmony 社区版本正在加快迭代，2026年规划4个版本发布：
 
@@ -255,13 +233,11 @@ Flutter OpenHarmony 社区版本正在加快迭代，2026年规划4个版本发�
 | 2026年9月 | **3.44** | **HCPP 能力发布**，提升 PlatformView 性能；Material 和 Cupertino 独立解耦 |
 | 2026年12月 | **3.47** | 年度收官版本 |
 
-社区通过联合打样适配的方式，与实际应用场景紧密结合，共同催熟 Release 版本，为 Flutter OpenHarmony 新特性提供经验反馈。3.35 版本已于2月启动联合打样适配并完成技术验证；3.44 版本的 HCPP 能力发布将是年度最重要的技术里程碑。
-
-![Flutter OpenHarmony 2026 版本发布计划](/images/harmonyos-flutter-2026/13_version_timeline.svg)
+值得一提的是，3.44 版本中 Material 和 Cupertino 独立解耦的推进，正是 Flutter 架构重构——减少核心对特定设计语言依赖这一方向的具体落地。这对鸿蒙开发者意味着，未来可能实现更灵活的 UI 层定制，甚至有机会构建鸿蒙原生的组件集。
 
 ---
 
-## 十、关键技术揭榜：性能与渲染双突破
+## 十一、关键技术揭榜：性能与渲染双突破
 
 在 Flutter 领域，两项关键技术揭榜成果尤为突出：
 
@@ -276,11 +252,9 @@ Flutter OpenHarmony 社区版本正在加快迭代，2026年规划4个版本发�
 - 达成原生视图与 Flutter 内容的正确层级混合
 - 数据无损，实现类似 Android 平台的 Hybrid Composition++ 混合渲染模式
 
-![关键技术揭榜：性能与渲染双突破](/images/harmonyos-flutter-2026/14_tech_breakthroughs.svg)
-
 ---
 
-## 十一、行业落地实践：Flutter 全链路生产验证
+## 十二、行业落地实践：Flutter 全链路生产验证
 
 Flutter 在鸿蒙生态中的生产可行性已通过真实商业应用得到全面验证。以汽车行业的旗舰应用为例，其在 HarmonyOS 上的 Flutter 落地路径具有标杆意义：
 
@@ -292,43 +266,11 @@ Flutter 在鸿蒙生态中的生产可行性已通过真实商业应用得到全
 | 2026年3月 | 完成三端（iOS / Android / HarmonyOS）开发一体化准备 |
 | 2026-2027年 | 鸿蒙手机功能全面支持新世代车型 |
 
-![Flutter 鸿蒙落地路线图](/images/harmonyos-flutter-2026/15_industry_landing.svg)
-
-### 多端统一与编译基线统一
-
-在生产实践中，建立了完整的 Flutter 多端统一策略体系：
-
-**Platform Configurations**
-- 统一 CI/CD 基础设施（Flutter / Gradle / Xcode 等）
-- Dart 层代码（含插件）可大部分复用
-- 平台条件对齐：`TargetPlatform.iOS` → `Platform.operatingSystem == 'openHarmony'`
-
-**Pluggable Plugin 策略**
-- 官方插件与 OpenHarmony 插件并行，版本号对齐
-- 示例：`image_picker: 0.8.6+2`（iOS & Android）↔ `image_picker_ohos: 0.8.6+2`（HarmonyOS）
-
-**Pipeline 策略**
-- CI/CD 覆盖 Apple、Google Play Store、App Gallery 等多渠道
-- PR Unit/集成测试覆盖检查
-
-![Flutter 多端统一策略与业务解耦架构](/images/harmonyos-flutter-2026/16_multiplatform_strategy.svg)
-
-### Flutter/Native 核心业务解耦
-
-通过 **Pigeon 插件**实现 Flutter 代码与原生层接口的三端解耦，形成清晰的架构分层：
-
-- **Business Package Layer**（顶层业务逻辑）
-- **Flutter Plugin Layer**：Flutter Plugin X、Pigeon component
-- **Native Interfaces**：System API、CarSDK（iOS/Android）、CarSDK（OpenHarmony）
-- **鸿蒙原生组件**：系统组件（BlueTooth/Wifi）、第三方库（grpc/etch）、自研模块（DriveStream）
-
-社区共建模式下，插件仓库依赖所有社区开发者参与贡献，包括代码 Review 和 Issue 提交，确保 Flutter 插件与其原生实现的持续维护与演进。
-
-![Flutter / Native 核心业务解耦架构](/images/harmonyos-flutter-2026/21_arch_decoupling.svg)
+在多端统一实践中，建立了完整的 Flutter 多端统一策略体系，包括统一 CI/CD 基础设施、Pluggable Plugin 策略（官方插件与 OpenHarmony 插件并行）、以及通过 Pigeon 插件实现 Flutter 与原生层的三端解耦。
 
 ---
 
-## 十二、跨平台框架白皮书：Flutter 章节的行业参考
+## 十三、跨平台框架白皮书：行业参考
 
 联合社区成员共同撰写的跨平台框架白皮书已正式发布，其中 Flutter 框架作为独立章节进行了系统性阐述：
 
@@ -343,26 +285,35 @@ Flutter 在鸿蒙生态中的生产可行性已通过真实商业应用得到全
 
 ---
 
-## 十三、展望：Flutter on OpenHarmony 的2026下半程
+## 十四、展望：鸿蒙跨平台的2026下半程
 
-2026年上半年，Flutter 在鸿蒙生态中完成了从技术选型到生产验证的全链路突破。展望下半年及未来，几个关键趋势值得关注：
+2026年上半年，鸿蒙跨平台生态完成了从技术选型到生产验证的全链路突破。展望下半年及未来，几个关键趋势值得关注：
 
-### 架构层面
-Flutter Embedder API 的统一化将持续推进，Phase 2 的社区联合开发将产出更多可复用的工具与迁移方案，为2027年 Q3 的生产就绪特性奠定基础。
+### Flutter 层面
 
-### 渲染层面
-Hybrid Composition++ 随着3.44版本的发布将进入实际验证阶段，HDR/宽色域直通、多PV共存等能力将大幅提升 Flutter 在音视频、地图等场景的表现。
+- **Embedder API 统一化**持续推进，Phase 2 的社区联合开发将产出更多可复用工具与迁移方案；Embedded-ohos 方案路径逐渐清晰，有望大幅降低鸿蒙 Flutter 适配成本
+- **Hybrid Composition++** 随着3.44版本的发布进入实际验证阶段，HDR/宽色域直通、多PV共存等能力将大幅提升音视频、地图等场景表现
+- **Material/Cupertino 解耦**为鸿蒙 UI 定制打开空间
 
-### 性能层面
-30%的性能优化目标已达成，后续将围绕引擎初始化、布局测量、渲染管线等持续深挖优化空间。
+### React Native 层面
 
-### 生态层面
-社区版本每季度迭代的节奏已经建立，联合打样适配机制确保新特性在实际应用中得到充分验证。随着更多开发者加入共建，Flutter on OpenHarmony 的三方库生态将持续丰富。
+- 头部应用实践积累将加速 RN-ohos 的工具链和生态成熟
+- 上游社区参与度持续加深
 
-从架构重构到混合渲染，从性能优化到生产落地，Flutter on OpenHarmony 正走在一条清晰、务实、可持续的进化之路上。
+### KMP/CMP 层面
 
-![Flutter on OpenHarmony 2026-2027 展望](/images/harmonyos-flutter-2026/18_outlook.svg)
+- Beta 版本后的快速迭代，更多应用大厂的实践案例将涌现
+- Jetbrains 持续投入 + 国内大厂推动，KMP 生态有望在下半年迎来爆发
+
+从架构重构到混合渲染，从性能优化到生产落地，HarmonyOS 跨平台技术栈正走在一条清晰、务实、可持续的进化之路上。三方鼎立，各展所长——这才是鸿蒙跨平台生态最真实的写照。
 
 ---
 
-*本文基于社区公开信息整理，反映 Flutter 在 OpenHarmony 生态中的技术发展现状与规划，仅代表少湖说个人观点。*
+*本文基于社区公开信息整理，反映鸿蒙跨平台技术发展现状与趋势，仅代表少湖说个人观点。*
+
+### 参考资料
+
+1. [Flutter 架构演进分析：Material/Cupertino 解耦与 Embedder API 统一](https://zhuanlan.zhihu.com/p/1986399159603991382)
+2. [Flutter on OpenHarmony Embedder 方案与 Embedded-ohos 适配路径](https://zhuanlan.zhihu.com/p/2009657387510952563)
+3. [Flutter Architectural Overview](https://docs.flutter.dev/resources/architectural-overview)
+4. [OpenHarmony 跨平台框架社区白皮书](https://atomgit.com/OpenHarmony-CrossPlatformFramework/community)
