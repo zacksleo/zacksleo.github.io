@@ -18,9 +18,7 @@ author: 少湖
 ---
 
 <div align="center">
-  <img src="https://storage.googleapis.com/cms-storage-bucket/6e19fee6b47b36ca613f.png" alt="Flutter Logo" width="120" />
-  &nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="https://commons.wikimedia.org/wiki/Special:FilePath/OpenHarmony_logo.png" alt="OpenHarmony Logo" width="200" />
+  <img src="/images/flutter-ohos.jpg" alt="Flutter Logo" width="200" />
 </div>
 
 > 2026年，鸿蒙跨平台生态迎来爆发式增长，Flutter 在 OpenHarmony 生态中从"可用"迈向"好用"的关键转折点，React Native 鸿蒙适配走向成熟，KMP/CMP 进入野蛮生长期。底层架构重构方案确定、Hybrid Composition++混合渲染技术落地、社区版本快速迭代、性能优化持续突破——HarmonyOS 跨平台技术栈正在一条清晰的技术进化之路上加速前行。
@@ -63,9 +61,7 @@ author: 少湖
 
 2026年，跨平台框架社区完成了基础设施的全面搭建——筹建PMC（项目管理委员会）和9个SIG（特别兴趣小组），汇聚30位PMC成员、52位Committer，并围绕CICD、安全、合规、运营四大专项方向开展系统性工作。
 
-在 Flutter 方向上，社区聚焦于底层架构演进、混合渲染适配、社区版本联合打样等核心工作。来自同程旅行、润和软件等 Flutter 社区版本的深度参与方，与 PMC 和 Flutter SIG 的开发者们共同推进，形成了产学研协同的共建格局。
-
-> **注意**：此前整个跨平台框架社区的 PMC 和 SIG 汇聚了腾讯、快手、美团、携程、百度、小红书、哔哩哔哩、阿里巴巴等30余家组织的开发者，但其中许多厂商实际参与的是 **KMP 或 React Native** 方向的工作，并非全部投入 Flutter。此处仅列举 Flutter 方向的直接贡献方。
+在 Flutter 方向上，社区聚焦于底层架构演进、混合渲染适配、社区版本联合打样等核心工作。来自各大厂等 Flutter 社区版本的深度参与方，与 PMC 和 Flutter SIG 的开发者们共同推进，形成了产学研协同的共建格局。
 
 上游核心贡献者（Committer）加入PMC，共同参与主社区技术框架制定，确保 OpenHarmony 平台的需求能够直接反馈到 Flutter 上游开发中。
 
