@@ -12,7 +12,7 @@ tags: [二级等保实战, MySQL, 阿里云]
 
 这样，用户空闲 30 分钟后，会自动退出登录。
 
-![alt text](/images/2025/09/08/image.png)
+![alt text](https://blog.shaohushuo.com/images/2025/09/08/image.png)
 
 
 ## 登录失败处理策略
@@ -44,7 +44,7 @@ FROM mysql.user
 WHERE user = 'test_user';
 ```
 
-![alt text](/images/2025/09/08/image-7.png)
+![alt text](https://blog.shaohushuo.com/images/2025/09/08/image-7.png)
 
 
 >解除锁定命令：ALTER USER 'test_user'@'%' ACCOUNT UNLOCK;
@@ -71,7 +71,7 @@ WHERE user = 'test_user';
 
 打开 RDS 控制台，进入实例详情页面，点击数据库连接，点击“关闭外网地址”。
 
-![alt text](/images/2025/09/08/image-1.png)
+![alt text](https://blog.shaohushuo.com/images/2025/09/08/image-1.png)
 
 ### 加密远程协议
 
@@ -79,24 +79,24 @@ WHERE user = 'test_user';
 
 打开 RDS 控制台，进入实例详情页面，点击“数据安全性”，在 SSL 设置处，开启 SSL 证书信息，点击确定
 
-![alt text](/images/2025/09/08/image-2.png)
+![alt text](https://blog.shaohushuo.com/images/2025/09/08/image-2.png)
 
 ### 数据库审计
 
 打开 RDS 控制台，进入实例详情页面，点击“自治服务”，找到“安全审计”，点击开启安全审计
 
 
-![alt text](/images/2025/09/08/image-3.png)
+![alt text](https://blog.shaohushuo.com/images/2025/09/08/image-3.png)
 
 
 审计数据存储时长选择180天，点击提交
 
-![alt text](/images/2025/09/08/image-4.png)
+![alt text](https://blog.shaohushuo.com/images/2025/09/08/image-4.png)
 
 开启成功后，点击“开始使用”
 
-![alt text](/images/2025/09/08/image-5.png)
+![alt text](https://blog.shaohushuo.com/images/2025/09/08/image-5.png)
 
 然后就进入了查看界面
 
-![alt text](/images/2025/09/08/image-6.png)
+![alt text](https://blog.shaohushuo.com/images/2025/09/08/image-6.png)

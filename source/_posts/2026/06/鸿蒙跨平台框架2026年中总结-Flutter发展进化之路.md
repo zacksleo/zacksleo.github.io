@@ -37,11 +37,11 @@ author: 少湖
 
 更值得关注的是，AI 驱动的代码结构正在发生深刻变化——传统"334模型"（原生30%、C/C++代码30%、跨平台代码40%）正逐步转变为"235模型"（C/C++代码20%、原生30%、跨平台代码50%），跨平台开发的战略地位持续上升。
 
-![Flutter on OpenHarmony 2026 技术进化路线](/images/harmonyos-flutter-2026/20_evolution_timeline.svg)
+![Flutter on OpenHarmony 2026 技术进化路线](https://blog.shaohushuo.com/images/harmonyos-flutter-2026/20_evolution_timeline.svg)
 
-![代码结构演变：从 334 模型到 235 模型](/images/harmonyos-flutter-2026/01_code_structure_evolution.svg)
+![代码结构演变：从 334 模型到 235 模型](https://blog.shaohushuo.com/images/harmonyos-flutter-2026/01_code_structure_evolution.svg)
 
-![跨平台框架增长趋势](/images/harmonyos-flutter-2026/02_framework_growth.svg)
+![跨平台框架增长趋势](https://blog.shaohushuo.com/images/harmonyos-flutter-2026/02_framework_growth.svg)
 
 ### 鸿蒙跨平台框架全景
 
@@ -65,7 +65,7 @@ author: 少湖
 
 上游核心贡献者（Committer）加入PMC，共同参与主社区技术框架制定，确保 OpenHarmony 平台的需求能够直接反馈到 Flutter 上游开发中。
 
-![PMC 与上游社区协同发展](/images/harmonyos-flutter-2026/04_collaboration_flow.svg)
+![PMC 与上游社区协同发展](https://blog.shaohushuo.com/images/harmonyos-flutter-2026/04_collaboration_flow.svg)
 
 ---
 
@@ -87,7 +87,7 @@ Flutter 当前的嵌入层（Embedding Layer）API 主要为移动端设计，�
 
 > 📌 参考来源：[Flutter UI 设计库解耦重构进度](https://zhuanlan.zhihu.com/p/1986399159603991382)、[Flutter 2026 Roadmap](https://zhuanlan.zhihu.com/p/2009657387510952563)
 
-![Flutter 架构重构：As-Is → To-Be](/images/harmonyos-flutter-2026/05_arch_evolution.svg)
+![Flutter 架构重构：As-Is → To-Be](https://blog.shaohushuo.com/images/harmonyos-flutter-2026/05_arch_evolution.svg)
 
 新架构下，所有平台共享相同的 Embedder API 接口，仅实现层因平台而异，加上 Material/Cupertino 的解耦，Flutter 的架构将更加模块化、平台无关化。这一方向已获得 Flutter 上游社区的认可与推动。
 
@@ -107,7 +107,7 @@ Flutter 的架构由三个清晰的层次组成，Embedder 在其中扮演着"�
 
 > 📌 参考来源：[Flutter Architectural Overview](https://docs.flutter.dev/resources/architectural-overview)
 
-![Flutter 分层架构详解](/images/harmonyos-flutter-2026/06_layered_arch.svg)
+![Flutter 分层架构详解](https://blog.shaohushuo.com/images/harmonyos-flutter-2026/06_layered_arch.svg)
 
 ---
 
@@ -142,7 +142,7 @@ Embedder API 定义了 Flutter Engine 与平台代码之间的稳定 C 接口，
 
 Embedder API 接口在所有平台完全一致，仅平台特定实现不同。OpenHarmony 遵循与 Android、iOS、Linux 完全相同的 Embedder 模式——接口一致，仅底层实现不同。如果未来通过 Embedded-ohos 方式实现，意味着 HarmonyOS 开发者只需关注 Embedder 层的实现，而无需触碰 Engine 和 Framework 核心，极大降低了维护成本。
 
-![Embedder API 跨平台一致性](/images/harmonyos-flutter-2026/19_cross_platform_consistency.svg)
+![Embedder API 跨平台一致性](https://blog.shaohushuo.com/images/harmonyos-flutter-2026/19_cross_platform_consistency.svg)
 
 ---
 

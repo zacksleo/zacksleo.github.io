@@ -8,7 +8,7 @@ tags: [阿里云, Windows, 磁盘扩容]
 
 如果磁盘总容量小于 2TB，则可以直接在阿里云控制台扩容后，在 Windows 系统内使用磁盘管理工具进行扩容。
 
-![alt text](/images/2025/11/03/image.png)
+![alt text](https://blog.shaohushuo.com/images/2025/11/03/image.png)
 
 ## 大于 2TB 扩容
 
@@ -18,11 +18,11 @@ tags: [阿里云, Windows, 磁盘扩容]
 
 打开磁盘管理工具，在下方磁盘处右键，点击属性，查看磁盘分区形式
 
-![alt text](/images/2025/11/03/image-1.png)
+![alt text](https://blog.shaohushuo.com/images/2025/11/03/image-1.png)
 
 点击卷标签页，查看分区形式是 MBR 还是 GPT，如下所示，如何磁盘分区形式是 MBR，则无法支持超过 2TB 的磁盘扩容，必须转换为 GPT 分区形式才能支持超过 2TB 的磁盘扩容。
 
-![alt text](/images/2025/11/03/image-2.png)
+![alt text](https://blog.shaohushuo.com/images/2025/11/03/image-2.png)
 
 ### GTP 直接扩容
 
@@ -36,33 +36,33 @@ tags: [阿里云, Windows, 磁盘扩容]
 
 首先创建磁盘快照，在阿里云控制台[创建快照](https://help.aliyun.com/zh/ecs/user-guide/create-a-snapshot)，并等待快照完成。
 
-![alt text](/images/2025/11/03/image-7.png)
+![alt text](https://blog.shaohushuo.com/images/2025/11/03/image-7.png)
 
 2. 原磁盘扩容
 
 在阿里云ECS控制台，进入块存储，点击扩容，然后根据提示扩容至 2.5T。
 
-![alt text](/images/2025/11/03/image-6.png)
+![alt text](https://blog.shaohushuo.com/images/2025/11/03/image-6.png)
 
 2. 使用快照创建一块新的磁盘 B
 
 在刚创建的快照右侧，找到“创建云盘”，
 
-![alt text](/images/2025/11/03/image-8.png)
+![alt text](https://blog.shaohushuo.com/images/2025/11/03/image-8.png)
 
 这创建一块 2T 的磁盘，同样，在 ECS 控制台，打开块存储，点击“创建云盘”，是否挂载选择“挂载到ECS实例”，大小选择 2T（2048G），付费类型选择按量付费，然后点击确认下单。
 
-![alt text](/images/2025/11/03/image-5.png)
+![alt text](https://blog.shaohushuo.com/images/2025/11/03/image-5.png)
 
 3. 原磁盘A 格式化为 GTP 分区
 
 ### 3.1. 回在磁盘管理，选中原磁盘，右键，点击删除卷
 
-![alt text](/images/2025/11/03/image-4.png)
+![alt text](https://blog.shaohushuo.com/images/2025/11/03/image-4.png)
 
 ### 3.2 当删除完毕后，右键单击磁盘，选择转换成 GTP 磁盘
 
-![alt text](/images/2025/11/03/image-3.png)
+![alt text](https://blog.shaohushuo.com/images/2025/11/03/image-3.png)
 
 ### 3.3 确认转换生效
 

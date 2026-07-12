@@ -24,7 +24,7 @@ tags: [阿里云, 宝塔运维实战, Nginx, IP]
 
 当访问网站时，如果访问的是 IP 地址，则会返回 403 错误，禁止访问，如下截图所示。
 
-![alt text](/images/2025/07/23/image-1.png)
+![alt text](https://blog.shaohushuo.com/images/2025/07/23/image-1.png)
 
 ## 扩展
 

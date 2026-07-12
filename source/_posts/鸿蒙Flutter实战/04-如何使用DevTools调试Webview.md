@@ -50,7 +50,7 @@ hdc fport tcp:9222 localabstract:webview_devtools_remote_43406
 
 选择需要调度的页面，点击 **inspect**，弹出 DevTools 窗口，开启页面调度
 
-![devtools](/images/鸿蒙Flutter实战/devtools.png)
+![devtools](https://blog.shaohushuo.com/images/鸿蒙Flutter实战/devtools.png)
 
 ## 其他
 

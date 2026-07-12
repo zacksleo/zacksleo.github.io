@@ -30,13 +30,13 @@ tags: [Python, 阿里云, OSS]
 
 点击权限管理，添加 `AliyunSTSAssumeRoleAccess` (调用STS服务AssumeRole接口的权限)
 
-![alt text](/images/2025/07/13/oss-upload.png)
+![alt text](https://blog.shaohushuo.com/images/2025/07/13/oss-upload.png)
 
 ### 创建角色
 
 创建一个角色，创建成功后，记录角色的 ARN，后面代码中会用到，为了方便演示，这里将角色命名为：`ramossuploadonly`
 
-![alt text](/images/2025/07/13/oss-upload-1.png)
+![alt text](https://blog.shaohushuo.com/images/2025/07/13/oss-upload-1.png)
 
 
 ### 添加权限策略
@@ -72,7 +72,7 @@ tags: [Python, 阿里云, OSS]
 
 打开对象存储 OSS，点击创建 Bucket，在弹窗中输入 bucket 名称
 
-![alt text](/images/2025/07/13/oss-upload-3.png)
+![alt text](https://blog.shaohushuo.com/images/2025/07/13/oss-upload-3.png)
 
 需要注意的是，需要记住这里的选择地域，后面代码中会用到，OSS上传需要指定地域，本文中选择`北京`。
 
@@ -128,7 +128,7 @@ bucket 为自己创建的 bucket 名称，本示例中为 oss-upload-demo
 region_id 为 bucket 所在的区域，本示例中为 cn-beijing
 host 为 bucket 的访问地址，本示例中为 http://oss-upload-demo.oss-cn-beijing.aliyuncs.com, 根据不同的区域，访问地址不同，可以通过[OSS地域和访问域名](https://help.aliyun.com/zh/oss/user-guide/regions-and-endpoints), 找到 bucket 对应地域的访问域名，选择外网 Endpoint
 
-![alt text](/images/2025/07/13/oss-upload-2.png)
+![alt text](https://blog.shaohushuo.com/images/2025/07/13/oss-upload-2.png)
 
 
 > 需要注意的是，官方 demo 中，需要全搜索 cn-hangzhou, 替换掉 bucket 地域的 ID
@@ -398,7 +398,7 @@ python server.py
 
 这将启动服务后，打开浏览器访问 http://127.0.0.1:8000, 将展示一个简单的上传页面，进行测试
 
-![alt text](/images/2025/07/13/oss-upload-4.png)
+![alt text](https://blog.shaohushuo.com/images/2025/07/13/oss-upload-4.png)
 
 
 首先选择文件，然后点击上传，这将先获取临时上传令牌，然后使用令牌，直接将文件上传到阿里云OSS

@@ -15,7 +15,7 @@ categories:
   - HDC2026
 ---
 
-![HDC 2026 跨平台框架专题](/images/HDC2026/cover.png)
+![HDC 2026 跨平台框架专题](https://blog.shaohushuo.com/images/HDC2026/cover.png)
 
 华为开发者大会 2026（HDC 2026）将于 **6月12日-14日** 在东莞松山湖盛大举行。今年的主题是「脑洞全开，共启新程」，HarmonyOS 全新版本、鸿蒙 AI 核心能力以及生态全新成果将重磅发布。
 

@@ -63,7 +63,7 @@ Token 是与**创建用户**绑定的，如果用户不在项目中，Token 会�
 5. 确认用户仍然在成员列表中
 
 
-![alt text](/images/2026/03/dji-console.png)
+![alt text](https://blog.shaohushuo.com/images/2026/03/dji-console.png)
 
 **常见场景：**
 
@@ -223,7 +223,7 @@ Headers:
 **截图示例：**
 
 
-![alt text](/images/2026/03/dkj-console-2.png)
+![alt text](https://blog.shaohushuo.com/images/2026/03/dkj-console-2.png)
 
 *图：大疆司空开发者中心 Token 管理界面示例*
 

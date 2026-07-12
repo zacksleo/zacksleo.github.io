@@ -50,11 +50,11 @@ jobs:
 `New repository secret` 按钮，准备添加变量。
 
 
-![alt text](/images/2025/06/25/image.png)
+![alt text](https://blog.shaohushuo.com/images/2025/06/25/image.png)
 
 2. 添加变量，分别添加 TCB_SECRET_ID、TCB_SECRET_KEY、TCB_ENV_ID。
 
-![alt text](/images/2025/06/25/image-1.png)
+![alt text](https://blog.shaohushuo.com/images/2025/06/25/image-1.png)
 
 TCB_SECRET_ID、TCB_SECRET_KEY，通过控制台/访问管理，找到访问密钥管理，添加。
 

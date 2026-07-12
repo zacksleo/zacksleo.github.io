@@ -9,7 +9,7 @@ tags: [docker, dockerswarm, 容器]
 
 开通服务器后，安装 Docker CE。如果使用阿里云，可以在购买下单时，选择预装 Docker社区版，如下图所示：
 
-![alt text](/images/2026/01/docker-ce.png)
+![alt text](https://blog.shaohushuo.com/images/2026/01/docker-ce.png)
 
 确认 Docker CE 安装成功
 

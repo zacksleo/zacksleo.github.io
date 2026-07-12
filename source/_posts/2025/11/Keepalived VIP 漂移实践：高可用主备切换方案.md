@@ -46,13 +46,13 @@ tags: [Keepalived, Windows, 磁盘扩容]
 
 首先需要确认使用的网卡及 内网IP地址, 使用 ifconfig 或 ip addr 命令查看网卡信息。
 
-![alt text](/images/2025/11/04/80e53973be83328198fb90b9d9a917ea.png)
+![alt text](https://blog.shaohushuo.com/images/2025/11/04/80e53973be83328198fb90b9d9a917ea.png)
 
 可以看到，使用的网卡是 ens5, 两台主机的 IP 地址分另是 10.42.7.7 和 10.42.7.8。
 
 使用 ip a 命令查看 IP 网段为 10.42.7.0/24：
 
-![alt text](/images/2025/11/04/9bbdb93a1bac3f319486af2d84162920.png)
+![alt text](https://blog.shaohushuo.com/images/2025/11/04/9bbdb93a1bac3f319486af2d84162920.png)
 
 主节点配置，主节点的优先级是 101, preempt_delay 设置成 0，表示主节点可立即抢回 VIP。
 
@@ -133,7 +133,7 @@ vrrp_instance keepalived_service {
 systemctl restart keepalived
 ```
 
-![alt text](/images/2025/11/04/6535f9980aa71d5b6609d4bd1c03db08.png)
+![alt text](https://blog.shaohushuo.com/images/2025/11/04/6535f9980aa71d5b6609d4bd1c03db08.png)
 
 ### 健康检查脚本示例 `/etc/keepalived/service_check.sh`
 
@@ -178,11 +178,11 @@ chmod +x /etc/keepalived/service_check.sh
 
    如图所示，已经停止了 nginx
 
-   ![alt text](/images/2025/11/04/cbc6989f3de7bc2e900210cc6f438540.png)
+   ![alt text](https://blog.shaohushuo.com/images/2025/11/04/cbc6989f3de7bc2e900210cc6f438540.png)
 
    在主节点查看，确认没有绑定 VIP：
 
-   ![alt text](/images/2025/11/04/4db0991c54cedadf3443caccae525496.png)
+   ![alt text](https://blog.shaohushuo.com/images/2025/11/04/4db0991c54cedadf3443caccae525496.png)
 
    - 检查备节点 VIP 是否接管：
    ```bash
@@ -207,7 +207,7 @@ chmod +x /etc/keepalived/service_check.sh
    ```
    如果有显示内容，代表 VIP 已回切成功。
 
-   ![alt text](/images/2025/11/04/9aebb6ac7d715d3ae2c5b37c2964efd7.png)
+   ![alt text](https://blog.shaohushuo.com/images/2025/11/04/9aebb6ac7d715d3ae2c5b37c2964efd7.png)
 
 ---
 

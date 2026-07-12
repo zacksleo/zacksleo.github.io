@@ -10,24 +10,24 @@ tags: [云主机, 宝塔面板, DeepSeek, 华为云, 智能体]
 
 如果没有华为账号的话，先点击注册；有账号的话直接登录。
 
-![alt text](/images/2025/07/06/iShot_2025-07-06_19.38.14.png)
+![alt text](https://blog.shaohushuo.com/images/2025/07/06/iShot_2025-07-06_19.38.14.png)
 
 
 根据提示，填写手机号和密码，完成注册。
 
 
-![alt text](/images/2025/07/06/iShot_2025-07-06_19.38.54.png)
+![alt text](https://blog.shaohushuo.com/images/2025/07/06/iShot_2025-07-06_19.38.54.png)
 
 
 然后找到配置云主机
 
 
-![alt text](/images/2025/07/06/image.png)
+![alt text](https://blog.shaohushuo.com/images/2025/07/06/image.png)
 
 
 根据下面的提示选择配置，然后点击安装。
 
-![alt text](/images/2025/07/06/image-1.png)
+![alt text](https://blog.shaohushuo.com/images/2025/07/06/image-1.png)
 
 
 这样云主机就领取并安装好了。
@@ -38,16 +38,16 @@ tags: [云主机, 宝塔面板, DeepSeek, 华为云, 智能体]
 
 首先点击打开云主机，选择进入桌面
 
-![alt text](/images/2025/07/06/iShot_2025-07-06_19.44.02.png)
+![alt text](https://blog.shaohushuo.com/images/2025/07/06/iShot_2025-07-06_19.44.02.png)
 
 打开云主机，会进入初始化界面，等待几分钟
 
-![alt text](/images/2025/07/06/iShot_2025-07-06_18.53.24.png)
+![alt text](https://blog.shaohushuo.com/images/2025/07/06/iShot_2025-07-06_18.53.24.png)
 
 
 然后就看到云主机的桌面了
 
-![alt text](/images/2025/07/06/iShot_2025-07-06_18.57.00.png)
+![alt text](https://blog.shaohushuo.com/images/2025/07/06/iShot_2025-07-06_18.57.00.png)
 
 
 
@@ -62,15 +62,15 @@ Dify 是一个开源的生成式 AI 应用开发平台，旨在简化和加速 A
 打开宝塔的 Docker 菜单，搜索 Dify，找到第一个，点击安装。
 
 
-![alt text](/images/2025/07/31/iShot_2025-07-24_23.58.39.png)
+![alt text](https://blog.shaohushuo.com/images/2025/07/31/iShot_2025-07-24_23.58.39.png)
 
 这里按默认的选项即可，点击确定开发安装。
 
-![alt text](/images/2025/07/31/image.png)
+![alt text](https://blog.shaohushuo.com/images/2025/07/31/image.png)
 
 等待安装
 
-![alt text](/images/2025/07/31/image-1.png)
+![alt text](https://blog.shaohushuo.com/images/2025/07/31/image-1.png)
 
 ## 配置
 

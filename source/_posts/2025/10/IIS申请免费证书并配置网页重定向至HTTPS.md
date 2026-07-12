@@ -20,27 +20,27 @@ tags: [IIS, HTTPS, SSL, 证书]
 
 按照提示依次执行，输入 N，创建证书
 
-![alt text](/images/2025/10/28/image.png)
+![alt text](https://blog.shaohushuo.com/images/2025/10/28/image.png)
 
 输入网站对应编号，这里显示编号为 6000，回车
 
-![alt text](/images/2025/10/28/image-1.png)
+![alt text](https://blog.shaohushuo.com/images/2025/10/28/image-1.png)
 
 输入 P，选择使用搜索模式选择绑定的域名
 
-![alt text](/images/2025/10/28/image-2.png)
+![alt text](https://blog.shaohushuo.com/images/2025/10/28/image-2.png)
 
 输入申请的域名，例如这里输入 `www.flex***.com`，需要注意的是，这里的域名必须和 IIS 绑定的域名一致，同时该域名需要解析到当前服务器的 IP 地址而且成正常访问，否则申请会失败。
 
-![alt text](/images/2025/10/28/image-3.png)
+![alt text](https://blog.shaohushuo.com/images/2025/10/28/image-3.png)
 
 接下来回车，输入 y，继续操作
 
-![alt text](/images/2025/10/28/image-4.png)
+![alt text](https://blog.shaohushuo.com/images/2025/10/28/image-4.png)
 
 继续按操作提示，直至完成证书申请。
 
-![alt text](/images/2025/10/28/image-5.png)
+![alt text](https://blog.shaohushuo.com/images/2025/10/28/image-5.png)
 
 ## 配置 IIS 重定向至 HTTPS
 

@@ -31,12 +31,12 @@ appium --use-plugins=inspector --allow-cors
 }
 ```
 
-![alt text](/images/2025/06/04/image-2.png)
+![alt text](https://blog.shaohushuo.com/images/2025/06/04/image-2.png)
 
 
 点击 +号，开启位置定位查询
 
-![alt text](/images/2025/06/04/image-3.png)
+![alt text](https://blog.shaohushuo.com/images/2025/06/04/image-3.png)
 
 ## 编写测试代码
 

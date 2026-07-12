@@ -13,7 +13,7 @@ tags: [Java, SpringBoot, 优雅的Java]
 
 > 如何实现优雅的数据更新，最终我们呈现的美学将是这个样子：
 
-![alt text](/images/2025/07/10/image.png)
+![alt text](https://blog.shaohushuo.com/images/2025/07/10/image.png)
 
 
 ## 数据更新案例

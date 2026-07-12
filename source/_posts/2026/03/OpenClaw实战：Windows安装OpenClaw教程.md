@@ -100,9 +100,9 @@ C:\Program Files (x86)\Microsoft Visual Studio\Installer\vs_installer.exe
 - ✅ Desktop development with C++（桌面 C++ 开发）
 - ✅ Windows 10/11 SDK
 
-![Visual Studio 安装界面](/images/2026/03/image.png)
+![Visual Studio 安装界面](https://blog.shaohushuo.com/images/2026/03/image.png)
 
-![选择 C++ 开发组件](/images/2026/03/image-1.png)
+![选择 C++ 开发组件](https://blog.shaohushuo.com/images/2026/03/image-1.png)
 
 > 💡 **提示**：安装过程可能需要 10-20 分钟，请耐心等待。
 
@@ -126,7 +126,7 @@ openclaw --version
 
 **步骤 1**：以管理员身份打开 PowerShell
 
-![管理员 PowerShell](/images/2026/03/image-3.png)
+![管理员 PowerShell](https://blog.shaohushuo.com/images/2026/03/image-3.png)
 
 **步骤 2**：启用 WSL 功能：
 
@@ -176,7 +176,7 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 & ([scriptblock]::Create((iwr -useb https://openclaw.ai/install.ps1))) -Tag beta
 ```
 
-![OpenClaw 安装过程](/images/2026/03/image-2.png)
+![OpenClaw 安装过程](https://blog.shaohushuo.com/images/2026/03/image-2.png)
 
 ### 3.5 验证安装
 
@@ -186,7 +186,7 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 openclaw --version
 ```
 
-![安装成功验证](/images/2026/03/openclaw-install-success.png)
+![安装成功验证](https://blog.shaohushuo.com/images/2026/03/openclaw-install-success.png)
 
 ## 四、首次运行与初始化
 

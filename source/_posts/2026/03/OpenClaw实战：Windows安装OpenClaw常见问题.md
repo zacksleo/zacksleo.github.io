@@ -247,7 +247,7 @@ npm error A complete log of this run can be found in: C:\Users\zacks\AppData\Loc
 
 安装 Visual Studio
 
-![alt text](/images/2026/03/image.png)
+![alt text](https://blog.shaohushuo.com/images/2026/03/image.png)
 
 1. 打开 `C:\Program Files (x86)\Microsoft Visual Studio\Installer\vs_installer.exe`
 
@@ -255,7 +255,7 @@ npm error A complete log of this run can be found in: C:\Users\zacks\AppData\Loc
 
 3. 勾选 Desktop development with C++ （桌面开发选项）
 
-![alt text](/images/2026/03/image-1.png)
+![alt text](https://blog.shaohushuo.com/images/2026/03/image-1.png)
 
 确保下面组件被选中：
 

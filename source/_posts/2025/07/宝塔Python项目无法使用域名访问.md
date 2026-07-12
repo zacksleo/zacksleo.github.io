@@ -46,7 +46,7 @@ curl -k https://localhost
 
 这里的 host 建议改为 0.0.0.0，允许所有 IP 访问
 
-![alt text](/images/2025/07/26/image-3.png)
+![alt text](https://blog.shaohushuo.com/images/2025/07/26/image-3.png)
 
 
 
@@ -128,7 +128,7 @@ server
 上面这个配置与宝塔面板中的外网映射等同，经过使用发现面板中的设置不一定生效，这里设置需要注意，端口选择50001，然后进行外网映射（默认使用 443端口），注意不要搞错对内和对外的端口。
 
 
-![alt text](/images/2025/07/26/image-2.png)
+![alt text](https://blog.shaohushuo.com/images/2025/07/26/image-2.png)
 
 
 

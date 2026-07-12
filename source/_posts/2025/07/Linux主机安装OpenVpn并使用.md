@@ -77,7 +77,7 @@ CcHdON46VjzosQQoMMAZHw==
 </tls-crypt>
 ```
 
-![alt text](/images/2025/07/24/image.png)
+![alt text](https://blog.shaohushuo.com/images/2025/07/24/image.png)
 
 注意从 client 这一行开始复制，一直到
 
@@ -94,19 +94,19 @@ CcHdON46VjzosQQoMMAZHw==
 
 首先需要显示文件扩展名，在资源管理器，查看/显示中，勾选“文件扩展名”。
 
-![alt text](/images/2025/07/24/image-4.png)
+![alt text](https://blog.shaohushuo.com/images/2025/07/24/image-4.png)
 
 右键，新建文本文件，命名为 `client.ovpn`。
 
-![alt text](/images/2025/07/24/image-1.png)
+![alt text](https://blog.shaohushuo.com/images/2025/07/24/image-1.png)
 
 点击确认
 
-![alt text](/images/2025/07/24/image-2.png)
+![alt text](https://blog.shaohushuo.com/images/2025/07/24/image-2.png)
 
 随后右键，选择编辑，使用文本编辑器打开文件。
 
-![alt text](/images/2025/07/24/image-3.png)
+![alt text](https://blog.shaohushuo.com/images/2025/07/24/image-3.png)
 
 将上面复制的内容粘贴到这个文件中。
 

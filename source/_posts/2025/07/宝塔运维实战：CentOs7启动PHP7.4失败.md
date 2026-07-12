@@ -6,7 +6,7 @@ tags: [阿里云, 宝塔运维实战, CentOs7, PHP8]
 
 使用宝塔安装PHP7.4后，发现启动失败，保存内容如下显示：
 
-![alt text](/images/2025/07/18/image.png)
+![alt text](https://blog.shaohushuo.com/images/2025/07/18/image.png)
 
 ```
 /www/server/php/74/sbin/php-fpm: error while loading shared libraries: libsodium.so.23: cannot open shared object file: No such file or directory
@@ -19,16 +19,16 @@ tags: [阿里云, 宝塔运维实战, CentOs7, PHP8]
 
 首先打开软件商店，搜索 SSH，找到宝塔SSH终端，点击安装
 
-![alt text](/images/2025/07/18/image-1.png)
+![alt text](https://blog.shaohushuo.com/images/2025/07/18/image-1.png)
 
 打开确认弹窗，点击立即安装
 
-![alt text](/images/2025/07/18/image-2.png)
+![alt text](https://blog.shaohushuo.com/images/2025/07/18/image-2.png)
 
 
 很快就可以安装成功，我们回到宝塔首页，点击 “宝塔SSH终端1.0”，打开终端页面
 
-![alt text](/images/2025/07/18/image-3.png)
+![alt text](https://blog.shaohushuo.com/images/2025/07/18/image-3.png)
 
 
 
@@ -120,7 +120,7 @@ If above article doesn't help to resolve this issue please use https://bugs.cent
 ### 关闭 SSH 窗口
 
 
-![alt text](/images/2025/07/18/image-4.png)
+![alt text](https://blog.shaohushuo.com/images/2025/07/18/image-4.png)
 
 点击关闭按钮，确认关闭即可。
 
@@ -130,7 +130,7 @@ If above article doesn't help to resolve this issue please use https://bugs.cent
 回到软件商店，找到PHP 7.4，点击设置，尝试重启即可。
 
 
-![alt text](/images/2025/07/18/image-5.png)
+![alt text](https://blog.shaohushuo.com/images/2025/07/18/image-5.png)
 
 
 这里展示的是 PHP 8.4 的 设置界面，重启逻辑是一样的。
